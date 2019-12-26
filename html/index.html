@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>환영합니다</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        <style>
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            a, a:visited {
+                text-decoration: none;
+                color: black;
+                
+                transition: color 1s;
+            }
+            
+            a:hover {
+                color: #fc3503;
+                
+                transition: color 0.7s;
+            }
+            
+            
+        /* 헤더 */
+            header {
+                
+                display: flex;
+                flex-flow: row wrap;
+            }
+            
+            .logoFont {
+                
+                font-size: 50px;
+                font-weight: bolder;
+            }
+            
+            header .logo {
+                width: 800px;
+                height: 100px;
+                
+                text-align: center;
+                line-height: 100px;
+                /*border: 1px solid black;*/
+            }
+            
+            header .blank {
+                width: 224px;
+                height: 100px;
+            }
+            
+            
+        /* 메뉴 & 로그인 */
+            /* 메뉴 */
+            nav {
+                border: 1px solid black;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav .mainMenu {
+                font-size: 30px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                
+                height: 75px;
+            }
+            
+            nav .mainMenu li {
+                list-style: none;
+                
+                padding-left: 50px;
+            }
+            
+            /* 로그인 */
+            nav .login form input {
+                width: 80px;
+                height: 30px;
+                
+                margin-right: 15px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header class="logoFont">
+            <div class="logo">
+                Awesome
+                <img class="logo1" src="logoImage1.jpg" height="50">
+                Pet
+            </div>
+            
+            <div class="blank"></div>
+        </header>
+        
+        <nav>
+            <ul class="mainMenu">
+                <li>
+                    <a href="#">
+                        저희 매장은요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        가족을 찾아요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        소통해요
+                    </a>                    
+                </li>
+                <li>
+                    <a href="#">
+                        궁금해요
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="login">
+                <form class="loginForm" method="POST" action="#">
+                    <input type="button" value="로그인">
+                    <input type="button" value="회원가입">
+                </form>
+            </div>
+        </nav>
+        
+        <section></section>
+        
+        <footer></footer>
+    </body>
+</html>
