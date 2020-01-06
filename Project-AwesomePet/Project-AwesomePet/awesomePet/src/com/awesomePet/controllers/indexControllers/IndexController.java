@@ -14,6 +14,7 @@ public class IndexController extends SubController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		ControllerUtil.forward(request, response, "/test03.jsp");
+		String path = "/views/index.jsp";
+		ControllerUtil.forward(request, response, path);
 	}
 }

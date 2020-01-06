@@ -1,0 +1,553 @@
+<%@ page
+	language="java"
+	contentType="text/html;charset=UTF-8"
+	pageEncoding="UTF-8"
+	isELIgnored="false"
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="contextPath" value="<%= request.getContextPath() %>"/>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>환영합니다</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            a, a:hover, a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            .mainMenu a, 
+            .mainMenu a:visited {
+                text-decoration: none;
+                color: black;
+                
+                transition: color 1s;
+            }
+            
+            .mainMenu a:hover {
+                color: #ff0058;
+                transition: color 0.5s;
+            }
+            
+            
+        /* header */
+            header {
+                display: flex;
+                flex-flow: row wrap;
+            }
+            
+            .logoFont {
+                
+                font-size: 50px;
+                font-weight: bolder;
+            }
+            
+            header .logo {
+                width: 100%;
+                height: 100px;
+                
+                text-align: center;
+                line-height: 100px;
+            }
+            
+            
+        /* 메뉴 & 로그인 */
+            /* 메뉴 */
+            nav {
+                margin-bottom: 5px;
+                
+                border: 1px solid black;
+                border-radius: 20px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav .mainMenu {
+                font-size: 30px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                
+                height: 75px;
+            }
+            
+            nav .mainMenu li {
+                list-style: none;
+                
+                padding-left: 50px;
+            }
+            
+            /* 로그인 */
+            nav .login form input {
+                width: 80px;
+                height: 30px;
+                
+                margin-right: 15px;
+                
+                border: none;
+                border-bottom: 1px solid #333;
+                
+                background: #fff;
+                
+                cursor: pointer;
+                
+                font-weight: bolder;
+            }
+            
+            nav .login form input:nth-child(1):hover {
+                animation: mouseOverToRight 0.3s;
+            }
+            
+            @keyframes mouseOverToRight {
+                0% { }
+                
+                25% {
+                    transform: translateX(5px);
+                }
+                
+                50% {
+                    transform: translateX(-5px);
+                }
+                
+                100% {
+                    transform: translateX(0);
+                }
+            }
+            
+            nav .login form input:nth-child(2):hover {
+                animation: mouseOverToLeft 0.3s;
+            }
+            
+            @keyframes mouseOverToLeft {
+                0% { }
+                
+                25% {
+                    transform: translateX(-5px);
+                }
+                
+                50% {
+                    transform: translateX(5px);
+                }
+                
+                100% {
+                    transform: translateX(0);
+                }
+            }
+            
+            nav .login form input:nth-child(2):hover {
+                animation: mouseOverToLeft 0.3s;
+            }
+            
+            
+        /* section */
+            /* section 초기화 */
+            section > div {
+                margin-bottom: 5px;
+                height: 300px;
+                
+                border: 1px solid black;
+                
+                overflow: hidden;
+                
+                position: relative;
+                
+                z-index: 1;
+            }
+            
+            section > div:hover {
+                cursor: pointer;
+            }
+            
+            section > div:nth-child(1) {
+                margin-top: 20px;
+                
+                border-radius: 20px 10px 180px 10px;
+            }
+            
+            section > div:nth-child(2) {
+                border-radius: 10px 10px 180px 10px;
+            }
+            
+            section > div:nth-child(3) {
+                border-radius: 10px 10px 180px 20px;
+            }
+            
+            section > div > .gradation {
+                position: absolute;
+                background-size: cover;
+                
+                width: 500px;
+                height: 100%;
+                
+                top: 1px;
+                left: 0;
+                
+                padding-left: 30px;
+            }
+            
+            /* .card */
+            section > div .gradation .card {
+                width: 300px;
+                height: inherit;
+                
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            section > div .gradation .card .face {
+                width: 100%;
+                height: 80px;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                transition: 0.5s;
+            }
+            
+            section > div .gradation .card .face h1 {
+                text-align: center;
+            }
+            
+            section > div .gradation .card .face1 {                
+                transform: translateY(40px);
+                
+                z-index: 2;
+            }
+            
+            section > div .gradation .card .face2 {
+                transform: translateY(-40px);
+            }
+            
+            
+            
+            /* 가족을 찾아요 */
+            section .family {
+                background: url(${contextPath}/appImages/family.jpg);
+                background-size: cover;
+            }
+            
+            section .family .gradation {
+                background: linear-gradient(to right, #ff82be 70%, transparent);
+            }
+            
+            section .family .gradation .card .face1 {
+                background: #ff82be;
+                transition: 0.5s;
+            }
+            
+            section .family .gradation .card .face2 {
+                opacity: 0;
+            }
+            
+            section .family:hover .gradation .card .face1 {
+                border-bottom: 3px solid #333;
+                transform: translateY(0);
+            }
+            
+            section .family:hover .gradation .card .face2 {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            
+            /* 소통해요 */
+            section .communication {
+                background: url(${contextPath}/appImages/communication.jpg);
+                background-size: cover;
+            }
+            
+            section .communication .gradation {
+                background: linear-gradient(to right, #f7fffc 70%, transparent);
+            }
+            
+            section .communication .gradation .card .face1 {
+                background: #f7fffc;
+            }
+            
+            section .communication .gradation .card .face2 {
+                opacity: 0;
+            }
+            
+            section .communication:hover .gradation .card .face1 {
+                border-bottom: 3px solid #333;
+                transform: translateY(0);
+            }
+            
+            section .communication:hover .gradation .card .face2 {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            
+            /* 궁금해요 */
+            section .question {
+                background: url(${contextPath}/appImages/question.jpg);
+                background-size: cover;
+            }
+            
+            section .question .gradation {
+                background: linear-gradient(to right, #e82e50 70%, transparent);
+            }
+            
+            section .question .gradation .card .face1 {
+                background: #e82e50;
+            }
+            
+            section .question .gradation .card .face2 {
+                opacity: 0;
+            }
+            
+            section .question:hover .gradation .card .face1 {
+                border-bottom: 3px solid #333;
+                transform: translateY(0);
+            }
+            
+            section .question:hover .gradation .card .face2 {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            
+        /* footer */
+            footer {
+                margin: 30px 0;
+                
+                height: 100px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header class="logoFont">
+            <div class="logo">
+                <a href="#">
+                    Awesome
+                    <img class="logo1" src="${contextPath}/appImages/logoImage1.jpg" height="50">
+                    Pet
+                </a>                
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="mainMenu">
+                <li>
+                    <a href="#">
+                        저희 매장은요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        가족을 찾아요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        소통해요
+                    </a>                    
+                </li>
+                <li>
+                    <a href="#">
+                        궁금해요
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="login">
+                <form class="loginForm" method="POST" action="#">
+                    <input type="button" value="로그인">
+                    <input type="button" value="회원가입">
+                </form>
+            </div>
+        </nav>
+        
+        <section>
+            <div class="family">
+                <div class="gradation">
+                    <div class="card">
+                        <div class="face face1">
+                            <h1>🏡 가족을 찾아요</h1>
+                        </div>
+                        
+                        <div class="face face2">
+                            <h1>반려동물 분양 게시판 입니다</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="communication">
+                <div class="gradation">
+                    <div class="card">
+                        <div class="face face1">
+                            <h1>📸 소통해요</h1>
+                        </div>
+                        
+                        <div class="face face2">
+                            <h1>반려동물과 함께 여러분의 행복을 자랑해요</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="gradation">
+                    <div class="card">
+                        <div class="face face1">
+                            <h1>💡 궁금해요</h1>
+                        </div>
+                        
+                        <div class="face face2">
+                            <h1>입양 & 반려동물에 대한 궁금증을 해결해요</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div>Copyright @ 김영우</div>
+            <div>Tel : 010-9551-3439</div>
+            <div>Email : kyw05171@gmail.com</div>
+            <div>Github : http://github.com/Chocobe</div>
+        </footer>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                initFamilyEvent();
+                initCommunicationEvent();
+                initQuestionEvent();
+            });
+            
+            
+            function initFamilyEvent() {
+                $(".family").click(function(event) {
+                    location.href = "cardTest.html";
+                });
+            }
+            
+            
+            function initCommunicationEvent() {
+                $(".communication").click(function(event) {
+                    location.href = "cardTest1.html";
+                });
+            }
+            
+            
+            function initQuestionEvent() {
+                $(".question").click(function(event) {
+                    location.href = "login.html";
+                });
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
