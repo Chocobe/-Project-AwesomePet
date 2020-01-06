@@ -106,73 +106,139 @@
             
             
         /* section */
-            /* 초기화 */
             section {
-                margin: 0 auto;
-            }
-            
-            section > h1 {
-                text-align: center;
-                font-size: 40px;
-                
-                margin: 100px 0 15px 0;
-            }
-            
-            section form {
-                width: 600px;
-                margin: 0 auto;
-                
-                border: 1px solid black;
-                border-radius: 20px;
+                width: 1024px;
+                min-height: 50vh;
                 
                 display: flex;
-                flex-flow: row wrap;
                 justify-content: center;
+                align-items: center;
+                
+                background: url("images/loginBackground.jpg");
+                background-size: cover;
             }
             
-            section form table {
+            section .loginBox {
                 width: 400px;
-                margin: 30px 0;
+                padding: 30px;
+                
+                border-radius: 10px;
+                
+                background: rgba(0, 0, 0, 0.7);
             }
             
-            /* 로그인 입력부 */
-            section form tr:nth-child(1),
-            section form tr:nth-child(2) {
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: space-between;
-            }
-            
-            section form .inputRow td:nth-child(1) {
-                
-                width: 130px;
-                
-                text-align: right;
+            section .loginBox h2 {
+                text-align: center;
                 font-size: 30px;
+                color: #fff;
+                
+                margin-bottom: 25px;
             }
             
-            section form .inputRow input {
-                width: 250px;
-                height: 30px;
+            
+        /* .inputBox */
+            section .loginBox .inputBox {
+                position: relative;
             }
             
-            /* 로그인 버튼부 */
-            section form .submitRow {
+            section .loginBox .inputBox input {
+                width: 100%;
+                margin-bottom: 30px;
+                padding: 10px 0;
+                
+                font-size: 18px;
+                
+                background: transparent;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+            }
+            
+            section .loginBox .inputBox label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                font-size: 18px;
+                color: #fff;
+                padding: 10px 0;
+                
+                transition: 0.5s;
+                
+                pointer-events: none;
+            }
+            
+            section .loginBox .inputBox input:hover ~ label,
+            section .loginBox .inputBox input:valid ~ label {
+                top: -20px;
+                font-size: 14px;
+                color: #03a9f4;
+            }
+            
+            
+        /* .submitBox */
+            section .loginBox .submitBox {
+                margin-bottom: 10px;
+                
                 display: flex;
-                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            section .loginBox .submitBox input {
+                width: 100px;
+                padding: 10px 0;
+                
+                background: #03a9f4;
+                border: none;
+                border-radius: 5px;
+                
+                color: #fff;
+                
+                cursor: pointer;
+            }
+            
+            section .loginBox .submitBox input[type="submit"] {
+                margin-right: 10px;
+            }
+            
+            section .loginBox .submitBox input[type="button"] {
+                margin-left: 10px;
+            }
+            
+            
+        /* .findBox */
+            section .loginBox .findBox {
+                display: flex;
                 justify-content: center;
                 
+                font-size: 12px;
             }
             
-            section form .submitRow input {
-                width: 100px;
-                height: 30px;
-                
-                margin: 20px 5px;
-            }
-            
-            section form .submitRow a {
+            section .loginBox .findBox .separator {
+                width: 20px;
                 margin: 0 15px;
+                padding-top: 2px;
+                
+                text-align: center;
+                
+                color: #fff;
+            }
+            
+            section .loginBox .findBox a {
+                color: #fff;
+                width: 80px;
+                
+                transition: 0.5s;
+            }
+            
+            section .loginBox .findBox a:hover {
+                color: #ff0058;
+            }
+            
+            section .loginBox .findBox a:nth-child(1) {
+                text-align: right;
             }
         </style>
     </head>
@@ -221,50 +287,38 @@
         </nav>
         
         <section>
-            <h1 width="500">로그인</h1>
-           
-            <form method="POST" action="#">
-                <table>
-                    <tr class="inputRow">
-                        <td>
-                            <labe for="userID">ID</labe>
-                        </td>
-                        
-                        <td>
-                            <input type="text" id="userID" name="userID">
-                        </td>
-                    </tr>
+            <div class="loginBox">
+                <h2>로그인</h2>
+                
+                <form>
+                    <div class="inputBox">
+                        <input type="text" required>
+                        <label>User ID</label>
+                    </div>
                     
-                    <tr class="inputRow">
-                        <td>
-                            <label for="userPW">Password</label>
-                        </td>
-                        
-                        <td>
-                            <input type="password" name="userPW">
-                        </td>
-                    </tr>
+                    <div class="inputBox">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
                     
-                    <tr class="submit">
-                        <td colspan="2">
-                            <div class="submitRow">
-                                <input type="submit" value="로그인" width="80px">                            
-                                <input type="button" value="회원가입" width="80px">
-                            </div>
-                        </td>
-                    </tr>
+                    <div class="submitBox">
+                        <input type="submit" value="로그인">
+                        <input type="button" value="회원가입">
+                    </div>
                     
-                    <tr>
-                        <td>
-                            <div class="submitRow">
-                                <a class="findID" href="#">ID 찾기</a>
-                                <a class="findPW" href="#">비밀번호 찾기</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                    <div class="findBox">
+                        <a href="#">아이디 찾기</a>
+                        <div class="separator">|</div>
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                </form>
+            </div>
         </section>
+        
+        
+        <footer>
+            <!-- import footer -->
+        </footer>
     </body>
 </html>
 
