@@ -12,7 +12,6 @@
 	</head>
 	
 	<body>
-		<h1>JSP에서 Encoding 테스트 입니다</h1>
-		
+		<h1>FrontController -> IndexController 로 요청 처리 페이지 입니다</h1>
 	</body>
 </html>

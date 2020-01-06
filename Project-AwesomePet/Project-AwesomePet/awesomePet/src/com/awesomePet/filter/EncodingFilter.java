@@ -18,8 +18,6 @@ public class EncodingFilter implements Filter {
 	
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		System.out.println("EncodingFilter 초기화 테스트 출력");
-		
 		String initParam = config.getInitParameter("encoding");
 		if(initParam != null && !initParam.equals("")) {
 			encoding = initParam;
