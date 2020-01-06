@@ -1344,7 +1344,7 @@
 							},
 							"name": "memberID",
 							"type": "VARCHAR",
-							"length": "24",
+							"length": "20",
 							"primaryKey": true
 						},
 						{
