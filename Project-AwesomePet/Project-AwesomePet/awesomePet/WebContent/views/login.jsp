@@ -1,0 +1,404 @@
+<%@ page
+	language="java"
+	contentType="text/html;charset=UTF-8"
+	pageEncoding="UTF-8"
+	isELIgnored="false"
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="contextPath" value="<%= request.getContextPath() %>"/>
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>로그인</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            a, 
+            a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            .mainMenu a, 
+            .mainMenu a:visited {
+                text-decoration: none;
+                color: black;
+                
+                transition: color 1s;
+            }
+            
+            .mainMenu a:hover {
+                color: #fc3503;
+                
+                transition: color 0.7s;
+            }
+            /* header */
+            header {
+                display: flex;
+                flex-flow: row wrap;
+            }
+            
+            .logoFont {
+                
+                font-size: 50px;
+                font-weight: bolder;
+            }
+            
+            header .logo {
+                width: 100%;
+                height: 100px;
+                
+                text-align: center;
+                line-height: 100px;
+                /*border: 1px solid black;*/
+            }
+            
+            header .blank {
+                width: 224px;
+                height: 100px;
+            }
+            
+            
+        /* 메뉴 & 로그인 */
+            /* 메뉴 */
+            nav {
+                margin-bottom: 5px;
+                
+                border: 1px solid black;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav .mainMenu {
+                font-size: 30px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                
+                height: 75px;
+            }
+            
+            nav .mainMenu li {
+                list-style: none;
+                
+                padding-left: 50px;
+            }
+            
+            /* 로그인 */
+            nav .login form input {
+                width: 80px;
+                height: 30px;
+                
+                margin-right: 15px;
+            }
+            
+            
+        /* section */
+            section {
+                width: 1024px;
+                min-height: 50vh;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                background: url("${contextPath}/appImages/loginBackground.jpg");
+                background-size: cover;
+            }
+            
+            section .loginBox {
+                width: 400px;
+                padding: 30px;
+                
+                border-radius: 10px;
+                
+                background: rgba(0, 0, 0, 0.7);
+            }
+            
+            section .loginBox h2 {
+                text-align: center;
+                font-size: 30px;
+                color: #fff;
+                
+                margin-bottom: 25px;
+            }
+            
+            
+        /* .inputBox */
+            section .loginBox .inputBox {
+                position: relative;
+            }
+            
+            section .loginBox .inputBox input {
+                width: 100%;
+                margin-bottom: 30px;
+                padding: 10px 0;
+                
+                font-size: 18px;
+                
+                background: transparent;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+            }
+            
+            section .loginBox .inputBox label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                font-size: 18px;
+                color: #fff;
+                padding: 10px 0;
+                
+                transition: 0.5s;
+                
+                pointer-events: none;
+            }
+            
+            section .loginBox .inputBox input:hover ~ label,
+            section .loginBox .inputBox input:valid ~ label {
+                top: -20px;
+                font-size: 14px;
+                color: #03a9f4;
+            }
+            
+            
+        /* .submitBox */
+            section .loginBox .submitBox {
+                margin-bottom: 10px;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            section .loginBox .submitBox input {
+                width: 100px;
+                padding: 10px 0;
+                
+                background: #03a9f4;
+                border: none;
+                border-radius: 5px;
+                
+                color: #fff;
+                
+                cursor: pointer;
+            }
+            
+            section .loginBox .submitBox input[type="submit"] {
+                margin-right: 10px;
+            }
+            
+            section .loginBox .submitBox input[type="button"] {
+                margin-left: 10px;
+            }
+            
+            
+        /* .findBox */
+            section .loginBox .findBox {
+                display: flex;
+                justify-content: center;
+                
+                font-size: 12px;
+            }
+            
+            section .loginBox .findBox .separator {
+                width: 20px;
+                margin: 0 15px;
+                padding-top: 2px;
+                
+                text-align: center;
+                
+                color: #fff;
+            }
+            
+            section .loginBox .findBox a {
+                color: #fff;
+                width: 80px;
+                
+                transition: 0.5s;
+            }
+            
+            section .loginBox .findBox a:hover {
+                color: #ff0058;
+            }
+            
+            section .loginBox .findBox a:nth-child(1) {
+                text-align: right;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header class="logoFont">
+            <div class="logo">
+                <a href="#">
+                    Awesome
+                    <img class="logo1" src="${contextPath}/appImages/logoImage1.jpg" height="50">
+                    Pet
+                </a>                
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="mainMenu">
+                <li>
+                    <a href="#">
+						저희 매장은요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						가족을 찾아요
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						소통해요
+                    </a>                    
+                </li>
+                <li>
+                    <a href="#">
+						궁금해요
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="login">
+                <form class="loginForm" method="POST" action="#">
+                    <input type="button" value="로그인">
+                    <input type="button" value="회원가입">
+                </form>
+            </div>
+        </nav>
+        
+        <section>
+            <div class="loginBox">
+                <h2>로그인</h2>
+                
+                <form>
+                    <div class="inputBox">
+                        <input type="text" required>
+                        <label>User ID</label>
+                    </div>
+                    
+                    <div class="inputBox">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    
+                    <div class="submitBox">
+                        <input type="submit" value="로그인">
+                        <input type="button" value="회원가입">
+                    </div>
+                    
+                    <div class="findBox">
+                        <a href="#">아이디 찾기</a>
+                        <div class="separator">|</div>
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        
+        <footer>
+            <!-- import footer -->
+        </footer>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -73,7 +73,7 @@
             }
             
             
-        /* 메뉴 & 로그인 */
+        /* 메뉴 & 멤버 메뉴 */
             /* 메뉴 */
             nav {
                 margin-bottom: 5px;
@@ -103,8 +103,12 @@
                 padding-left: 50px;
             }
             
-            /* 로그인 */
-            nav .login form input {
+            nav .mainMenu li a {
+            	line-height: 30px;
+           	}
+            
+            /* 멤버 메뉴 */
+            nav .memberMenu input {
                 width: 80px;
                 height: 30px;
                 
@@ -112,6 +116,7 @@
                 
                 border: none;
                 border-bottom: 1px solid #333;
+                outline: none;
                 
                 background: #fff;
                 
@@ -120,7 +125,7 @@
                 font-weight: bolder;
             }
             
-            nav .login form input:nth-child(1):hover {
+            nav .memberMenu input:nth-child(1):hover {
                 animation: mouseOverToRight 0.3s;
             }
             
@@ -140,7 +145,7 @@
                 }
             }
             
-            nav .login form input:nth-child(2):hover {
+            nav .memberMenu input:nth-child(2):hover {
                 animation: mouseOverToLeft 0.3s;
             }
             
@@ -160,7 +165,7 @@
                 }
             }
             
-            nav .login form input:nth-child(2):hover {
+            nav .memberMenu input:nth-child(2):hover {
                 animation: mouseOverToLeft 0.3s;
             }
             
@@ -362,31 +367,29 @@
             <ul class="mainMenu">
                 <li>
                     <a href="#">
-                        저희 매장은요
+						저희 매장은요
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        가족을 찾아요
+						가족을 찾아요
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        소통해요
+						소통해요
                     </a>                    
                 </li>
                 <li>
                     <a href="#">
-                        궁금해요
+						궁금해요
                     </a>
                 </li>
             </ul>
             
-            <div class="login">
-                <form class="loginForm" method="POST" action="#">
-                    <input type="button" value="로그인">
-                    <input type="button" value="회원가입">
-                </form>
+            <div class="memberMenu">
+				<input type="button" value="로그인" onclick="login('${contextPath}');">
+				<input type="button" value="회원가입" onclick="join('${contextPath}');">
             </div>
         </nav>
         
@@ -444,6 +447,7 @@
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript">
+        	// 초기화 메서드 입니다.
             $(function() {
                 initFamilyEvent();
                 initCommunicationEvent();
@@ -451,6 +455,7 @@
             });
             
             
+        	// "가족을 찾아요" 클릭 이벤트 메서드 입니다.
             function initFamilyEvent() {
                 $(".family").click(function(event) {
                     location.href = "cardTest.html";
@@ -458,6 +463,7 @@
             }
             
             
+        	// "소통해요" 클릭 이벤트 메서드 입니다.
             function initCommunicationEvent() {
                 $(".communication").click(function(event) {
                     location.href = "cardTest1.html";
@@ -465,10 +471,23 @@
             }
             
             
+        	// "궁금해요" 클릭 이벤트 메서드 입니다.
             function initQuestionEvent() {
                 $(".question").click(function(event) {
                     location.href = "login.html";
                 });
+            }
+            
+            
+        	// "로그인" 버튼 클릭 메서드 입니다.
+            function login(context) {
+            	location.href = context + "/login.do";
+            }
+            
+            
+        	// "회원가입" 버튼 클릭 메서드 입니다.
+            function join(context) {
+            	location.href = context + "/join.do";
             }
         </script>
     </body>
