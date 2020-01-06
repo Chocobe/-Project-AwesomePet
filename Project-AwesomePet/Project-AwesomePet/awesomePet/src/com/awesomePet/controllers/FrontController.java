@@ -22,6 +22,7 @@ public class FrontController extends HttpServlet {
 		Map<String, SubController> initControllers = (Map<String, SubController>)config.getServletContext().getAttribute("subControllers");
 		
 		subControllers = initControllers;
+		System.out.println("<FrontController 알림> : 초기화 완료");
 	}
 	
 	
@@ -29,13 +30,20 @@ public class FrontController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		super.service(request, response);
+		// GET, POST 방식을 사용하지 않기 때문에 부모클래스의 초기화를 하지 않습니다.
+		// 초기화 할 경우 GET(), POST() 메소드를 사용해야만 합니다.
+		// super.service(request, response);
 		
 		String servletPath = request.getServletPath();
 		System.out.println("<FrontController 알림> : " + servletPath + " 이(가) 요청 되었습니다.");
 		
 		// 요청한 서비스에 따른 SubController 객체로 처리를 위임합니다.
 		SubController subController = subControllers.get(servletPath);
+		
+		if(subController == null) {
+			subController = subControllers.get("/index.do");
+		}
+		
 		subController.execute(request, response);
 	}
 }
