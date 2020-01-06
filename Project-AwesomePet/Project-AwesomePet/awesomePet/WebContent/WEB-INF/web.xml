@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
 <!-- 웹 에플리케이션 명 -->
 	<display-name>awesomePet</display-name>
-  
+
 
 <!-- Filter - 모든 Servlet과 JSP의 Encoding값을 설정합니다 -->
 	<filter>
@@ -19,6 +19,12 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+
+
+<!-- ServletContextListener 설정 입니다 -->
+	<listener>
+		<listener-class>com.awesomePet.listener.ContextListener</listener-class>
+	</listener>
 
 
 <!-- 메인 페이지 설정 -->
