@@ -84,6 +84,7 @@
         <%@ include file="/views/footer.jsp" %>
         
         
+        <!-- 푸터 javascript 파일을 적용 시킵니다. -->
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript" src="${contextPath}/js/index.js"></script>
     </body>
