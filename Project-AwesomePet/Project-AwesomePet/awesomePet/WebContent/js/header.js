@@ -3,8 +3,6 @@ $(function() {
     initFamilyEvent();
     initCommunicationEvent();
     initQuestionEvent();
-    
-    alert("Javascript 파일을 정상 로딩 하였습니다");
 });
 
 

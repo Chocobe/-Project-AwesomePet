@@ -48,7 +48,7 @@
                 <li>
                     <a href="#">
 						소통해요
-                    </a>                    
+                    </a>
                 </li>
                 <li>
                     <a href="#">
@@ -58,13 +58,22 @@
             </ul>
             
             <div class="memberMenu">
-				<input type="button" value="로그인" onclick="loginView('${contextPath}');">
-				<input type="button" value="회원가입" onclick="join('${contextPath}');">
+            	<c:choose>
+            		<c:when test="${empty memberLoginID}">
+						<input type="button" value="로그인" onclick="loginView('${contextPath}');">
+						<input type="button" value="회원가입" onclick="join('${contextPath}');">
+					</c:when>
+					
+					<c:otherwise>
+						<input type="button" value="마이 페이지">
+						<input type="button" value="로그아웃">
+					</c:otherwise>
+				</c:choose>
             </div>
         </nav>
         
         
-        <script src="http://code.jquery.com/jquery-min-js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript" src="${contextPath}/js/header.js"></script>
 	</body>
 </html>
