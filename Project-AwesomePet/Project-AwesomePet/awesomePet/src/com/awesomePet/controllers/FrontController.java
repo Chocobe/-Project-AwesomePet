@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
+	// 기능별 SubController타입 객체들을 가지는 Map객체 입니다.
 	private Map<String, SubController> subControllers;
 	
 	
+	// ServletContextListener에서 DI했던 Map<String, SubController> 객체를 가져옵니다. (초기화)
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// Collection 객체의 형변환 경고는 무시해도 무방하다는 것을 stackoverflow.com 사이트에서 알게 되었습니다.
@@ -32,6 +34,7 @@ public class FrontController extends HttpServlet {
 					throws ServletException, IOException {
 		// GET, POST 방식을 사용하지 않기 때문에 부모클래스의 초기화를 하지 않습니다.
 		// 초기화 할 경우 GET(), POST() 메소드를 사용해야만 합니다.
+		//
 		// super.service(request, response);
 		
 		String servletPath = request.getServletPath();
@@ -40,6 +43,7 @@ public class FrontController extends HttpServlet {
 		// 요청한 서비스에 따른 SubController 객체로 처리를 위임합니다.
 		SubController subController = subControllers.get(servletPath);
 		
+		// 잘못된 ServletPath일 경우, "index.do"로 대체합니다.
 		if(subController == null) {
 			subController = subControllers.get("/index.do");
 		}

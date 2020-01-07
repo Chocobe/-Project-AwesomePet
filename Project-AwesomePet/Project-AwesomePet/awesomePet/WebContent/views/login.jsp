@@ -37,7 +37,8 @@
         
         <section>
             <div class="loginBox">
-                <h2>로그인</h2>
+                <h2 class="title">로그인</h2>
+                <p class="error">${memberLoginError}</p>
                 
                 <form method="POST" action="..${contextPath}/memberLogin.do">
                     <div class="inputBox">

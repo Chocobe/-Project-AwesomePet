@@ -60,14 +60,33 @@
     
     nav .mainMenu li a {
     	line-height: 30px;
+    	
+    	text-decoration: none;
+	    color: black;
+	    
+	    transition: color 0.5s;
    	}
+	
+	nav .mainMenu a:hover {
+	    color: #ff0058;
+	}
+   	
     
     /* 멤버 메뉴 */
+    nav .memberMenu {
+    	max-width: 260px;
+    	
+    	display: flex;
+    	flex-flow: row wrap;
+    	justify-content: center;
+    	align-items: center;
+    }
+    
     nav .memberMenu input {
         width: 80px;
         height: 30px;
         
-        margin-right: 15px;
+        margin: 0 10px;
         
         border: none;
         border-bottom: 1px solid #333;
@@ -80,11 +99,16 @@
         font-weight: bolder;
     }
     
-    nav .memberMenu input:nth-child(1):hover {
-        animation: mouseOverToRight 0.3s;
+    nav .memberMenu p:nth-child(1) {
+    	text-align: center;
+    	width: 260px;
     }
     
-    @keyframes mouseOverToRight {
+    nav .memberMenu input.firstInput:hover {
+        animation: trillToRight 0.3s;
+    }
+    
+    @keyframes trillToRight {
         0% { }
         
         25% {
@@ -100,11 +124,11 @@
         }
     }
     
-    nav .memberMenu input:nth-child(2):hover {
-        animation: mouseOverToLeft 0.3s;
+    nav .memberMenu input.secondInput:hover {
+        animation: trillToLeft 0.3s;
     }
     
-    @keyframes mouseOverToLeft {
+    @keyframes trillToLeft {
         0% { }
         
         25% {
@@ -118,8 +142,4 @@
         100% {
             transform: translateX(0);
         }
-    }
-    
-    nav .memberMenu input:nth-child(2):hover {
-        animation: mouseOverToLeft 0.3s;
     }

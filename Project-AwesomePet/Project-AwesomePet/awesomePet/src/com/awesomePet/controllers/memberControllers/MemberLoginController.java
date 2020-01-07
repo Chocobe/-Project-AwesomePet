@@ -22,6 +22,7 @@ public class MemberLoginController implements SubController {
 	}
 	
 	
+// Login 서비스를 호출합니다.
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {

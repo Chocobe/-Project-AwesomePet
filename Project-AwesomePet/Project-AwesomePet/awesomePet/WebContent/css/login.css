@@ -125,12 +125,17 @@
 	    background: rgba(0, 0, 0, 0.7);
 	}
 	
-	section .loginBox h2 {
+	section .loginBox .title {
 	    text-align: center;
 	    font-size: 30px;
 	    color: #fff;
 	    
 	    margin-bottom: 25px;
+	}
+	
+	section .loginBox .error {
+		color: #ff0058;
+		margin-bottom: 20px;
 	}
 	
 	
@@ -186,6 +191,8 @@
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
+	    
+	    transition: 0.3s;
 	}
 	
 	section .loginBox .submitBox input {
@@ -197,8 +204,15 @@
 	    border-radius: 5px;
 	    
 	    color: #fff;
+	    font-weight: bolder;
 	    
 	    cursor: pointer;
+	    
+	    transition: 0.5s;
+	}
+	
+	section .loginBox .submitBox input:hover {
+		background: #ff0058;
 	}
 	
 	section .loginBox .submitBox input[type="submit"] {

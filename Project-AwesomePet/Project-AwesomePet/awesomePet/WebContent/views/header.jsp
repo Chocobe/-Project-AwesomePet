@@ -2,6 +2,7 @@
 	language="java"
 	contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"
+	
 	isELIgnored="false"
 %>
 
@@ -60,13 +61,14 @@
             <div class="memberMenu">
             	<c:choose>
             		<c:when test="${empty memberLoginID}">
-						<input type="button" value="로그인" onclick="loginView('${contextPath}');">
-						<input type="button" value="회원가입" onclick="join('${contextPath}');">
+						<input type="button" value="로그인" class="firstInput" onclick="loginView('${contextPath}');">
+						<input type="button" value="회원가입" class="secondInput" onclick="join('${contextPath}');">
 					</c:when>
 					
 					<c:otherwise>
-						<input type="button" value="마이 페이지">
-						<input type="button" value="로그아웃">
+						<p>안녕하세요 <span style="color: peru;">🐹 ${memberLoginID}</span> 님</p>
+						<input type="button" value="마이 페이지" class="firstInput" onclick="openMyPage('${contextPath}')">
+						<input type="button" value="로그아웃" class="secondInput" onclick="memberLogout('${contextPath}')">
 					</c:otherwise>
 				</c:choose>
             </div>

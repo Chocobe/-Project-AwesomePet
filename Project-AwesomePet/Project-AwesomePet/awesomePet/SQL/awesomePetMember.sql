@@ -13,7 +13,8 @@ CREATE TABLE awesomePetMember(
 	memberJoinDate			DATE				DEFAULT (DATE(memberJoinDateTime))
 );
 
-SELECT * FROM awesomePetMember;
+SELECT * FROM awesomepetmember;
+
 DELETE FROM awesomePetMember;
 
 
@@ -61,3 +62,15 @@ INSERT INTO awesomePetMember(memberID,
 								 	  'dd@dd.com',
 									  '010-7777-8888',
 									  '부산광역시 해운대구');
+									  
+INSERT INTO awesomePetMember(memberID,
+									  memberPW,
+									  memberEmail,
+									  memberPhone,
+									  memberAddr)
+						  	 VALUES('aassddffgg',
+							 		  'aaasssdddfffggg',
+								 	  'asdfg@asdfg.com',
+									  '010-9999-0000',
+									  '부산광역시 사하구');
+									  

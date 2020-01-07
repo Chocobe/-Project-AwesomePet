@@ -14,20 +14,9 @@
 	    font-family: 'Jua', sans-serif;
 	}
 	
-	a, a:hover, a:visited {
+	a, a:hover, 
+	a:visited {
 	    text-decoration: none;
 	    color: black;
 	}
 	
-	.mainMenu a, 
-	.mainMenu a:visited {
-	    text-decoration: none;
-	    color: black;
-	    
-	    transition: color 1s;
-	}
-	
-	.mainMenu a:hover {
-	    color: #ff0058;
-	    transition: color 0.5s;
-	}

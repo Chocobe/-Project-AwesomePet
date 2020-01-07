@@ -40,3 +40,9 @@ function loginView(context) {
 function join(context) {
 	location.href = context + "/join.do";
 }
+
+
+// "로그아웃" 버튼 클릭 메서드 입니다.
+function memberLogout(context) {
+	location.href = context + "/memberLogout.do";
+}
