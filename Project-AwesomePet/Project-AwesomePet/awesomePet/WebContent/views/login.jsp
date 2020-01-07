@@ -41,7 +41,7 @@
                 
                 <form method="POST" action="..${contextPath}/memberLogin.do">
                     <div class="inputBox">
-                        <input type="text" name="memberID" required>
+                        <input type="text" name="memberID" required autocomplete="off">
                         <label>User ID</label>
                     </div>
                     
