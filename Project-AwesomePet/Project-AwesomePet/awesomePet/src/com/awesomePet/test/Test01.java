@@ -14,6 +14,19 @@ public class Test01 extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
+		doHandler(request, response);
+	}
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+					throws ServletException, IOException {
+		doHandler(request, response);
+	}
+	
+	
+	protected void doHandler(HttpServletRequest request, HttpServletResponse response) 
+					throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
 		String contextPath = request.getContextPath();

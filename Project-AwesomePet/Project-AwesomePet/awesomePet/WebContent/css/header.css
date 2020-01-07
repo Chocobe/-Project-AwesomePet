@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/* header */
+    header {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .logoFont {
+        
+        font-size: 50px;
+        font-weight: bolder;
+    }
+    
+    header .logo {
+        width: 100%;
+        height: 100px;
+        
+        text-align: center;
+        line-height: 100px;
+    }
+    
+    
+/* 메뉴 & 멤버 메뉴 */
+    /* 메뉴 */
+    nav {
+        margin-bottom: 20px;
+        
+        border: 1px solid black;
+        border-radius: 20px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    nav .mainMenu {
+        font-size: 30px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        
+        height: 75px;
+    }
+    
+    nav .mainMenu li {
+        list-style: none;
+        
+        padding-left: 50px;
+    }
+    
+    nav .mainMenu li a {
+    	line-height: 30px;
+   	}
+    
+    /* 멤버 메뉴 */
+    nav .memberMenu input {
+        width: 80px;
+        height: 30px;
+        
+        margin-right: 15px;
+        
+        border: none;
+        border-bottom: 1px solid #333;
+        outline: none;
+        
+        background: #fff;
+        
+        cursor: pointer;
+        
+        font-weight: bolder;
+    }
+    
+    nav .memberMenu input:nth-child(1):hover {
+        animation: mouseOverToRight 0.3s;
+    }
+    
+    @keyframes mouseOverToRight {
+        0% { }
+        
+        25% {
+            transform: translateX(5px);
+        }
+        
+        50% {
+            transform: translateX(-5px);
+        }
+        
+        100% {
+            transform: translateX(0);
+        }
+    }
+    
+    nav .memberMenu input:nth-child(2):hover {
+        animation: mouseOverToLeft 0.3s;
+    }
+    
+    @keyframes mouseOverToLeft {
+        0% { }
+        
+        25% {
+            transform: translateX(-5px);
+        }
+        
+        50% {
+            transform: translateX(5px);
+        }
+        
+        100% {
+            transform: translateX(0);
+        }
+    }
+    
+    nav .memberMenu input:nth-child(2):hover {
+        animation: mouseOverToLeft 0.3s;
+    }
