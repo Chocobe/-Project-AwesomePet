@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>AwesomePet 회원가입</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .joinContainer */
+            .joinContainer {
+                width: 1024px;
+                padding: 30px;
+                
+                background: url('images/loginBackground.jpg');
+                background-size: cover;
+                
+                display: flex;
+                justify-content: center;
+            }
+            
+            
+        /* form */
+            .joinContainer form {
+                width: 400px;
+                
+                padding: 30px;
+                
+                background: rgba(0, 0, 0, 0.7);
+                
+                border-radius: 10px;
+            }
+            
+            
+        /* .joinTitle */
+            .joinContainer form .joinTitle {
+                width: 100%;
+                
+                margin-bottom: 25px;
+                
+                text-align: center;
+                font-size: 30px;
+                font-weight: 100;
+                color: #fff;
+            }
+            
+            
+        /* .animationBox */
+            .joinContainer form .animationBox {
+                position: relative;
+            }
+            
+            /* .animationBox input */
+            .joinContainer form .animationBox input {
+                width: 100%;
+                
+                margin-bottom: 30px;
+                padding: 10px 0;
+                
+                color: #fff;
+                font-size: 18px;
+                font-weight: bolder;
+                letter-spacing: 1px;
+                
+                background: transparent;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                
+                outline: none;
+            }
+            
+            /* label */
+            .joinContainer form .animationBox label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                color: #fff;
+                font-size: 18px;
+                font-weight: 100;
+                
+                padding: 10px 0;
+                
+                transition: 0.5s;
+                
+                pointer-events: none;
+            }
+            
+            .joinContainer form .animationBox input:hover ~ label,
+            .joinContainer form .animationBox input:focus ~ label,
+            .joinContainer form .animationBox input:valid ~ label {
+                top: -20px;
+                color: #03a9f4;
+                font-size: 14px;
+            }
+            
+            
+        /* .fixedBox */
+            .joinContainer form .fixedBox {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                
+                margin-bottom: 20px;
+            }
+            
+            .joinContainer form .fixedBox label,
+            .joinContainer form .fixedBox .delim {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 100;
+                
+                padding: 10px 0;
+                
+                pointer-events: none;
+            }
+            
+            .joinContainer form .fixedBox .delim {
+                margin: 0 10px;
+            }
+            
+            .joinContainer form .fixedBox div {
+                width: 70%;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                
+                position: relative;
+            }
+            
+            .joinContainer form .fixedBox div input {
+                width: 25%;
+                
+                padding: 0 10px;
+                
+                text-align: center;
+                font-size: 18px;
+                color: #fff;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+                
+                background: transparent;
+            }
+            
+            
+            
+            
+            
+            
+        /* submitBox */
+            
+            
+            
+        </style>
+    </head>
+    
+    <body>
+        <div class="joinContainer">
+            <form method="POST" action="#">
+                <h1 class="joinTitle">회원가입</h1>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberID" maxlength="20" required>
+                    <label class="animation">아이디</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="password" class="memberPW" maxlength="20" required>
+                    <label class="animation">비밀번호</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="password" class="memberPWCheck" maxlength="20" required>
+                    <label class="animation">비밀번호 재확인</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberName" maxlength="12" required>
+                    <label class="animation">이름</label>
+                </div>
+                
+                <div class="fixedBox">
+                    <label>생년월일</label>
+                    
+                    <div>
+                        <input type="text" class="memberBirthDayYear" maxlength="4" required>
+                        <span class="delim"> - </span> 
+                        <input type="text" class="memberBirthDayMonth" maxlength="2" required>
+                        <span class="delim"> - </span> 
+                        <input type="text" class="memberBirthDayDay" maxlength="2" required>
+                    </div>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="email" class="memberEmail" maxlength="50" required>
+                    <label>이메일</label>
+                </div>
+                
+                <div class="fixedBox">
+                    <label>휴대전화</label>
+                    
+                    <div>
+                        <input type="text" class="memberPhone_1" maxlength="3" required>
+                        <span class="delim"> - </span> 
+                        <input type="text" class="memberPhone_2" maxlength="4" required>
+                        <span class="delim"> - </span> 
+                        <input type="text" class="memberPhone_3" maxlength="4" required>
+                    </div>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberAddr" maxlength="50" required>
+                    <label>주소</label>
+                </div>
+                
+                <div class="submitBox">
+                    <input type="submit" value="회원가입">
+                    <input type="reset" value="다시작성">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
