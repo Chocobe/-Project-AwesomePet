@@ -24,10 +24,10 @@
         <title>로그인</title>
         
         <!-- CSS초기화 파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/initialize.css"/>
+        <link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
         
         <!-- 현재 페이지(login.jsp)의 CSS파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/login.css"/>
+        <link rel="stylesheet" href="${contextPath}/css/login.css?ver=1" type="text/css"/>
     </head>
     
     <body>

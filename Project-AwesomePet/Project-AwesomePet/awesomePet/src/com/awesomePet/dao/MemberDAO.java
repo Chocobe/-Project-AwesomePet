@@ -37,6 +37,8 @@ public class MemberDAO {
 			if(resultSet.next()) {
 				resultVO = new MemberVO(resultSet.getString("memberID"),
 										resultSet.getString("memberPW"),
+										resultSet.getString("memberName"),
+										resultSet.getDate("memberBirthDay"),
 										resultSet.getString("memberEmail"),
 										resultSet.getString("memberPhone"),
 										resultSet.getString("memberAddr"),

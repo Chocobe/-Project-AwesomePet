@@ -28,7 +28,7 @@ public class MemberLoginController implements SubController {
 					throws ServletException, IOException {
 		System.out.println("MemberLoginController의 execute() 메서드가 호출되었습니다");
 		
-		String resultPagePath = "";
+		String resultPagePath = request.getContextPath();
 		
 		String memberID = request.getParameter("memberID");
 		String memberPW = request.getParameter("memberPW");
@@ -38,14 +38,14 @@ public class MemberLoginController implements SubController {
 		
 		if(resultVO == null) {
 			request.setAttribute("memberLoginError", "ID 또는 PW가 일치하지 않습니다.");
-			resultPagePath = "/loginView.do";
+			resultPagePath += "/loginView.do";
 
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("memberLoginID", resultVO.getMemberID());
-			resultPagePath = "/index.do";
+			resultPagePath += "/index.do";
 		}
 		
-		ControllerUtil.forward(request, response, resultPagePath);
+		response.sendRedirect(resultPagePath);
 	}
 }

@@ -5,6 +5,8 @@ USE awesomePet;
 CREATE TABLE awesomePetMember(
 	memberID					VARCHAR(20)		PRIMARY KEY,
 	memberPW					VARCHAR(20)		NOT NULL,
+	memberName				VARCHAR(12)		NOT NULL,
+	memberBirthDay			DATE				NOT NULL,
 	memberEmail				VARCHAR(50)		NOT NULL,
 	memberPhone				VARCHAR(13)		NOT NULL,
 	memberAddr				VARCHAR(50)		NOT NULL,
@@ -17,6 +19,7 @@ SELECT * FROM awesomepetmember;
 
 DELETE FROM awesomePetMember;
 
+DROP TABLE awesomepetmember;
 
 -- 테스트 데이터 입력
 INSERT INTO awesomePetMember(memberID,

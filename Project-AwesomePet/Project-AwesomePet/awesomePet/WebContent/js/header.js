@@ -37,8 +37,8 @@ function loginView(context) {
 
 
 // "회원가입" 버튼 클릭 메서드 입니다.
-function join(context) {
-	location.href = context + "/join.do";
+function joinView(context) {
+	location.href = context + "/joinView.do";
 }
 
 

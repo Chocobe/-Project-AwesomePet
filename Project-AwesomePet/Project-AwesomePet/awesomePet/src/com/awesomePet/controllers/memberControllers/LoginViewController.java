@@ -15,7 +15,7 @@ public class LoginViewController implements SubController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		String path = "/views/login.jsp";
+		String path = "/views/memberViews/loginView.jsp";
 		ControllerUtil.forward(request, response, path);
 	}
 }

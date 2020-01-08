@@ -19,8 +19,8 @@
 		
 		<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"/>
 		
-		<link rel="stylesheet" href="${contextPath}/css/initialize.css"/>
-		<link rel="stylesheet" href="${contextPath}/css/header.css"/>
+		<link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
+		<link rel="stylesheet" href="${contextPath}/css/header.css?ver=1" type="text/css"/>
 	</head>
 	
 	<body>
@@ -62,7 +62,7 @@
             	<c:choose>
             		<c:when test="${empty memberLoginID}">
 						<input type="button" value="로그인" class="firstInput" onclick="loginView('${contextPath}');">
-						<input type="button" value="회원가입" class="secondInput" onclick="join('${contextPath}');">
+						<input type="button" value="회원가입" class="secondInput" onclick="joinView('${contextPath}');">
 					</c:when>
 					
 					<c:otherwise>
@@ -76,6 +76,6 @@
         
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript" src="${contextPath}/js/header.js"></script>
+        <script type="text/javascript" src="${contextPath}/js/header.js?ver=1"></script>
 	</body>
 </html>
