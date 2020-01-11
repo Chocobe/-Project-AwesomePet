@@ -1,0 +1,185 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Jua&display=swap");
+
+/* .joinContainer */
+	.joinContainer {
+	    width: 1024px;
+	    
+	    background: url('/awesomePet/appImages/loginBackground.jpg');
+	    background-size: cover;
+	    background-position: center;
+	    
+	    background-repeat: no-repeat;
+	    
+	    display: flex;
+	    justify-content: center;
+	    
+	    border-radius: 20px;
+	}
+	
+	
+/* form */
+	.joinContainer form {
+	    width: 400px;
+	    height: inherit;
+	    
+	    margin: 30px;
+	    padding: 30px;
+	    
+	    background: rgba(0, 0, 0, 0.7);
+	    
+	    border-radius: 10px;
+	}
+	
+	
+/* .joinTitle */
+	.joinContainer form .joinTitle {
+	    width: 100%;
+	    
+	    margin-bottom: 25px;
+	    
+	    text-align: center;
+	    font-size: 30px;
+	    font-weight: 100;
+	    color: #fff;
+	}
+	
+	
+/* .animationBox */
+	.joinContainer form .animationBox {
+	    position: relative;
+	}
+	
+	/* .animationBox input */
+	.joinContainer form .animationBox input {
+	    width: 100%;
+	    
+	    margin-bottom: 30px;
+	    padding: 10px 0;
+	    
+	    color: #fff;
+	    font-size: 18px;
+	    font-weight: bolder;
+	    letter-spacing: 1px;
+	    
+	    background: transparent;
+	    
+	    border: none;
+	    border-bottom: 1px solid #fff;
+	    
+	    outline: none;
+	}
+	
+	/* label */
+	.joinContainer form .animationBox label {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    
+	    color: #fff;
+	    font-size: 18px;
+	    font-weight: 100;
+	    
+	    padding: 10px 0;
+	    
+	    transition: 0.5s;
+	    
+	    pointer-events: none;
+	}
+	
+	.joinContainer form .animationBox input:hover ~ label,
+	.joinContainer form .animationBox input:focus ~ label,
+	.joinContainer form .animationBox input:valid ~ label {
+	    top: -20px;
+	    color: #03a9f4;
+	    font-size: 14px;
+	}
+	
+	
+/* .fixedBox */
+	.joinContainer form .fixedBox {
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: space-between;
+	    
+	    margin-bottom: 20px;
+	}
+	
+	.joinContainer form .fixedBox label,
+	.joinContainer form .fixedBox .delim {
+	    color: #fff;
+	    font-size: 18px;
+	    font-weight: 100;
+	    
+	    padding: 10px 0;
+	    
+	    pointer-events: none;
+	}
+	
+	.joinContainer form .fixedBox .delim {
+	    margin: 0 10px;
+	}
+	
+	.joinContainer form .fixedBox div {
+	    width: 70%;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	    
+	    position: relative;
+	}
+	
+	.joinContainer form .fixedBox div input {
+	    width: 25%;
+	    
+	    padding: 10px 10px;
+	    
+	    text-align: center;
+	    font-size: 18px;
+	    font-weight: bolder;
+	    color: #fff;
+	    
+	    border: none;
+	    border-bottom: 1px solid #fff;
+	    /* outline: none; */
+	    
+	    background: transparent;
+	}
+	
+	
+/* submitBox */
+	.joinContainer form .submitBox {
+	    display: flex;
+	    justify-content: center;
+	}
+	
+	.joinContainer form .submitBox input {
+	    width: 100px;
+	    padding: 10px 0;
+	    
+	    background: #03a9f4;
+	    
+	    border: none;
+	    border-radius: 5px;
+	    outline: none;
+	    
+	    color: #fff;
+	    font-weight: bolder;
+	    
+	    cursor: pointer;
+	    
+	    transition: 0.5s;
+	}
+	
+	.joinContainer form .submitBox input:hover {
+	    background: #ff0058;
+	}
+	
+	.joinContainer form .submitBox input[type="submit"] {
+	    margin-right: 10px;
+	}
+	
+	.joinContainer form .submitBox input[type="reset"] {
+	    margin-left: 10px;
+	}

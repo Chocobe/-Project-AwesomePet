@@ -1,106 +1,6 @@
 @charset "UTF-8";
-
-/* 초기화 */
-	* {
-	    margin: 0;
-	    padding: 0;
-	    box-sizing: border-box;
-	}
 	
-	body {
-	    width: 1024px;
-	    margin: 0 auto;
-	    
-	    font-family: 'Jua', sans-serif;
-	}
-	
-	a, 
-	a:hover, 
-	a:visited {
-	    text-decoration: none;
-	    color: black;
-	}
-	
-	.mainMenu a, 
-	.mainMenu a:visited {
-	    text-decoration: none;
-	    color: black;
-	    
-	    transition: color 1s;
-	}
-	
-	.mainMenu a:hover {
-	    color: #fc3503;
-	    
-	    transition: color 0.7s;
-	}
-	/* header */
-	header {
-	    display: flex;
-	    flex-flow: row wrap;
-	}
-	
-	.logoFont {
-	    
-	    font-size: 50px;
-	    font-weight: bolder;
-	}
-	
-	header .logo {
-	    width: 100%;
-	    height: 100px;
-	    
-	    text-align: center;
-	    line-height: 100px;
-	    /*border: 1px solid black;*/
-	}
-	
-	header .blank {
-	    width: 224px;
-	    height: 100px;
-	}
-	
-	
-	/* 메뉴 & 로그인 */
-	/* 메뉴 */
-	nav {
-	    margin-bottom: 5px;
-	    
-	    border: 1px solid black;
-	    display: flex;
-	    flex-flow: row wrap;
-	    justify-content: space-between;
-	    align-items: center;
-	}
-	
-	nav .mainMenu {
-	    font-size: 30px;
-	    
-	    display: flex;
-	    flex-flow: row wrap;
-	    align-items: center;
-	    
-	    height: 75px;
-	}
-	
-	nav .mainMenu li {
-	    list-style: none;
-	    
-	    padding-left: 50px;
-	}
-	
-	/* 로그인 */
-	nav .login form input {
-	    width: 80px;
-	    height: 30px;
-	    
-	    margin-right: 15px;
-	    
-	    pointer-events: none;
-	}
-	
-	
-	/* section */
+/* section */
 	section {
 	    width: 1024px;
 	    min-height: 50vh;
@@ -129,6 +29,7 @@
 	    text-align: center;
 	    font-size: 30px;
 	    color: #fff;
+	    font-weight: 100;
 	    
 	    margin-bottom: 25px;
 	}
@@ -139,7 +40,7 @@
 	}
 	
 	
-	/* .inputBox */
+/* .inputBox */
 	section .loginBox .inputBox {
 	    position: relative;
 	}
@@ -184,7 +85,7 @@
 	}
 	
 	
-	/* .submitBox */
+/* .submitBox */
 	section .loginBox .submitBox {
 	    margin-bottom: 10px;
 	    
@@ -200,6 +101,7 @@
 	    padding: 10px 0;
 	    
 	    background: #03a9f4;
+	    
 	    border: none;
 	    border-radius: 5px;
 	    
@@ -208,7 +110,11 @@
 	    
 	    cursor: pointer;
 	    
+	    outline: none;
+	    
 	    transition: 0.5s;
+	    
+	    outline: none;
 	}
 	
 	section .loginBox .submitBox input:hover {
@@ -224,7 +130,7 @@
 	}
 	
 	
-	/* .findBox */
+/* .findBox */
 	section .loginBox .findBox {
 	    display: flex;
 	    justify-content: center;

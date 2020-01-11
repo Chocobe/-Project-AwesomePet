@@ -30,20 +30,26 @@
         /* .joinContainer */
             .joinContainer {
                 width: 1024px;
-                padding: 30px;
                 
                 background: url('images/loginBackground.jpg');
                 background-size: cover;
+                background-position: center;
+                
+                background-repeat: no-repeat;
                 
                 display: flex;
                 justify-content: center;
+                
+                border-radius: 20px;
             }
             
             
         /* form */
             .joinContainer form {
                 width: 400px;
+                height: inherit;
                 
+                margin: 30px;
                 padding: 30px;
                 
                 background: rgba(0, 0, 0, 0.7);
@@ -153,10 +159,11 @@
             .joinContainer form .fixedBox div input {
                 width: 25%;
                 
-                padding: 0 10px;
+                padding: 10px 10px;
                 
                 text-align: center;
                 font-size: 18px;
+                font-weight: bolder;
                 color: #fff;
                 
                 border: none;
@@ -167,14 +174,41 @@
             }
             
             
-            
-            
-            
-            
         /* submitBox */
+            .joinContainer form .submitBox {
+                display: flex;
+                justify-content: center;
+            }
             
+            .joinContainer form .submitBox input {
+                width: 100px;
+                padding: 10px 0;
+                
+                background: #03a9f4;
+                
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                
+                color: #fff;
+                font-weight: bolder;
+                
+                cursor: pointer;
+                
+                transition: 0.5s;
+            }
             
+            .joinContainer form .submitBox input:hover {
+                background: #ff0058;
+            }
             
+            .joinContainer form .submitBox input[type="submit"] {
+                margin-right: 10px;
+            }
+            
+            .joinContainer form .submitBox input[type="reset"] {
+                margin-left: 10px;
+            }
         </style>
     </head>
     
@@ -216,7 +250,7 @@
                 </div>
                 
                 <div class="animationBox">
-                    <input type="email" class="memberEmail" maxlength="50" required>
+                    <input type="text" class="memberEmail" maxlength="50" required>
                     <label>이메일</label>
                 </div>
                 
@@ -241,7 +275,7 @@
                     <input type="submit" value="회원가입">
                     <input type="reset" value="다시작성">
                 </div>
-            </form>
+            </form>    
         </div>
     </body>
 </html>

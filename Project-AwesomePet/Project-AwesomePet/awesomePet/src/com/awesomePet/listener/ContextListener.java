@@ -8,6 +8,7 @@ import javax.servlet.ServletContextListener;
 
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.controllers.indexControllers.IndexViewController;
+import com.awesomePet.controllers.memberControllers.JoinViewController;
 import com.awesomePet.controllers.memberControllers.LoginViewController;
 import com.awesomePet.controllers.memberControllers.MemberLoginController;
 import com.awesomePet.controllers.memberControllers.MemberLogoutController;
@@ -18,13 +19,24 @@ public class ContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		Map<String, SubController> subControllers = new HashMap<String, SubController>();
 		
-		// index.do 처리를 위한 SubController 입니다.
+	// index.do 처리를 위한 SubController 입니다.
 		subControllers.put("/index.do", new IndexViewController());
 		
-		// 회원 서비스를 위한 SubController 입니다.
+		
+	// 회원 서비스를 위한 SubController 입니다.
+		// 로그인 페이지 요청 컨트롤러
 		subControllers.put("/loginView.do", new LoginViewController());
+		
+		// 로그인 요청 컨트롤러
 		subControllers.put("/memberLogin.do", new MemberLoginController());
+		
+		// 로그아웃 요청 컨트롤러
 		subControllers.put("/memberLogout.do", new MemberLogoutController());
+		
+		// 회원가입 페이지 요청 컨트롤러
+		subControllers.put("/joinView.do", new JoinViewController());
+		
+		
 		
 		event.getServletContext().setAttribute("subControllers", subControllers);
 	}

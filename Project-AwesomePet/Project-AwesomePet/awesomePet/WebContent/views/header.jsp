@@ -17,7 +17,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		
-		<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
 		
 		<link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
 		<link rel="stylesheet" href="${contextPath}/css/header.css?ver=1" type="text/css"/>

@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
         
         <!-- 현재 페이지(login.jsp)의 CSS파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/login.css?ver=1" type="text/css"/>
+        <link rel="stylesheet" href="${contextPath}/css/member/loginView.css?ver=1" type="text/css"/>
     </head>
     
     <body>
@@ -53,7 +53,7 @@
                     
                     <div class="submitBox">
                         <input type="submit" value="로그인">
-                        <input type="button" value="회원가입" onclick="#">
+                        <input type="button" value="회원가입" onclick="joinView('${contextPath}');">
                     </div>
                     
                     <div class="findBox">
@@ -68,5 +68,8 @@
         
         <!-- 푸터 페이지를 포함시킵니다. -->
         <%@ include file="/views/footer.jsp" %>
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="${contextPath}/js/member/loginView.js" type="text/javascript"></script>
     </body>
 </html>

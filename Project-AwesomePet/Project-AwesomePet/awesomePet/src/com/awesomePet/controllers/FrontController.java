@@ -31,12 +31,7 @@ public class FrontController extends HttpServlet {
 	// GET, POST에 따른 처리가 아닌, 요청한 서비스에 따른 처리를 위해 service()메소드를 오버라이딩 합니다.
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
-					throws ServletException, IOException {
-		// GET, POST 방식을 사용하지 않기 때문에 부모클래스의 초기화를 하지 않습니다.
-		// 초기화 할 경우 GET(), POST() 메소드를 사용해야만 합니다.
-		//
-		// super.service(request, response);
-		
+					throws ServletException, IOException {		
 		String servletPath = request.getServletPath();
 		System.out.println("<FrontController 알림> : " + servletPath + " 이(가) 요청 되었습니다.");
 		
