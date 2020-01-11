@@ -8,6 +8,7 @@ import javax.servlet.ServletContextListener;
 
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.controllers.indexControllers.IndexViewController;
+import com.awesomePet.controllers.memberControllers.CheckOverlapIDController;
 import com.awesomePet.controllers.memberControllers.JoinViewController;
 import com.awesomePet.controllers.memberControllers.LoginViewController;
 import com.awesomePet.controllers.memberControllers.MemberLoginController;
@@ -35,6 +36,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 회원가입 페이지 요청 컨트롤러
 		subControllers.put("/joinView.do", new JoinViewController());
+		
+		// 회원가입 ID중복 체크 요청 컨트롤러
+		subControllers.put("/checkOverlapID.do", new CheckOverlapIDController());
 		
 		
 		

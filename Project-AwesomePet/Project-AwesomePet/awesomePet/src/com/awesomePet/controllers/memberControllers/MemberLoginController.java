@@ -13,19 +13,11 @@ import com.awesomePet.service.MemberService;
 import com.awesomePet.vo.MemberVO;
 
 public class MemberLoginController implements SubController {
-	private MemberService memberService;
-	
-	
-// 생성자
-	public MemberLoginController() {
-		memberService = new MemberService();
-	}
-	
-	
 // Login 서비스를 호출합니다.
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
+		MemberService memberService = new MemberService();
 		System.out.println("MemberLoginController의 execute() 메서드가 호출되었습니다");
 		
 		String resultPagePath = "";

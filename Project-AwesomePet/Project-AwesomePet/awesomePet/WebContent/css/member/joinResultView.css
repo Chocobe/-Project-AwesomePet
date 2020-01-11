@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* .joinResultContainer */
+    .joinResultContainer {
+        width: 1024px;
+        height: 500px;
+        
+        padding: 30px;
+        
+        border-radius: 20px;
+        
+        background: url("/awesomePet/appImages/family.jpg");
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .joinResultContainer .wrap {
+        width: 480px;
+        
+        padding: 30px 0;
+        
+        letter-spacing: 1px;
+        
+        border: 1px solid #000;
+        border-radius: 10px;
+        
+        background: rgba(255, 255, 255, 0.7);
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+/* .memberID */
+    .joinResultContainer .wrap .memberID {
+        width: 100%;
+        
+        margin-bottom: 10px;
+        
+        font-size: 2em;
+        font-weight: bolder;
+        color: #ff0058;
+        
+        text-align: center;
+    }
+    
+    .joinResultContainer .wrap .memberID .sir {
+        font-size: 0.6em;
+        color: #000;
+        font-weight: 500;
+    }
+    
+    
+/* .greeting */
+    .joinResultContainer .wrap .greeting {
+        width: 100%;
+        
+        margin-bottom: 30px;
+        
+        font-size: 1.2em;
+        color: #000;
+        
+        text-align: center;
+    }
+    
+    .joinResultContainer .wrap .greeting .title,
+    .joinResultContainer .wrap .greeting .member {
+        font-size: 1.2em;
+        font-weight: bolder;
+    }
+    
+    
+/* .homeButton */
+    .joinResultContainer .wrap .homeButton {
+        width: 100px;
+        
+        padding: 10px 0;
+        
+        color: #fff;
+        font-size: 18px;
+        
+        background: #03a9f4;
+        
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        
+        cursor: pointer;
+        
+        transition: 0.5s;
+    }
+    
+    .joinResultContainer .wrap .homeButton:hover {
+        background: #ff0058;
+    }

@@ -18,4 +18,12 @@ public class MemberService {
 	public MemberVO memberLogin(MemberVO memberVO) {
 		return memberDAO.selectMember(memberVO);
 	}
+	
+	
+// 회원가입 ID의 중복여부 검사 메서드 입니다.
+	// true : 중복
+	// false : 사용가능
+	public boolean checkOverlapID(String id) {
+		return memberDAO.selectID(id);
+	}
 }

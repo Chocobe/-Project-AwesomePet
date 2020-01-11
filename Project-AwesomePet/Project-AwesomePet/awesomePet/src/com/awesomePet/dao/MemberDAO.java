@@ -56,4 +56,34 @@ public class MemberDAO {
 		
 		return resultVO;
 	}
+	
+	
+// 매개변수인 id를 조회합니다.
+	public boolean selectID(String id) {
+		boolean result = true;
+		
+		try {
+			String sql = "SELECT memberID FROM awesomePetMember " +
+						 "WHERE memberID=?";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, id);
+			
+			resultSet = pstmt.executeQuery();
+			
+			// 입력한 ID는 존재하지 않습니다.
+			if(!resultSet.next()) {
+				result = false;
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<MemberDAO - selectID() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return result;
+	}
 }

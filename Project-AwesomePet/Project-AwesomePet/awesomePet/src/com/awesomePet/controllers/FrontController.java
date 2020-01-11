@@ -31,7 +31,7 @@ public class FrontController extends HttpServlet {
 	// GET, POST에 따른 처리가 아닌, 요청한 서비스에 따른 처리를 위해 service()메소드를 오버라이딩 합니다.
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
-					throws ServletException, IOException {		
+					throws ServletException, IOException {
 		String servletPath = request.getServletPath();
 		System.out.println("<FrontController 알림> : " + servletPath + " 이(가) 요청 되었습니다.");
 		

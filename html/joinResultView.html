@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <!-- 3초 후, index.do 페이지를 요청 합니다 -->
+        <!--<meta http-equiv="refresh" content="3;url=http://google.com">-->
+        <title>회원가입 완료</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .joinResultContainer */
+            .joinResultContainer {
+                width: 1024px;
+                height: 500px;
+                
+                padding: 30px;
+                
+                border-radius: 20px;
+                
+                background: url("images/family.jpg");
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .joinResultContainer .wrap {
+                width: 480px;
+                
+                
+                padding: 30px 0;
+                
+                letter-spacing: 1px;
+                
+                border: 1px solid #000;
+                border-radius: 10px;
+                
+                background: rgba(255, 255, 255, 0.7);
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            /* .memberID */
+            .joinResultContainer .wrap .memberID {
+                width: 100%;
+                
+                margin-bottom: 10px;
+                
+                font-size: 2em;
+                font-weight: bolder;
+                color: #ff0058;
+                
+                text-align: center;
+            }
+            
+            .joinResultContainer .wrap .memberID .sir {
+                font-size: 0.6em;
+                color: #000;
+                font-weight: 500;
+            }
+            
+            
+            /* .greeting */
+            .joinResultContainer .wrap .greeting {
+                width: 100%;
+                
+                margin-bottom: 30px;
+                
+                font-size: 1.2em;
+                color: #000;
+                
+                text-align: center;
+            }
+            
+            .joinResultContainer .wrap .greeting .title,
+            .joinResultContainer .wrap .greeting .member {
+                font-size: 1.2em;
+                font-weight: bolder;
+            }
+            
+            
+            /* .homeButton */
+            .joinResultContainer .wrap .homeButton {
+                width: 100px;
+                
+                padding: 10px 0;
+                
+                color: #fff;
+                font-size: 18px;
+                
+                background: #03a9f4;
+                
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                
+                cursor: pointer;
+                
+                transition: 0.5s;
+            }
+            
+            .joinResultContainer .wrap .homeButton:hover {
+                background: #ff0058;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="joinResultContainer">
+            <div class="wrap">
+                <div class="memberID">
+                    TEST
+                    <span class="sir">님</span>
+                </div>
+                
+                <div class="greeting">
+                    <span class="title">🐹 AwesomePet</span>의 
+                    <span class="member">회원</span>이 되셨습니다.
+                </div>
+                
+                <input class="homeButton" type="button" value="홈으로" onclick="test();">
+            </div>
+        </div>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">            
+            function test() {
+                alert("Test 버튼입니다");
+            }
+        </script>
+    </body>
+</html>
