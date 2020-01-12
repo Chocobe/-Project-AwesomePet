@@ -71,7 +71,7 @@
 	    
 	    color: #fff;
 	    font-size: 18px;
-	    font-weight: bolder;
+	    font-weight: 100;
 	    letter-spacing: 1px;
 	    
 	    background: transparent;
@@ -87,7 +87,7 @@
 	}
 	
 	.joinContainer form .animationBox .checkIDButton {
-		width: 25%;
+		width: 28%;
 		
 		border-radius: 10px;
 		background: #ff0058;
@@ -148,13 +148,10 @@
 	    font-size: 18px;
 	    font-weight: 100;
 	    
+	    margin: 0 10px;
 	    padding: 10px 0;
 	    
 	    pointer-events: none;
-	}
-	
-	.joinContainer form .fixedBox .delim {
-	    margin: 0 10px;
 	}
 	
 	.joinContainer form .fixedBox div {
@@ -170,16 +167,16 @@
 	.joinContainer form .fixedBox div input {
 	    width: 25%;
 	    
-	    padding: 10px 10px;
+	    padding: 10px 0;
 	    
 	    text-align: center;
 	    font-size: 18px;
-	    font-weight: bolder;
+	    font-weight: 100;
 	    color: #fff;
 	    
 	    border: none;
 	    border-bottom: 1px solid #fff;
-	    /* outline: none; */
+	    outline: none;
 	    
 	    background: transparent;
 	}
@@ -213,11 +210,11 @@
 	    background: #ff0058;
 	}
 	
-	.joinContainer form .submitBox input[type="submit"] {
+	.joinContainer form .submitBox .submitButton {
 	    margin-right: 10px;
 	}
 	
-	.joinContainer form .submitBox input[type="submit"]:disabled {
+	.joinContainer form .submitBox .submitButton:disabled {
 		background: #555;
 		cursor: default;
 	}

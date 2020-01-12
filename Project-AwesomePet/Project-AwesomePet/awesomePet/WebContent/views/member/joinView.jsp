@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.File"%>
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -8,6 +10,29 @@
 
 <c:set var="contextPath" value="<%= request.getContextPath() %>"/>
 
+<%
+	// css, js 파일의 케싱에 의한 변경 미적용을 막기 위한 ver값을 생성합니다.
+	
+	// initizlize.css의 ver값 생성합니다.
+	String initialize_css = application.getRealPath("/css/initialize.css");
+	File initialize_css_file = new File(initialize_css);
+	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
+	
+	// joinView.css의 ver값을 생성합니다.
+	String joinView_css = application.getRealPath("/css/member/joinView.css");
+	File joinView_css_file = new File(joinView_css);
+	Date joinView_css_ver = new Date(joinView_css_file.lastModified());
+	
+	// joinView.js의 ver값을 생성합니다.
+	String joinView_js = application.getRealPath("/js/member/joinView.js");
+	File joinView_js_file = new File(joinView_js);
+	Date joinView_js_ver = new Date(joinView_js_file.lastModified());
+%>
+
+<c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
+<c:set var="joinView_css_ver" value="<%= joinView_css_ver %>"/>
+<c:set var="joinView_js_ver" value="<%= joinView_js_ver %>"/>
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -17,13 +42,15 @@
         <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
         
         <!-- 초기화 -->
-        <link href="${contextPath}/css/initialize.css?ver=1" rel="stylesheet" type="text/css">
+        <link href="${contextPath}/css/initialize.css?ver=${initialize_css_ver}" rel="stylesheet" type="text/css">
 		<!-- joinView.css -->
-        <link href="${contextPath}/css/member/joinView.css?ver=1" rel="stylesheet" type="text/css">
+        <link href="${contextPath}/css/member/joinView.css?ver=${joinView_css_ver}" rel="stylesheet" type="text/css">
     </head>
     
     <body>
+    	<!-- 헤더 페이지를 포함시킵니다. -->
     	<%@ include file="/views/header.jsp" %>
+    
     
         <div class="joinContainer">
             <form method="POST" action="../${contextPath}/memberJoin.do">
@@ -36,7 +63,7 @@
                     <input type="text" class="memberID" maxlength="20" required>
                     <label class="animation">아이디</label>
                     
-                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkOverlapID()">
+                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkID();">
                 </div>
                 
                 <div class="animationBox">
@@ -58,11 +85,11 @@
                     <label>생년월일</label>
                     
                     <div>
-                        <input type="text" class="memberBirthDayYear" maxlength="4" required>
+                        <input type="text" class="memberBirthDayYear" maxlength="4">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayMonth" maxlength="2" required>
+                        <input type="text" class="memberBirthDayMonth" maxlength="2">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayDay" maxlength="2" required>
+                        <input type="text" class="memberBirthDayDate" maxlength="2">
                     </div>
                 </div>
                 
@@ -75,11 +102,11 @@
                     <label>휴대전화</label>
                     
                     <div>
-                        <input type="text" class="memberPhone_1" maxlength="3" required>
+                        <input type="text" class="memberPhone_1" maxlength="3">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_2" maxlength="4" required>
+                        <input type="text" class="memberPhone_2" maxlength="4">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_3" maxlength="4" required>
+                        <input type="text" class="memberPhone_3" maxlength="4">
                     </div>
                 </div>
                 
@@ -89,97 +116,19 @@
                 </div>
                 
                 <div class="submitBox">
-                    <input type="submit" value="회원가입" disabled>
+                    <input type="button" value="회원가입" class="submitButton" onclick="memberJoin();" disabled>
                     <input type="reset" value="다시작성">
                 </div>
             </form>    
         </div>
         
-        <%@ include file="/views/footer.jsp" %>
         
+        <!-- 푸터 페이지를 포함시킵니다. -->
+        <%@ include file="/views/footer.jsp" %>
+
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript">        	
-        	// submit버튼 입니다.
-        	const submitButton = $(".joinContainer form .submitBox input[type='submit']");
-        	const idInputBox = $(".joinContainer form .animationBox .memberID");
-        	const errorMessage = $(".joinContainer form .titleWrap .invalidIDMessage");    
-        	const checkIDButton = $(".joinContainer form .animationBox .checkIDButton");
-        
-        	
-        	// 초기화
-        	$(function() {
-        		submitButton.attr("disabled", true);
-        		
-        		idInputBox.change(function(event) {
-        			event.preventDefault();
-        			
-        			// 공백이 있을 경우 : 0 ~ 양수 값을 반환 합니다.
-        			if(idInputBox.val().indexOf(" ") != -1) {
-        				errorMessage.text("ID에는 공백문자를 사용할 수 없습니다");
-        				checkIDButton.attr("disabled", true);
-        				
-        			} else {
-        				errorMessage.text("ID 중복검사를 다시 눌러주세요");
-        				checkIDButton.attr("disabled", false);
-        			}
-        			
-        			submitButton.attr("disabled", true);
-        		});
-        	});
-        	
-        	
-        	// ID 중복검사 메서드 입니다. (ajax를 이용한 비동기 요청)
-        	function checkOverlapID() {
-        		const inputID = $(".memberID").val();
-        		
-        		$.ajax({
-        			type: "POST",
-        			url: "http://localhost:8096/awesomePet/checkOverlapID.do",
-        			async: true,
-        			dataType: "TEXT",
-        			data: {id : inputID},
-        			success: function(data, textStatus) {
-        				const isOverlapID = JSON.parse(data);
-        				
-        				if(isOverlapID) {
-        					invalidFunc(inputID);
-        					
-        				} else {
-        					validIDFunc(inputID);
-        				}
-        			},
-        			error: function(data, textStatus) {
-        				// ID 중복검사 실패
-        				
-        				alert("ajax 실패");
-        			}
-        		});
-        	}
-        	
-        	
-        	// ID를 사용할 수 있는 경우, 호출되는 메서드 입니다.
-        	function invalidFunc(id) {
-        		// ID 중복 시, 호출 메서드
-        		errorMessage.text(id + " 는 사용할 수 없습니다");
-        		
-        		isInvalidID = true;
-        		submitButton.attr("disabled", true);
-        		
-        		checkIDButton.attr("disabled", false);
-        	}
-        	
-        	
-        	// ID가 중복될 경우, 호출되는 메서드 입니다.
-        	function validIDFunc(id) {
-        		// ID 사용가능 시, 호출 메서드
-        		errorMessage.text("");
-        		
-        		isInvalidID = false;
-        		submitButton.attr("disabled", false);
-				
-        		checkIDButton.attr("disabled", true);
-        	}
-        </script>
+        <!-- joinView.js -->
+        <script src="${contextPath}/js/member/joinView.js?ver=${joinView_js_ver}" type="text/javascript"></script>
     </body>
 </html>

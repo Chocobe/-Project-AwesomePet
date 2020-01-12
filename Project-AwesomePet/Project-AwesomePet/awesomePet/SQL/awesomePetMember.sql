@@ -17,7 +17,7 @@ CREATE TABLE awesomePetMember(
 
 SELECT * FROM awesomepetmember;
 
-DELETE FROM awesomePetMember;
+DELETE FROM awesomepetmember;
 
 DROP TABLE awesomepetmember;
 

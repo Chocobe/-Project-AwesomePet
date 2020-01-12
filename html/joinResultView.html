@@ -144,7 +144,7 @@
                     <span class="member">회원</span>이 되셨습니다.
                 </div>
                 
-                <input class="homeButton" type="button" value="홈으로" onclick="test();">
+                <input class="homeButton" type="button" value="홈으로" onclick="test()">
             </div>
         </div>
         
@@ -152,7 +152,15 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript">            
             function test() {
-                alert("Test 버튼입니다");
+                const today = new Date();
+                
+                const year = today.getFullYear();
+                const month = today.getMonth() + 1;
+                const date = today.getDate();
+                
+                const my = new Date("1999-01-21");
+                
+                alert(today < my);
             }
         </script>
     </body>
