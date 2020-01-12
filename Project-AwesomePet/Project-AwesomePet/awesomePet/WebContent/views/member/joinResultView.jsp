@@ -35,8 +35,8 @@
         <div class="joinResultContainer">
             <div class="wrap">
                 <div class="memberID">
-                    TEST <!-- 회원가입 ID (EL) -->
-                    <span class="sir">님</span>
+                    ${memberLoginID}
+                    <span class="sir"> 님</span>
                 </div>
                 
                 <div class="greeting">
