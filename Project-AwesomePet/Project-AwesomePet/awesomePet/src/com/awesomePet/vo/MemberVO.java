@@ -23,6 +23,23 @@ public class MemberVO {
 			 memberPW,
 			 null, null, null, null, null, 0, null);
 	}
+	
+	public MemberVO(String memberID,
+					String memberPW,
+					String memberName,
+					Date memberBirthDay,
+					String memberEmail,
+					String memberPhone,
+					String memberAddr) {
+		this(memberID,
+			 memberPW,
+			 memberName,
+			 memberBirthDay,
+			 memberEmail,
+			 memberPhone,
+			 memberAddr,
+			 0, null);
+	}
 
 	public MemberVO(String memberID,
 					String memberPW,
