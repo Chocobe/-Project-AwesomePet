@@ -26,4 +26,10 @@ public class MemberService {
 	public boolean checkOverlapID(String id) {
 		return memberDAO.selectID(id);
 	}
+	
+	
+// 회원가입 서비스 메서드 입니다.
+	public boolean memberJoin(MemberVO memberVO) {
+		return memberDAO.insertMember(memberVO);
+	}
 }
