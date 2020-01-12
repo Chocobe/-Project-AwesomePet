@@ -53,21 +53,21 @@
     
     
         <div class="joinContainer">
-            <form method="POST" action="../${contextPath}/memberJoin.do">
+            <form method="POST" action="..${contextPath}/memberJoin.do">
             	<div class="titleWrap">
                 	<h1 class=joinTitle>회원가입</h1>
                 	<div class="invalidIDMessage"></div>
                	</div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberID" maxlength="20" required>
+                    <input type="text" class="memberID" name="memberID" maxlength="20" required>
                     <label class="animation">아이디</label>
                     
                     <input type="button" class="checkIDButton" value="ID검사" onclick="checkID();">
                 </div>
                 
                 <div class="animationBox">
-                    <input type="password" class="memberPW" maxlength="20" required>
+                    <input type="password" class="memberPW" name="memberPW" maxlength="20" required>
                     <label class="animation">비밀번호</label>
                 </div>
                 
@@ -77,7 +77,7 @@
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberName" maxlength="12" required>
+                    <input type="text" class="memberName" name="memberName" maxlength="12" required>
                     <label class="animation">이름</label>
                 </div>
                 
@@ -85,16 +85,16 @@
                     <label>생년월일</label>
                     
                     <div>
-                        <input type="text" class="memberBirthDayYear" maxlength="4">
+                        <input type="text" class="memberBirthDayYear" name="memberBirthDayYear" maxlength="4">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayMonth" maxlength="2">
+                        <input type="text" class="memberBirthDayMonth" name="memberBirthDayMonth" maxlength="2">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayDate" maxlength="2">
+                        <input type="text" class="memberBirthDayDate" name="memberBirthDayDate" maxlength="2">
                     </div>
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberEmail" maxlength="50" required>
+                    <input type="text" class="memberEmail" name="memberEmail" maxlength="50" required>
                     <label>이메일</label>
                 </div>
                 
@@ -102,16 +102,16 @@
                     <label>휴대전화</label>
                     
                     <div>
-                        <input type="text" class="memberPhone_1" maxlength="3">
+                        <input type="text" class="memberPhone_1" name="memberPhone_1" maxlength="3">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_2" maxlength="4">
+                        <input type="text" class="memberPhone_2" name="memberPhone_2" maxlength="4">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_3" maxlength="4">
+                        <input type="text" class="memberPhone_3" name="memberPhone_3" maxlength="4">
                     </div>
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberAddr" maxlength="50" required>
+                    <input type="text" class="memberAddr" name="memberAddr" maxlength="50" required>
                     <label>주소</label>
                 </div>
                 
