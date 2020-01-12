@@ -86,4 +86,46 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	
+// 회원가입을 수행합니다.
+	public boolean insertMember(MemberVO memberVO) {
+		int result = -1;
+		
+		try {
+			String sql = "INSERT INTO awesomePetMember(memberID, " +
+													  "memberPW, " +
+													  "memberName, " +
+													  "memberBirthDay, " +
+													  "memberEmail, " +
+													  "memberPhone, " +
+													  "memberAddr) ";
+			sql += "VALUES(?, ?, ?, ?, ?, ?, ?)";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, memberVO.getMemberID());
+			pstmt.setString(2, memberVO.getMemberPW());
+			pstmt.setString(3, memberVO.getMemberName());
+			pstmt.setDate(4, memberVO.getMemberBirthDay());
+			pstmt.setString(5, memberVO.getMemberEmail());
+			pstmt.setString(6, memberVO.getMemberPhone());
+			pstmt.setString(7, memberVO.getMemberAddr());
+			
+			result = pstmt.executeUpdate();
+													  
+			
+		} catch(SQLException e) {
+			System.out.println("<MemberDAO - insertMember() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		if(result != 1) {
+			return false;
+		}
+		
+		return true;
+	}
 }
