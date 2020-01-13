@@ -5,6 +5,8 @@
 	contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"
 	
+	isELIgnored="false"
+	
 	info="마이 페이지 인증 페이지 입니다"
 %>
 
@@ -47,9 +49,9 @@
         <section>
             <div class="certificateWrap">
                 <h1>마이 페이지 인증</h1>
-                <div class="errorMessage">Error</div>
+                <div class="errorMessage">${errorMessage}</div>
                     
-                <form action="..${contextPath}/myPageCertificate.do" method="POST">
+                <form action="..${contextPath}/myInfoCertificate.do" method="POST">
                     <div class="inputBox">
                         <input type="password" name="memberPW" required>
                         <label>Password</label>
