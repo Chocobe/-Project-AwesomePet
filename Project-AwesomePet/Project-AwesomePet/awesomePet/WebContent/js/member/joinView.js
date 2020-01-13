@@ -1,7 +1,7 @@
 // submit버튼 입니다.
 const submitButton = $(".joinContainer form .submitBox .submitButton");
 const idInputBox = $(".joinContainer form .animationBox .memberID");
-const errorMessage = $(".joinContainer form .titleWrap .invalidIDMessage");    
+const errorMessage = $(".joinContainer form .titleWrap .errorMessage");    
 const checkIDButton = $(".joinContainer form .animationBox .checkIDButton");
 
 const ID_MIN_LENGTH = 2;

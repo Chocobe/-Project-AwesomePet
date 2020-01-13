@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.File"%>
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -19,8 +21,8 @@
 		
 		<link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
 		
-		<link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
-		<link rel="stylesheet" href="${contextPath}/css/header.css?ver=1" type="text/css"/>
+		<link rel="stylesheet" href="${contextPath}/css/initialize.css" type="text/css"/>
+		<link rel="stylesheet" href="${contextPath}/css/header.css" type="text/css"/>
 	</head>
 	
 	<body>
@@ -67,7 +69,7 @@
 					
 					<c:otherwise>
 						<p>안녕하세요 <span style="color: peru;">🐹 ${memberLoginID}</span> 님</p>
-						<input type="button" value="마이 페이지" class="firstInput" onclick="openMyPage('${contextPath}')">
+						<input type="button" value="마이 페이지" class="firstInput" onclick="myPageView('${contextPath}')">
 						<input type="button" value="로그아웃" class="secondInput" onclick="memberLogout('${contextPath}')">
 					</c:otherwise>
 				</c:choose>
@@ -76,6 +78,6 @@
         
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript" src="${contextPath}/js/header.js?ver=1"></script>
+        <script type="text/javascript" src="${contextPath}/js/header.js?ver=${header_js_ver}"></script>
 	</body>
 </html>

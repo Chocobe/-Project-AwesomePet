@@ -33,6 +33,7 @@
 <c:set var="joinView_css_ver" value="<%= joinView_css_ver %>"/>
 <c:set var="joinView_js_ver" value="<%= joinView_js_ver %>"/>
 
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -56,7 +57,7 @@
             <form method="POST" action="..${contextPath}/memberJoin.do">
             	<div class="titleWrap">
                 	<h1 class=joinTitle>회원가입</h1>
-                	<div class="invalidIDMessage"></div>
+                	<div class="errorMessage"></div>
                	</div>
                 
                 <div class="animationBox">

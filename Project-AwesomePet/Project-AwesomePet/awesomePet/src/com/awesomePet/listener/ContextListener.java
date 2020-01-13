@@ -15,6 +15,8 @@ import com.awesomePet.controllers.memberControllers.MemberJoinController;
 import com.awesomePet.controllers.memberControllers.MemberJoinResultViewController;
 import com.awesomePet.controllers.memberControllers.MemberLoginController;
 import com.awesomePet.controllers.memberControllers.MemberLogoutController;
+import com.awesomePet.controllers.memberControllers.MyInfoCertificateViewController;
+import com.awesomePet.controllers.memberControllers.MyPageViewController;
 
 public class ContextListener implements ServletContextListener {
 	// 요청에 따른 SubController의 DI(의존성 주입)을 수행합니다.
@@ -47,6 +49,12 @@ public class ContextListener implements ServletContextListener {
 		
 		// 회원가입 결과 페이지 요청 컨트롤러
 		subControllers.put("/memberJoinResultView.do", new MemberJoinResultViewController());
+		
+		// 마이페이지 요청 컨트롤러
+		subControllers.put("/myPageView.do", new MyPageViewController());
+		
+		// 내 정보 수정을 위한 인증 페이지 요청 컨트롤러
+		subControllers.put("/myInfoCertificateView.do", new MyInfoCertificateViewController());
 		
 		
 		event.getServletContext().setAttribute("subControllers", subControllers);

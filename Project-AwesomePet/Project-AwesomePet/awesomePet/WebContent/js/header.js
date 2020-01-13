@@ -46,3 +46,8 @@ function joinView(context) {
 function memberLogout(context) {
 	location.href = context + "/memberLogout.do";
 }
+
+// "마이 페이지" 버튼 클릭 메서드 입니다.
+function myPageView(context) {
+	location.href = context + "/myPageView.do";
+}

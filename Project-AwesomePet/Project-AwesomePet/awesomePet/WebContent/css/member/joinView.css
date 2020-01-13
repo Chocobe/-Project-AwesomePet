@@ -44,7 +44,7 @@
 	    color: #fff;
 	}
 	
-	.joinContainer form .titleWrap .invalidIDMessage {
+	.joinContainer form .titleWrap .errorMessage {
 		width: 100%;
 		height: 25.33px;
 		
