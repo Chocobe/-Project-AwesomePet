@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>내정보 수정 페이지</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .joinContainer */
+            .joinContainer {
+                width: 1024px;
+                
+                background: url('images/loginBackground.jpg');
+                background-size: cover;
+                background-position: center;
+                
+                background-repeat: no-repeat;
+                
+                display: flex;
+                justify-content: center;
+                
+                border-radius: 20px;
+            }
+            
+            
+        /* form */
+            .joinContainer form {
+                width: 400px;
+                height: inherit;
+                
+                margin: 30px;
+                padding: 30px;
+                
+                background: rgba(0, 0, 0, 0.7);
+                
+                border-radius: 10px;
+            }
+            
+            
+        /* .joinTitle */
+            .joinContainer form .joinTitle {
+                width: 100%;
+                
+                margin-bottom: 25px;
+                
+                text-align: center;
+                font-size: 30px;
+                font-weight: 100;
+                color: #fff;
+            }
+            
+            
+        /* .animationBox */
+            .joinContainer form .animationBox {
+                position: relative;
+            }
+            
+            /* .animationBox input */
+            .joinContainer form .animationBox input {
+                width: 100%;
+                
+                margin-bottom: 30px;
+                padding: 10px 0;
+                
+                color: #fff;
+                font-size: 18px;
+                font-weight: bolder;
+                letter-spacing: 1px;
+                
+                background: transparent;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                
+                outline: none;
+            }
+            
+            /* label */
+            .joinContainer form .animationBox label {
+                position: absolute;
+                top: -20px;
+                left: 0;
+                
+                color: #03a9f4;
+                font-size: 14px;
+                font-weight: 100;
+                
+                padding: 10px 0;
+                
+                transition: 0.5s;
+                
+                pointer-events: none;
+            }
+            
+            
+        /* .fixedBox */
+            .joinContainer form .fixedBox {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                
+                margin-bottom: 20px;
+            }
+            
+            .joinContainer form .fixedBox label,
+            .joinContainer form .fixedBox .delim {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 100;
+                
+                padding: 10px 0;
+                
+                pointer-events: none;
+            }
+            
+            .joinContainer form .fixedBox .delim {
+                margin: 0 10px;
+            }
+            
+            .joinContainer form .fixedBox div {
+                width: 70%;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                
+                position: relative;
+            }
+            
+            .joinContainer form .fixedBox div input {
+                width: 25%;
+                
+                padding: 10px 10px;
+                
+                text-align: center;
+                font-size: 18px;
+                font-weight: bolder;
+                color: #fff;
+                
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+                
+                background: transparent;
+            }
+            
+            
+        /* submitBox */
+            .joinContainer form .submitBox {
+                display: flex;
+                justify-content: center;
+            }
+            
+            .joinContainer form .submitBox input {
+                width: 100px;
+                padding: 10px 0;
+                
+                background: #03a9f4;
+                
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                
+                color: #fff;
+                font-weight: bolder;
+                
+                cursor: pointer;
+                
+                transition: 0.5s;
+            }
+            
+            .joinContainer form .submitBox input:hover {
+                background: #ff0058;
+            }
+            
+            .joinContainer form .submitBox input[type="submit"] {
+                margin-right: 10px;
+            }
+            
+            .joinContainer form .submitBox input[type="reset"] {
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="joinContainer">
+            <form method="POST" action="#">
+                <h1 class="joinTitle">회원정보 수정</h1>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberID" maxlength="20" placeholder="내 아이디" required>
+                    <input type="hidden" class="memberIDOrigin" value="내 아이디">
+                    <label class="animation">아이디</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="password" class="memberPW" maxlength="20" placeholder="*****" required>
+                    <input type="hidden" class="memberPWOrigin" value="*****">
+                    <label class="animation">비밀번호</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="password" class="memberPWCheck" maxlength="20" placeholder="*****" required>
+                    <label class="animation">비밀번호 재확인</label>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberName" maxlength="12" placeholder="내 이름" required>
+                    <input type="hidden" class="memberNameOrigin" value="내 이름">
+                    <label class="animation">이름</label>
+                </div>
+                
+                <div class="fixedBox">
+                    <label>생년월일</label>
+                    
+                    <div>
+                        <input type="text" class="memberBirthDayYear" maxlength="4" placeholder="0000" required>
+                        <input type="hidden" class="memberBirthDayYearOrigin" value="0000">
+                        
+                        <span class="delim"> - </span> 
+                        
+                        <input type="text" class="memberBirthDayMonth" maxlength="2" placeholder="00" required>
+                        <input type="hidden" class="memberBirthDayMonthOrigin" value="00">
+                        
+                        <span class="delim"> - </span> 
+                        
+                        <input type="text" class="memberBirthDayDate" maxlength="2" placeholder="00" required>
+                        <input type="hidden" class="memberBirthDayDateOrigin" value="00">
+                    </div>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberEmail" maxlength="50" placeholder="내 이메일" required>
+                    <input type="hidden" class="memberEmailOrigin" value="내 이메일">
+                    <label>이메일</label>
+                </div>
+                
+                <div class="fixedBox">
+                    <label>휴대전화</label>
+                    
+                    <div>
+                        <input type="text" class="memberPhone_1" maxlength="3" placeholder="000" required>
+                        <input type="hidden" class="memberPhone_1Origin" value="000">
+                        
+                        <span class="delim"> - </span> 
+                        
+                        <input type="text" class="memberPhone_2" maxlength="4" placeholder="0000" required>
+                        <input type="hidden" class="memberPhone_2Origin" value="0000">
+                        
+                        <span class="delim"> - </span> 
+                        
+                        <input type="text" class="memberPhone_3" maxlength="4" placeholder="0000" required>
+                        <input type="hidden" class="memberPhone_3Origin" value="0000">
+                    </div>
+                </div>
+                
+                <div class="animationBox">
+                    <input type="text" class="memberAddr" maxlength="50" placeholder="내 주소" required>
+                    <label>주소</label>
+                </div>
+                
+                <div class="submitBox">
+                    <input type="submit" value="수정하기">
+                    <input type="reset" value="다시작성">
+                </div>
+            </form>    
+        </div>
+    </body>
+</html>
