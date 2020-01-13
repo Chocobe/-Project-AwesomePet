@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.File"%>
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -17,6 +19,20 @@
 <c:set var="contextPath" value="<%= request.getContextPath() %>"/>
 
 
+<%
+	String initialize_css = application.getRealPath("/css/initialize.css");
+	File initialize_css_file = new File(initialize_css);
+	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
+	
+	String loginView_css = application.getRealPath("/css/member/loginView.css");
+	File loginView_css_file = new File(loginView_css);
+	Date loginView_css_ver = new Date(loginView_css_file.lastModified());
+%>
+
+<c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
+<c:set var="loginView_css_ver" value="<%= loginView_css_ver %>"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -24,10 +40,10 @@
         <title>로그인</title>
         
         <!-- CSS초기화 파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=1" type="text/css"/>
+        <link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=${initialize_css_ver}" type="text/css"/>
         
         <!-- 현재 페이지(login.jsp)의 CSS파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/member/loginView.css?ver=1" type="text/css"/>
+        <link rel="stylesheet" href="${contextPath}/css/member/loginView.css?ver=${loginView_css_ver}" type="text/css"/>
     </head>
     
     <body>
@@ -38,7 +54,7 @@
         <section>
             <div class="loginBox">
                 <h2 class="title">로그인</h2>
-                <p class="error">${memberLoginError}</p>
+                <div class="errorMessage">${memberLoginError}</div>
                 
                 <form method="POST" action="..${contextPath}/memberLogin.do">
                     <div class="inputBox">
