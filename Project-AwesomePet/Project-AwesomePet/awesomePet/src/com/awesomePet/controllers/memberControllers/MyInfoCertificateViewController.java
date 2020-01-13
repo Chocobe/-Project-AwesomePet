@@ -13,7 +13,7 @@ public class MyInfoCertificateViewController implements SubController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		String resultPagePath = request.getContextPath() + "/views/member/myInfoCertificateView.jsp";
-		ControllerUtil.redirect(response, resultPagePath);
+		String resultPagePath = "/views/member/myInfoCertificateView.jsp";
+		ControllerUtil.forward(request, response, resultPagePath);
 	}
 }

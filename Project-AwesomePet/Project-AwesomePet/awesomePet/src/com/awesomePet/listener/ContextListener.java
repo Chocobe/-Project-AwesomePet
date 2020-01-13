@@ -15,7 +15,9 @@ import com.awesomePet.controllers.memberControllers.MemberJoinController;
 import com.awesomePet.controllers.memberControllers.MemberJoinResultViewController;
 import com.awesomePet.controllers.memberControllers.MemberLoginController;
 import com.awesomePet.controllers.memberControllers.MemberLogoutController;
+import com.awesomePet.controllers.memberControllers.MyInfoCertificateController;
 import com.awesomePet.controllers.memberControllers.MyInfoCertificateViewController;
+import com.awesomePet.controllers.memberControllers.MyInfoViewController;
 import com.awesomePet.controllers.memberControllers.MyPageViewController;
 
 public class ContextListener implements ServletContextListener {
@@ -55,6 +57,13 @@ public class ContextListener implements ServletContextListener {
 		
 		// 내 정보 수정을 위한 인증 페이지 요청 컨트롤러
 		subControllers.put("/myInfoCertificateView.do", new MyInfoCertificateViewController());
+		
+		// 내 정보 수정을 위한 인증 요청 컨트롤러
+		subControllers.put("/myInfoCertificate.do", new MyInfoCertificateController());
+		
+		// 내 정보 수정 페이지 요청
+		subControllers.put("/myInfoView.do", new MyInfoViewController());
+		
 		
 		
 		event.getServletContext().setAttribute("subControllers", subControllers);
