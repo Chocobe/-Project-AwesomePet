@@ -63,7 +63,7 @@
                     <input type="text" class="memberID" name="memberID" maxlength="20" required>
                     <label class="animation">아이디</label>
                     
-                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkID();">
+                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkOverlapID();">
                 </div>
                 
                 <div class="animationBox">

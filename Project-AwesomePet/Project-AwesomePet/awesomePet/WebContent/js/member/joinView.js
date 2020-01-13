@@ -23,51 +23,12 @@ $(function() {
 	});
 });
 
-function memberJoin() {
-	// 1. 비밀번호 유효검사 메서드를 호출합니다.
-	const isValidPW = checkPW();
-	if(isValidPW === false) {
-		return;
-	}
-	
-	// 2. 이름 유효검사 메서드를 호출합니다.
-	const isValidName = checkName();
-	if(isValidName === false) {
-		return;
-	}
-	
-	// 3. 생년월일 유효검사 메서드를 호출합니다.
-	const isValidBirthDay = checkBirthDay();
-	if(isValidBirthDay === false) {
-		return;
-	}
-	
-	// 4. Email 유효검사 메서드를 호출합니다.
-	const isValidEmail = checkEmail();
-	if(isValidEmail === false) {
-		return;
-	}
-	
-	// 5. Phone 유효검사 메서드를 호출합니다.
-	const isValidPhone = checkPhone();
-	if(isValidPhone === false) {
-		return;
-	}
-	
-	// 6. Addr 유효검사 메서드를 호출합니다.
-	const isValidAddr = checkAddr();
-	if(isValidAddr === false) {
-		return;
-	}
-	
-	$(".joinContainer form").submit();
-}
-// --------------------------------------------------------------------------------
+
 
 
 // --------------------------------------------------------------------------------
 // ID 유효검사 메서드 입니다. (ajax를 이용한 비동기 요청)
-function checkID() {
+function checkOverlapID() {
 	const inputID = $(".memberID").val();
 	
 	// 1. ID 공백문자 검사 입니다.
@@ -112,7 +73,7 @@ function checkID() {
 }
 
 
-// ID를 사용할 수 있는 경우, 호출되는 메서드 입니다.
+//ID를 사용할 수 있는 경우, 호출되는 메서드 입니다.
 function invalidFunc() {
 	errorMessage.text("이미 사용중인 ID입니다");
 	
@@ -127,6 +88,50 @@ function validIDFunc() {
 	
 	submitButton.attr("disabled", false);
 	checkIDButton.attr("disabled", true);
+}
+//--------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------
+// 회원가입 요청 메서드 입니다.
+function memberJoin() {
+	// 1. 비밀번호 유효검사 메서드를 호출합니다.
+	const isValidPW = checkPW();
+	if(isValidPW === false) {
+		return;
+	}
+	
+	// 2. 이름 유효검사 메서드를 호출합니다.
+	const isValidName = checkName();
+	if(isValidName === false) {
+		return;
+	}
+	
+	// 3. 생년월일 유효검사 메서드를 호출합니다.
+	const isValidBirthDay = checkBirthDay();
+	if(isValidBirthDay === false) {
+		return;
+	}
+	
+	// 4. Email 유효검사 메서드를 호출합니다.
+	const isValidEmail = checkEmail();
+	if(isValidEmail === false) {
+		return;
+	}
+	
+	// 5. Phone 유효검사 메서드를 호출합니다.
+	const isValidPhone = checkPhone();
+	if(isValidPhone === false) {
+		return;
+	}
+	
+	// 6. Addr 유효검사 메서드를 호출합니다.
+	const isValidAddr = checkAddr();
+	if(isValidAddr === false) {
+		return;
+	}
+	
+	$(".joinContainer form").submit();
 }
 // --------------------------------------------------------------------------------
 
@@ -167,6 +172,7 @@ function checkPW() {
 	errorMessage.text("");
 	return true;
 }
+//--------------------------------------------------------------------------------
 
 
 // --------------------------------------------------------------------------------
