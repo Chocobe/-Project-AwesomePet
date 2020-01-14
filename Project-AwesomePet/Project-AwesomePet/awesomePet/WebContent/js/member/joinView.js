@@ -211,7 +211,7 @@ function checkBirthDay() {
 	const birthDayDate = $(".joinContainer form .fixedBox .memberBirthDayDate");
 	
 	// 1940이전 생년월일은 사용할 수 없습니다. 또한 각 항목별 값의 범위를 지정합니다.
-	const birthDayCondition = /(19[4-9][0-9]|2[0-9]{3})-([1-9]|0[1-9]|1[0-2])-([1-9]|0[1-9]|[1-2][0-9]|3[0-1])/;
+	const birthDayCondition = /^(19[4-9][0-9]|2[0-9]{3})-([1-9]|0[1-9]|1[0-2])-([1-9]|0[1-9]|[1-2][0-9]|3[0-1])$/;
 	
 	const inputBirthDayString = birthDayYear.val() + "-" +
 						  birthDayMonth.val() + "-" +
@@ -239,6 +239,7 @@ function checkBirthDay() {
 		return false;
 	}
 	
+	errorMessage.text("");
 	return true;
 }
 // --------------------------------------------------------------------------------
@@ -259,7 +260,7 @@ function checkEmail() {
 		return false;
 	}
 	
-	errorMessage.val("");
+	errorMessage.text("");
 	return true;
 }
 // --------------------------------------------------------------------------------
