@@ -82,6 +82,16 @@
         outline: none;
     }
     
+    .joinContainer form div input::placeholder {
+    	color: #fff;
+    	font-weight: 100;
+    }
+    
+    .joinContainer form .animationBox .fixed {
+    	color: #888;
+    	font-weight: 100;
+    }
+    
     /* label */
     .joinContainer form .animationBox label {
         position: absolute;
@@ -111,16 +121,21 @@
     
     .joinContainer form .fixedBox label,
     .joinContainer form .fixedBox .delim {
-        color: #fff;
-        font-size: 18px;
         font-weight: 100;
-        
         padding: 10px 0;
         
         pointer-events: none;
     }
     
+    .joinContainer form .fixedBox label {
+    	color: #03a9f4;
+    	font-size: 14px;
+    }
+    
     .joinContainer form .fixedBox .delim {
+    	color: #fff;
+        font-size: 18px;
+        
         margin: 0 10px;
     }
     
