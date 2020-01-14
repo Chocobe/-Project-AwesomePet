@@ -22,7 +22,6 @@ public class MemberJoinController implements SubController {
 		MemberService memberService = new MemberService();
 		String resultPagePath = "";
 		
-		
 		String memberID = request.getParameter("memberID");
 		String memberPW = request.getParameter("memberPW");
 		String memberName = request.getParameter("memberName");
@@ -48,7 +47,8 @@ public class MemberJoinController implements SubController {
 										 memberBirthDay,
 										 memberEmail,
 										 memberPhone,
-										 memberAddr);
+										 memberAddr,
+										 0);
 		
 		boolean memberJoinResult = memberService.memberJoin(memberVO);
 		
