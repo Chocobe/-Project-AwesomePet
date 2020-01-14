@@ -2,6 +2,9 @@ package com.awesomePet.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,15 +30,25 @@ public class Test01 extends HttpServlet {
 	
 	protected void doHandler(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		
 		PrintWriter out = response.getWriter();
 		
-		String contextPath = request.getContextPath();
-		String servletPath = request.getServletPath();
-		String pathInfo = request.getPathInfo();
+		Date date = Date.valueOf("1987-5-17");
+		out.print("<h1>Date객체 값</h1>");
+		out.print("<p>" + date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일</p>");
 		
-		out.print("<h1>Context Path : " + contextPath + "</h1>");
-		out.print("<h1>Servlet Path : " + servletPath + "</h1>");
-		out.print("<h1>Path Info : " + pathInfo + "</h1>");
+		LocalDate local = date.toLocalDate();
+		out.print("<h1>LocalDate객체 값</h1>");
+		out.print("<p>" + local.getYear() + "년 " + local.getMonthValue() + "월 " + local.getDayOfMonth() + "일</p>");
+		
+		out.print("<hr/><hr/>");
+		
+		String testString = "";
+		for(int i = 0; i < 3; i++) {
+			testString += "*";
+		}
+		out.print("<p>마스킹 테스트 : " + testString + "</p>");
 		
 		out.close();
 	}

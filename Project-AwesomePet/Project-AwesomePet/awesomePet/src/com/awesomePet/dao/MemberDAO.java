@@ -1,6 +1,7 @@
 package com.awesomePet.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,12 +39,12 @@ public class MemberDAO {
 				resultVO = new MemberVO(resultSet.getString("memberID"),
 										resultSet.getString("memberPW"),
 										resultSet.getString("memberName"),
-										resultSet.getDate("memberBirthDay"),
+										resultSet.getDate("memberBirthDay").toLocalDate(),
 										resultSet.getString("memberEmail"),
 										resultSet.getString("memberPhone"),
 										resultSet.getString("memberAddr"),
 										resultSet.getInt("memberGrade"),
-										resultSet.getDate("memberJoinDate"));
+										resultSet.getDate("memberJoinDate").toLocalDate());
 			}
 			
 		} catch(SQLException e) {
@@ -106,7 +107,7 @@ public class MemberDAO {
 			pstmt.setString(1, memberVO.getMemberID());
 			pstmt.setString(2, memberVO.getMemberPW());
 			pstmt.setString(3, memberVO.getMemberName());
-			pstmt.setDate(4, memberVO.getMemberBirthDay());
+			pstmt.setDate(4, Date.valueOf(memberVO.getMemberBirthDay()));
 			pstmt.setString(5, memberVO.getMemberEmail());
 			pstmt.setString(6, memberVO.getMemberPhone());
 			pstmt.setString(7, memberVO.getMemberAddr());

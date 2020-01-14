@@ -61,7 +61,7 @@
                	</div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberID" name="memberID" maxlength="20" required>
+                    <input type="text" class="memberID" name="memberID" maxlength="20" autocomplete="off" required>
                     <label class="animation">아이디</label>
                     
                     <input type="button" class="checkIDButton" value="ID검사" onclick="checkOverlapID();">
@@ -78,7 +78,7 @@
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberName" name="memberName" maxlength="12" required>
+                    <input type="text" class="memberName" name="memberName" maxlength="12" autocomplete="off" required>
                     <label class="animation">이름</label>
                 </div>
                 
@@ -86,16 +86,16 @@
                     <label>생년월일</label>
                     
                     <div>
-                        <input type="text" class="memberBirthDayYear" name="memberBirthDayYear" maxlength="4">
+                        <input type="text" class="memberBirthDayYear" name="memberBirthDayYear" maxlength="4" autocomplete="off">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayMonth" name="memberBirthDayMonth" maxlength="2">
+                        <input type="text" class="memberBirthDayMonth" name="memberBirthDayMonth" maxlength="2" autocomplete="off">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberBirthDayDate" name="memberBirthDayDate" maxlength="2">
+                        <input type="text" class="memberBirthDayDate" name="memberBirthDayDate" maxlength="2" autocomplete="off">
                     </div>
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberEmail" name="memberEmail" maxlength="50" required>
+                    <input type="text" class="memberEmail" name="memberEmail" maxlength="50" autocomplete="off" required>
                     <label>이메일</label>
                 </div>
                 
@@ -103,16 +103,16 @@
                     <label>휴대전화</label>
                     
                     <div>
-                        <input type="text" class="memberPhone_1" name="memberPhone_1" maxlength="3">
+                        <input type="text" class="memberPhone_1" name="memberPhone_1" maxlength="3" autocomplete="off">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_2" name="memberPhone_2" maxlength="4">
+                        <input type="text" class="memberPhone_2" name="memberPhone_2" maxlength="4" autocomplete="off">
                         <span class="delim"> - </span> 
-                        <input type="text" class="memberPhone_3" name="memberPhone_3" maxlength="4">
+                        <input type="text" class="memberPhone_3" name="memberPhone_3" maxlength="4" autocomplete="off">
                     </div>
                 </div>
                 
                 <div class="animationBox">
-                    <input type="text" class="memberAddr" name="memberAddr" maxlength="50" required>
+                    <input type="text" class="memberAddr" name="memberAddr" maxlength="50" autocomplete="off" required>
                     <label>주소</label>
                 </div>
                 

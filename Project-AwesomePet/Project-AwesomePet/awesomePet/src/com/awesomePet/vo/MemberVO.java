@@ -1,17 +1,34 @@
 package com.awesomePet.vo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class MemberVO {
 	private String memberID;
+	
 	private String memberPW;
+	private String memberPWMasking;		// GETTER만 존재합니다.
+	
 	private String memberName;
-	private Date memberBirthDay;
+	
+	private LocalDate memberBirthDay;
+	private String memberBirthDayYear;	// GETTER만 존재합니다.
+	private String memberBirthDayMonth;	// GETTER만 존재합니다.
+	private String memberBirthDayDate;	// GETTER만 존재합니다.
+	
 	private String memberEmail;
+	
 	private String memberPhone;
+	private String memberPhone_1;		// GETTER만 존재합니다.
+	private String memberPhone_2;		// GETTER만 존재합니다.
+	private String memberPhone_3;		// GETTER만 존재합니다.
+	
 	private String memberAddr;
 	private int memberGrade;
-	private Date memberJoinDate;
+	
+	private LocalDate memberJoinDay;
+	private String memberJoinDayYear;	// GETTER만 존재합니다.
+	private String memberJoinDayMonth;	// GETTER만 존재합니다.
+	private String memberJoinDayDate;	// GETTER만 존재합니다.
 	
 	
 // 생성자
@@ -27,7 +44,7 @@ public class MemberVO {
 	public MemberVO(String memberID,
 					String memberPW,
 					String memberName,
-					Date memberBirthDay,
+					LocalDate memberBirthDay,
 					String memberEmail,
 					String memberPhone,
 					String memberAddr) {
@@ -44,22 +61,56 @@ public class MemberVO {
 	public MemberVO(String memberID,
 					String memberPW,
 					String memberName,
-					Date memberBirthDay,
+					LocalDate memberBirthDay,
 					String memberEmail,
 					String memberPhone,
 					String memberAddr,
 					int memberGrade,
-					Date memberJoinDate) {
+					LocalDate memberJoinDay) {
 		this.memberID = memberID;
+		
+		// 비밀번호 마스킹값을 만듭니다.
 		this.memberPW = memberPW;
+		if(memberPW != null) {
+			memberPWMasking = "";
+			for(int i = 0; i < memberPW.length(); i++) {
+				memberPWMasking += "*";
+			}
+		}
+		
 		this.memberName = memberName;
+		
+		// 생일을 분할합니다. (년, 월, 일)
 		this.memberBirthDay = memberBirthDay;
+		if(memberBirthDay != null) {
+			this.memberBirthDayYear = String.valueOf(memberBirthDay.getYear());
+			this.memberBirthDayMonth = String.valueOf(memberBirthDay.getMonthValue());
+			this.memberBirthDayDate = String.valueOf(memberBirthDay.getDayOfMonth());
+		}
+		
 		this.memberEmail = memberEmail;
+
+		// 휴대전화를 "-"기준으로 분할합니다.
 		this.memberPhone = memberPhone;
+		if(memberPhone != null) {
+			String[] memberPhoneParts = memberPhone.split("-");
+			this.memberPhone_1 = memberPhoneParts[0];
+			this.memberPhone_2 = memberPhoneParts[1];
+			this.memberPhone_3 = memberPhoneParts[2];
+		}
+		
 		this.memberAddr = memberAddr;
 		this.memberGrade = memberGrade;
-		this.memberJoinDate = memberJoinDate;
+		
+		// 회원가입한 날을 분할합니다. (년, 월, 일)
+		this.memberJoinDay = memberJoinDay;
+		if(memberJoinDay != null) {
+			this.memberJoinDayYear = String.valueOf(memberJoinDay.getYear());
+			this.memberJoinDayMonth = String.valueOf(memberJoinDay.getMonthValue());
+			this.memberJoinDayDate = String.valueOf(memberJoinDay.getDayOfMonth());
+		}
 	}
+	
 
 	
 // memberID	
@@ -79,6 +130,11 @@ public class MemberVO {
 		this.memberPW = memberPW;
 	}
 	
+	// memberPWMasking (GETTER)
+	public String getMemberPWMasking() {
+		return memberPWMasking;
+	}
+	
 	
 // memberName
 	public String getMemberName() {
@@ -90,11 +146,26 @@ public class MemberVO {
 
 	
 // memberBirthDay
-	public Date getMemberBirthDay() {
+	public LocalDate getMemberBirthDay() {
 		return memberBirthDay;
 	}
-	public void setMemberBirthDay(Date memberBirthDay) {
+	public void setMemberBirthDay(LocalDate memberBirthDay) {
 		this.memberBirthDay = memberBirthDay;
+	}
+	
+	// memberBirthDayYear (GETTER)
+	public String getMemberBirthDayYear() {
+		return memberBirthDayYear;
+	}
+	
+	// memberBirthDayMonth (GETTER)
+	public String getMemberBirthDayMonth() {
+		return memberBirthDayMonth;
+	}
+	
+	// memberBirthDayDate (GETTER)
+	public String getMemberBirthDayDate() {
+		return memberBirthDayDate;
 	}
 	
 	
@@ -113,6 +184,21 @@ public class MemberVO {
 	}
 	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
+	}
+	
+	// memberPhone_1 (GETTER)
+	public String getMemberPhone_1() {
+		return memberPhone_1;
+	}
+	
+	// memberPhone_2 (GETTER)
+	public String getMemberPhone_2() {
+		return memberPhone_2;
+	}
+	
+	// memberPhone_3 (GETTER)
+	public String getMemberPhone_3() {
+		return memberPhone_3;
 	}
 
 	
@@ -134,11 +220,26 @@ public class MemberVO {
 	}
 
 	
-// memberJoinDate
-	public Date getMemberJoinDate() {
-		return memberJoinDate;
+// memberJoinDay
+	public LocalDate getMemberJoinDay() {
+		return memberJoinDay;
 	}
-	public void setMemberJoinDate(Date memberJoinDate) {
-		this.memberJoinDate = memberJoinDate;
+	public void setMemberJoinDay(LocalDate memberJoinDay) {
+		this.memberJoinDay = memberJoinDay;
+	}
+	
+	// memberJoinDayYear (GETTER)
+	public String getMemberJoinDayYear() {
+		return memberJoinDayYear;
+	}
+	
+	// memberJoinDayMonth (GETTER)
+	public String getMemberJoinDayMonth() {
+		return memberJoinDayMonth;
+	}
+	
+	// memberJoinDayDate (GETTER)
+	public String getMemberJoinDayDate() {
+		return memberJoinDayDate;
 	}
 }

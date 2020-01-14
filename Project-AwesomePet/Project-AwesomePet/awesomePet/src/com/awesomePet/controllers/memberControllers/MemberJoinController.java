@@ -3,6 +3,7 @@ package com.awesomePet.controllers.memberControllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class MemberJoinController implements SubController {
 		String memberBirthDayMonth = request.getParameter("memberBirthDayMonth");
 		String memberBirthDayDate = request.getParameter("memberBirthDayDate");
 		String memberBirthDayString = memberBirthDayYear + "-" + memberBirthDayMonth + "-" + memberBirthDayDate;
-		Date memberBirthDay = Date.valueOf(memberBirthDayString);
+		LocalDate memberBirthDay = Date.valueOf(memberBirthDayString).toLocalDate();
 		
 		String memberEmail = request.getParameter("memberEmail");
 		
