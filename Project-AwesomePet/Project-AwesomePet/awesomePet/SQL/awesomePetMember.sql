@@ -17,6 +17,11 @@ CREATE TABLE awesomePetMember(
 
 SELECT * FROM awesomepetmember;
 
+UPDATE awesomepetmember SET
+		memberPW='aaa',
+		memberEmail='aaa@aaa.com'
+	WHERE memberID='aa' AND memberPW='aa';
+
 DELETE FROM awesomepetmember;
 
 DROP TABLE awesomepetmember;
