@@ -129,4 +129,51 @@ public class MemberDAO {
 		
 		return true;
 	}
+	
+
+// 회원정보를 수정합니다.
+	public boolean updateMember(MemberVO memberVO, String memberPWOrigin) {
+		int result = -1;
+		
+		try {
+			String sql = "UPDATE awesomePetMember SET ";
+			sql += "memberID=?, " +
+				   "memberPW=?, " +
+				   "memberName=?, " +
+				   "memberBirthDay=?, " +
+				   "memberEmail=?, " +
+				   "memberPhone=?, " +
+				   "memberAddr=?, " +
+				   "memberGrade=? ";
+			sql += "WHERE memberID=? AND memberPW=?";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, memberVO.getMemberID());
+			pstmt.setString(2, memberVO.getMemberPW());
+			pstmt.setString(3, memberVO.getMemberName());
+			pstmt.setDate(4, Date.valueOf(memberVO.getMemberBirthDay()));
+			pstmt.setString(5, memberVO.getMemberEmail());
+			pstmt.setString(6, memberVO.getMemberPhone());
+			pstmt.setString(7, memberVO.getMemberAddr());
+			pstmt.setInt(8, memberVO.getMemberGrade());
+			
+			pstmt.setString(9, memberVO.getMemberID());
+			pstmt.setString(10, memberPWOrigin);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<MemberDAO - updateMember() 에러> : " + e.getMessage());
+			e.printStackTrace();
+
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		if(result != 1) {
+			return false;
+		}
+		
+		return true;
+	}
 }

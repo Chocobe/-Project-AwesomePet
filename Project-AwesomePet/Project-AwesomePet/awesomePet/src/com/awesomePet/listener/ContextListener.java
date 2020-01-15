@@ -19,6 +19,7 @@ import com.awesomePet.controllers.memberControllers.MyInfoCertificateController;
 import com.awesomePet.controllers.memberControllers.MyInfoCertificateViewController;
 import com.awesomePet.controllers.memberControllers.MyInfoViewController;
 import com.awesomePet.controllers.memberControllers.MyPageViewController;
+import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 
 public class ContextListener implements ServletContextListener {
 	// 요청에 따른 SubController의 DI(의존성 주입)을 수행합니다.
@@ -61,8 +62,11 @@ public class ContextListener implements ServletContextListener {
 		// 내 정보 수정을 위한 인증 요청 컨트롤러
 		subControllers.put("/myInfoCertificate.do", new MyInfoCertificateController());
 		
-		// 내 정보 수정 페이지 요청
+		// 내 정보 수정 페이지 요청 컨트롤러
 		subControllers.put("/myInfoView.do", new MyInfoViewController());
+		
+		// 내 정보 수정 요청 컨트롤러
+		subControllers.put("/updateMyInfo.do", new UpdateMyInfoController());
 		
 		
 		

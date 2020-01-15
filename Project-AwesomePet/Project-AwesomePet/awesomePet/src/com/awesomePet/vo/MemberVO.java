@@ -47,7 +47,8 @@ public class MemberVO {
 					LocalDate memberBirthDay,
 					String memberEmail,
 					String memberPhone,
-					String memberAddr) {
+					String memberAddr,
+					int memberGrade) {
 		this(memberID,
 			 memberPW,
 			 memberName,
@@ -55,7 +56,8 @@ public class MemberVO {
 			 memberEmail,
 			 memberPhone,
 			 memberAddr,
-			 0, null);
+			 memberGrade,
+			 null);
 	}
 
 	public MemberVO(String memberID,

@@ -32,4 +32,10 @@ public class MemberService {
 	public boolean memberJoin(MemberVO memberVO) {
 		return memberDAO.insertMember(memberVO);
 	}
+	
+	
+// 회원정보 수정 메서드 입니다.
+	public boolean updateMyInfo(MemberVO memberVO, String memberPWOrigin) {
+		return memberDAO.updateMember(memberVO, memberPWOrigin);
+	}
 }
