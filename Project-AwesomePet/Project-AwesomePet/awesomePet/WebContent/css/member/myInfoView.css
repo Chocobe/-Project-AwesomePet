@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-/* .joinContainer */
-    .joinContainer {
+/* .myInfoViewContainer */
+    .myInfoViewContainer {
         width: 1024px;
         
         background: url('/awesomePet/appImages/loginBackground.jpg');
@@ -18,7 +18,7 @@
     
     
 /* form */
-    .joinContainer form {
+    .myInfoViewContainer form {
         width: 400px;
         height: inherit;
         
@@ -32,7 +32,7 @@
     
     
 	/* .joinTitle */
-    .joinContainer form .fixTitle {
+    .myInfoViewContainer form .fixTitle {
         width: 100%;
         
         margin-bottom: 25px;
@@ -44,7 +44,7 @@
     }
     
     /* .errorMessage */
-	.joinContainer form .errorMessage {
+	.myInfoViewContainer form .errorMessage {
 		width: 100%;
 		height: 25.33px;
 		
@@ -57,13 +57,13 @@
 	}
     
     
-/* .animationBox */
-    .joinContainer form .animationBox {
+/* .longBox */
+    .myInfoViewContainer form .longBox {
         position: relative;
     }
     
-    /* .animationBox input */
-    .joinContainer form .animationBox input {
+    /* .myInfoViewContainer input */
+    .myInfoViewContainer form .longBox input {
         width: 100%;
         
         margin-bottom: 30px;
@@ -82,18 +82,18 @@
         outline: none;
     }
     
-    .joinContainer form div input::placeholder {
+    .myInfoViewContainer form div input::placeholder {
     	color: #fff;
     	font-weight: 100;
     }
     
-    .joinContainer form .animationBox .fixed {
+    .myInfoViewContainer form .longBox .fixed {
     	color: #888;
     	font-weight: 100;
     }
     
     /* label */
-    .joinContainer form .animationBox label {
+    .myInfoViewContainer form .longBox label {
         position: absolute;
         top: -20px;
         left: 0;
@@ -110,8 +110,8 @@
     }
     
     
-/* .fixedBox */
-    .joinContainer form .fixedBox {
+/* .shortBox */
+    .myInfoViewContainer form .shortBox {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
@@ -119,27 +119,27 @@
         margin-bottom: 20px;
     }
     
-    .joinContainer form .fixedBox label,
-    .joinContainer form .fixedBox .delim {
+    .myInfoViewContainer form .shortBox label,
+    .myInfoViewContainer form .shortBox .delim {
         font-weight: 100;
         padding: 10px 0;
         
         pointer-events: none;
     }
     
-    .joinContainer form .fixedBox label {
+    .myInfoViewContainer form .shortBox label {
     	color: #03a9f4;
     	font-size: 14px;
     }
     
-    .joinContainer form .fixedBox .delim {
+    .myInfoViewContainer form .shortBox .delim {
     	color: #fff;
         font-size: 18px;
         
         margin: 0 10px;
     }
     
-    .joinContainer form .fixedBox div {
+    .myInfoViewContainer form .shortBox div {
         width: 70%;
         
         display: flex;
@@ -149,7 +149,7 @@
         position: relative;
     }
     
-    .joinContainer form .fixedBox div input {
+    .myInfoViewContainer form .shortBox div input {
         width: 25%;
         
         padding: 10px 0;
@@ -168,12 +168,12 @@
     
     
 /* submitBox */
-    .joinContainer form .submitBox {
+    .myInfoViewContainer form .submitBox {
         display: flex;
         justify-content: center;
     }
     
-    .joinContainer form .submitBox input {
+    .myInfoViewContainer form .submitBox input {
         width: 100px;
         padding: 10px 0;
         
@@ -191,14 +191,14 @@
         transition: 0.5s;
     }
     
-    .joinContainer form .submitBox input:hover {
+    .myInfoViewContainer form .submitBox input:hover {
         background: #ff0058;
     }
     
-    .joinContainer form .submitBox input[type="submit"] {
+    .myInfoViewContainer form .submitBox input[type="submit"] {
         margin-right: 10px;
     }
     
-    .joinContainer form .submitBox input[type="reset"] {
+    .myInfoViewContainer form .submitBox input[type="reset"] {
         margin-left: 10px;
     }
