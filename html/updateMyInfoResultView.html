@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원정보 수정 결과</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+	        
+            
+        /* .updateMyInfoContainer */
+            .updateMyInfoContainer {
+                width: 1024px;
+                background: url('images/question.jpg');
+                background-position: center;
+                
+                padding: 30px;
+                
+                border: none;
+                border-radius: 30px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+            }
+            
+            
+            /* .wrap */
+            .updateMyInfoContainer .wrap {
+                width: 600px;
+                padding: 40px;
+                
+                border-radius: 20px;
+                
+                background: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .updateMyInfoContainer .wrap h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                
+                font-weight: 100;
+            }
+            
+            .updateMyInfoContainer .wrap .buttonBox input {
+                width: 120px;
+                
+                margin: 0 10px;
+                padding: 10px 0;
+                
+                color: #fff;
+                font-size: 18px;
+                font-weight: 100;
+                
+                cursor: pointer;
+                
+                background: #03a9f4;
+                
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                
+                transition: 0.5s;
+            }
+            
+            .updateMyInfoContainer .wrap .buttonBox input:hover {
+                background: #ff0058;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="updateMyInfoContainer">
+            <div class="wrap">
+                <!-- 조건 : true -->
+                <h1>회원정보가 수정되었습니다.</h1>
+                <div class="buttonBox">
+                    <input type="button" value="홈으로" onclick="goToHome('/awesomePet');">
+                </div>
+                
+                <!-- 조건 : false -->
+                <h1>회원정보 수정이 실패하였습니다.</h1>
+                <div class="buttonBox">
+                    <input type="button" value="홈으로" onclick="goToHome('/awesomePet')">
+                    <input type="button" value="마이 페이지" onclick="goToMyInfoView('/PET')">
+                </div>
+                <!-- 공통 -->
+                
+            </div>
+        </div>
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            // 홈버튼 메서드 입니다.
+            function goToHome(context) {
+                alert("홈버튼 동작 : " + context);
+            }
+            
+            
+            // 마이페이지 메서드 입니다.
+            function goToMyInfoView(context) {
+                alert("회원정보 페이지 버튼 동작 : " + context);
+            }
+        </script>
+    </body>
+</html>
