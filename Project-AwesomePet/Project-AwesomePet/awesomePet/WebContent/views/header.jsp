@@ -1,5 +1,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.io.File"%>
+
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -13,6 +14,21 @@
 <c:set var="contextPath" value="<%= request.getContextPath() %>"/>
 
 
+<%
+	String header_css = application.getRealPath("/css/header.css");
+	File header_css_file = new File(header_css);
+	Date header_css_ver = new Date(header_css_file.lastModified());
+	
+	String header_js = application.getRealPath("/js/header.js");
+	File header_js_file = new File(header_js);
+	Date header_js_ver = new Date(header_js_file.lastModified());
+%>
+
+
+<c:set var="header_css_ver" value="<%= header_css_ver %>"/>
+<c:set var="header_js_ver" value="<%= header_js_ver %>"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -21,8 +37,7 @@
 		
 		<link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
 		
-		<link rel="stylesheet" href="${contextPath}/css/initialize.css" type="text/css"/>
-		<link rel="stylesheet" href="${contextPath}/css/header.css" type="text/css"/>
+		<link rel="stylesheet" href="${contextPath}/css/header.css?ver=${header_css_ver}" type="text/css"/>
 	</head>
 	
 	<body>
@@ -44,17 +59,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="familyBoardView('${contextPath}')">
 						가족을 찾아요
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="communicationBoardView('${contextPath}')">
 						소통해요
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="questionBoardView('${contextPath}')">
 						궁금해요
                     </a>
                 </li>

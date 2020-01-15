@@ -21,6 +21,7 @@ import com.awesomePet.controllers.memberControllers.MyInfoViewController;
 import com.awesomePet.controllers.memberControllers.MyPageViewController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoResultViewController;
+import com.awesomePet.controllers.questionBoardControllers.QuestionBoardViewController;
 
 public class ContextListener implements ServletContextListener {
 	// 요청에 따른 SubController의 DI(의존성 주입)을 수행합니다.
@@ -71,6 +72,11 @@ public class ContextListener implements ServletContextListener {
 		
 		// 내 정보 수정 결과 페이지 요청 컨트롤러
 		subControllers.put("/updateMyInfoResultView.do", new UpdateMyInfoResultViewController());
+		
+		
+	// 질문 게시판(궁금해요)를 위한 SubController 입니다.
+		// 질문 게시판(궁금해요) 페이지 요청 컨트롤러
+		subControllers.put("/questionBoardView.do", new QuestionBoardViewController());
 		
 		
 		

@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.File"%>
+
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -17,6 +20,26 @@
 <c:set var="contextPath" value="<%= request.getContextPath() %>"/>
 
 
+<%
+	String initialize_css = application.getRealPath("/css/initialize.css");
+	File initialize_css_file = new File(initialize_css);
+	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
+	
+	String index_css = application.getRealPath("/css/index.css");
+	File index_css_file = new File(index_css);
+	Date index_css_ver = new Date(index_css_file.lastModified());
+	
+	String index_js = application.getRealPath("/js/index.js");
+	File index_js_file = new File(index_js);
+	Date index_js_ver = new Date(index_js_file.lastModified());
+%>
+
+
+<c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
+<c:set var="index_css_ver" value="<%= index_css_ver %>"/>
+<c:set var="index_js_ver" value="<%= index_js_ver %>"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -24,10 +47,10 @@
         <title>환영합니다 AwesomePet입니다</title>
         
         <!-- CSS초기화 파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/initialize.css"/>
+        <link href="${contextPath}/css/initialize.css?ver=${initialize_css_ver}" rel="stylesheet" type="text/css"/>
         
         <!-- 현재 페이지(index.jsp)의 CSS파일을 링크 합니다. -->
-        <link rel="stylesheet" href="${contextPath}/css/index.css"/>
+        <link href="${contextPath}/css/index.css?ver=${index_css_ver}" rel="stylesheet" type="text/css"/>
     </head>
     
     <body>
@@ -36,7 +59,7 @@
         
         
         <section>
-            <div class="family">
+            <div class="family" onclick="familyBoardView('${contextPath}')">
                 <div class="gradation">
                     <div class="card">
                         <div class="face face1">
@@ -50,7 +73,7 @@
                 </div>
             </div>
             
-            <div class="communication">
+            <div class="communication" onclick="communicationBoardView('${contextPath}')">
                 <div class="gradation">
                     <div class="card">
                         <div class="face face1">
@@ -64,7 +87,7 @@
                 </div>
             </div>
             
-            <div class="question">
+            <div class="question" onclick="questionBoardView('${contextPath}')">
                 <div class="gradation">
                     <div class="card">
                         <div class="face face1">
@@ -82,10 +105,5 @@
         
         <!-- 푸터 페이지를 포함시킵니다. -->
         <%@ include file="/views/footer.jsp" %>
-        
-        
-        <!-- 푸터 javascript 파일을 적용 시킵니다. -->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script type="text/javascript" src="${contextPath}/js/index.js"></script>
     </body>
 </html>
