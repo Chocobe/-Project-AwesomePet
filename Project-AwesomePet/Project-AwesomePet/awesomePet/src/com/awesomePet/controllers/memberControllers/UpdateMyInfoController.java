@@ -50,13 +50,10 @@ public class UpdateMyInfoController implements SubController {
 										 memberAddr,
 										 memberGrade);
 		
-		System.out.println("수정대상 ID : " + memberID);
-		System.out.println("수정대상 PW : " + memberPWOrigin);
-		
 		boolean updateMyInfoResult = memberService.updateMyInfo(memberVO, memberPWOrigin);
 		
 		if(!updateMyInfoResult) {
-			request.setAttribute("errorMessage", "회원정보 수정 실패");
+			request.setAttribute("resultMessage", "회원정보 수정 실패");
 		}
 		
 		ControllerUtil.forward(request, response, resultPagePath);
