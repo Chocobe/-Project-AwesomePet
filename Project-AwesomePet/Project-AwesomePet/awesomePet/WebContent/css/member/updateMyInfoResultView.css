@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/* .updateMyInfoContainer */
+	.updateMyInfoContainer {
+	    width: 1024px;
+	    background: url('/awesomePet/appImages/question.jpg');
+	    background-position: center;
+	    
+	    padding: 30px;
+	    
+	    border: none;
+	    border-radius: 30px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	}
+	
+	
+	/* .wrap */
+	.updateMyInfoContainer .wrap {
+	    width: 600px;
+	    padding: 40px;
+	    
+	    border-radius: 20px;
+	    
+	    background: rgba(0, 0, 0, 0.5);
+	    color: #fff;
+	    
+	    display: flex;
+	    flex-flow: column wrap;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	.updateMyInfoContainer .wrap h1 {
+	    text-align: center;
+	    margin-bottom: 20px;
+	    
+	    font-weight: 100;
+	}
+	
+	.updateMyInfoContainer .wrap .buttonBox input {
+	    width: 120px;
+	    
+	    margin: 0 10px;
+	    padding: 10px 0;
+	    
+	    color: #fff;
+	    font-size: 18px;
+	    font-weight: 100;
+	    
+	    cursor: pointer;
+	    
+	    background: #03a9f4;
+	    
+	    border: none;
+	    border-radius: 10px;
+	    outline: none;
+	    
+	    transition: 0.5s;
+	}
+	
+	.updateMyInfoContainer .wrap .buttonBox input:hover {
+	    background: #ff0058;
+	}
