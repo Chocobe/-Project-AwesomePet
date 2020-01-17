@@ -12,6 +12,10 @@
 	info="질문 게시판 입니다"
 %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="contextPath" value="<%= request.getContextPath() %>"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -82,15 +86,46 @@
 						<td>작성일</td>
 						<td>조회수</td>
 					</tr>
-					
+				
+				<c:forEach var="contents" items="${questionBoardVO.questionContentsList}">
 					<tr>
-						<td>데이터</td>
-						<td>데이터</td>
-						<td>데이터</td>
-						<td>데이터</td>
-						<td>데이터</td>
+						<td>${contents.boardIDX}</td>
+						<td>${contents.writerID}</td>
+						<td>${contents.title}</td>
+						<td>${contents.content}</td>
+						<td>${contents.watch}</td>
 					</tr>
+				</c:forEach>
 				</table>
+				
+				<div class="pageTest">
+					<a href="..${contextPath}/questionBoardView.do?requestPage=${1}">첫페이지</a>
+					
+					<a href="..${contextPath}/questionBoardView.do?requestPage=${questionBoardVO.prevPage}">이전페이지</a>
+					
+					<c:forEach var="page" begin="1" end="${questionBoardVO.totalPageCnt}">
+						<c:choose>
+							<c:when test="${page eq questionBoardVO.currentPage}">
+								<a href="..${contextPath}/questionBoardView.do?requestPage=${page}" style="color: #03a9f4;">${page}</a>
+							</c:when>
+
+							<c:otherwise>				
+								<a href="..${contextPath}/questionBoardView.do?requestPage=${page}">${page}</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<a href="..${contextPath}/questionBoardView.do?requestPage=${questionBoardVO.nextPage}">다음페이지</a>
+					
+					<a href="..${contextPath}/questionBoardView.do?requestPage=${questionBoardVO.totalPageCnt}">끝페이지</a>
+				</div>
+				
+				<div class="questionPage">
+					<p>궁금해요 총 페이지 개수 : ${questionBoardVO.totalPageCnt}</p>
+					<p>요청한 페이지 번호 : ${questionBoardVO.currentPage}</p>
+					<p>이전 페이지 번호 : ${questionBoardVO.prevPage}</p>
+					<p>다음 페이지 번호 : ${questionBoardVO.nextPage}</p>
+				</div>
 			</div>
 		</div>
 	</body>
