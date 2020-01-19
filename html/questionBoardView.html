@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>궁금해요</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+        
+        <style type="text/css">
+            
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .questionWrap*/
+            .questionWrap {
+                width: 100%;
+                
+                padding: 30px;
+                
+                background: url('images/question.jpg');
+                background-size: cover;
+                background-position: right;
+                
+                border-radius: 30px;
+                
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            
+        /* .titleContainer */
+            .questionWrap .titleContainer {
+                width: 100%;
+                
+                padding: 30px;
+                
+                background: rgba(255, 255, 255, 0.7);
+                
+                border-radius: 20px;
+            }
+            
+            .questionWrap .titleContainer h1 {
+                font-size: 2.5em;
+            }
+            
+            .questionWrap .titleContainer p {
+                font-size: 1.2em;
+            }
+            
+        /* .boardContainer */
+            .questionWrap .boardContainer {
+                width: 100%;
+                padding: 30px 30px 5px;
+                margin: 30px 0 15px;
+                
+                font-weight: 100;
+                
+                border-radius: 20px;
+                
+                display: flex;
+                justify-content: center;
+                
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+            
+            /* th */
+            .questionWrap .boardContainer tr th:nth-child(1) {
+                width: 100px;
+            }
+            
+            .questionWrap .boardContainer tr th:nth-child(2) {
+                width: 150px;
+            }
+            
+            .questionWrap .boardContainer tr th:nth-child(3) {
+                width: 400px;
+            }
+            
+            .questionWrap .boardContainer tr th:nth-child(4) {
+                width: 100px;
+            }
+            
+            .questionWrap .boardContainer tr th:nth-child(5) {
+                width: 100px;
+            }
+            
+            /* td */            
+            .questionWrap .boardContainer tr.border td {
+                width: 100%;
+                height: 15px;
+                
+                border-top: 1px solid #000;
+            }
+            
+            .questionWrap .boardContainer tr td {
+                text-align: center;
+                
+                padding: 0 10px;
+            }
+            
+            /* .pageContainer */
+            .questionWrap .pageContainer {
+                width: 500px;
+                height: 50px;
+                
+                background: rgba(255, 255, 255, 0.7);
+                
+                border-radius: 10px;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .questionWrap .pageContainer span {
+                margin: 0 3px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <section class="questionWrap">
+            <div class="titleContainer">
+                <h1>궁금해요</h1>
+                <p>애완동물에 대한 질문 게시판 입니다.</p>
+            </div>
+            
+            <div class="boardContainer">
+                <table>
+                    <tr>
+                        <th>글번호</th>
+                        <th>작성자</th>
+                        <th>제목</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                    </tr>
+                    
+                    <tr class="border">
+                        <td colspan="5"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>5</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>6</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>7</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>8</td>
+                        <td>회원1</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>9</td>
+                        <td>회원10</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>10</td>
+                        <td>회원10</td>
+                        <td>테스트글 입니다.</td>
+                        <td>2020-1-10</td>
+                        <td>33</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="pageContainer">
+                <span>시작</span>
+                <span class="boundary">|</span>
+                <span>이전</span>
+                <span class="boundary">|</span>
+                <span>1</span>
+                <span class="boundary">|</span>
+                <span>2</span>
+                <span class="boundary">|</span>
+                <span>3</span>
+                <span class="boundary">|</span>
+                <span>4</span>
+                <span class="boundary">|</span>
+                <span>5</span>
+                <span class="boundary">|</span>
+                <span>다음</span>
+                <span class="boundary">|</span>
+                <span>끝</span>
+            </div>
+        </section>
+    </body>
+</html>
