@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+    
+    <style type="text/css">
+    /* 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+            font-family: 'Jua', sans-serif;
+        }
+        
+        body {
+            width: 1024px;
+            margin: 0 auto;
+        }
+        
+        a, a:hover, 
+        a:visited {
+            text-decoration: none;
+            color: black;
+        }
+        
+        
+    /* .questionReplyContainer */
+        .questionReplyContainer {
+            width: 100%;
+            
+            margin-top: 20px;
+            padding: 30px;
+            
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+        
+        .questionReplyContainer * {
+            font-weight: 100;
+        }
+        
+    /* .replyTable */
+        .questionReplyContainer .replyTable {
+            width: 900px;
+            
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* th */
+        .questionReplyContainer .replyTable tr th {
+            height: 45px;
+            background: #ff5599;
+        }
+        
+        .questionReplyContainer .replyTable tr th:nth-child(1) {
+            width: 150px;
+            border-top-left-radius: 20px;
+        }
+        
+        .questionReplyContainer .replyTable tr th:nth-child(2) {
+            width: 500px;
+        }
+        
+        .questionReplyContainer .replyTable tr th:nth-child(3) {
+            width: 130px;
+            border-top-right-radius: 20px;
+        }
+        
+        .questionReplyContainer .replyTable tr th:nth-child(4) {
+            width: 70px;
+            background: none;
+            
+            display:flex;
+            flex-flow: row wrap;
+        }   
+        
+        /* td */
+        .questionReplyContainer .replyTable tr.reply td {
+            padding: 10px;
+        }
+        
+        .questionReplyContainer .replyTable tr.reply:nth-child(2n) td {
+            background: #ccc;
+        }
+        
+        .questionReplyContainer .replyTable tr.reply td:nth-child(4) {
+            background: none;
+        }
+        
+        .questionReplyContainer .replyTable tr.reply td:nth-child(4) input {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .questionReplyContainer .replyTable tr.reply td:nth-child(1),
+        .questionReplyContainer .replyTable tr.reply td:nth-child(3) {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="questionReplyContainer">
+        <table class="replyTable">
+            <tr>
+                <th>댓글작성자</th>
+                <th>댓글</th>
+                <th>작성일</th>
+                <th></th>
+            </tr>
+            
+            <tr class="reply">
+                <td>tester</td>
+                <td>댓글 테스트중 입니다.</td>
+                <td>2020-01-20</td>
+                <td></td>
+            </tr>
+            
+            <tr class="reply">
+                <td>tester2</td>
+                <td>댓글 작성자의 댓글 테스트중 입니다.</td>
+                <td>2020-01-03</td>
+                
+                <td>
+                    <input type="button" value="🔧" >
+                    <input type="button" value="❌">
+                </td>
+            </tr>
+            
+            <tr class="reply">
+                <td>tester</td>
+                <td>댓글 테스트중 입니다.</td>
+                <td>2020-01-20</td>
+            </tr>
+            
+            <tr class="reply">
+                <td>tester</td>
+                <td>댓글 테스트중 입니다.</td>
+                <td>2020-01-20</td>
+            </tr>
+            
+            <tr class="reply">
+                <td>tester</td>
+                <td>댓글 테스트중 입니다.</td>
+                <td>2020-01-20</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
