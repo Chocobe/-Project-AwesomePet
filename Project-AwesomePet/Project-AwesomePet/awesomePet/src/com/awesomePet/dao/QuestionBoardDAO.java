@@ -19,7 +19,7 @@ public class QuestionBoardDAO {
 	public static final double QUERY_LIMIT;
 	
 	static {
-		QUERY_LIMIT = 3;
+		QUERY_LIMIT = 10;
 	}
 	
 	
