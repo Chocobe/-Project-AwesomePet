@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>글 제목으로 변경할것</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+        }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .questionContentsWrap */
+            .questionContentsWrap {
+                width: 100%;
+                
+                margin-top: 20px;
+                padding: 30px;
+                
+                border-radius: 20px;
+                
+                box-shadow: 0 10px 10px 5px #999;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+            }
+            
+            .questionContentsWrap * {
+                font-weight: 100;
+            }
+            
+            
+        /* .titleContainer */
+            .questionContentsWrap .titleContainer {
+                width: 100%;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-end;
+            }
+            
+            /* h1 */
+            .questionContentsWrap .titleContainer h1 {
+                width: 600px;
+                
+                margin-right: 50px;
+                
+                line-height: 68px;
+                text-align: center;
+                
+                border-bottom: 1px solid #000;
+                
+                font-size: 1.5em;
+            }
+            
+            /* .infoTable */
+            .questionContentsWrap .titleContainer {
+                margin-bottom: 30px;
+            }
+            
+            .questionContentsWrap .titleContainer table.infoTable tr th {
+                width: 60px;
+                text-align: center;
+                margin: 0 10px;
+            }
+            
+            .questionContentsWrap .titleContainer table.infoTable tr td {
+                width: 200px;
+                text-align: center;
+                margin: 0 10px;
+            }
+            
+            
+        /* .contentsContainer */
+            .questionContentsWrap .contentsContainer {
+                width: 100%;
+                
+                display: flex;
+                justify-content: center;
+            }
+            
+            .questionContentsWrap .contentsContainer .contents {
+                width: 850px;
+                height: 300px;
+                
+                padding: 10px;
+                
+                background: none;
+                
+                border: none;
+                outline: none;
+                
+                resize: none;
+            }
+            
+            
+        /* .optionButtonsContainer */
+            .questionContentsWrap .optionButtonsContainer {
+                width: 900px;
+                
+                margin: 20px 30px 60px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-end;
+            }
+            
+            .questionContentsWrap .optionButtonsContainer input {
+                width: 100px;
+                
+                padding: 10px;
+                margin: 0 10px;
+                
+                border: none;
+                border-radius: 10px;
+                
+                background: #03a9f4;
+                
+                transition: 0.5s;
+            }
+            
+            .questionContentsWrap .optionButtonsContainer input:hover {
+                background: #ff0058;
+                color: #fff;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="questionContentsWrap">
+            <div class="titleContainer">
+                <h1>제목입니다.</h1>
+                
+                <table class="infoTable">
+                    <tr>
+                        <th>작성자</th>
+                        <td>tester</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>작성일</th>
+                        <td>2020-01-20</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>조회수</th>
+                        <td>3명</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="contentsContainer">
+                <textarea class="contents" disabled>
+글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.글 내용1 입니다.
+ 
+글 내용2 입니다.
+ 
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                
+글 내용2 입니다.
+                </textarea>
+            </div>
+            
+            <div class="optionButtonsContainer">
+                <input type="button" value="목록으로">
+                <input type="button" value="글수정">
+                <input type="button" value="글삭제">
+            </div>
+        </div>
+    </body>
+</html>
