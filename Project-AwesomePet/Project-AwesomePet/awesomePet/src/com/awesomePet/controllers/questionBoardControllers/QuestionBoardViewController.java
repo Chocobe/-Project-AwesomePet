@@ -17,7 +17,7 @@ public class QuestionBoardViewController implements SubController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		String resultPagePath = "/views/questionBoard/questionBoardViewTEST.jsp";
+		String resultPagePath = "/views/questionBoard/questionBoardView.jsp";
 		QuestionBoardService questionBoardService = new QuestionBoardService();
 		
 		QuestionBoardVO questionBoardVO = new QuestionBoardVO();
