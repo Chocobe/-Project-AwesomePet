@@ -71,7 +71,7 @@
             .questionWrap .boardContainer {
                 width: 100%;
                 padding: 30px 30px 5px;
-                margin: 30px 0 15px;
+                margin: 20px 0 15px;
                 
                 font-weight: 100;
                 
@@ -104,6 +104,16 @@
                 width: 100px;
             }
             
+            /* tr */
+            .questionWrap .boardContainer .content {
+                color: #000;
+                transition: 0.3s;
+            }
+            
+            .questionWrap .boardContainer .content:hover {
+                color: #03a9f4;
+            }
+            
             /* td */            
             .questionWrap .boardContainer tr.border td {
                 width: 100%;
@@ -132,8 +142,53 @@
                 align-items: center;
             }
             
-            .questionWrap .pageContainer span {
+            .questionWrap .pageContainer .page {
+                transition: 0.3s;
+            }
+            
+            .questionWrap .pageContainer .page:hover {
+                color: #03a9f4;
+                
+                cursor: pointer;
+            }
+            
+            .questionWrap .pageContainer .currentPage {
+                color: #ff0058;
+                
+                cursor: default;
+            }
+            
+            .questionWrap .pageContainer .boundary {
                 margin: 0 3px;
+                
+                cursor: default;
+            }
+            
+            /* .buttonContainer */
+            .questionWrap .buttonContainer {
+                margin-top: 30px;
+            }
+            
+            .questionWrap .buttonContainer input {
+                width: 150px;
+                
+                font-size: 1.1em;
+                
+                padding: 10px 20px;
+                
+                border: none;
+                border-radius: 10px;
+                
+                background: #03a9f4;
+                
+                transition: 0.5s;
+            }
+            
+            .questionWrap .buttonContainer input:hover {
+                background: #ff0058;
+                color: #fff;
+                
+                cursor: pointer;
             }
         </style>
     </head>
@@ -159,7 +214,7 @@
                         <td colspan="5"></td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>1</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -167,7 +222,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>2</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -175,7 +230,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>3</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -183,7 +238,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>4</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -191,7 +246,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>5</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -199,7 +254,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>6</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -207,7 +262,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>7</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -215,7 +270,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>8</td>
                         <td>회원1</td>
                         <td>테스트글 입니다.</td>
@@ -223,7 +278,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>9</td>
                         <td>회원10</td>
                         <td>테스트글 입니다.</td>
@@ -231,7 +286,7 @@
                         <td>33</td>
                     </tr>
                     
-                    <tr>
+                    <tr class="content">
                         <td>10</td>
                         <td>회원10</td>
                         <td>테스트글 입니다.</td>
@@ -242,23 +297,27 @@
             </div>
             
             <div class="pageContainer">
-                <span>시작</span>
+                <span class="page">시작</span>
                 <span class="boundary">|</span>
-                <span>이전</span>
+                <span class="page">이전</span>
                 <span class="boundary">|</span>
-                <span>1</span>
+                <span class="currentPage">1</span>
                 <span class="boundary">|</span>
-                <span>2</span>
+                <span class="page">2</span>
                 <span class="boundary">|</span>
-                <span>3</span>
+                <span class="page">3</span>
                 <span class="boundary">|</span>
-                <span>4</span>
+                <span class="page">4</span>
                 <span class="boundary">|</span>
-                <span>5</span>
+                <span class="page">5</span>
                 <span class="boundary">|</span>
-                <span>다음</span>
+                <span class="page">다음</span>
                 <span class="boundary">|</span>
-                <span>끝</span>
+                <span class="page">끝</span>
+            </div>
+            
+            <div class="buttonContainer">
+                <input type="button" value="글쓰기">
             </div>
         </section>
     </body>
