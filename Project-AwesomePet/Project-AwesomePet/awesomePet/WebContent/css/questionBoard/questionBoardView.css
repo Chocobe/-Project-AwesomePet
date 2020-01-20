@@ -1,0 +1,175 @@
+@charset "UTF-8";
+/* .questionTitleContainer */
+	.questionTitleContainer {	    
+	    margin: 40px 0 20px;
+	    padding-left: 50px;
+	    
+	    background: rgba(255, 255, 255, 0.9);
+	    
+	    border-radius: 20px;
+	}
+	
+	.questionTitleContainer h1 {
+	    font-size: 2em;
+	}
+	
+	.questionTitleContainer p {
+	    font-size: 1.2em;
+	}
+
+
+/* .questionWrap */
+	.questionWrap {
+	    width: 100%;
+	    height: 564px;
+	    
+	    padding: 30px;
+	    
+	    background: url('/awesomePet/appImages/question.jpg');
+	    background-size: cover;
+	    background-position: right;
+	    
+	    border-radius: 30px;
+	    
+	    display: flex;
+	    flex-flow: column wrap;
+	    align-items: center;
+	}
+
+
+/* .boardContainer */
+	.questionWrap .boardContainer {
+	    width: 100%;
+	    height: 367px;
+	    
+	    padding: 30px 30px 5px;
+	    margin-bottom: 15px;
+	    
+	    font-weight: 100;
+	    
+	    border-radius: 20px;
+	    
+	    display: flex;
+	    justify-content: center;
+	    
+	    background-color: rgba(255, 255, 255, 0.9);
+	}
+
+/* th.title */
+	.questionWrap .boardContainer tr.title {
+		border-top-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+	.questionWrap .boardContainer tr.title th {
+		font-size: 1.2em;
+	}
+
+	.questionWrap .boardContainer tr.title th:nth-child(1) {
+	    width: 100px;
+	}
+	
+	.questionWrap .boardContainer tr.title th:nth-child(2) {
+	    width: 150px;
+	}
+	
+	.questionWrap .boardContainer tr.title th:nth-child(3) {
+	    width: 400px;
+	}
+	
+	.questionWrap .boardContainer tr.title th:nth-child(4) {
+	    width: 100px;
+	}
+	
+	.questionWrap .boardContainer tr.title th:nth-child(5) {
+	    width: 100px;
+	}
+
+/* tr */
+	.questionWrap .boardContainer .content,
+	.questionWrap .boardContainer .content a {
+	    color: #000;
+	    transition: 0.3s;
+	}
+	
+	.questionWrap .boardContainer .content:hover,
+	.questionWrap .boardContainer .content:hover a:hover {
+	    color: #03a9f4;
+	}
+
+/* td */            
+	.questionWrap .boardContainer tr.border td {
+	    width: 100%;
+	    height: 15px;
+	    
+	    border-top: 1px solid #000;
+	}
+
+	.questionWrap .boardContainer tr td {
+	    text-align: center;
+	    line-height: 27px;
+	    
+	    padding: 0 5px;
+	}
+
+/* .pageContainer */
+	.questionWrap .pageContainer {
+	    width: 500px;
+	    height: 50px;
+	    
+	    background: rgba(255, 255, 255, 0.9);
+	    
+	    border-radius: 10px;
+	    
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	.questionWrap .pageContainer .page {
+	    transition: 0.3s;
+	}
+	
+	.questionWrap .pageContainer .page:hover {
+	    color: #03a9f4;
+	    
+	    cursor: pointer;
+	}
+	
+	.questionWrap .pageContainer .currentPage {
+	    color: #ff0058;
+	    
+	    cursor: default;
+	}
+	
+	.questionWrap .pageContainer .boundary {
+		margin: 0 10px;
+	    cursor: default;
+	}
+
+/* .buttonContainer */
+	.questionWrap .buttonContainer {
+	    margin-top: 30px;
+	}
+	
+	.questionWrap .buttonContainer input {
+	    width: 150px;
+	    
+	    font-size: 1.1em;
+	    
+	    padding: 10px 20px;
+	    
+	    border: none;
+	    border-radius: 10px;
+	    
+	    background: #03a9f4;
+	    
+	    transition: 0.5s;
+	}
+	
+	.questionWrap .buttonContainer input:hover {
+	    background: #ff0058;
+	    color: #fff;
+	    
+	    cursor: pointer;
+	}
