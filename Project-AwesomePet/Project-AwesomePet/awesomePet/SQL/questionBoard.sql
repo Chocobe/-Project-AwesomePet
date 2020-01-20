@@ -103,3 +103,108 @@ INSERT INTO questionboard(writerID,
 						 VALUES('hh',
 						 		  '열한번째 질문 입니다',
 						 		  '게시글 개수가 홀수가 되었습니다');
+						 		  
+-- 12
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '헬로~',
+						 		  '날씨가 춥네요');
+						 		  
+--
+-- 13
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('cc',
+						 		  '안뇽안뇽',
+						 		  '날씨가 춥네요~');
+						 		  
+-- 14
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('cc',
+						 		  '어라?',
+						 		  '날씨가 춥네요');
+						 		  
+-- 15
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('dd',
+						 		  '굿모닝',
+						 		  '아침은 토스트');
+						 		  
+-- 16
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('dd',
+						 		  '우유좋아',
+						 		  '딸기쨈도 좋아요');
+						 		  
+-- 17
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('ee',
+						 		  '프로젝트 중',
+						 		  '프로젝트가 언능 완성되면 좋겠어요');
+						 		  
+-- 18
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '헬로~',
+						 		  '날씨가 춥네요');
+						 		  
+-- 19
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('cc',
+						 		  '아메리카노',
+						 		  '엔젤이 공부하기도 좋고 커피도 맛있어요');
+						 		  
+-- 20
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('cc',
+						 		  '머그컵 좋아',
+						 		  '머그 머그 머그컵');
+						 		  
+-- 21
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('hh',
+						 		  '배고프네요',
+						 		  '저녁은 뭐먹지?');
+						 		  
+-- 22
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '헬로~',
+						 		  '날씨가 춥네요');
+						 		  
+-- 23
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '울집 강아지',
+						 		  '못키우게 해요ㅜㅜ');
+						 		  
+-- 24
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '추워추워...',
+						 		  '서울은 부산보다 춥겠죠??');
