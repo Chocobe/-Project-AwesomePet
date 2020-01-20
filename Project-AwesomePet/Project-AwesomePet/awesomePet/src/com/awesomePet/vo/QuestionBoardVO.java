@@ -10,6 +10,8 @@ public class QuestionBoardVO {
 	private int currentPage;	// GETTER 만 있습니다.
 	private int prevPage;		// GETTER 만 있습니다.
 	private int nextPage;		// GETTER 만 있습니다.
+	private int beginPage;		// GETTER 만 있습니다.
+	private int endPage;		// GETTER 만 있습니다.
 	
 	
 // questionContentsVO
@@ -41,8 +43,38 @@ public class QuestionBoardVO {
 		} else {
 			nextPage = currentPage + 1;
 		}
+		
+		// 3. 출력용 시작 페이지를 설정합니다.
+		if(currentPage - 3 < 1) {
+			beginPage = 1;
+			
+		} else {
+			beginPage = currentPage - 2;
+		}
+		
+		// 4. 출력용 끝 페이지를 설정합니다.
+		if(beginPage + 4 < totalPageCnt) {
+			endPage = beginPage + 4;
+			
+		} else {
+			endPage = totalPageCnt;
+		}
+		
+		// 5. 전체 페이지와 끝 페이지에 대한 시작 페이지를 보정합니다.
+		if(totalPageCnt - currentPage < 2) {
+			beginPage = totalPageCnt - 4;
+		}
+		
+		if(beginPage < 1) {
+			beginPage = 1;
+		}
 	}
 
+	
+// totalPageCnt
+	public int getTotalPageCnt() {
+		return totalPageCnt;
+	}
 	
 // currentPage
 	public int getCurrentPage() {
@@ -62,8 +94,14 @@ public class QuestionBoardVO {
 	}
 	
 	
-// totalPageCnt
-	public int getTotalPageCnt() {
-		return totalPageCnt;
+// beginPage
+	public int getBeginPage() {
+		return beginPage;
+	}
+	
+	
+// endPage
+	public int getEndPage() {
+		return endPage;
 	}
 }
