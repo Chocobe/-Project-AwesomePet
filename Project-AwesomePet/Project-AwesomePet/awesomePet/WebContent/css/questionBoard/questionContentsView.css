@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+/* .questionContentsWrap */
+    .questionContentsWrap {
+        width: 100%;
+        
+        margin-top: 20px;
+        padding: 30px;
+        
+        border-radius: 20px;
+        
+        box-shadow: 0 10px 10px 5px #999;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    .questionContentsWrap * {
+        font-weight: 100;
+    }
+    
+    
+/* .titleContainer */
+    .questionContentsWrap .titleContainer {
+        width: 100%;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    /* h1 */
+    .questionContentsWrap .titleContainer h1 {
+        width: 600px;
+        
+        margin-right: 50px;
+        
+        line-height: 68px;
+        text-align: center;
+        
+        border-bottom: 1px solid #000;
+        
+        font-size: 1.5em;
+    }
+    
+    /* .infoTable */
+    .questionContentsWrap .titleContainer {
+        margin-bottom: 30px;
+    }
+    
+    .questionContentsWrap .titleContainer table.infoTable tr th {
+        width: 60px;
+        text-align: center;
+        margin: 0 10px;
+    }
+    
+    .questionContentsWrap .titleContainer table.infoTable tr td {
+        width: 200px;
+        text-align: center;
+        margin: 0 10px;
+    }
+    
+    
+/* .contentsContainer */
+    .questionContentsWrap .contentsContainer {
+        width: 900px;
+        
+    }
+    
+    .questionContentsWrap .contentsContainer .contents {
+        width: 800px;
+
+		margin: 5px auto;         
+        
+        background: none;
+        
+        border: none;
+        outline: none;
+        
+        resize: none;
+    }
+    
+    
+/* .optionButtonsContainer */
+    .questionContentsWrap .optionButtonsContainer {
+        width: 900px;
+        
+        margin: 20px 30px 60px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    .questionContentsWrap .optionButtonsContainer input {
+        width: 100px;
+        
+        padding: 10px;
+        margin: 0 10px;
+        
+        border: none;
+        border-radius: 10px;
+        
+        background: #03a9f4;
+        
+        transition: 0.5s;
+    }
+    
+    .questionContentsWrap .optionButtonsContainer input:hover {
+        background: #ff0058;
+        color: #fff;
+    }
+    
+    
+/* .replyContainer */
+    .questionContentsWrap .replyWriteContainer {
+        width: 900px;
+    }
+    
+    /* .replyTextarea */
+    .questionContentsWrap .replyWriteContainer textarea.replyTextarea {
+        width: 100%;
+        height: 70px;
+        
+        padding: 0 20px;
+        
+        border-top-left-radius: 15px;
+        
+        resize: none;
+    }
+    
+    .questionContentsWrap .replyWriteContainer textarea.replyTextarea::placeholder {
+        text-align: center;
+        line-height: 68px;
+    }
+    
+    /* .replyButtonContainer */
+    .questionContentsWrap .replyWriteContainer .replyButtonContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    .questionContentsWrap .replyWriteContainer .replyButtonContainer .replyButton {
+        padding: 5px 20px;
+    }
+    
+    /* .replyContainer */
+    .questionContentsWrap hr {
+        margin: 30px 0;
+        border: 1px dashed #aaa;
+    }
+    
+    .questionContentsWrap .replyContainer {
+        width: 900px;
+    }
+    
+    .questionContentsWrap .replyTitleContainer {
+        display: flex;
+        
+        margin-bottom: 20px;
+    }
+    
+    .questionContentsWrap .replyTitleContainer p {
+        margin-right: 30px;
+    }
+    
+    .questionContentsWrap .replyTitleContainer p:nth-child(2) {
+        color: #aaa;
+        font-size: 0.8em;
+        line-height: 20px;
+    }
+    
+    .questionContentsWrap .replyTitleContainer input {
+        margin-right: 5px;
+        font-size: 0.5em;
+    }
+    
+    /* .replyPageContainer */
+    .questionContentsWrap .replyPageContainer {
+        width: 900px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        
+        margin-top: 30px;
+    }
+    
+    .questionContentsWrap .replyPageContainer p {
+        margin: 0 5px;
+    }
