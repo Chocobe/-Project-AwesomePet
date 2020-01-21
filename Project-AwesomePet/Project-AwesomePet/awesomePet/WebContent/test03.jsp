@@ -16,8 +16,31 @@
 	</head>
 	
 	<body>
-		<h1>FrontController -> IndexController 로 요청 처리 페이지 입니다</h1>
+		<h1>testarea 테스트 중입니다.</h1>
+		<form class="myForm" action="test01" method="POST">
+			<textarea class="myTest" name="myTest"></textarea>
+			<br/>
+			<input type="button" value="전송" onclick="readTest();">
+		</form>
 		
-		<%@ include file="/views/header.jsp" %>
+		<div class="result"></div>
+		
+		
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			function readTest() {
+				const inputValue = $(".myTest").val();
+				alert("입력값 : " + inputValue);
+				
+				const arr = inputValue.split("\n");
+				
+				for(var i = 0; i < arr.length; i++) {
+					const text = arr[i];
+					const div = $("<p>").text(text);
+					
+					$(".result").append(div);
+				}
+			}
+		</script>
 	</body>
 </html>

@@ -30,25 +30,11 @@ public class Test01 extends HttpServlet {
 	
 	protected void doHandler(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		
 		PrintWriter out = response.getWriter();
+		String inputValue = request.getParameter("myTest");
 		
-		Date date = Date.valueOf("1987-5-17");
-		out.print("<h1>Date객체 값</h1>");
-		out.print("<p>" + date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일</p>");
-		
-		LocalDate local = date.toLocalDate();
-		out.print("<h1>LocalDate객체 값</h1>");
-		out.print("<p>" + local.getYear() + "년 " + local.getMonthValue() + "월 " + local.getDayOfMonth() + "일</p>");
-		
-		out.print("<hr/><hr/>");
-		
-		String testString = "";
-		for(int i = 0; i < 3; i++) {
-			testString += "*";
-		}
-		out.print("<p>마스킹 테스트 : " + testString + "</p>");
+		out.print("<pre>" + inputValue + "</pre>");
+		System.out.println(inputValue);
 		
 		out.close();
 	}
