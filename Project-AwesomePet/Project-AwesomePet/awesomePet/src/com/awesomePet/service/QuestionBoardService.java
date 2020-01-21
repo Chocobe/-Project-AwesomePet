@@ -28,6 +28,12 @@ public class QuestionBoardService {
 	
 // "궁금해요" 게시판의 게시글을 조회합니다.
 	public List<QuestionContentsVO> getQuestionContentsList(int requestPage) {
-		return questionBoardDAO.selectContents(requestPage);
+		return questionBoardDAO.selectContentsList(requestPage);
+	}
+	
+	
+// "궁금해요" 특정 글을 조회합니다.
+	public QuestionContentsVO getQuestionContents(int requestBoardIDX) {
+		return questionBoardDAO.selectContents(requestBoardIDX);
 	}
 }
