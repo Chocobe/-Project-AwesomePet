@@ -11,6 +11,27 @@ public class QuestionContentsVO {
 	private int watch;
 	
 	
+// 생성자
+	public QuestionContentsVO() {
+		this(-1, null, null, null, null, -1);
+	}
+	
+	
+	public QuestionContentsVO(int boardIDX,
+							  String writerID,
+							  String title,
+							  String content,
+							  LocalDate writeDate,
+							  int watch) {
+		this.boardIDX = boardIDX;
+		this.writerID = writerID;
+		this.title = title;
+		this.content = content;
+		this.writeDate = writeDate;
+		this.watch = watch;
+	}
+	
+	
 // boardIDX
 	public int getBoardIDX() {
 		return boardIDX;
