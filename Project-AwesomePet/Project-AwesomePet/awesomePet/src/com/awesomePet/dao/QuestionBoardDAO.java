@@ -1,6 +1,7 @@
 package com.awesomePet.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,7 +66,7 @@ public class QuestionBoardDAO {
 	
 	
 // QuestionBoard 글 목록을 조회합니다.
-	public List<QuestionContentsVO> selectContents(int requestPage) {
+	public List<QuestionContentsVO> selectContentsList(int requestPage) {
 		List<QuestionContentsVO> contentsList = new ArrayList<QuestionContentsVO>();
 		
 		try {
@@ -101,4 +102,61 @@ public class QuestionBoardDAO {
 		
 		return contentsList;
 	}
+	
+	
+// QuestionBoard의 특정 글을 조회 합니다.
+	public QuestionContentsVO selectContents(int requestBoardIDX) {
+		QuestionContentsVO resultVO = null;
+		
+		try {
+			String sql = "SELECT * FROM questionBoard " +
+						 "WHERE boardIDx=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, requestBoardIDX);
+			resultSet = pstmt.executeQuery();
+			
+			if(resultSet.next()) {
+				resultVO = new QuestionContentsVO(resultSet.getInt("boardIDX"),
+												  resultSet.getString("writerID"),
+												  resultSet.getString("title"),
+												  resultSet.getString("content"),
+												  resultSet.getDate("writeDate").toLocalDate(),
+												  resultSet.getInt("watch"));
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - selectContents() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return resultVO;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
