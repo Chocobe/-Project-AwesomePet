@@ -208,3 +208,45 @@ INSERT INTO questionboard(writerID,
 						 VALUES('aa',
 						 		  '추워추워...',
 						 		  '서울은 부산보다 춥겠죠??');
+	
+--25					 		  
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '긴 글 테스트 중입니다.',
+								  '안녕하세요
+									저는 aa입니다.
+									잘 부탁드립니다.');
+
+-- 26
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '긴 글 테스트 중입니다.',
+'안녕하세요
+저는 aa입니다.
+잘 부탁드립니다.');
+
+-- 27
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '긴 글 테스트 중입니다.',
+								  '안녕하세요
+									저는 aa입니다.
+									잘 부탁드립니다.
+									긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. ');
+									
+-- 28
+INSERT INTO questionboard(writerID,
+								  title,
+								  content)
+						 VALUES('aa',
+						 		  '정말 긴 글 테스트 중입니다.',
+								  '안녕하세요
+									저는 aa입니다.
+									잘 부탁드립니다.
+									긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. 긴 글 입니다. ');
