@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.io.File"%>
 <%@ page
 	language="java"
 	contentType="text/html;charset=UTF-8"
@@ -11,13 +13,22 @@
 <c:set var="contextPath" value="<%= request.getContextPath() %>"/>
 
 
+<%
+	String footer_css = application.getRealPath("/css/footer.css");
+	File footer_css_file = new File(footer_css);
+	Date footer_css_ver = new Date(footer_css_file.lastModified());
+%>
+
+<c:set var="footer_css_ver" value="<%= footer_css_ver %>"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		
-		<link rel="stylesheet" href="${contextPath}/css/footer.css"/>
+		<link rel="stylesheet" href="${contextPath}/css/footer.css?ver=${footer_css_ver}"/>
 	</head>
 	
 	<body>

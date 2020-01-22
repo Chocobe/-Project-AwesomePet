@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+/* .questionTitleContainer */
+	.questionTitleContainer {	    
+	    margin: 40px 0 20px;
+	    padding-left: 50px;
+	}
+	
+	.questionTitleContainer h1 {
+	    font-size: 2em;
+	}
+	
+	.questionTitleContainer p {
+	    font-size: 1.2em;
+	}
+
+
 /* .questionContentsWrap */
     .questionContentsWrap {
         width: 100%;

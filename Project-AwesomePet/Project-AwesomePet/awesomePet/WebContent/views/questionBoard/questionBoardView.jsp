@@ -20,11 +20,13 @@
 	File initialize_css_file = new File(initialize_css);
 	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
 	
-	String questionBoardView_css = application.getRealPath("/css/questionBoardView.css");
+	String questionBoardView_css = application.getRealPath("/css/questionBoard/questionBoardView.css");
 	File questionBoardView_css_file = new File(questionBoardView_css);
 	Date questionBoardView_css_ver = new Date(questionBoardView_css_file.lastModified());
 %>
 
+<c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
+<c:set var="questionBoardView_css_ver" value="<%= questionBoardView_css_ver %>"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -39,6 +41,7 @@
     </head>
     
     <body>
+    	<!-- 헤더 페이지를 포함시킵니다. -->
     	<%@ include file="/views/header.jsp" %>
     
     
@@ -111,6 +114,7 @@
         </section>
         
         
+        <!-- 푸터 페이지를 포함시킵니다. -->
         <%@ include file="/views/footer.jsp" %>
     </body>
 </html>

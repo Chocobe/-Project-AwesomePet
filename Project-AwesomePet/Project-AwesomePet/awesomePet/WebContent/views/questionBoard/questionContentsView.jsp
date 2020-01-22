@@ -29,6 +29,10 @@
 	Date questionContentsView_js_ver = new Date(questionContentsView_js_file.lastModified());
 %>
 
+<c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
+<c:set var="questionContentsView_css_ver" value="<%= questionContentsView_css_ver %>"/>
+<c:set var="questionContentsView_js_ver" value="<%= questionContentsView_js_ver %>"/>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -38,11 +42,19 @@
         
         <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
         
-		<link href="${contextPath}/css/initialize.css?ver=${initialize_css_ver}" rel="stylesheet" type="text/css">        
+		<link rel="stylesheet" href="${contextPath}/css/initialize.css?ver=${initialize_css_ver}" type="text/css">        
 		<link href="${contextPath}/css/questionBoard/questionContentsView.css?ver=${questionContentsView_css_ver}" rel="stylesheet" type="text/css">
     </head>
     
     <body>
+    	<!-- 헤더 페이지를 포함시킵니다. -->
+    	<%@ include file="/views/header.jsp" %>
+    	
+    	<div class="questionTitleContainer">
+		    <h1>💡 궁금해요</h1>
+		    <p>애완동물에 대한 질문 게시판 입니다.</p>
+		</div>
+    
         <div class="questionContentsWrap">
        		<!-- 글 제목부 입니다. (제목, 작성자, 작성일, 조회수) -->
             <div class="titleContainer">
@@ -203,6 +215,10 @@
                 <a href="#">끝</a>
             </div>
         </div>
+        
+        
+        <!-- 푸터 페이지를 포함시킵니다. -->
+        <%@ include file="/views/footer.jsp" %>
         
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
