@@ -23,10 +23,16 @@
 	String questionBoardView_css = application.getRealPath("/css/questionBoard/questionBoardView.css");
 	File questionBoardView_css_file = new File(questionBoardView_css);
 	Date questionBoardView_css_ver = new Date(questionBoardView_css_file.lastModified());
+	
+	String questionBoardView_js = application.getRealPath("/js/questionBoard/questionBoardView.js");
+	File questionBoardView_js_file = new File(questionBoardView_js);
+	Date questionBoardView_js_ver = new Date(questionBoardView_js_file.lastModified());
 %>
 
 <c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
 <c:set var="questionBoardView_css_ver" value="<%= questionBoardView_css_ver %>"/>
+<c:set var="questionBoardView_js_ver" value="<%= questionBoardView_js_ver %>"/>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -109,12 +115,16 @@
             </div>
             
             <div class="buttonContainer">
-                <input type="button" value="글쓰기">
+                <input type="button" value="글쓰기" onclick="questionWriterView('${contextPath}');">
             </div>
         </section>
         
         
         <!-- 푸터 페이지를 포함시킵니다. -->
         <%@ include file="/views/footer.jsp" %>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      	<script src="${contextPath}/js/questionBoard/questionBoardView.js?ver=${questionBoardView_js_ver}" type="text/javascript"></script>
     </body>
 </html>
