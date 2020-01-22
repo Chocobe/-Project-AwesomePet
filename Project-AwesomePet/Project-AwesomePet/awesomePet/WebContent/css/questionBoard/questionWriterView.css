@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* .questionWriterContainer */
+    .questionWriterContainer {
+        width: 1024px;
+        
+        margin-top: 20px;
+        padding: 30px;
+        
+        border: 1px solid #aaa;
+        border-radius: 20px;
+        
+        box-shadow: 0 10px 10px 5px #999;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    
+/* .titleContainer */
+    .questionWriterContainer form .titleContainer {
+        width: 900px;
+        
+        margin-top: 30px;
+        
+        position: relative;
+    }
+    
+    .questionWriterContainer form .titleContainer input {
+        width: 450px;
+        
+        padding: 0 20px;
+        
+        font-size: 1.2em;
+        
+        border-radius: 5px;
+    }
+    
+    .questionWriterContainer form .titleContainer label {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        
+        color: #03a9f4;
+        font-size: 0.8em;
+    }
+    
+    
+/* .contentsContainer */
+    .questionWriterContainer form .contentsContainer {
+        width: 900px;
+        
+        margin-top: 50px;
+        
+        position: relative;
+    }
+    
+    .questionWriterContainer form .contentsContainer textarea {
+        width: 900px;
+        height: 150px;
+        
+        padding: 0 20px;
+        
+        font-size: 1.2em;
+        
+        border-radius: 10px;
+        
+        resize: none;
+    }
+    
+    .questionWriterContainer form .contentsContainer label {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        
+        color: #03a9f4;
+        font-size: 0.8em;
+    }
+    
+    
+/* .buttonsContainer */
+    .questionWriterContainer .buttonsContainer {
+        width: 900px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    .questionWriterContainer .buttonsContainer input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 30px;
+        
+        color: #fff;
+        font-size: 1.2em;
+        
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        
+        background: #03a9f4;
+        
+        transition: 0.5s;
+    }
+    
+    .questionWriterContainer .buttonsContainer input[type="submit"]:hover {
+        background: #ff0058;
+    }
