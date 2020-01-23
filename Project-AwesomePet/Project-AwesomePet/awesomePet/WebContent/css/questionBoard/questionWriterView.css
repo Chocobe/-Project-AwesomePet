@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+/* .questionTitleContainer */
+	.questionTitleContainer {	    
+	    margin: 40px 0 20px;
+	    padding-left: 50px;
+	    
+	    background: rgba(255, 255, 255, 0.9);
+	    
+	    border-radius: 20px;
+	}
+	
+	.questionTitleContainer h1 {
+	    font-size: 2em;
+	}
+	
+	.questionTitleContainer p {
+	    font-size: 1.2em;
+	}
+
 /* .questionWriterContainer */
     .questionWriterContainer {
         width: 1024px;
@@ -30,11 +48,11 @@
     .questionWriterContainer form .titleContainer input {
         width: 450px;
         
-        padding: 0 20px;
-        
         font-size: 1.2em;
         
-        border-radius: 5px;
+        border: none;
+        border-bottom: 1px solid #999;
+        outline: none;
     }
     
     .questionWriterContainer form .titleContainer label {
@@ -58,13 +76,14 @@
     
     .questionWriterContainer form .contentsContainer textarea {
         width: 900px;
-        height: 150px;
+        height: 300px;
         
         padding: 0 20px;
         
         font-size: 1.2em;
         
         border-radius: 10px;
+        outline: none;
         
         resize: none;
     }

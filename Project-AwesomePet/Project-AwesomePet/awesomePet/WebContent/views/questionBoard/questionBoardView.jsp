@@ -16,7 +16,7 @@
 
 
 <%
-	String initialize_css = application.getRealPath("/css/iniaitlize.css");
+	String initialize_css = application.getRealPath("/css/initialize.css");
 	File initialize_css_file = new File(initialize_css);
 	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
 	

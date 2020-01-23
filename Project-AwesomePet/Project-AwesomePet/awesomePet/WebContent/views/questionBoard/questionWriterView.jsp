@@ -16,11 +16,11 @@
 
 
 <%
-	String initialize_css = "/css/initialize.css";
+	String initialize_css = application.getRealPath("/css/initialize.css");
 	File initialize_css_file = new File(initialize_css);
 	Date initialize_css_ver = new Date(initialize_css_file.lastModified());
 	
-	String questionWriterView_css = "/css/questionWriterView.css";
+	String questionWriterView_css = application.getRealPath("css/questionBoard/questionWriterView.css");
 	File questionWriterView_css_file = new File(questionWriterView_css);
 	Date questionWriterView_css_ver = new Date(questionWriterView_css_file.lastModified());
 %>
@@ -44,12 +44,17 @@
     <body>
     	<!-- 헤더 페이지를 포함시킵니다. -->
     	<%@ include file="/views/header.jsp" %>
+
     	
+    	<div class="questionTitleContainer">
+		    <h1>💡 궁금해요</h1>
+		    <p>애완동물에 대한 질문 게시판 입니다.</p>
+		</div>
     
         <div class="questionWriterContainer">
             <form action="" method="POST">
                 <div class="titleContainer">
-                    <input type="text" name="title">
+                    <input type="text" name="title" autocomplete="off">
                     <label>제목을 입력하세요</label>
                 </div>
                 
