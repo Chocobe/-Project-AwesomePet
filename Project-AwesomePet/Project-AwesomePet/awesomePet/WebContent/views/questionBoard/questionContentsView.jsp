@@ -98,14 +98,16 @@
                 	</c:otherwise>
                 </c:choose>
                 
-                <!-- 작성자에게만 출력되도록 수정할 것 -->
-                <form action="${contextPath}/questionWriterView.do" method="POST">
-                	<input type="hidden" name="action" value="questionContentsUpdate.do">
-                	<input type="hidden" name="requestBoardIDX" value="${questionContentsVO.boardIDX}">
-                	<input type="submit" value="글수정">
-                </form>
-                
-                <input type="button" value="글삭제">
+                <!-- 작성자일 경우, 수정/삭제 버튼을 출력합니다. -->
+                <c:if test="${memberLoginID eq questionContentsVO.writerID}">
+	                <form action="${contextPath}/questionWriterView.do" method="POST">
+	                	<input type="hidden" name="action" value="questionContentsUpdate.do">
+	                	<input type="hidden" name="requestBoardIDX" value="${questionContentsVO.boardIDX}">
+	                	<input type="submit" value="글수정">
+	                </form>
+	                
+	                <input type="button" value="글삭제">
+				</c:if>
             </div>
             
             
