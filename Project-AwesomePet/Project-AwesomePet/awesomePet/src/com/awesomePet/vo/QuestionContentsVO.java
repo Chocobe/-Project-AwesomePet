@@ -13,9 +13,24 @@ public class QuestionContentsVO {
 	
 // 생성자
 	public QuestionContentsVO() {
-		this(-1, null, null, null, null, -1);
+		this(-1, 
+			 null, 
+			 null, 
+			 null, 
+			 null, 
+			 -1);
 	}
 	
+	public QuestionContentsVO(String writerID,
+							  String title,
+							  String content) {
+		this(-1,
+			 writerID,
+			 title,
+			 content,
+			 null,
+			 -1);
+	}
 	
 	public QuestionContentsVO(int boardIDX,
 							  String writerID,
