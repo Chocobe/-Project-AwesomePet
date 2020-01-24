@@ -1,7 +1,6 @@
 package com.awesomePet.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -134,6 +133,70 @@ public class QuestionBoardDAO {
 		}
 		
 		return resultVO;
+	}
+	
+	
+	public QuestionContentsVO selectContents(String writerID, String title, String content) {
+		QuestionContentsVO questionContentsVO = null;
+		
+		try {
+			String sql = "SELECT * FROM questionBoard " +
+						 "WHERE writerID=? AND title=? AND content=? " +
+						 "ORDER BY boardIDX DESC " +
+						 "LIMIT 1";
+			readyForQuery(sql);
+			pstmt.setString(1, writerID);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			
+			resultSet = pstmt.executeQuery();
+			
+			if(resultSet.next()) {
+				questionContentsVO = new QuestionContentsVO(resultSet.getInt("boardIDX"),
+															resultSet.getString("writerID"),
+															resultSet.getString("title"),
+															resultSet.getString("content"),
+															resultSet.getDate("writeDate").toLocalDate(),
+															resultSet.getInt("watch"));
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<questionBoardDAO - selectContents() 에러> : " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return questionContentsVO;
+	}
+	
+	
+// QuestionBoard 글을 작성합니다.
+	public int insertQuestionContents(QuestionContentsVO questionContentsVO) {
+		int result = -1;
+		
+		try {
+			String sql = "INSERT INTO questionBoard(writerID, title, content) " +
+						 "VALUES(?, ?, ?)";
+			readyForQuery(sql);
+			
+			pstmt.setString(1, questionContentsVO.getWriterID());
+			pstmt.setString(2, questionContentsVO.getTitle());
+			pstmt.setString(3, questionContentsVO.getContent());
+			
+			result = pstmt.executeUpdate();
+			
+			if(result == 1) {
+				System.out.println("글 작성 완료!");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - insertQuestionContents() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
 	}
 }
 
