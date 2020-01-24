@@ -59,7 +59,7 @@
                 </div>
                 
                 <div class="contentsContainer">
-                    <textarea>${questionContentsVO.content}</textarea>
+                    <textarea name="content">${questionContentsVO.content}</textarea>
                     <label>내용을 입력하세요</label>
                 </div>
                 

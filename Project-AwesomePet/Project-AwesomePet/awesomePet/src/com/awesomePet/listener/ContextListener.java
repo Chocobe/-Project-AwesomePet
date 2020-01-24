@@ -23,6 +23,7 @@ import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoResultViewController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionBoardViewController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionContentsViewController;
+import com.awesomePet.controllers.questionBoardControllers.QuestionContentsWriteController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionWriterViewController;
 
 public class ContextListener implements ServletContextListener {
@@ -85,6 +86,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 질문 게시판(궁금해요) 글 작성 페이지 요청 컨트롤러
 		subControllers.put("/questionWriterView.do", new QuestionWriterViewController());
+		
+		// 질문 게시판(궁금해요) 글 작성 요청 컨트롤러
+		subControllers.put("/questionContentsWrite.do", new QuestionContentsWriteController());
 		
 		
 		event.getServletContext().setAttribute("subControllers", subControllers);
