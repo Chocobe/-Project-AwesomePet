@@ -36,4 +36,14 @@ public class QuestionBoardService {
 	public QuestionContentsVO getQuestionContents(int requestBoardIDX) {
 		return questionBoardDAO.selectContents(requestBoardIDX);
 	}
+	
+	public QuestionContentsVO getQuestionContents(String writerID, String title, String content) {
+		return questionBoardDAO.selectContents(writerID, title, content);
+	}
+	
+	
+// "궁금해요" 글을 작성합니다.
+	public int writeQuestionContents(QuestionContentsVO questionContentsVO) {
+		return questionBoardDAO.insertQuestionContents(questionContentsVO);
+	}
 }
