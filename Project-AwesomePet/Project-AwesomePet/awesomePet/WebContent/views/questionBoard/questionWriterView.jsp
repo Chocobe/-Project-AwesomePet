@@ -66,6 +66,7 @@
                 <div class="buttonsContainer">
                 	<c:choose>
                 		<c:when test='${action eq "questionContentsUpdate.do"}'>
+                			<input type="hidden" name="writeDate" value="${questionContentsVO.writeDate}">
                    			<input type="submit" value="수정하기">
                     	</c:when>
                     	

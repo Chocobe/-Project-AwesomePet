@@ -24,3 +24,8 @@ function initContent() {
 function backToList() {
 	history.go(-1);
 }
+
+// 목록으로 돌아가는 버튼 입니다. (글 작성/수정했을 경우)
+function goToList(context) {
+	location.href = context + "/questionBoardView.do";
+}

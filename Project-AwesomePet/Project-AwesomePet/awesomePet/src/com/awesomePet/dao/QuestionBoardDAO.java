@@ -185,7 +185,7 @@ public class QuestionBoardDAO {
 			result = pstmt.executeUpdate();
 			
 			if(result == 1) {
-				System.out.println("글 작성 완료!");
+				System.out.println("<QuestionBoardDAO - insertQuestionContents() 알림> : 글 작성 완료!");
 			}
 			
 		} catch(SQLException e) {

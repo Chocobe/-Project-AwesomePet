@@ -1,6 +1,7 @@
 package com.awesomePet.controllers.questionBoardControllers;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class QuestionContentsWriteController implements SubController {
 		
 		if(result == 1) {
 			int boardIDX = questionBoardService.getQuestionContents(writerID, title, content).getBoardIDX();
-			resultPagePath += "?requestBoardIDX=" + boardIDX;
+			resultPagePath += "?requestBoardIDX=" + boardIDX + "&action=fixed";
 		}
 		
 		ControllerUtil.forward(request, response, resultPagePath);

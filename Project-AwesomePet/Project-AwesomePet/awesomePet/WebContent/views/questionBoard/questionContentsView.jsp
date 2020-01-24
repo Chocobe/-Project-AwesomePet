@@ -88,8 +88,17 @@
             
             <!-- 글 처리 버튼입니다. (목록으로 이동, 수정, 삭제) -->
             <div class="optionButtonsContainer">
-                <input type="button" value="목록으로" onclick="backToList();">
+            	<c:choose>
+            		<c:when test='${action eq "fixed"}'>
+                		<input type="button" value="목록으로" onclick="goToList('${contextPath}');">
+                	</c:when>
+                	
+                	<c:otherwise>
+                		<input type="button" value="목록으로" onclick='backToList();'>
+                	</c:otherwise>
+                </c:choose>
                 
+                <!-- 작성자에게만 출력되도록 수정할 것 -->
                 <form action="${contextPath}/questionWriterView.do" method="POST">
                 	<input type="hidden" name="action" value="questionContentsUpdate.do">
                 	<input type="hidden" name="requestBoardIDX" value="${questionContentsVO.boardIDX}">
