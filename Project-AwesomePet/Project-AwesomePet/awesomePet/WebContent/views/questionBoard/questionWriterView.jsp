@@ -52,19 +52,27 @@
 		</div>
     
         <div class="questionWriterContainer">
-            <form action="" method="POST">
+            <form action="${contextPath}/${action}" method="POST">
                 <div class="titleContainer">
-                    <input type="text" name="title" autocomplete="off">
+                    <input type="text" name="title" value="${questionContentsVO.title}" autocomplete="off">
                     <label>제목을 입력하세요</label>
                 </div>
                 
                 <div class="contentsContainer">
-                    <textarea></textarea>
+                    <textarea>${questionContentsVO.content}</textarea>
                     <label>내용을 입력하세요</label>
                 </div>
                 
                 <div class="buttonsContainer">
-                    <input type="submit" value="글쓰기">
+                	<c:choose>
+                		<c:when test='${action eq "questionContentsUpdate.do"}'>
+                   			<input type="submit" value="수정하기">
+                    	</c:when>
+                    	
+                    	<c:otherwise>
+                    		<input type="submit" value="글쓰기">
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
             </form>
         </div>

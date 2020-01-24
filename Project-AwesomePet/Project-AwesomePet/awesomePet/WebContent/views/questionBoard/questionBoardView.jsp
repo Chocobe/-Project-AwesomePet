@@ -115,7 +115,10 @@
             </div>
             
             <div class="buttonContainer">
-                <input type="button" value="글쓰기" onclick="questionWriterView('${contextPath}');">
+            	<form action="${contextPath}/questionWriterView.do" method="GET">
+            		<input type="hidden" name="action" value="questionContentsWrite.do">
+                	<input type="submit" value="글쓰기">
+               	</form>
             </div>
         </section>
         

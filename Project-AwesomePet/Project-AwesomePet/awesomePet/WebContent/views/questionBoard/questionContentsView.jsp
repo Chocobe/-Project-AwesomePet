@@ -89,7 +89,13 @@
             <!-- 글 처리 버튼입니다. (목록으로 이동, 수정, 삭제) -->
             <div class="optionButtonsContainer">
                 <input type="button" value="목록으로" onclick="backToList();">
-                <input type="button" value="글수정">
+                
+                <form action="${contextPath}/questionWriterView.do" method="POST">
+                	<input type="hidden" name="action" value="questionContentsUpdate.do">
+                	<input type="hidden" name="requestBoardIDX" value="${questionContentsVO.boardIDX}">
+                	<input type="submit" value="글수정">
+                </form>
+                
                 <input type="button" value="글삭제">
             </div>
             
