@@ -69,7 +69,9 @@ public class QuestionBoardDAO {
 		List<QuestionContentsVO> contentsList = new ArrayList<QuestionContentsVO>();
 		
 		try {
-			String sql = "SELECT * FROM questionBoard LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM questionBoard " + 
+						 "ORDER BY boardIDX DESC " +
+						 "LIMIT ? OFFSET ?";
 			int offset = (requestPage - 1) * (int)QUERY_LIMIT;
 			
 			readyForQuery(sql);
@@ -190,6 +192,34 @@ public class QuestionBoardDAO {
 			
 		} catch(SQLException e) {
 			System.out.println("<QuestionBoardDAO - insertQuestionContents() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+// QuestionBoard 글을 수정합니다.
+	public int updateQuestionContents(QuestionContentsVO questionContentsVO) {
+		int result = -1;
+		
+		try {
+			String sql = "UPDATE questionBoard " +
+						 "SET title=?, content=? " +
+						 "WHERE boardIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, questionContentsVO.getTitle());
+			pstmt.setString(2, questionContentsVO.getContent());
+			pstmt.setInt(3, questionContentsVO.getBoardIDX());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - updateQuestionContents() 에러> : " + e.getMessage());
 			e.printStackTrace();
 			
 		} finally {
