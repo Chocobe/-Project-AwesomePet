@@ -23,6 +23,9 @@ FROM questionboard;
 SELECT COUNT(*) DIV 3 + 1 AS myResult
 FROM questionboard;
 
+SELECT * FROM questionboard
+WHERE writeDate = DATE(CURRENT_TIMESTAMP());
+
 
 -- 1
 INSERT INTO questionBoard(writerID,

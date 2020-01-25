@@ -28,8 +28,6 @@ public class QuestionWriterViewController implements SubController {
 		} else {
 			resultPagePath = "/views/questionBoard/questionWriterView.jsp";
 			
-			request.setAttribute("action", request.getParameter("action"));
-			
 			// GET : 글쓰기, POST : 수정하기
 			if(request.getMethod().equals("POST")) {
 				doPost(request, response);
