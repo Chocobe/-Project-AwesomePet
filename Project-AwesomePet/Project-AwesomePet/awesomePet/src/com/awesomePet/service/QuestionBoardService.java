@@ -47,4 +47,10 @@ public class QuestionBoardService {
 	public int writeQuestionContents(QuestionContentsVO questionContentsVO) {
 		return questionBoardDAO.insertQuestionContents(questionContentsVO);
 	}
+	
+	
+// "궁금해요" 글을 수정합니다.
+	public int updateQuestionContents(QuestionContentsVO questionContentsVO) {
+		return questionBoardDAO.updateQuestionContents(questionContentsVO);
+	}
 }
