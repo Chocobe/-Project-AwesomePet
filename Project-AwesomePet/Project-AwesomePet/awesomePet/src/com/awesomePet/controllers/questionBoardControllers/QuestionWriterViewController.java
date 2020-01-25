@@ -50,10 +50,4 @@ public class QuestionWriterViewController implements SubController {
 		
 		request.setAttribute("questionContentsVO", questionContentsVO);
 	}
-	
-	
-	// "궁금해요" 글 작성 페이지 요청 메서드 입니다.
-	private void doGet(HttpServletRequest request, HttpServletResponse response) {
-		
-	}
 }

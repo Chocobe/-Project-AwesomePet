@@ -52,6 +52,8 @@
 		</div>
     
         <div class="questionWriterContainer">
+        	<!-- action값이 questionContentsUpdate.do일 경우, 글수정을 수행합니다. -->
+        	<!-- action값이 null일 경우, 글작성을 수행합니다. -->
             <form action="${contextPath}/${action}" method="POST">
                 <div class="titleContainer">
                     <input type="text" name="title" value="${questionContentsVO.title}" autocomplete="off">
@@ -66,7 +68,7 @@
                 <div class="buttonsContainer">
                 	<c:choose>
                 		<c:when test='${action eq "questionContentsUpdate.do"}'>
-                			<input type="hidden" name="writeDate" value="${questionContentsVO.writeDate}">
+                			<input type="hidden" name="requestBoardIDX" value="${questionContentsVO.boardIDX}">
                    			<input type="submit" value="수정하기">
                     	</c:when>
                     	
