@@ -33,6 +33,17 @@ public class QuestionContentsVO {
 	}
 	
 	public QuestionContentsVO(int boardIDX,
+							  String title,
+							  String content) {
+		this(boardIDX,
+			 null,
+			 title,
+			 content,
+			 null,
+			 -1);
+	}
+	
+	public QuestionContentsVO(int boardIDX,
 							  String writerID,
 							  String title,
 							  String content,
