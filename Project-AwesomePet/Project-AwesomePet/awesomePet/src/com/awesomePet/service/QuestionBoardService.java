@@ -53,4 +53,10 @@ public class QuestionBoardService {
 	public int updateQuestionContents(QuestionContentsVO questionContentsVO) {
 		return questionBoardDAO.updateQuestionContents(questionContentsVO);
 	}
+	
+	
+// "궁금해요" 글을 삭제합니다.
+	public int deleteQuestionContents(int boardIDX) {
+		return questionBoardDAO.deleteQuestionContents(boardIDX);
+	}
 }
