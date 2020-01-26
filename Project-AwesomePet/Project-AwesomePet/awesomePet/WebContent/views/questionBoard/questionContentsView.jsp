@@ -244,8 +244,8 @@
     		<div class="innerContainer">
 	    		<h2>정말로 삭제하시겠습니까?</h2>
 	    		<p>(삭제한 글은 복구할 수 없습니다)</p>
-	    		<input type="button" value="삭제">
-	    		<input type="button" value="취소" onclick="deleteConfirm();">
+	    		<input type="button" value="삭제" onclick="deleteConfirm(`${contextPath}`, `${questionContentsVO.boardIDX}`)">
+	    		<input type="button" value="취소" onclick="deleteCancel();">
 	    	</div>
     	</div>
     	

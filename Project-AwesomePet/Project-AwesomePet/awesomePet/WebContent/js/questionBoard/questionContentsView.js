@@ -53,7 +53,29 @@ function deleteContents(context) {
 	
 }
 
-function deleteConfirm() {
+
+// 글 삭제 확인 메서드 입니다.
+function deleteConfirm(context, boardIDX) {
+	$.ajax({
+		type: "POST",
+		async: true,
+		url: context + "/questionContentsDelete.do",
+		data: {"requestBoardIDX": boardIDX},
+		dataType: "text",
+		success: function(text, status) {
+			if(text == 1) {
+				location.href = context + "/questionBoardView.do";
+				
+			} else {
+				alert("삭제 실패");
+			}
+		}
+	});
+}
+
+
+// 글 삭제 취소 메서드 입니다.
+function deleteCancel() {
 	// 삭제를 취소할 경우, 화면의 높이값을 원래대로 변경합니다. (scroll기능 on) 
 	$(".questionContentsWrap").css({"height": "auto"});
 	$(".deleteConfirmContainer").css({"display": "none"});
