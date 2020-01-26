@@ -228,6 +228,30 @@ public class QuestionBoardDAO {
 		
 		return result;
 	}
+	
+	
+// QuestionBoard 글을 삭제합니다.
+	public int deleteQuestionContents(int boardIDX) {
+		int result = -1;
+		
+		try {
+			String sql = "DELETE FROM questionBoard ";
+			sql += "WHERE boardIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, boardIDX);
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - deleteQuestionContents() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
 
 
