@@ -206,3 +206,66 @@
     .questionContentsWrap .replyPageContainer p {
         margin: 0 5px;
     }
+    
+    
+    /* 수정중 */
+    /* .deleteConfirmContainer */
+    .deleteConfirmContainer {
+    	width: calc(100% + 40px);
+    	height: 100%;
+    	
+    	position: absolute;
+    	top: 0;
+    	left: -20px;
+    	
+    	border-radius: 20px;
+    	
+    	background: rgba(0, 0, 0, 0.7);
+    	
+    	display: none;
+    }
+    
+    .deleteConfirmContainer .innerContainer {
+    	width: 300px;
+    	
+    	margin: 300px auto;
+    	padding: 30px;
+    	
+    	border-radius: 20px;
+    	
+    	background: #fff;
+    	
+    	display: flex;
+    	flex-flow: row wrap;
+    	justify-content: center;
+    	
+    	z-index: 1;
+    }
+    
+    .deleteConfirmContainer .innerContainer h2,
+    .deleteConfirmContainer .innerContainer p {
+    	width: 100%;
+    	
+    	text-align: center;
+    }
+    
+    .deleteConfirmContainer .innerContainer input {
+    	font-size: 16px;
+    	
+    	padding: 5px 20px;
+    	margin: 20px 5px 0;
+    	
+    	border: none;
+    	border-radius: 10px;
+    	outline: none;
+    	
+    	background: #03a9f4;
+    	
+    	cursor: pointer;
+    	
+    	transition: 0.3s;
+    }
+    
+    .deleteConfirmContainer .innerContainer input:hover {
+    	background: #ff0058;
+    }

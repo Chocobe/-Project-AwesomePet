@@ -49,6 +49,7 @@
     <body>
     	<!-- 헤더 페이지를 포함시킵니다. -->
     	<%@ include file="/views/header.jsp" %>
+
     	
     	<div class="questionTitleContainer">
 		    <h1>💡 궁금해요</h1>
@@ -106,7 +107,7 @@
 	                	<input type="submit" value="글수정">
 	                </form>
 	                
-	                <input type="button" value="글삭제">
+	                <input type="button" value="글삭제" onclick="deleteContents(`${contextPath}`)">
 				</c:if>
             </div>
             
@@ -238,7 +239,20 @@
         <%@ include file="/views/footer.jsp" %>
         
         
+        <!-- 삭제 확인창 입니다. -->
+    	<div class="deleteConfirmContainer">
+    		<div class="innerContainer">
+	    		<h2>정말로 삭제하시겠습니까?</h2>
+	    		<p>(삭제한 글은 복구할 수 없습니다)</p>
+	    		<input type="button" value="삭제">
+	    		<input type="button" value="취소" onclick="deleteConfirm();">
+	    	</div>
+    	</div>
+    	
+        
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="${contextPath}/js/questionBoard/questionContentsView.js?ver=${questionContentsView_js_ver}" type="text/javascript"></script>
     </body>
+    
+
 </html>
