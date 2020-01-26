@@ -27,6 +27,11 @@ SELECT * FROM questionboard
 WHERE writeDate = DATE(CURRENT_TIMESTAMP());
 
 
+UPDATE questionboard
+SET title='첫번째 질문이다', content='궁금한게 너무 많음!'
+WHERE boardIDX=1;
+
+
 -- 1
 INSERT INTO questionBoard(writerID,
 								 title,
