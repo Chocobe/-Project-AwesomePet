@@ -1,6 +1,5 @@
 package com.awesomePet.service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import com.awesomePet.dao.QuestionBoardDAO;

@@ -115,94 +115,8 @@
                
                
             <!-- 불러온 댓글 출력부 입니다. -->
-            <div class="replyContainer">
-                <hr/>
-                
-                <div class="replyTitleContainer">
-                    <p class="title">작성자ID</p>
-                    <p class="date">(2020-01-21)</p>
-                    <input type="button" value="🔧" onclick="">
-                    <input type="button" value="❌" onclick="">
-                </div>
-                
-                <p>안녕하세요</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-            </div>
+            <div class="replyContainer"></div>            
             
-            <!-- 불러온 댓글 출력부 입니다. -->
-            <div class="replyContainer">
-                <hr/>
-                
-                <div class="replyTitleContainer">
-                    <p class="title">작성자ID</p>
-                    <p class="date">(2020-01-21)</p>
-                    <input type="button" value="🔧" onclick="">
-                    <input type="button" value="❌" onclick="">
-                </div>
-                
-                <p>안녕하세요</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-            </div>
-            
-            <!-- 불러온 댓글 출력부 입니다. -->
-            <div class="replyContainer">
-                <hr/>
-                
-                <div class="replyTitleContainer">
-                    <p class="title">작성자ID</p>
-                    <p class="date">(2020-01-21)</p>
-                    <input type="button" value="🔧" onclick="">
-                    <input type="button" value="❌" onclick="">
-                </div>
-                
-                <p>안녕하세요</p>
-                <p>리플 테스트 중입니다.</p>
-            </div>
-            
-            <!-- 불러온 댓글 출력부 입니다. -->
-            <div class="replyContainer">
-                <hr/>
-                
-                <div class="replyTitleContainer">
-                    <p class="title">작성자ID</p>
-                    <p class="date">(2020-01-21)</p>
-                    <input type="button" value="🔧" onclick="">
-                    <input type="button" value="❌" onclick="">
-                </div>
-                
-                <p>안녕하세요</p>
-            </div>
-            
-            <!-- 불러온 댓글 출력부 입니다. -->
-            <div class="replyContainer">
-                <hr/>
-                
-                <div class="replyTitleContainer">
-                    <p class="title">작성자ID</p>
-                    <p class="date">(2020-01-21)</p>
-                    <input type="button" value="🔧" onclick="">
-                    <input type="button" value="❌" onclick="">
-                </div>
-                
-                <p>안녕하세요</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-                <p>리플 테스트 중입니다.</p>
-            </div>
             
             <!-- 댓글 페이지부 입니다. -->
             <div class="replyPageContainer">
@@ -244,6 +158,113 @@
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="${contextPath}/js/questionBoard/questionContentsView.js?ver=${questionContentsView_js_ver}" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+        	const replyContainer = $(".questionContentsWrap .replyContainer");
+        
+        	function myTest(contextPath, parentIDX, requestReplyPage) {
+        		$.ajax({
+        			type: "GET",
+        			async: true,
+        			url: contextPath + "/questionReplyView.do",
+        			datatype: "TEXT",
+        			data: {
+        				"parentIDX": parentIDX,
+        				"requestReplyPage": requestReplyPage
+        			},
+        			success: function(resultData, status) {
+        			// 1. 조회 결과를 분할합니다.
+        				// 1-1. 결과 문자열을 JSON형으로 변환합니다.
+        				const parsedJSON = JSON.parse(resultData);
+        				
+        				// 1-2. 페이지 관련 데이터를 추출합니다.
+        				const totalPageCnt = parsedJSON.totalPageCnt;
+        				let testString = "totalPageCnt : " + totalPageCnt + "\n";
+        				testString += ("currentPage : " + parsedJSON.currentPage + "\n");
+        				testString += ("prevPage : " + parsedJSON.prevPage + "\n");
+        				testString += ("nextPage : " + parsedJSON.nextPage + "\n");
+        				testString += ("beginPage : " + parsedJSON.beginPage + "\n");
+        				testString += ("endPage : " + parsedJSON.endPage);
+        					
+        				alert(testString);
+        				
+        				// 1-3. 리플을 출력합니다.
+        				const questionReplyContentsList = parsedJSON.questionReplyContentsList;
+        				for(let i in questionReplyContentsList) {
+        			
+        					// 출력하기 위한 태그요소들을 생성합니다.
+            				// 각각의 댓글이 들어가는 <div class="reply">
+            				const reply = $("<div>").attr({"class": "reply"});
+            				
+            				// 이전 댓글과 구분하기 위한 <hr/>
+            				const hr = $("<hr>");
+            				
+            				// 댓글 헤드부(작성자, 작성일, 수정버튼, 삭제버튼) <div class=".replyTitleContainer">
+            				const replyTitleContainer = $("<div>").attr({"class": "replyTitleContainer"});
+            				// 작성자
+            				const writerID = $("<p>");
+            				writerID.text(questionReplyContentsList[i].writerID);
+            				
+            				// 작성일
+            				const writeDate = $("<p>");
+            				const currentDate = questionReplyContentsList[i].writeDate;
+            				writeDate.text("(" + currentDate.year + "-" + currentDate.month + "-" + currentDate.day + ")");
+            				
+            				// 수정버튼
+            				const fixButton = $("<input>").attr({"type": "button", "value": "🔧", "onclick": "what1();"});
+            				
+            				// 삭제버튼
+            				const deleteButton = $("<input>").attr({"type": "button", "value": "❌", "onclick": "what2();"});
+
+            				reply.append(hr);
+            				reply.append(replyTitleContainer);
+            				
+            				replyTitleContainer.append(writerID);
+            				replyTitleContainer.append(writeDate);
+            				replyTitleContainer.append(fixButton);
+            				replyTitleContainer.append(deleteButton);
+            				
+            				// 개행문자 단위로 분할하여 출력합니다.
+            				const splitedContents = questionReplyContentsList[i].content.split("\n");
+            				for(let i in splitedContents) {
+            					const currentContent = $("<p>").text(splitedContents[i]);
+            					reply.append(currentContent);
+            				}
+            				
+            				/* 생성할 <div class="reply"> 형식 입니다.
+            		            <div class="reply">
+            		                <hr/>
+            		                
+            		                <div class="replyTitleContainer">
+            		                    <p class="replyWriterID">작성자ID</p>
+            		                    <p class="writeDate">(2020-01-21)</p>
+            		                    <input type="button" value="🔧" onclick="">
+            		                    <input type="button" value="❌" onclick="">
+            		                </div>
+            		                
+            		                <p>안녕하세요</p>
+            		                <p>리플 테스트 중입니다.</p>
+            		                <p>리플 테스트 중입니다.</p>
+            		            </div>
+            	        	*/
+        					
+            				replyContainer.append(reply);
+        				}
+        			}
+        		});
+        	}
+        	myTest(`${contextPath}`, `${questionContentsVO.boardIDX}`,`${requestReplyPage}`);
+        	
+        	
+        	function what1() {
+        		alert("what_1");
+        	}
+        	
+        	
+        	function what2() {
+        		alert("what_2");
+        	}
+        </script>
     </body>
     
 

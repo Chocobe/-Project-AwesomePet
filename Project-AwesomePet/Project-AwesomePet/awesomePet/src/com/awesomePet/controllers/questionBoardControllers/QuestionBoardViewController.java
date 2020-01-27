@@ -20,8 +20,6 @@ public class QuestionBoardViewController implements SubController {
 		String resultPagePath = "/views/questionBoard/questionBoardView.jsp";
 		QuestionBoardService questionBoardService = new QuestionBoardService();
 		
-		QuestionBoardVO questionBoardVO = new QuestionBoardVO();
-		
 
 	// 1. 페이지 정보를 구합니다.
 		// 1-1. 전체 페이지 개수를 구합니다.
@@ -46,13 +44,12 @@ public class QuestionBoardViewController implements SubController {
 			requestPage = 1;
 		}
 		
-		questionBoardVO.setPageInfo(totalPageCnt, requestPage);
-		
 		
 	// 2. 요청 페이지에 대한 글 List
 		List<QuestionContentsVO> questionContentsList = questionBoardService.getQuestionContentsList(requestPage);
 		
-		questionBoardVO.setQuestionContentsList(questionContentsList);
+	// 3. QuestionBoardVO 객체를 생성합니다.
+		QuestionBoardVO questionBoardVO = new QuestionBoardVO(questionContentsList, totalPageCnt, requestPage);
 
 		request.setAttribute("questionBoardVO", questionBoardVO);
 		ControllerUtil.forward(request, response, resultPagePath);

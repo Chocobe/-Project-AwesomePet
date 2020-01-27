@@ -14,6 +14,17 @@ public class QuestionBoardVO {
 	private int endPage;		// GETTER 만 있습니다.
 	
 	
+// 생성자
+	public QuestionBoardVO() { }
+	
+	public QuestionBoardVO(List<QuestionContentsVO> questionContentsVO,
+						   int totalPageCnt,
+						   int currentPage) {
+		setQuestionContentsList(questionContentsVO);
+		setPageInfo(totalPageCnt, currentPage);
+	}
+	
+	
 // questionContentsVO
 	public List<QuestionContentsVO> getQuestionContentsList() {
 		return questionContentsList;
@@ -38,14 +49,14 @@ public class QuestionBoardVO {
 		
 		// 2. 다음 페이지를 설정합니다.
 		if(currentPage >= totalPageCnt) {
-			nextPage = currentPage;
+			nextPage = totalPageCnt;
 			
 		} else {
 			nextPage = currentPage + 1;
 		}
 		
 		// 3. 출력용 시작 페이지를 설정합니다.
-		if(currentPage - 3 < 1) {
+		if(currentPage - 2 < 1) {
 			beginPage = 1;
 			
 		} else {

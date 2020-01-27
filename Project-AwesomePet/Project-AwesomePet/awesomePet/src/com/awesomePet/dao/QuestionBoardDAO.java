@@ -82,13 +82,12 @@ public class QuestionBoardDAO {
 			resultSet = pstmt.executeQuery();
 			
 			while(resultSet.next()) {
-				QuestionContentsVO questionContentsVO = new QuestionContentsVO();
-				questionContentsVO.setBoardIDX(resultSet.getInt("boardIDX"));
-				questionContentsVO.setWriterID(resultSet.getString("writerID"));
-				questionContentsVO.setTitle(resultSet.getString("title"));
-				questionContentsVO.setContent(resultSet.getString("content"));
-				questionContentsVO.setWriteDate(resultSet.getDate("writeDate").toLocalDate());
-				questionContentsVO.setWatch(resultSet.getInt("watch"));
+				QuestionContentsVO questionContentsVO = new QuestionContentsVO(resultSet.getInt("boardIDX"),
+																			   resultSet.getString("writerID"),
+																			   resultSet.getString("title"),
+																			   resultSet.getString("content"),
+																			   resultSet.getDate("writeDate").toLocalDate(),
+																			   resultSet.getInt("watch"));
 				
 				contentsList.add(questionContentsVO);
 			}
@@ -111,7 +110,7 @@ public class QuestionBoardDAO {
 		
 		try {
 			String sql = "SELECT * FROM questionBoard " +
-						 "WHERE boardIDx=?";
+						 "WHERE boardIDX=?";
 			
 			readyForQuery(sql);
 			pstmt.setInt(1, requestBoardIDX);

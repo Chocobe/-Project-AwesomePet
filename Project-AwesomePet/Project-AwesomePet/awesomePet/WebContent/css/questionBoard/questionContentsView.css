@@ -128,7 +128,7 @@
     }
     
     
-/* .replyContainer */
+/* .replyWriteContainer */
     .questionContentsWrap .replyWriteContainer {
         width: 900px;
     }
@@ -161,38 +161,41 @@
         padding: 5px 20px;
     }
     
-    /* .replyContainer */
-    .questionContentsWrap hr {
+    
+/* .replyContainer */
+	/* .reply */
+    .questionContentsWrap .replyContainer .reply {
+        width: 900px;
+    }
+    
+    .questionContentsWrap .replyContainer .reply hr {
         margin: 30px 0;
         border: 1px dashed #aaa;
     }
     
-    .questionContentsWrap .replyContainer {
-        width: 900px;
-    }
-    
-    .questionContentsWrap .replyTitleContainer {
+    .questionContentsWrap .replyContainer .reply .replyTitleContainer {
         display: flex;
         
         margin-bottom: 20px;
     }
     
-    .questionContentsWrap .replyTitleContainer p {
+    .questionContentsWrap .replyContainer .reply .replyTitleContainer p {
         margin-right: 30px;
     }
     
-    .questionContentsWrap .replyTitleContainer p:nth-child(2) {
+    .questionContentsWrap .replyContainer .reply .replyTitleContainer p:nth-child(2) {
         color: #aaa;
         font-size: 0.8em;
         line-height: 20px;
     }
     
-    .questionContentsWrap .replyTitleContainer input {
+    .questionContentsWrap .replyContainer .reply .replyTitleContainer input {
         margin-right: 5px;
         font-size: 0.5em;
     }
     
-    /* .replyPageContainer */
+    
+/* .replyPageContainer */
     .questionContentsWrap .replyPageContainer {
         width: 900px;
         
