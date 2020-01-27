@@ -1972,7 +1972,9 @@
 								"$ref": "AAAAAAFvRroMDR9ol30="
 							},
 							"name": "replyIDX",
-							"length": 0
+							"type": "INTEGER",
+							"length": 0,
+							"primaryKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1981,7 +1983,9 @@
 								"$ref": "AAAAAAFvRroMDR9ol30="
 							},
 							"name": "parentIDX",
-							"length": 0
+							"type": "INTEGER",
+							"length": 0,
+							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1990,7 +1994,9 @@
 								"$ref": "AAAAAAFvRroMDR9ol30="
 							},
 							"name": "writerID",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "20",
+							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1999,7 +2005,8 @@
 								"$ref": "AAAAAAFvRroMDR9ol30="
 							},
 							"name": "content",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "300"
 						},
 						{
 							"_type": "ERDColumn",
