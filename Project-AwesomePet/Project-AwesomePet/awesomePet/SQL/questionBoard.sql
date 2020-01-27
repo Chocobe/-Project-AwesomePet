@@ -5,7 +5,9 @@ CREATE TABLE questionBoard(
 	content VARCHAR(500),
 	writeDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
 	writeDate DATE DEFAULT (DATE(writeDateTime)),
-	watch INTEGER DEFAULT 0, PRIMARY KEY(boardIDX), FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID)
+	watch INTEGER DEFAULT 0, 
+	PRIMARY KEY(boardIDX), 
+	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID)
 );
 
 
@@ -25,6 +27,10 @@ FROM questionboard;
 
 SELECT * FROM questionboard
 WHERE writeDate = DATE(CURRENT_TIMESTAMP());
+
+
+UPDATE questionboard
+SET watch=watch+1
 
 
 UPDATE questionboard
