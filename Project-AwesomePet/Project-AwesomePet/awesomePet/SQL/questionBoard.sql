@@ -31,6 +31,7 @@ WHERE writeDate = DATE(CURRENT_TIMESTAMP());
 
 UPDATE questionboard
 SET watch=watch+1
+WHERE boardIDX=1;
 
 
 UPDATE questionboard
