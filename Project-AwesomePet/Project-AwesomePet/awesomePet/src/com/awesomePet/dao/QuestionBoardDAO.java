@@ -252,6 +252,32 @@ public class QuestionBoardDAO {
 		
 		return result;
 	}
+	
+	
+// QuestionBoard 글의 조회수를 1 증가시킵니다.
+	public int updateWatch(int boardIDX) {
+		int result = -1;
+		
+		try {
+			String sql = "UPDATE questionBoard ";
+			sql += "SET watch = watch + 1 " +
+				   "WHERE boardIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, boardIDX);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - updateWatch() 에러> : " + e.getMessage());
+			e.printStackTrace();
+
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
 
 

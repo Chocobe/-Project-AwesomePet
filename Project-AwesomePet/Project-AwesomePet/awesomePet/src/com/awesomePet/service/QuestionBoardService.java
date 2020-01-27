@@ -59,4 +59,9 @@ public class QuestionBoardService {
 	public int deleteQuestionContents(int boardIDX) {
 		return questionBoardDAO.deleteQuestionContents(boardIDX);
 	}
+	
+// "궁금해요" 조회수를 증가 시킵니다.
+	public int increaseWatch(int boardIDX) {
+		return questionBoardDAO.updateWatch(boardIDX);
+	}
 }

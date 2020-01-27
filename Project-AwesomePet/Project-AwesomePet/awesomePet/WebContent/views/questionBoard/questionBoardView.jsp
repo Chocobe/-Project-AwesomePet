@@ -78,7 +78,7 @@
                     		<td>${contents.writerID}</td>
                     		
                     		<td>
-                    			<a href="..${contextPath}/questionContentsView.do?requestBoardIDX=${contents.boardIDX}">${contents.title}</a>
+                    			<a href="..${contextPath}/questionContentsView.do?requestBoardIDX=${contents.boardIDX}&requestPage=${questionBoardVO.currentPage}">${contents.title}</a>
                     		</td>
                     		
                     		<td>${contents.writeDate}</td>
