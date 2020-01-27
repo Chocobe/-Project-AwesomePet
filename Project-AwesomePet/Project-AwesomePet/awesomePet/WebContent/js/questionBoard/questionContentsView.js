@@ -21,14 +21,8 @@ function initContent() {
 
 
 // 목록으로 돌아가는 버튼 입니다. (이전페이지로 이동)
-function backToList() {
-	history.go(-1);
-}
-
-
-// 목록으로 돌아가는 버튼 입니다. (글 작성/수정했을 경우)
-function goToList(context) {
-	location.href = context + "/questionBoardView.do";
+function backToList(context, requestPage) {
+	location.href = context + "/questionBoardView.do?requestPage=" + requestPage;
 }
 
 

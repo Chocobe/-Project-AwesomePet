@@ -89,17 +89,9 @@
             
             <!-- 글 처리 버튼입니다. (목록으로 이동, 수정, 삭제) -->
             <div class="optionButtonsContainer">
-            	<c:choose>
-            		<c:when test='${action eq "fixed"}'>
-                		<input type="button" value="목록으로" onclick="goToList('${contextPath}');">
-                	</c:when>
-                	
-                	<c:otherwise>
-                		<input type="button" value="목록으로" onclick='backToList();'>
-                	</c:otherwise>
-                </c:choose>
+				<input type="button" value="목록으로" onclick="backToList('${contextPath}', `${requestPage}`);">
                 
-                <!-- 작성자일 경우, 수정/삭제 버튼을 출력합니다. -->
+                <!-- 이 글의 작성자일 경우, 수정/삭제 버튼을 출력합니다. -->
                 <c:if test="${memberLoginID eq questionContentsVO.writerID}">
 	                <form action="${contextPath}/questionWriterView.do" method="POST">
 	                	<input type="hidden" name="action" value="questionContentsUpdate.do">
