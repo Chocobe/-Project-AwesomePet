@@ -47,7 +47,7 @@ public class QuestionReplyVO {
 		}
 		
 		// 3. 출력용 시작 페이지를 설정합니다.
-		if(currentPage - 3 < 1) {
+		if(currentPage - 2 < 1) {
 			beginPage = 1;
 			
 		} else {
@@ -55,11 +55,20 @@ public class QuestionReplyVO {
 		}
 		
 		// 4. 출력용 끝 페이지를 설정합니다.
-		if(currentPage + 2 > totalPageCnt) {
-			endPage = totalPageCnt;
+		if(beginPage + 4 < totalPageCnt) {
+			endPage = beginPage + 4;
 			
 		} else {
-			endPage = currentPage + 2;
+			endPage = totalPageCnt;
+		}
+		
+		// 5. 시작 페이지를 보정합니다.
+		if(totalPageCnt - currentPage < 2) {
+			beginPage = totalPageCnt - 4;
+		}
+		
+		if(beginPage < 1) {
+			beginPage = 1;
 		}
 	}
 	
