@@ -210,8 +210,12 @@
         margin: 0 5px;
     }
     
+    .questionContentsWrap .replyPageContainer a {
+    	margin: 0 5px;
+    	cursor: pointer;
+    }
     
-    /* 수정중 */
+    
     /* .deleteConfirmContainer */
     .deleteConfirmContainer {
     	width: calc(100% + 40px);
