@@ -87,14 +87,14 @@
 
 /* tr */
 	.questionWrap .boardContainer .content,
-	.questionWrap .boardContainer .content a {
+	.questionWrap .boardContainer .content a,
+	.questionWrap .boardContainer .content td {
 	    color: #000;
 	    transition: 0.3s;
 	}
 	
-	.questionWrap .boardContainer .content:hover,
-	.questionWrap .boardContainer .content:hover a:hover {
-	    color: #03a9f4;
+	.questionWrap .boardContainer .content:hover * {
+	    color: #ff0058;
 	}
 
 /* td */            
