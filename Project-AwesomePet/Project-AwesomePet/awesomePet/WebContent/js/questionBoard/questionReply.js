@@ -5,6 +5,8 @@ const replyTextarea = $(".replyWriteContainer .replyTextarea");
 let contextPath = null;
 let parentIDX = null;
 let requestReplyPage = null;
+
+let originReplyContentsArr = null;
 	
 	
 // 댓글을 조회합니다.
@@ -58,25 +60,29 @@ let requestReplyPage = null;
 			// 2. 이전 댓글과 구분하기 위한 <hr/>
 			const hr = $("<hr>");
 			
-			// 3. 댓글 헤드부(작성자, 작성일, 수정버튼, 삭제버튼) <div class=".replyTitleContainer">
+			// 3. 댓글의 ID값을 hidden으로 생성
+			const replyIDX = $("<input>").attr({"type": "text", "class": "replyIDX" ,"value": questionReplyContentsList[i].replyIDX});
+			
+			// 4. 댓글 헤드부(작성자, 작성일, 수정버튼, 삭제버튼) <div class=".replyTitleContainer">
 			const replyTitleContainer = $("<div>").attr({"class": "replyTitleContainer"});
 			
-			// 4. 작성자
+			// 5. 작성자
 			const writerID = $("<p>");
 			writerID.text(questionReplyContentsList[i].writerID);
 			
-			// 5. 작성일
+			// 6. 작성일
 			const writeDate = $("<p>");
 			const currentDate = questionReplyContentsList[i].writeDate;
 			writeDate.text("(" + currentDate.year + "-" + currentDate.month + "-" + currentDate.day + ")");
 			
-			// 6. 수정버튼
-			const fixButton = $("<input>").attr({"type": "button", "value": "🔧", "onclick": "what1();"});
+			// 7. 수정버튼
+			const fixButton = $("<input>").attr({"type": "button", "value": "🔧", "onclick": "changeFormUpdateReply(this);"});
 			
-			// 7. 삭제버튼
-			const deleteButton = $("<input>").attr({"type": "button", "value": "❌", "onclick": "what2();"});
+			// 8. 삭제버튼
+			const deleteButton = $("<input>").attr({"type": "button", "value": "❌", "onclick": "questionReplyDelete(this);"});
 	
 			reply.append(hr);
+			reply.append(replyIDX);
 			reply.append(replyTitleContainer);
 			
 			replyTitleContainer.append(writerID);
@@ -84,18 +90,21 @@ let requestReplyPage = null;
 			replyTitleContainer.append(fixButton);
 			replyTitleContainer.append(deleteButton);
 			
-			// 8. 개행문자 단위로 분할하여 출력합니다.
-			const splitedContents = questionReplyContentsList[i].content.split("\n");
+			// 9. 개행문자 단위로 분할하여 출력합니다.
+			const splitedContents = questionReplyContentsList[i].content.trim().split("\n");
 			for(let i in splitedContents) {
 				const currentContent = $("<p>").text(splitedContents[i]);
 				reply.append(currentContent);
 			}
+			
+			replyContainer.append(reply);
 			
 			/* 생성할 <div class="reply"> 형식 입니다.
 	            <div class="reply">
 	                <hr/>
 	                
 	                <div class="replyTitleContainer">
+	                	<input type="hidden" class=".replyIDX" value="">
 	                    <p class="replyWriterID">작성자ID</p>
 	                    <p class="writeDate">(2020-01-21)</p>
 	                    <input type="button" value="🔧" onclick="">
@@ -106,9 +115,7 @@ let requestReplyPage = null;
 	                <p>리플 테스트 중입니다.</p>
 	                <p>리플 테스트 중입니다.</p>
 	            </div> 
-			 */
-	    	
-			replyContainer.append(reply);
+			*/
 		}
 	}
 	
@@ -173,32 +180,131 @@ let requestReplyPage = null;
 	function questionReplyWrite() {
 		const inputValue = replyTextarea.val();
 		
-		alert("parentIDX : " + parentIDX + "\ninputValue : " + inputValue);
+		if(inputValue.trim() == "") {
+			replyTextarea.val("");
+			
+		} else {
+			$.ajax({
+				type: "POST",
+				async: true,
+				url: contextPath + "/questionReplyWrite.do",
+				data: {
+					"parentIDX": parentIDX,
+					"inputValue": inputValue
+				},
+				datatype: "TEXT",
+				success: function(resultData, status) {
+					loadReply(contextPath, parentIDX, 1);
+				},
+				complete: function(resultData, status) {
+					replyTextarea.val("");
+				}
+			});
+		}
+	}
+	
+	
+// 댓글을 수정합니다.
+	// 대상 댓글을 수정상태로 변경합니다.
+	function changeFormUpdateReply(target) {
+		// 현재 댓글의 부모를 선택합니다.
+		const thisReplyContainer = $(target).parent().parent();
 		
+		// 현재 댓글의 내용부분을 배열로 가져옵니다.
+		const contentsArr = thisReplyContainer.children("p");
+		
+		// 원본 댓글을 임시 보존합니다.
+		originReplyContentsArr = contentsArr;
+		
+		// 원본 댓글의 출력형식을 만듭니다.
+		let originValue = "";
+		for(let i = 0; i < contentsArr.length; i++) {
+			originValue += contentsArr[i].innerText + "\n";
+			$(contentsArr[i]).remove();
+		}
+		
+		// 댓글 수정 형식에 맞도록 요소들을 생성합니다.
+		const replyWriteContainer = $("<div>").attr({"class": "replyWriteContainer"});
+		
+		const replyTextarea = $("<textarea>").attr({"class": "replyTextarea"});
+		const replyButtonContainer = $("<div>").attr({"class": "replyButtonContainer"});
+		const updateButton = $("<input>").attr({"type": "button", "class": "replyButton", "value": "수정하기", "onclick": "questionReplyUpdate(this);"});
+		
+		replyTextarea.val(originValue);
+		replyWriteContainer.append(replyTextarea);
+		
+		replyButtonContainer.append(updateButton);
+		replyWriteContainer.append(replyButtonContainer);
+		
+		thisReplyContainer.append(replyWriteContainer);
+		
+		// 현재 댓글 내용을 <textarea>로 출력합니다.
+		/*
+			<div class="replyWriteContainer">
+	            <textarea class="replyTextarea" placeholder="아름다운 말은 모두를 행복하게 해요 💕"></textarea>
+	                
+	            <div class="replyButtonContainer">
+	                <input type="button" class="replyButton" value="댓글달기" onclick="questionReplyWrite();">
+	            </div>
+		    </div>
+		*/
+	}
+	
+	
+	// 수정한 댓글을 갱신합니다.
+	function questionReplyUpdate(target) {
+		const thisTextareaContainer = $(target).parent().parent();
+		const thisReplyContainer = $(thisTextareaContainer).parent();
+		
+		// 수정한 댓글내용을 가져옵니다.
+		const inputValue = thisTextareaContainer.children("textarea")[0].value;
+		alert(inputValue);
+		
+		if(inputValue.length == 0) {
+			thisTextareaContainer.remove();
+			
+			for(let i = 0; i < originReplyContentsArr.length; i++) {
+				thisReplyContainer.append(originReplyContentsArr[i]);
+			}
+			
+			return;
+		}
+		
+		// 현재 댓글의 replyIDX값을 가져옵니다.
+		const replyIDX = $(thisReplyContainer).children(".replyIDX")[0].value;
+		alert(replyIDX);
+		
+		// 댓글을 갱신합니다.
 		$.ajax({
 			type: "POST",
 			async: true,
-			url: contextPath + "/questionReplyWrite.do",
-			data: {
-				"parentIDX": parentIDX,
-				"inputValue": inputValue
-			},
+			url: contextPath + "/questionReplyUpdate.do",
 			datatype: "TEXT",
-			success: function(resultData, status) {
-				loadReply(contextPath, parentIDX, 1);
+			data: {
+				"replyIDX": replyIDX,
+				"content": inputValue
 			},
-			complete: function(resultData, status) {
-				replyTextarea.val("");
+			success: function(resultContents, status) {
+				alert("댓글 수정 success() 메서드");
+				
+				alert("수정한 댓글 :\n" + resultContents);
+				
+				thisTextareaContainer.remove();
+				
+				const resultContentsArr = resultContents.trim().split("\n");
+				for(let i in resultContentsArr) {
+					const currentContent = $("<p>").text(resultContentsArr[i]);
+					thisReplyContainer.append(currentContent);
+				}
 			}
 		});
 	}
 	
 	
-	function what1() {
-		alert("what_1");
-	}
-	
-	
-	function what2() {
-		alert("what_2");
+// 댓글을 삭제 합니다.
+	function questionReplyDelete(target) {
+		alert("댓글 삭제 버튼 클릭!");
+		
+		const replyIDX = $(target).parent().parent().children(".replyIDX")[0].value;
+		alert("삭제할 replyIDX 값 : " + replyIDX);
 	}

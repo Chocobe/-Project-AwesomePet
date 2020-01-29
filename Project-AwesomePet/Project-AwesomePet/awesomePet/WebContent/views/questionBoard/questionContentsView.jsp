@@ -111,11 +111,13 @@
             
             <!-- 댓글 작성부 입니다. -->
             <div class="replyWriteContainer">
-                <textarea class="replyTextarea" placeholder="아름다운 말은 모두를 행복하게 해요 💕"></textarea>
-                    
-                <div class="replyButtonContainer">
-                    <input type="button" class="replyButton" value="댓글달기" onclick="questionReplyWrite();">
-                </div>
+           		<c:if test="${not empty memberLoginID}">
+	                <textarea class="replyTextarea" placeholder="아름다운 말은 모두를 행복하게 해요 💕"></textarea>
+	                    
+	                <div class="replyButtonContainer">
+	                    <input type="button" class="replyButton" value="댓글달기" onclick="questionReplyWrite();">
+	                </div>
+               </c:if>
             </div>
                
                
