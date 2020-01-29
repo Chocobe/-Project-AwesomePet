@@ -13,6 +13,15 @@ public class QuestionReplyContentsVO {
 // 생성자
 	public QuestionReplyContentsVO() { }
 
+	public QuestionReplyContentsVO(int replyIDX,
+								   String content) {
+		this(replyIDX,
+			 -1,
+			 null,
+			 content,
+			 null);
+	}
+	
 	public QuestionReplyContentsVO(int parentIDX,
 								   String writerID,
 								   String content) {
