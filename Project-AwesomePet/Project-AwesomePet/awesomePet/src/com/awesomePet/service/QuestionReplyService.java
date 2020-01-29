@@ -30,4 +30,10 @@ public class QuestionReplyService {
 	public List<QuestionReplyContentsVO> getQuestionReplyList(int parentID, int requestPage) {
 		return questionReplyDAO.selectReplyList(parentID, requestPage);
 	}
+	
+	
+// 해당 게시물("궁금해요" 게시글) 에 대한 댓글을 작성 합니다.
+	public int writeQuestionReply(QuestionReplyContentsVO questionReplyContentsVO) {
+		return questionReplyDAO.insertReply(questionReplyContentsVO);
+	}
 }
