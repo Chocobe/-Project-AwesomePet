@@ -19,7 +19,7 @@ public class QuestionReplyDAO {
 	private static final double QUERY_LIMIT;
 	
 	static {
-		QUERY_LIMIT = 1;
+		QUERY_LIMIT = 3;
 	}
 	
 	
@@ -104,5 +104,32 @@ public class QuestionReplyDAO {
 		}
 		
 		return replyList;
+	}
+	
+	
+// QuestionBoard의 특정 글에 대한 댓글을 INSERT합니다.
+	public int insertReply(QuestionReplyContentsVO questionReplyContentsVO) {
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO questionReply(parentIDX, writerID, content) ";
+			sql += "VALUES(?, ?, ?)";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, questionReplyContentsVO.getParentIDX());
+			pstmt.setString(2, questionReplyContentsVO.getWriterID());
+			pstmt.setString(3, questionReplyContentsVO.getContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionReplyDAO - insertReply() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
 	}
 }
