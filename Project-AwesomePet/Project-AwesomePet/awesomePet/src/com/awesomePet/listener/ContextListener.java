@@ -27,6 +27,7 @@ import com.awesomePet.controllers.questionBoardControllers.QuestionContentsUpdat
 import com.awesomePet.controllers.questionBoardControllers.QuestionContentsViewController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionContentsWriteController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionWriterViewController;
+import com.awesomePet.controllers.questionReplyControllers.QuestionReplyDeleteController;
 import com.awesomePet.controllers.questionReplyControllers.QuestionReplyUpdateController;
 import com.awesomePet.controllers.questionReplyControllers.QuestionReplyViewController;
 import com.awesomePet.controllers.questionReplyControllers.QuestionReplyWriteController;
@@ -112,6 +113,8 @@ public class ContextListener implements ServletContextListener {
 		// 질문 게시판(궁금해요)의 "댓글" 수정 요청 컨트롤러
 		subControllers.put("/questionReplyUpdate.do", new QuestionReplyUpdateController());
 		
+		// 질문 게시판(궁금해요)의 "댓글" 삭제 요청 컨트롤러
+		subControllers.put("/questionReplyDelete.do", new QuestionReplyDeleteController());
 		
 		
 		
