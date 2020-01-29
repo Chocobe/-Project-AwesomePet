@@ -36,7 +36,7 @@
 <c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
 <c:set var="questionContentsView_css_ver" value="<%= questionContentsView_css_ver %>"/>
 <c:set var="questionContentsView_js_ver" value="<%= questionContentsView_js_ver %>"/>
-<c:set var="questionReplyView_js_ver" value="<%= questionReply_js_ver %>"/>
+<c:set var="questionReply_js_ver" value="<%= questionReply_js_ver %>"/>
 
 
 <!DOCTYPE html>
@@ -114,7 +114,7 @@
                 <textarea class="replyTextarea" placeholder="아름다운 말은 모두를 행복하게 해요 💕"></textarea>
                     
                 <div class="replyButtonContainer">
-                    <input type="button" class="replyButton" value="댓글달기" onclick="">
+                    <input type="button" class="replyButton" value="댓글달기" onclick="questionReplyWrite();">
                 </div>
             </div>
                
@@ -132,12 +132,12 @@
         <%@ include file="/views/footer.jsp" %>
         
         
-        <!-- 삭제 확인창 입니다. -->
+        <!-- 개시글 삭제 확인창 입니다. (팝업형식) -->
     	<div class="deleteConfirmContainer">
     		<div class="innerContainer">
 	    		<h2>정말로 삭제하시겠습니까?</h2>
 	    		<p>(삭제한 글은 복구할 수 없습니다)</p>
-	    		<input type="button" value="삭제" onclick="deleteConfirm(`${contextPath}`, `${questionContentsVO.boardIDX}`)">
+	    		<input type="button" value="삭제" onclick="deleteConfirm(`${questionContentsVO.boardIDX}`)">
 	    		<input type="button" value="취소" onclick="deleteCancel();">
 	    	</div>
     	</div>
@@ -148,10 +148,8 @@
         <script src="${contextPath}/js/questionBoard/questionReply.js?ver=${questionReply_js_ver}" type="text/javascript"></script>
         
         <script type="text/javascript">
-        	// 댓글 조회/출력 (questionReplyView.js) 
+        	// 댓글 조회/출력 (questionReplyView.js)
         	$(window).onload = loadReply(`${contextPath}`, `${questionContentsVO.boardIDX}`, `${requestReplyPage}`);
         </script>
     </body>
-    
-
 </html>
