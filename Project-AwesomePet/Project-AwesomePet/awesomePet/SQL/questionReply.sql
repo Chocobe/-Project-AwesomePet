@@ -11,6 +11,7 @@ CREATE TABLE questionReply(
 );
 DROP TABLE questionReply;
 
+
 SELECT * FROM questionreply
 WHERE parentIDX=71 
 ORDER BY replyIDX DESC;
