@@ -15,6 +15,13 @@ import com.awesomePet.service.QuestionBoardService;
 import com.awesomePet.vo.QuestionContentsVO;
 
 public class QuestionContentsViewController implements SubController {
+	private static final int MAX_COOKIE_AGE;
+	
+	static {
+		MAX_COOKIE_AGE = 60;
+	}
+	
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 					throws ServletException, IOException {
@@ -38,6 +45,7 @@ public class QuestionContentsViewController implements SubController {
 		
 		System.out.println("리퀘스트 페이지값 : " + requestPage);
 		
+		// 봤던 게시물인지 검사합니다.
 		for(int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals(cookieName)) {
 				if(cookies[i].getValue().equals(memberLoginID)) {
@@ -47,9 +55,10 @@ public class QuestionContentsViewController implements SubController {
 			}
 		}
 		
+		// 봤던 게시물이 아닐 경우 (또는 cookie의 maxAge값이 초과하여 cookie가 삭제된 경우)
 		if(isWatched == false) {
 			Cookie watchedCookie = new Cookie(cookieName, memberLoginID);
-			watchedCookie.setMaxAge(60); // 60초(1분)
+			watchedCookie.setMaxAge(MAX_COOKIE_AGE); // 60초(1분)
 			watchedCookie.setPath("/");
 			response.addCookie(watchedCookie);
 			
