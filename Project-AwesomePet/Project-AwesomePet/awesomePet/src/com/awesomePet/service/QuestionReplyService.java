@@ -34,6 +34,18 @@ public class QuestionReplyService {
 	
 // 해당 게시물("궁금해요" 게시글) 에 대한 댓글을 작성 합니다.
 	public int writeQuestionReply(QuestionReplyContentsVO questionReplyContentsVO) {
-		return questionReplyDAO.insertReply(questionReplyContentsVO);
+		return questionReplyDAO.insertQuestionReply(questionReplyContentsVO);
+	}
+	
+	
+// 해당 게시물("궁금해요" 게시글) 의 특정 댓글을 수정 합니다.
+	public int updateQuestionReply(QuestionReplyContentsVO questionReplyContentsVO) {
+		return questionReplyDAO.updateQuestionReply(questionReplyContentsVO);
+	}
+	
+	
+// 해당 게시물("궁금해요" 게시글) 의 특정 댓글 하나를 조회 합니다.
+	public QuestionReplyContentsVO getQuestionReply(int replyIDX) {
+		return questionReplyDAO.selectQuestionReply(replyIDX);
 	}
 }
