@@ -191,4 +191,29 @@ public class QuestionReplyDAO {
 		
 		return resultVO;
 	}
+	
+	
+// QuestionBoard의 특정 댓글 하나를 DELETE 합니다.
+	public int deleteQuestionReply(int replyIDX) {
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM questionReply ";
+			sql += "WHERE replyIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, replyIDX);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionReplyDAO - deleteQuestionReply() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
