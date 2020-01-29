@@ -107,8 +107,8 @@ public class QuestionReplyDAO {
 	}
 	
 	
-// QuestionBoard의 특정 글에 대한 댓글을 INSERT합니다.
-	public int insertReply(QuestionReplyContentsVO questionReplyContentsVO) {
+// QuestionBoard의 특정 글에 대한 댓글을 INSERT 합니다.
+	public int insertQuestionReply(QuestionReplyContentsVO questionReplyContentsVO) {
 		int result = 0;
 		
 		try {
@@ -123,7 +123,7 @@ public class QuestionReplyDAO {
 			result = pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
-			System.out.println("<QuestionReplyDAO - insertReply() 에러> : " + e.getMessage());
+			System.out.println("<QuestionReplyDAO - insertQuestionReply() 에러> : " + e.getMessage());
 			e.printStackTrace();
 			
 		} finally {
@@ -131,5 +131,64 @@ public class QuestionReplyDAO {
 		}
 		
 		return result;
+	}
+	
+	
+// QuestionBoard의 특정 댓글을 UPDATE 합니다.
+	public int updateQuestionReply(QuestionReplyContentsVO questionReplyContentsVO) {
+		int result = -1;
+		
+		try {
+			String sql = "UPDATE questionReply SET ";
+			sql += "content=? ";
+			sql += "WHERE replyIDX=? ";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, questionReplyContentsVO.getContent());
+			pstmt.setInt(2, questionReplyContentsVO.getReplyIDX());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionReplyDAO - updateQuestionReply() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn);
+		}
+		
+		return result;
+	}
+	
+	
+// QuestionBoard의 특정 댓글 하나를 SELECT 합니다.
+	public QuestionReplyContentsVO selectQuestionReply(int replyIDX) {
+		QuestionReplyContentsVO resultVO = null;
+		
+		try {
+			String sql = "SELECT * FROM questionReply ";
+			sql += "WHERE replyIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, replyIDX);
+			
+			resultSet = pstmt.executeQuery();
+			if(resultSet.next()) {
+				resultVO = new QuestionReplyContentsVO(resultSet.getInt("replyIDX"),
+													   resultSet.getInt("parentIDX"),
+													   resultSet.getString("writerID"),
+													   resultSet.getString("content"),
+													   resultSet.getDate("writeDate").toLocalDate());
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionReplyDAO - selectQuestionReply() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return resultVO;
 	}
 }
