@@ -61,7 +61,7 @@ let originReplyContentsArr = null;
 			const hr = $("<hr>");
 			
 			// 3. 댓글의 ID값을 hidden으로 생성
-			const replyIDX = $("<input>").attr({"type": "text", "class": "replyIDX" ,"value": questionReplyContentsList[i].replyIDX});
+			const replyIDX = $("<input>").attr({"type": "hidden", "class": "replyIDX" ,"value": questionReplyContentsList[i].replyIDX});
 			
 			// 4. 댓글 헤드부(작성자, 작성일, 수정버튼, 삭제버튼) <div class=".replyTitleContainer">
 			const replyTitleContainer = $("<div>").attr({"class": "replyTitleContainer"});
@@ -303,8 +303,7 @@ let originReplyContentsArr = null;
 	
 // 댓글을 삭제 합니다.
 	function questionReplyDelete(target) {
-		alert("댓글 삭제 버튼 클릭!");
-		
 		const replyIDX = $(target).parent().parent().children(".replyIDX")[0].value;
-		alert("삭제할 replyIDX 값 : " + replyIDX);
+		
+		location.href = contextPath + "/questionReplyDelete.do?parentIDX=" + parentIDX + "&requestReplyIDX=" + replyIDX;
 	}
