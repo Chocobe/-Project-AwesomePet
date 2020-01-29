@@ -48,4 +48,10 @@ public class QuestionReplyService {
 	public QuestionReplyContentsVO getQuestionReply(int replyIDX) {
 		return questionReplyDAO.selectQuestionReply(replyIDX);
 	}
+	
+	
+// 해당 게시물("궁금해요" 게시글) 의 특정 댓글을 삭제 합니다.
+	public int deleteQuestionReply(int replyIDX) {
+		return questionReplyDAO.deleteQuestionReply(replyIDX);
+	}
 }
