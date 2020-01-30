@@ -6,9 +6,11 @@ CREATE TABLE questionBoard(
 	writeDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
 	writeDate DATE DEFAULT (DATE(writeDateTime)),
 	watch INTEGER DEFAULT 0, 
+	replyCnt INTEGER DEFAULT 0,
 	PRIMARY KEY(boardIDX), 
 	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID)
 );
+ALTER TABLE questionboard ADD replyCnt INTEGER DEFAULT 0;
 
 
 SELECT * FROM questionboard;
