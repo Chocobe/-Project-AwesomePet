@@ -86,6 +86,14 @@ public class CommunicationBoardDAO {
 																			   				  resultSet.getString("writerID"),
 																			   				  resultSet.getString("title"),
 																			   				  resultSet.getString("content"),
+																			   				  
+																			   				  resultSet.getString("imgLocation_1"),
+																			   				  resultSet.getString("imgOriginLocation_1"),
+																			   				  resultSet.getString("imgLocation_2"),
+																			   				  resultSet.getString("imgOriginLocation_2"),
+																			   				  resultSet.getString("imgLocation_3"),
+																			   				  resultSet.getString("imgOriginLocation_3"),
+																			   				  
 																			   				  resultSet.getDate("writeDate").toLocalDate(),
 																			   				  resultSet.getInt("watch"),
 																			   				  resultSet.getInt("replyCnt"));
@@ -122,6 +130,14 @@ public class CommunicationBoardDAO {
 												  	   resultSet.getString("writerID"),
 												  	   resultSet.getString("title"),
 												  	   resultSet.getString("content"),
+												  	   
+												  	   resultSet.getString("imgLocation_1"),
+												  	   resultSet.getString("imgOriginLocation_1"),
+												  	   resultSet.getString("imgLocation_2"),
+												  	   resultSet.getString("imgOriginLocation_2"),
+												  	   resultSet.getString("imgLocation_3"),
+												  	   resultSet.getString("imgOriginLocation_3"),
+												  	   
 												  	   resultSet.getDate("writeDate").toLocalDate(),
 												  	   resultSet.getInt("watch"),
 												  	   resultSet.getInt("replyCnt"));
@@ -159,6 +175,14 @@ public class CommunicationBoardDAO {
 																	  resultSet.getString("writerID"),
 																	  resultSet.getString("title"),
 																	  resultSet.getString("content"),
+																	  
+																	  resultSet.getString("imgLocation_1"),
+																	  resultSet.getString("imgOriginLocation_1"),
+																	  resultSet.getString("imgLocation_2"),
+																	  resultSet.getString("imgOriginLocation_2"),
+																	  resultSet.getString("imgLocation_3"),
+																	  resultSet.getString("imgOriginLocation_3"),
+																	  
 																	  resultSet.getDate("writeDate").toLocalDate(),
 																	  resultSet.getInt("watch"),
 																	  resultSet.getInt("replyCnt"));
@@ -178,13 +202,30 @@ public class CommunicationBoardDAO {
 		int result = -1;
 		
 		try {
-			String sql = "INSERT INTO communicationBoard(writerID, title, content) " +
-						 "VALUES(?, ?, ?)";
+			String sql = "INSERT INTO communicationBoard(writerID, " +
+														"title, " + 
+														"content, " + 
+														
+														"imgLocation_1, " + 
+														"imgOriginLocation_1, " + 
+														"imgLocation_2, " + 
+														"imgOriginLocation_2, " + 
+														"imgLocation_3, " + 
+														"imgOriginLocation_3) ";
+			sql += "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
 			readyForQuery(sql);
 			
 			pstmt.setString(1, communicationContentsVO.getWriterID());
 			pstmt.setString(2, communicationContentsVO.getTitle());
 			pstmt.setString(3, communicationContentsVO.getContent());
+			
+			pstmt.setString(4, communicationContentsVO.getImgLocation_1());
+			pstmt.setString(5, communicationContentsVO.getImgOriginLocation_1());
+			pstmt.setString(6, communicationContentsVO.getImgLocation_2());
+			pstmt.setString(7, communicationContentsVO.getImgOriginLocation_2());
+			pstmt.setString(8, communicationContentsVO.getImgLocation_3());
+			pstmt.setString(9, communicationContentsVO.getImgOriginLocation_3());
 			
 			result = pstmt.executeUpdate();
 			
@@ -209,14 +250,32 @@ public class CommunicationBoardDAO {
 		int result = -1;
 		
 		try {
-			String sql = "UPDATE communicationBoard " +
-						 "SET title=?, content=? " +
-						 "WHERE boardIDX=?";
+			String sql = "UPDATE communicationBoard ";
+			sql += "SET title=?, " + 
+					   "content=?, " +
+					   
+					   "imgLocation_1=?, " +
+					   "imgOriginLocation_1=?, " +
+					   "imgLocation_2=?, " +
+					   "imgOriginLocation_2=?, " +
+					   "imgLocation_3=?, " +
+					   "imgOriginLocation_3=? "; 
+			
+			sql += "WHERE boardIDX=?";
 			
 			readyForQuery(sql);
+			
 			pstmt.setString(1, communicationContentsVO.getTitle());
 			pstmt.setString(2, communicationContentsVO.getContent());
-			pstmt.setInt(3, communicationContentsVO.getBoardIDX());
+			
+			pstmt.setString(3, communicationContentsVO.getImgLocation_1());
+			pstmt.setString(4, communicationContentsVO.getImgOriginLocation_1());
+			pstmt.setString(5, communicationContentsVO.getImgLocation_2());
+			pstmt.setString(6, communicationContentsVO.getImgOriginLocation_2());
+			pstmt.setString(7, communicationContentsVO.getImgLocation_3());
+			pstmt.setString(8, communicationContentsVO.getImgOriginLocation_3());
+			
+			pstmt.setInt(9, communicationContentsVO.getBoardIDX());
 			
 			result = pstmt.executeUpdate();
 			
@@ -286,7 +345,7 @@ public class CommunicationBoardDAO {
 	public void updateReplyCnt(int boardIDX, int value) {
 		try {
 			String sql = "UPDATE CommunicationBoard ";
-			sql += "SET replyCnt=replyCnt+? ";
+			sql += "SET replyCnt = replyCnt+? ";
 			sql += "WHERE boardIDX=?";
 			
 			readyForQuery(sql);
