@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.awesomePet.controllers.SubController;
+import com.awesomePet.service.QuestionBoardService;
 import com.awesomePet.service.QuestionReplyService;
 import com.awesomePet.vo.QuestionReplyContentsVO;
 
@@ -31,9 +32,12 @@ public class QuestionReplyWriteController implements SubController {
 		
 		PrintWriter out = response.getWriter();
 		if(result == 1) {
+			QuestionBoardService questionBoardService = new QuestionBoardService();
+			questionBoardService.increaseReplyCnt(parentIDX, result);
 			out.print("true");
 			
 		} else {
+			System.out.println("<QuestionReplyWriteController 에러> : 댓글 작성을 실패 하였습니다");
 			out.print("false");
 		}
 		
