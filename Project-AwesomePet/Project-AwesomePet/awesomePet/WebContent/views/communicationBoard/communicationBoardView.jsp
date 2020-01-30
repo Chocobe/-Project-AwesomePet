@@ -7,7 +7,7 @@
 	
 	isELIgnored="false"
 	
-	info="궁금해요 게시판 페이지 입니다."
+	info="소통해요 게시판 페이지 입니다."
 %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,14 +24,14 @@
 	File communicationBoardView_css_file = new File(communicationBoardView_css);
 	Date communicationBoardView_css_ver = new Date(communicationBoardView_css_file.lastModified());
 	
-	String questionBoardView_js = application.getRealPath("/js/questionBoard/questionBoardView.js");
-	File questionBoardView_js_file = new File(questionBoardView_js);
-	Date questionBoardView_js_ver = new Date(questionBoardView_js_file.lastModified());
+	String communicationBoardView_js = application.getRealPath("/js/communicationBoard/communicationBoardView.js");
+	File communicationBoardView_js_file = new File(communicationBoardView_js);
+	Date communicationBoardView_js_ver = new Date(communicationBoardView_js_file.lastModified());
 %>
 
 <c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
-<c:set var="questionBoardView_css_ver" value="<%= communicationBoardView_css_ver %>"/>
-<c:set var="questionBoardView_js_ver" value="<%= questionBoardView_js_ver %>"/>
+<c:set var="communicationBoardView_css_ver" value="<%= communicationBoardView_css_ver %>"/>
+<c:set var="communicationBoardView_js_ver" value="<%= communicationBoardView_js_ver %>"/>
 
 
 <!DOCTYPE html>
@@ -133,6 +133,6 @@
         
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-      	<script src="${contextPath}/js/questionBoard/questionBoardView.js?ver=${questionBoardView_js_ver}" type="text/javascript"></script>
+      	<script src="${contextPath}/js/communicationBoard/communicationBoardView.js?ver=${communicationBoardView_js_ver}" type="text/javascript"></script>
     </body>
 </html>
