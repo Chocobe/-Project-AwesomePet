@@ -93,6 +93,10 @@
 	    transition: 0.3s;
 	}
 	
+	.questionWrap .boardContainer .content td a span {
+		color: #ff0058;
+	}
+	
 	.questionWrap .boardContainer .content:hover * {
 	    color: #ff0058;
 	}
