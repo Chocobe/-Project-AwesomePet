@@ -200,7 +200,7 @@ let originReplyContentsArr = null;
 				},
 				datatype: "TEXT",
 				success: function(resultData, status) {
-					loadReply(contextPath, parentIDX, 1);
+					loadReply(contextPath, parentIDX, 1, memberLoginID);
 				},
 				complete: function(resultData, status) {
 					replyTextarea.val("");
