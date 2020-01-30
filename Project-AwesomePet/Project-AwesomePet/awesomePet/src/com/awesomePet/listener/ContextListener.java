@@ -7,6 +7,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import com.awesomePet.controllers.SubController;
+import com.awesomePet.controllers.communicationBoardControllers.CommunicationBoardViewController;
 import com.awesomePet.controllers.indexControllers.IndexViewController;
 import com.awesomePet.controllers.memberControllers.CheckOverlapIDController;
 import com.awesomePet.controllers.memberControllers.JoinViewController;
@@ -116,6 +117,10 @@ public class ContextListener implements ServletContextListener {
 		// 질문 게시판(궁금해요)의 "댓글" 삭제 요청 컨트롤러
 		subControllers.put("/questionReplyDelete.do", new QuestionReplyDeleteController());
 		
+		
+	// 자유게시판(소통해요)를 위한 SubController 입니다.
+		// 자유게시판(소통해요) 페이지 요청 컨트롤러
+		subControllers.put("/communicationBoardView.do", new CommunicationBoardViewController());
 		
 		
 		event.getServletContext().setAttribute("subControllers", subControllers);
