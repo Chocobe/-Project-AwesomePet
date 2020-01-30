@@ -59,8 +59,15 @@ public class QuestionBoardService {
 		return questionBoardDAO.deleteQuestionContents(boardIDX);
 	}
 	
+	
 // "궁금해요" 조회수를 증가 시킵니다.
 	public int increaseWatch(int boardIDX) {
 		return questionBoardDAO.updateWatch(boardIDX);
+	}
+	
+	
+// "궁금해요" 댓글수를 증가 시킵니다.
+	public void updateReplyCnt(int boardIDX, int value) {
+		questionBoardDAO.updateReplyCnt(boardIDX, value);
 	}
 }

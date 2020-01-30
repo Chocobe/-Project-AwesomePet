@@ -33,7 +33,7 @@ public class QuestionReplyWriteController implements SubController {
 		PrintWriter out = response.getWriter();
 		if(result == 1) {
 			QuestionBoardService questionBoardService = new QuestionBoardService();
-			questionBoardService.increaseReplyCnt(parentIDX, result);
+			questionBoardService.updateReplyCnt(parentIDX, result);
 			out.print("true");
 			
 		} else {

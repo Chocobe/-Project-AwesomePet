@@ -87,7 +87,8 @@ public class QuestionBoardDAO {
 																			   resultSet.getString("title"),
 																			   resultSet.getString("content"),
 																			   resultSet.getDate("writeDate").toLocalDate(),
-																			   resultSet.getInt("watch"));
+																			   resultSet.getInt("watch"),
+																			   resultSet.getInt("replyCnt"));
 				
 				contentsList.add(questionContentsVO);
 			}
@@ -122,7 +123,8 @@ public class QuestionBoardDAO {
 												  resultSet.getString("title"),
 												  resultSet.getString("content"),
 												  resultSet.getDate("writeDate").toLocalDate(),
-												  resultSet.getInt("watch"));
+												  resultSet.getInt("watch"),
+												  resultSet.getInt("replyCnt"));
 			}
 			
 		} catch(SQLException e) {
@@ -158,7 +160,8 @@ public class QuestionBoardDAO {
 															resultSet.getString("title"),
 															resultSet.getString("content"),
 															resultSet.getDate("writeDate").toLocalDate(),
-															resultSet.getInt("watch"));
+															resultSet.getInt("watch"),
+															resultSet.getInt("replyCnt"));
 			}
 			
 		} catch(SQLException e) {
@@ -276,6 +279,29 @@ public class QuestionBoardDAO {
 		}
 		
 		return result;
+	}
+	
+	
+// QuestionBoard 글의 댓글수를 갱신 합니다. 
+	public void updateReplyCnt(int boardIDX, int value) {
+		try {
+			String sql = "UPDATE questionBoard ";
+			sql += "SET replyCnt=replyCnt+? ";
+			sql += "WHERE boardIDX=?";
+			
+			readyForQuery(sql);
+			pstmt.setInt(1, value);
+			pstmt.setInt(2, boardIDX);
+			
+			pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<QuestionBoardDAO - updateReply 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
 	}
 }
 

@@ -25,7 +25,7 @@ public class QuestionReplyDeleteController implements SubController {
 		
 		if(result == 1) {
 			QuestionBoardService questionBoardService = new QuestionBoardService();
-			questionBoardService.increaseReplyCnt(parentIDX, -1);
+			questionBoardService.updateReplyCnt(parentIDX, -1);
 			
 		} else {
 			System.out.println("<QuestionReplyDeleteController - execute() 에러> : 댓글 삭제를 실패 하였습니다");
