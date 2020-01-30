@@ -9,6 +9,7 @@ public class QuestionContentsVO {
 	private String content;
 	private LocalDate writeDate;
 	private int watch;
+	private int replyCnt;
 	
 	
 // 생성자
@@ -18,7 +19,8 @@ public class QuestionContentsVO {
 			 null, 
 			 null, 
 			 null, 
-			 -1);
+			 -1,
+			 0);
 	}
 	
 	public QuestionContentsVO(String writerID,
@@ -29,7 +31,8 @@ public class QuestionContentsVO {
 			 title,
 			 content,
 			 null,
-			 -1);
+			 -1,
+			 0);
 	}
 	
 	public QuestionContentsVO(int boardIDX,
@@ -40,7 +43,8 @@ public class QuestionContentsVO {
 			 title,
 			 content,
 			 null,
-			 -1);
+			 -1,
+			 0);
 	}
 	
 	public QuestionContentsVO(int boardIDX,
@@ -49,12 +53,29 @@ public class QuestionContentsVO {
 							  String content,
 							  LocalDate writeDate,
 							  int watch) {
+		this(boardIDX,
+			 writerID,
+			 title,
+			 content,
+			 writeDate,
+			 watch,
+			 0);
+	}
+	
+	public QuestionContentsVO(int boardIDX,
+							  String writerID,
+							  String title,
+							  String content,
+							  LocalDate writeDate,
+							  int watch,
+							  int replyCnt) {
 		this.boardIDX = boardIDX;
 		this.writerID = writerID;
 		this.title = title;
 		this.content = content;
 		this.writeDate = writeDate;
 		this.watch = watch;
+		this.replyCnt = replyCnt;
 	}
 	
 	
@@ -109,5 +130,14 @@ public class QuestionContentsVO {
 	}
 	public void setWatch(int watch) {
 		this.watch = watch;
+	}
+	
+	
+// replyCnt
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
 	}
 }
