@@ -151,7 +151,7 @@
         
         <script type="text/javascript">
         	// 댓글 조회/출력 (questionReplyView.js)
-        	$(window).onload = loadReply(`${contextPath}`, `${questionContentsVO.boardIDX}`, `${requestReplyPage}`);
+        	$(window).onload = loadReply(`${contextPath}`, `${questionContentsVO.boardIDX}`, `${requestReplyPage}`, `${memberLoginID}`);
         </script>
     </body>
 </html>

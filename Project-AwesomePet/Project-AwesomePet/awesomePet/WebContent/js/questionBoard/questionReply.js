@@ -5,12 +5,13 @@ const replyTextarea = $(".replyWriteContainer .replyTextarea");
 let contextPath = null;
 let parentIDX = null;
 let requestReplyPage = null;
+let memberLoginID = null;
 
 let originReplyContentsArr = null;
 	
 	
 // 댓글을 조회합니다.
-	function loadReply(context, parent, replyPage) {
+	function loadReply(context, parent, replyPage, loginID) {
 		$.ajax({
 			type: "GET",
 			async: true,
@@ -22,7 +23,7 @@ let originReplyContentsArr = null;
 			},
 			success: function(resultData, status) {
 				// 1. 기존에 전역변수를 갱신하고, 출력한 댓글과 댓글 페이지를 지웁니다. (초기화)
-				initReply(context, parent, replyPage);
+				initReply(context, parent, replyPage, loginID);
 				
 				// 2. 결과 문자열을 JSON형으로 변환합니다.
 				const parsedJSON = JSON.parse(resultData);
@@ -38,10 +39,11 @@ let originReplyContentsArr = null;
 	
 	
 	// 1. 기존에 전역변수를 갱신하고, 출력한 댓글과 댓글 페이지를 지웁니다. (초기화)
-	function initReply(context, parent, replyPage) {
+	function initReply(context, parent, replyPage, loginID) {
 		contextPath = context;
 		parentIDX = parent;
 		requestReplyPage = replyPage;
+		memberLoginID = loginID;
 		
 		replyContainer.empty();
 		replyPageContainer.empty();
@@ -80,17 +82,21 @@ let originReplyContentsArr = null;
 			
 			// 8. 삭제버튼
 			const deleteButton = $("<input>").attr({"type": "button", "value": "❌", "onclick": "questionReplyDelete(this);"});
-	
+			
+			// 9. 생성한 요소들을 조합 합니다.
 			reply.append(hr);
 			reply.append(replyIDX);
 			reply.append(replyTitleContainer);
 			
 			replyTitleContainer.append(writerID);
 			replyTitleContainer.append(writeDate);
-			replyTitleContainer.append(fixButton);
-			replyTitleContainer.append(deleteButton);
 			
-			// 9. 개행문자 단위로 분할하여 출력합니다.
+			if(memberLoginID == questionReplyContentsList[i].writerID) {
+				replyTitleContainer.append(fixButton);
+				replyTitleContainer.append(deleteButton);
+			}
+			
+			// 10. 개행문자 단위로 분할하여 출력합니다.
 			const splitedContents = questionReplyContentsList[i].content.trim().split("\n");
 			for(let i in splitedContents) {
 				const currentContent = $("<p>").text(splitedContents[i]);
@@ -125,7 +131,7 @@ let originReplyContentsArr = null;
 		let boundary = null;
 		
 		// 1. 댓글 "시작" 링크
-		const firstPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, `1`);"});
+		const firstPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, `1`, `${memberLoginID}`);"});
 		firstPage.text("시작");
 		boundary = $("<p>").text("|");
 		
@@ -133,7 +139,7 @@ let originReplyContentsArr = null;
 		replyPageContainer.append(boundary);
 		
 		// 2. 댓글 "이전" 링크
-		const beginPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.prevPage + ");"});
+		const beginPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.prevPage + ", `${memberLoginID}`);"});
 		beginPage.text("이전");
 		boundary = $("<p>").text("|");
 		
@@ -150,7 +156,7 @@ let originReplyContentsArr = null;
 				currentPage.text(i);
 				
 			} else {
-				currentPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + i + ");"});
+				currentPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + i + ", `${memberLoginID}`);"});
 				currentPage.text(i);
 			}
 			
@@ -161,7 +167,7 @@ let originReplyContentsArr = null;
 		}
 		
 		// 4. 댓글 "다음" 링크	
-		const nextPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.nextPage + ");"});
+		const nextPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.nextPage + ", `${memberLoginID}`);"});
 		nextPage.text("다음");
 		boundary = $("<p>").text("|");
 		
@@ -169,7 +175,7 @@ let originReplyContentsArr = null;
 		replyPageContainer.append(boundary);
 		
 		// 5. 댓글 "끝" 링크
-		const lastPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.totalPageCnt + ");"});
+		const lastPage = $("<a>").attr({"onclick": "loadReply(`${contextPath}`, `${parentIDX}`, " + parsedJSON.totalPageCnt + ", `${memberLoginID}`);"});
 		lastPage.text("끝");
 		
 		replyPageContainer.append(lastPage);
