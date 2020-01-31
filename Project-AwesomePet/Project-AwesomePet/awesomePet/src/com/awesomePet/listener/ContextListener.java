@@ -9,6 +9,7 @@ import javax.servlet.ServletContextListener;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationBoardViewController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsViewController;
+import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyDeleteController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyUpdateController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyViewController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyWriteController;
@@ -101,10 +102,10 @@ public class ContextListener implements ServletContextListener {
 		// 질문 게시판(궁금해요) 글 작성 요청 컨트롤러
 		subControllers.put("/questionContentsWrite.do", new QuestionContentsWriteController());
 		
-		// 질문 게시판(궁금해요) 글 수정 요청
+		// 질문 게시판(궁금해요) 글 수정 요청 컨트롤러
 		subControllers.put("/questionContentsUpdate.do", new QuestionContentsUpdateController());
 		
-		// 질문 게시판(궁금해요) 글 삭제 요청
+		// 질문 게시판(궁금해요) 글 삭제 요청 컨트롤러
 		subControllers.put("/questionContentsDelete.do", new QuestionContentsDeleteController());
 		
 		
@@ -139,6 +140,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 자유 게시판(소통해요)의 "댓글" 수정 요청 컨트롤러
 		subControllers.put("/communicationReplyUpdate.do", new CommunicationReplyUpdateController());
+		
+		// 자유 게시판(소통해요)의 "댓글" 삭제 요청 컨트롤러
+		subControllers.put("/communicationReplyDelete.do", new CommunicationReplyDeleteController());
 		
 		
 		
