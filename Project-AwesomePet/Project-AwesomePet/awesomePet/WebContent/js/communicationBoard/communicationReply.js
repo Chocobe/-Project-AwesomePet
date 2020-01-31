@@ -264,7 +264,6 @@ let originReplyContentsArr = null;
 		
 		// 수정한 댓글내용을 가져옵니다.
 		const inputValue = thisTextareaContainer.children("textarea")[0].value;
-		alert(inputValue);
 		
 		if(inputValue.length == 0) {
 			thisTextareaContainer.remove();
@@ -278,7 +277,6 @@ let originReplyContentsArr = null;
 		
 		// 현재 댓글의 replyIDX값을 가져옵니다.
 		const replyIDX = $(thisReplyContainer).children(".replyIDX")[0].value;
-		alert(replyIDX);
 		
 		// 댓글을 갱신합니다.
 		$.ajax({
@@ -291,10 +289,6 @@ let originReplyContentsArr = null;
 				"content": inputValue
 			},
 			success: function(resultContents, status) {
-				alert("댓글 수정 success() 메서드");
-				
-				alert("수정한 댓글 :\n" + resultContents);
-				
 				thisTextareaContainer.remove();
 				
 				const resultContentsArr = resultContents.trim().split("\n");
