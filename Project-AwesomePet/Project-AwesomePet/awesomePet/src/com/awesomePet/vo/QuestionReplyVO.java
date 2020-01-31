@@ -73,7 +73,7 @@ public class QuestionReplyVO {
 	}
 	
 	
-// questionReplyVO
+// questionReplyContentsList
 	public List<QuestionReplyContentsVO> getQuestionReplyContentsVO() {
 		return questionReplyContentsList;
 	}
