@@ -79,7 +79,7 @@
                     
                     <tr>
                         <th>조회수</th>
-                        <td>${questionContentsVO.watch} 명</td>
+                        <td>${questionContentsVO.watch}</td>
                     </tr>
                 </table>
             </div>
