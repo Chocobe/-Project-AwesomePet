@@ -23,10 +23,21 @@ CREATE TABLE communicationBoard(
 DROP TABLE communicationboard;
 
 
+--
+-- 속성명 변경하자
+--
+-- imgLocation_1 -> imgFile_1
+-- imgOriginLocation_1 -> imgOrigin_1
+--
+
+
 SELECT * FROM communicationboard;
 
 SELECT * FROM communicationboard
 ORDER BY boardIDX DESC;
+
+
+DELETE FROM communicationboard;
 
 
 -- 테스트 데이터 입력
