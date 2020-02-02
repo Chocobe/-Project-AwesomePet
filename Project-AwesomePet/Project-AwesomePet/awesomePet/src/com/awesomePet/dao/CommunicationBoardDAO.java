@@ -64,14 +64,42 @@ public class CommunicationBoardDAO {
 	}
 	
 	
+	// 좋아요 개수 추가
 // CommunicationBoard 글 목록을 조회합니다.
 	public List<CommunicationContentsVO> selectContentsList(int requestPage) {
 		List<CommunicationContentsVO> contentsList = new ArrayList<CommunicationContentsVO>();
 		
 		try {
-			String sql = "SELECT * FROM communicationBoard " + 
-						 "ORDER BY boardIDX DESC " +
-						 "LIMIT ? OFFSET ?";
+			String sql = "SELECT contents.boardIDX, " +
+								 "writerID, " +
+								 "title, " +
+								 "content, " +
+								 
+								 "imgLocation_1, " +
+								 "imgOriginLocation_1, " +
+								 "imgLocation_2, " +
+								 "imgOriginLocation_2, " +
+								 "imgLocation_3, " +
+								 "imgOriginLocation_3, " +
+								 
+								 "writeDate, " +
+								 "watch, " +
+								 "replyCnt, " +
+								 "hit.hitCount AS hitCnt ";
+			sql += "FROM communicationBoard AS contents ";
+			
+			sql += "LEFT JOIN ";
+			sql += "(SELECT boardIDX, " +
+						   "COUNT(*) AS hitCount ";
+			sql += "FROM communicationHit ";
+			sql += "GROUP BY boardIDX) AS hit ";
+			
+			sql += "ON contents.boardIDX = hit.boardIDX ";
+			
+			sql += "ORDER BY contents.boardIDX DESC ";
+			sql += "LIMIT ? OFFSET ?";
+			
+			
 			int offset = (requestPage - 1) * (int)QUERY_LIMIT;
 			
 			readyForQuery(sql);
@@ -96,7 +124,8 @@ public class CommunicationBoardDAO {
 																			   				  
 																			   				  resultSet.getDate("writeDate").toLocalDate(),
 																			   				  resultSet.getInt("watch"),
-																			   				  resultSet.getInt("replyCnt"));
+																			   				  resultSet.getInt("replyCnt"),
+																			   				  resultSet.getInt("hitCnt"));
 				
 				contentsList.add(communicationContentsVO);
 			}
@@ -113,13 +142,39 @@ public class CommunicationBoardDAO {
 	}
 	
 	
+	// 좋아요 개수 추가
 // CommunicationBoard의 특정 글을 조회 합니다.
 	public CommunicationContentsVO selectContents(int requestBoardIDX) {
 		CommunicationContentsVO resultVO = null;
 		
 		try {
-			String sql = "SELECT * FROM communicationBoard " +
-						 "WHERE boardIDX=?";
+			String sql = "SELECT contents.boardIDX, " +
+								 "writerID, " +
+								 "title, " +
+								 "content, " +
+								 
+								 "imgLocation_1, " +
+								 "imgOriginLocation_1, " +
+								 "imgLocation_2, " +
+								 "imgOriginLocation_2, " +
+								 "imgLocation_3, " +
+								 "imgOriginLocation_3, " +
+								 
+								 "writeDate, " +
+								 "watch, " +
+								 "replyCnt, " +
+								 "hit.hitCnt AS hitCnt ";
+			sql += "FROM communicationBoard AS contents ";
+			
+			sql += "LEFT JOIN ";
+			sql += "(SELECT boardIDX, " +
+						   "COUNT(*) AS hitCnt ";
+			sql += "FROM communicationHit ";
+			sql += "GROUP BY boardIDX) AS hit ";
+			
+			sql += "ON contents.boardIDX = hit.boardIDX ";
+			
+			sql += "WHERE contents.boardIDX=?";
 			
 			readyForQuery(sql);
 			pstmt.setInt(1, requestBoardIDX);
@@ -140,7 +195,8 @@ public class CommunicationBoardDAO {
 												  	   
 												  	   resultSet.getDate("writeDate").toLocalDate(),
 												  	   resultSet.getInt("watch"),
-												  	   resultSet.getInt("replyCnt"));
+												  	   resultSet.getInt("replyCnt"),
+												  	   resultSet.getInt("hitCnt"));
 			}
 			
 		} catch(SQLException e) {
@@ -155,6 +211,7 @@ public class CommunicationBoardDAO {
 	}
 	
 	
+// CommunicationBoard 에 글을 작성한 직 후, 다시 조회 합니다.
 	public CommunicationContentsVO selectContents(String writerID, String title, String content) {
 		CommunicationContentsVO communicationContentsVO = null;
 		
@@ -185,7 +242,8 @@ public class CommunicationBoardDAO {
 																	  
 																	  resultSet.getDate("writeDate").toLocalDate(),
 																	  resultSet.getInt("watch"),
-																	  resultSet.getInt("replyCnt"));
+																	  resultSet.getInt("replyCnt"),
+																	  0);
 			}
 			
 		} catch(SQLException e) {
