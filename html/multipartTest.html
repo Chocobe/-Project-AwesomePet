@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>multipart/form-data TEST</title>
+        
+        <style>
+            form input {
+                border: 2px solid red;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="img_1" class="img_1">
+        </form>
+        
+        
+        <div class="result"></div>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                const img_1 = $(".img_1");
+                
+                img_1.on("change", function(event) {
+                    const fileName = img_1.val();
+                    
+                    if(fileName == "") {
+                        alert("선택된 파일이 없습니다");
+                        
+                    } else {
+                        alert("선택된 파일 : " + fileName);
+                    }
+                });
+                
+                img_1.change(function() {
+                    if(this.files != null && this.files[0] != null) {
+                        const fileReader = new FileReader();
+                        
+                        // FileReader의 readAsDataURL() 메서드가 수행 완료 후, 호출되는 callback 메서드 정의
+                        fileReader.onload = function(event) {
+                            const img = $("<img>").attr({"src": event.target.result});
+                            $(".result").append(img);
+                        }
+                        
+                        fileReader.readAsDataURL(this.files[0]);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
