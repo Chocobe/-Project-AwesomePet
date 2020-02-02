@@ -8,7 +8,10 @@ import javax.servlet.ServletContextListener;
 
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationBoardViewController;
+import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsHitCheckerController;
+import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsHitController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsViewController;
+import com.awesomePet.controllers.communicationBoardControllers.CommunicationWriterViewController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyDeleteController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyUpdateController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyViewController;
@@ -129,6 +132,15 @@ public class ContextListener implements ServletContextListener {
 		
 		// 자유 게시판(소통해요) 특정 글 페이지 요청 컨트롤러
 		subControllers.put("/communicationContentsView.do", new CommunicationContentsViewController());
+		
+		// 자유 게시판(소통해요) 글 작성/수정 페이지 요청 컨트롤러
+		subControllers.put("/communicationWriterView.do", new CommunicationWriterViewController());
+		
+		// 자유 게시판(소통해요) "좋아요" 여부 조회 컨트롤러
+		subControllers.put("/communicationContentsHitChecker.do", new CommunicationContentsHitCheckerController());
+		
+		// 자유 게시판(소통해요) "좋아요" 토글버튼 컨트롤러
+		subControllers.put("/communicationContentsHit.do", new CommunicationContentsHitController());
 		
 
 	// 자유 게시판(소통해요) "댓글"을 위한 SubController 입니다.
