@@ -250,3 +250,42 @@ INSERT INTO communicationboard(writerID,
 										 '원본_2',
 										 '이미지 경로_3',
 										 '원본_3');
+										 
+INSERT INTO communicationboard(writerID,
+										 title,
+										 content,
+										 imgLocation_1,
+										 imgOriginLocation_1,
+										 imgLocation_2,
+										 imgOriginLocation_2,
+										 imgLocation_3,
+										 imgOriginLocation_3)
+								VALUES('aa',
+										 '이미지 테스트용 게시물 입니다 ; )',
+										 '강아지가 이쁘네요ㅎㅎ',
+										 '/awesomePet/communicationUploadImages/background_113.jpg',
+										 '원본_1',
+										 '이미지 경로_2',
+										 '원본_2',
+										 '이미지 경로_3',
+										 '원본_3');
+										 
+										 
+INSERT INTO communicationboard(writerID,
+										 title,
+										 content,
+										 imgLocation_1,
+										 imgOriginLocation_1,
+										 imgLocation_2,
+										 imgOriginLocation_2,
+										 imgLocation_3,
+										 imgOriginLocation_3)
+								VALUES('aa',
+										 '이미지 테스트용 게시물 입니다 ; )',
+										 '강아지가 이쁘네요ㅎㅎ',
+										 '/awesomePet/communicationUploadImages/background_113.jpg',
+										 '',
+										 NULL,
+										 '',
+										 '',
+										 '');
