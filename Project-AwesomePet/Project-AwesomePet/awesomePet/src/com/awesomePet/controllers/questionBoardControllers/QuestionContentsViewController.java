@@ -68,7 +68,6 @@ public class QuestionContentsViewController implements SubController {
 		QuestionContentsVO questionContentsVO = questionBoardService.getQuestionContents(requestBoardIDX);
 		request.setAttribute("questionContentsVO", questionContentsVO);
 		request.setAttribute("requestPage", requestPage);
-		request.setAttribute("action", request.getParameter("action"));
 		
 		ControllerUtil.forward(request, response, resultPagePath);
 	}
