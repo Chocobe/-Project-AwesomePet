@@ -9,12 +9,38 @@ CREATE TABLE communicationReply(
 	FOREIGN KEY(parentIDX) REFERENCES communicationboard(boardIDX) ON DELETE CASCADE,
 	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID) ON DELETE CASCADE
 );
+DROP TABLE communicationReply;
 
 
 SELECT * FROM communicationReply;
 
 SELECT * FROM communicationReply
 ORDER BY replyIDX DESC;
+
+
+SELECT contents.boardIDX, 
+		 writerID,
+		 title,
+		 content,
+		  
+		 imgLocation_1,
+		 imgOriginLocation_1,
+		 imgLocation_2,
+		 imgOriginLocation_2,
+		 imgLocation_3,
+		 imgOriginLocation_3,
+							 
+		 writeDate,
+		 watch,
+		 replyCnt,
+		 hit.hitCnt AS hitCnt
+FROM communicationBoard AS contents			
+LEFT JOIN (SELECT boardIDX, COUNT(*) AS hitCnt
+			  FROM communicationHit
+			  GROUP BY boardIDX) AS hit
+			
+ON contents.boardIDX = hit.boardIDX
+WHERE contents.boardIDX=11;
 
 
 -- 테스트 데이터
