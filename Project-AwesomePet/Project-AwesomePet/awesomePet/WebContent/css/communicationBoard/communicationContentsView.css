@@ -102,6 +102,15 @@
         resize: none;
     }
     
+    .communicationContentsWrap .contentsContainer img {
+		width: 800px;
+		
+		margin: 5px 50px;
+		
+		border: 1px solid #777;
+		border-radius: 10px;
+	}
+    
     
 /* .optionButtonsContainer */
     .communicationContentsWrap .optionButtonsContainer {

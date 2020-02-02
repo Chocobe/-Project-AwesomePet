@@ -92,6 +92,21 @@
             <div class="contentsContainer">
             	<!-- javascript에서 hidden값을 분할하여 출력합니다. -->
             	<input type="hidden" class="requestContent" value="${communicationContentsVO.content}">
+            	
+            	<!-- 이미지 출력부 -->
+            	<c:if test="${not empty communicationContentsVO.imgLocation_1}">
+            		<img src="${communicationContentsVO.imgLocation_1}">
+            	</c:if>
+            	
+            	<c:if test="${not empty communicationContentsVO.imgLocation_2}">
+            		<img src="${communicationContentsVO.imgLocation_2}">
+            	</c:if>
+            	
+            	<c:if test="${communicationContentsVO.imgLocation_3}">
+            		<img src="${communicationContentsVO.imgLocation_3}">
+            	</c:if>
+            	
+            	<!-- 본문 출력부 : initContent() 에서 첨부 합니다. -->
             </div>
             
             
@@ -160,7 +175,9 @@
         <script type="text/javascript">
         	// 댓글 조회/출력 (communicationReplyView.js)
         	$(window).onload = loadReply(`${contextPath}`, `${communicationContentsVO.boardIDX}`, `${requestReplyPage}`, `${memberLoginID}`);
-        	$(window).onload += initContent(`${contextPath}`, `${communicationContentsVO.boardIDX}`); 
+        	
+			// 본문을 개행문자("\n") 단위로 분할하여 출력 합니다.        	
+        	$(window).onload += initContent(`${contextPath}`, `${communicationContentsVO.boardIDX}`);
         </script>
     </body>
 </html>
