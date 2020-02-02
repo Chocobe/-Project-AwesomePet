@@ -65,15 +65,21 @@
     }
     
     .communicationContentsWrap .titleContainer table.infoTable tr th {
-        width: 60px;
+        width: 100px;
+        text-align: center;
+        margin: 0 10px;
+        
+        text-align: left;
+    }
+    
+    .communicationContentsWrap .titleContainer table.infoTable tr td {
+        width: 160px;
         text-align: center;
         margin: 0 10px;
     }
     
-    .communicationContentsWrap .titleContainer table.infoTable tr td {
-        width: 200px;
-        text-align: center;
-        margin: 0 10px;
+    .communicationContentsWrap .titleContainer table.infoTable tr td span {
+    	color: #ff0058;
     }
     
     
@@ -118,11 +124,13 @@
         border-radius: 10px;
         
         background: #03a9f4;
-        
-        transition: 0.5s;
     }
     
-    .communicationContentsWrap .optionButtonsContainer input:hover {
+    .communicationContentsWrap .optionButtonsContainer input:nth-child(1) ~input {
+    	transition: 0.5s;
+    }
+    
+    .communicationContentsWrap .optionButtonsContainer input:nth-child(1) ~ input:hover {
         background: #ff0058;
         color: #fff;
     }

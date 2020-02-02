@@ -70,6 +70,10 @@ public class CommunicationContentsViewController implements SubController {
 		request.setAttribute("requestPage", requestPage);
 		request.setAttribute("action", request.getParameter("action"));
 		
+		
+		System.out.println("<< TEST >> : 좋아요 개수 : " + communicationContentsVO.getHitCnt());
+		
+		
 		ControllerUtil.forward(request, response, resultPagePath);
 	}
 }

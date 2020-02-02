@@ -64,7 +64,7 @@
                         <th>작성자</th>
                         <th>제목</th>
                         <th>작성일</th>
-                        <th>조회수</th>
+                        <th>조회수(👍)</th>
                     </tr>
                     
                     <tr class="border">
@@ -87,7 +87,12 @@
                     		</td>
                     		
                     		<td>${contents.writeDate}</td>
-                    		<td>${contents.watch}</td>
+                    		<td>
+                    			${contents.watch}
+                    			<c:if test="${contents.hitCnt > 0}">
+                    				(<span>${contents.hitCnt}</span>)
+                    			</c:if>
+                    		</td>
                     	</tr>
                     </c:forEach>
                 </table>

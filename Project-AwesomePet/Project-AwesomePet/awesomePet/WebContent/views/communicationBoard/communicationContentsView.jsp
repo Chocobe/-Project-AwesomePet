@@ -78,8 +78,11 @@
                     </tr>
                     
                     <tr>
-                        <th>조회수</th>
-                        <td>${communicationContentsVO.watch} 명</td>
+                        <th>조회수 (👍)</th>
+                        <td>
+                        	${communicationContentsVO.watch} 
+                        	(<span>${communicationContentsVO.hitCnt}</span>)
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -94,6 +97,11 @@
             
             <!-- 글 처리 버튼입니다. (목록으로 이동, 수정, 삭제) -->
             <div class="optionButtonsContainer">
+            	<!-- 로그인 상태일 경우, "좋아요" 버튼을 출력합니다. -->
+            	<c:if test="${not empty memberLoginID}">
+            		<input type="button" value="좋아요" class="hitButton" onclick="hit(`${contextPath}`, `${communicationContentsVO.boardIDX}`);">
+            	</c:if>
+            	
 				<input type="button" value="목록으로" onclick="backToList('${contextPath}', `${requestPage}`);">
                 
                 <!-- 이 글의 작성자일 경우, 수정/삭제 버튼을 출력합니다. -->
@@ -152,6 +160,7 @@
         <script type="text/javascript">
         	// 댓글 조회/출력 (communicationReplyView.js)
         	$(window).onload = loadReply(`${contextPath}`, `${communicationContentsVO.boardIDX}`, `${requestReplyPage}`, `${memberLoginID}`);
+        	$(window).onload += initContent(`${contextPath}`, `${communicationContentsVO.boardIDX}`); 
         </script>
     </body>
 </html>

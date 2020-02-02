@@ -93,6 +93,10 @@
 	    transition: 0.3s;
 	}
 	
+	.communicationWrap .boardContainer .content td span {
+		color: #ff0058;
+	}
+	
 	.communicationWrap .boardContainer .content td a span {
 		color: #ff0058;
 	}
