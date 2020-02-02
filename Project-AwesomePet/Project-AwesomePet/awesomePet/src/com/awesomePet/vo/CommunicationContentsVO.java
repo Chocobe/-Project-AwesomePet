@@ -18,6 +18,7 @@ public class CommunicationContentsVO {
 	private LocalDate writeDate;
 	private int watch;
 	private int replyCnt;
+	private int hitCnt;
 	
 	
 // 생성자
@@ -36,6 +37,7 @@ public class CommunicationContentsVO {
 			 
 			 null, 
 			 -1,
+			 0,
 			 0);
 	}
 	
@@ -63,6 +65,7 @@ public class CommunicationContentsVO {
 			 
 			 null,
 			 -1,
+			 0,
 			 0);
 	}
 	
@@ -90,6 +93,7 @@ public class CommunicationContentsVO {
 			 
 			 null,
 			 -1,
+			 0,
 			 0);
 	}
 	
@@ -121,6 +125,7 @@ public class CommunicationContentsVO {
 			 
 			 writeDate,
 			 watch,
+			 0,
 			 0);
 	}
 	
@@ -138,7 +143,8 @@ public class CommunicationContentsVO {
 							  	   
 							  	   LocalDate writeDate,
 							  	   int watch,
-							  	   int replyCnt) {
+							  	   int replyCnt,
+							  	   int hitCnt) {
 		this.boardIDX = boardIDX;
 		this.writerID = writerID;
 		this.title = title;
@@ -154,6 +160,7 @@ public class CommunicationContentsVO {
 		this.writeDate = writeDate;
 		this.watch = watch;
 		this.replyCnt = replyCnt;
+		this.hitCnt = hitCnt;
 	}
 	
 	
@@ -271,5 +278,14 @@ public class CommunicationContentsVO {
 	}
 	public void setReplyCnt(int replyCnt) {
 		this.replyCnt = replyCnt;
+	}
+	
+	
+// hitCnt
+	public int getHitCnt() {
+		return hitCnt;
+	}
+	public void setHitCnt(int hitCnt) {
+		this.hitCnt = hitCnt;
 	}
 }
