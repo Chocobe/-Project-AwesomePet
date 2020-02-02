@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+/* .communicationTitleContainer */
+	.communicationTitleContainer {	    
+	    margin: 40px 0 20px;
+	    padding-left: 50px;
+	    
+	    background: rgba(255, 255, 255, 0.9);
+	    
+	    border-radius: 20px;
+	}
+	
+	.communicationTitleContainer h1 {
+	    font-size: 2em;
+	}
+	
+	.communicationTitleContainer p {
+	    font-size: 1.2em;
+	}
+
+/* .communicationWriterContainer */
+    .communicationWriterContainer {
+        width: 1024px;
+        
+        margin-top: 20px;
+        padding: 30px;
+        
+        border: 1px solid #aaa;
+        border-radius: 20px;
+        
+        box-shadow: 0 10px 10px 5px #999;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    
+/* .titleContainer */
+    .communicationWriterContainer form .titleContainer {
+        width: 900px;
+        
+        margin-top: 30px;
+        
+        position: relative;
+    }
+    
+    .communicationWriterContainer form .titleContainer input {
+        width: 450px;
+        
+        font-size: 1.2em;
+        
+        border: none;
+        border-bottom: 1px solid #999;
+        outline: none;
+    }
+    
+    .communicationWriterContainer form .titleContainer label {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        
+        color: #03a9f4;
+        font-size: 0.8em;
+    }
+    
+    
+/* .contentsContainer */
+    .communicationWriterContainer form .contentsContainer {
+        width: 900px;
+        
+        margin-top: 50px;
+        
+        position: relative;
+    }
+    
+    .communicationWriterContainer form .contentsContainer textarea {
+        width: 900px;
+        height: 300px;
+        
+        padding: 0 20px;
+        
+        font-size: 1.2em;
+        
+        border-radius: 10px;
+        outline: none;
+        
+        resize: none;
+    }
+    
+    .communicationWriterContainer form .contentsContainer label {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        
+        color: #03a9f4;
+        font-size: 0.8em;
+    }
+    
+    
+    /* img */
+    .communicationWriterContainer form .imgUploaderContainer {
+   		margin-top: 10px;
+   	}
+   	
+   	.communicationWriterContainer form .imgUploaderContainer .imgUploader {
+   		margin-top: 10px;
+   	}
+   
+   	.communicationWriterContainer form .imgUploaderContainer .imgUploader .uploaderButtonsContainer {
+   		width: 600px;
+   		margin-bottom: 5px;
+   		
+   		display: flex;
+   		flex-flow: row wrap;
+   		justify-content: space-between;
+   	}
+   
+   	.communicationWriterContainer form .imgUploaderContainer .imgUploader img {
+   		width: 600px;
+   		
+   		border: 1px solid #777;
+   		border-radius: 5px;
+   	}
+    
+    
+/* .buttonsContainer */
+    .communicationWriterContainer .buttonsContainer {
+        width: 900px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    .communicationWriterContainer .buttonsContainer input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 30px;
+        
+        color: #fff;
+        font-size: 1.2em;
+        
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        
+        background: #03a9f4;
+        
+        transition: 0.5s;
+    }
+    
+    .communicationWriterContainer .buttonsContainer input[type="submit"]:hover {
+        background: #ff0058;
+    }
