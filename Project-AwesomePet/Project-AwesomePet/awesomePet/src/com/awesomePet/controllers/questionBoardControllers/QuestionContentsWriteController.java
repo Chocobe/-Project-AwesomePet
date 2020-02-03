@@ -33,7 +33,7 @@ public class QuestionContentsWriteController implements SubController {
 		
 		if(result == 1) {
 			int boardIDX = questionBoardService.getQuestionContents(writerID, title, content).getBoardIDX();
-			resultPagePath += "?requestBoardIDX=" + boardIDX + "&action=fixed";
+			resultPagePath += "?requestBoardIDX=" + boardIDX/* + "&action=fixed" */;
 		}
 		
 		ControllerUtil.forward(request, response, resultPagePath);
