@@ -8,6 +8,7 @@ import javax.servlet.ServletContextListener;
 
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationBoardViewController;
+import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsAjaxViewController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsHitCheckerController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsHitController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsViewController;
@@ -139,6 +140,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 자유 게시판(소통해요) 글 작성 요청 컨트롤러
 		subControllers.put("/communicationContentsWrite.do", new CommunicationContentsWriteController());
+		
+		// 자유 게시판(소통해요) 특정 글 페이지 JSON으로 요청 컨트롤러
+		subControllers.put("/communicationContentsAjaxView.do", new CommunicationContentsAjaxViewController());
 		
 		// 자유 게시판(소통해요) "좋아요" 여부 조회 컨트롤러
 		subControllers.put("/communicationContentsHitChecker.do", new CommunicationContentsHitCheckerController());
