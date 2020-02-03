@@ -29,7 +29,7 @@ public class QuestionContentsUpdateController implements SubController {
 		int result = questionBoardService.updateQuestionContents(questionContentsVO);
 		
 		if(result == 1) {
-			resultPagePath += "?requestBoardIDX=" + boardIDX + "&action=fixed";
+			resultPagePath += "?requestBoardIDX=" + boardIDX;
 		}
 		
 		ControllerUtil.forward(request, response, resultPagePath);
