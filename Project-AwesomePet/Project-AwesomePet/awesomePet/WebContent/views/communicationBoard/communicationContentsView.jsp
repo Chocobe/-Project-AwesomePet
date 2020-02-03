@@ -102,8 +102,9 @@
             		<img src="${communicationContentsVO.imgLocation_2}">
             	</c:if>
             	
-            	<c:if test="${communicationContentsVO.imgLocation_3}">
+            	<c:if test="${not empty communicationContentsVO.imgLocation_3}">
             		<img src="${communicationContentsVO.imgLocation_3}">
+            		<h1>${communicationContentsVO.imgLocation_3}</h1>
             	</c:if>
             	
             	<!-- 본문 출력부 : initContent() 에서 첨부 합니다. -->
