@@ -21,6 +21,8 @@ public class EncodingFilter implements Filter {
 		String initParam = config.getInitParameter("encoding");
 		if(initParam != null && !initParam.equals("")) {
 			encoding = initParam;
+			config.getServletContext().setAttribute("encoding", encoding);
+			
 			System.out.println("<EncodingFilter 알림> : 설정된 Encoding값 - " + encoding);
 		}
 	}
