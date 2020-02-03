@@ -76,18 +76,24 @@
                 		<div class="uploaderButtonsContainer">
                 			<input type="file" name="imgLocation_1">
                 		</div>
+                		
+                		<input type="hidden" name="action_1">
                 	</div>
                 	
                 	<div class="imgUploader">
                 		<div class="uploaderButtonsContainer">
                 			<input type="file" name="imgLocation_2">
                 		</div>
+                		
+                		<input type="hidden" name="action_2">
                 	</div>
                 	
                 	<div class="imgUploader">
                 		<div class="uploaderButtonsContainer">
                 			<input type="file" name="imgLocation_3">
                 		</div>
+                		
+                		<input type="hidden" name="action_3">
                 	</div>
                 </div>
                 
@@ -113,5 +119,8 @@
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="${contextPath}/js/communicationBoard/communicationWriterView.js?ver=${communicationWriterView_js_ver}" type="text/javascript"></script>
+		<script type="text/javascript">
+			init(`${contextPath}`, `${communicationContentsVO.boardIDX}`);
+		</script>
     </body>
 </html>
