@@ -78,7 +78,7 @@ function initImgUploader() {
 			cancelImgUpload(this);
 		}
 		
-		imgUploader.children("input[type=hidden]").val("fixed");
+		imgUploader.children(".action").val("fixed");
 	});
 }
 	
@@ -126,22 +126,28 @@ function initImgUpdater() {
 			const imgUploaderContainer = $(".imgUploaderContainer");
 			
 			// 첫번째 원래 이미지 출력
-			const img_1 = $("<img>").attr({
-				"src": imgLocation_1
-			});
-			imgUploaderContainer.children(".imgUploader:nth-child(1)").append(img_1);
+			if(imgLocation_1 != null && imgLocation_1.length > 0) {
+				const img_1 = $("<img>").attr({
+					"src": imgLocation_1
+				});
+				imgUploaderContainer.children(".imgUploader:nth-child(1)").append(img_1);
+			}
 			
 			// 두번째 원래 이미지 출력
-			const img_2 = $("<img>").attr({
-				"src": imgLocation_2
-			});
-			imgUploaderContainer.children(".imgUploader:nth-child(2)").append(img_2);
+			if(imgLocation_2 != null && imgLocation_2.length > 0) {
+				const img_2 = $("<img>").attr({
+					"src": imgLocation_2
+				});
+				imgUploaderContainer.children(".imgUploader:nth-child(2)").append(img_2);
+			}
 			
 			// 세번째 원래 이미지 출력
-			const img_3 = $("<img>").attr({
-				"src": imgLocation_3
-			});
-			imgUploaderContainer.children(".imgUploader:nth-child(3)").append(img_3);
+			if(imgLocation_3 != null && imgLocation_3.length > 0) {
+				const img_3 = $("<img>").attr({
+					"src": imgLocation_3
+				});
+				imgUploaderContainer.children(".imgUploader:nth-child(3)").append(img_3);
+			}
 		}
 	});
 }
@@ -150,13 +156,13 @@ function initImgUpdater() {
 // 글수정 시, 취소 버튼 메서드 입니다.
 function rollbackImg(target) {
 	const imgUploader = $(target).parent().parent();
-	const action = imgUploader.children("input[type=hidden]").val();
+	const action = imgUploader.children(".action").val();
 	
 	const uploaderButtonsContainer = imgUploader.children(".uploaderButtonsContainer");
 	const imgLocationName = uploaderButtonsContainer.children("input[type=file]").attr("name");
 	
 	// 수정 전, 원래 상태값으로 변경합니다.
-	imgUploader.children("input[type=hidden]").val("");
+	
 	imgUploader.children("img").remove();
 	
 	// 수정 상태값에 따라 분기 합니다.
@@ -186,12 +192,14 @@ function rollbackImg(target) {
 			imgUploader.append(img);
 		}
 		
+		imgUploader.children(".action").val("");
+		
 	} else {
 		// 기존 업로드 했던 이미지를 지웁니다.
-		imgUploader.children("input[type=hidden]").val("fixed");
 		imgUploader.children("img").remove();
+		imgUploader.children(".action").val("fixed");
 	}
 	
 	uploaderButtonsContainer.children("input[type=file]").val("");
-	console.log("action값 : " + imgUploader.children("input[type=hidden]").val());
+	console.log("action값 : " + imgUploader.children(".action").val());
 }
