@@ -23,28 +23,22 @@ public class CommunicationContentsWriteController implements SubController {
 		CommunicationBoardService communicationBoardService = new CommunicationBoardService();
 		CommunicationContentsVO communicationContentsVO = null;
 		
-		try {
-			// multipart/form-data 에서 데이터를 읽어 옵니다.
-			communicationContentsVO = readMultipartFormData(request, response);
-			
-			int result = communicationBoardService.writeCommunicationContents(communicationContentsVO);
-			
-			if(result == 1) {
-				String writerID = communicationContentsVO.getWriterID();
-				String title = communicationContentsVO.getTitle();
-				String content = communicationContentsVO.getContent();
-				
-				int boardIDX = communicationBoardService.getCommunicationContents(writerID, 
-																				  title, 
-																				  content).getBoardIDX();
-				resultPagePath += "?requestBoardIDX=" + boardIDX;
-			}
-			
-		} catch(IOException e) {
-			System.out.println("<CommunicationContentsWriterController - execute() 에러> : " + e.getMessage());
-			e.printStackTrace();
-		}
+		// multipart/form-data 에서 데이터를 읽어 옵니다.
+		communicationContentsVO = readMultipartFormData(request, response);
 		
+		int result = communicationBoardService.writeCommunicationContents(communicationContentsVO);
+		
+		if(result == 1) {
+			String writerID = communicationContentsVO.getWriterID();
+			String title = communicationContentsVO.getTitle();
+			String content = communicationContentsVO.getContent();
+			
+			int boardIDX = communicationBoardService.getCommunicationContents(writerID, 
+																			  title, 
+																			  content).getBoardIDX();
+			resultPagePath += "?requestBoardIDX=" + boardIDX;
+		}
+			
 		ControllerUtil.forward(request, response, resultPagePath);
 	}
 	
