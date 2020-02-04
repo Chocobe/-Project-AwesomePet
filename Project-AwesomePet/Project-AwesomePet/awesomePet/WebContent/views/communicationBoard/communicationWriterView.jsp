@@ -77,7 +77,9 @@
                 			<input type="file" name="imgLocation_1">
                 		</div>
                 		
-                		<input type="hidden" name="action_1">
+                		<input type="hidden" class="action" name="action_1">
+                		<input type="hidden" name="beforeImgLocation_1" value="${communicationContentsVO.imgLocation_1}">
+                		<input type="hidden" name="beforeImgOriginLocation_1" value="${communicationContentsVO.imgOriginLocation_1}">
                 	</div>
                 	
                 	<div class="imgUploader">
@@ -85,7 +87,9 @@
                 			<input type="file" name="imgLocation_2">
                 		</div>
                 		
-                		<input type="hidden" name="action_2">
+                		<input type="hidden" class="action" name="action_2">
+                		<input type="hidden" name="beforeImgLocation_2" value="${communicationContentsVO.imgLocation_2}">
+                		<input type="hidden" name="beforeImgOriginLocation_2" value="${communicationContentsVO.imgOriginLocation_2}">
                 	</div>
                 	
                 	<div class="imgUploader">
@@ -93,7 +97,9 @@
                 			<input type="file" name="imgLocation_3">
                 		</div>
                 		
-                		<input type="hidden" name="action_3">
+                		<input type="hidden" class="action" name="action_3">
+                		<input type="hidden" name="beforeImgLocation_3" value="${communicationContentsVO.imgLocation_3}">
+                		<input type="hidden" name="beforeImgOriginLocation_3" value="${communicationContentsVO.imgOriginLocation_3}">
                 	</div>
                 </div>
                 
