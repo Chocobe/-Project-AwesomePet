@@ -1,8 +1,8 @@
-
 -- on delete cascade 추가 하기
 CREATE TABLE communicationHit(
 	boardIDX			INTEGER,
 	hitMemberID		VARCHAR(20),	
+	
 	PRIMARY KEY(boardIDX, hitMemberID),
 	FOREIGN KEY(boardIDX) REFERENCES communicationboard(boardIDX) ON DELETE CASCADE,
 	FOREIGN KEY(hitMemberID) REFERENCES awesomepetmember(memberID) ON DELETE CASCADE

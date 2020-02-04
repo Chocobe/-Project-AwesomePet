@@ -5,6 +5,7 @@ CREATE TABLE communicationReply(
 	content				VARCHAR(300),
 	writeDateTime		TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
 	writeDate			DATE DEFAULT (DATE(writeDateTime)),
+	
 	PRIMARY KEY(replyIDX),
 	FOREIGN KEY(parentIDX) REFERENCES communicationboard(boardIDX) ON DELETE CASCADE,
 	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID) ON DELETE CASCADE

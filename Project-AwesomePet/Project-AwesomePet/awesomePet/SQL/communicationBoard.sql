@@ -17,11 +17,11 @@ CREATE TABLE communicationBoard(
 	writeDate DATE DEFAULT (DATE(writeDateTime)),
 	watch INTEGER DEFAULT 0, 
 	replyCnt INTEGER DEFAULT 0,
+	
 	PRIMARY KEY(boardIDX), 
-	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID)
+	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID) ON DELETE CASCADE
 );
 DROP TABLE communicationboard;
-
 
 --
 -- 속성명 변경하자
@@ -38,6 +38,9 @@ ORDER BY boardIDX DESC;
 
 
 DELETE FROM communicationboard;
+
+DELETE FROM communicationboard
+WHERE boardIDX=23;
 
 
 -- 테스트 데이터 입력
