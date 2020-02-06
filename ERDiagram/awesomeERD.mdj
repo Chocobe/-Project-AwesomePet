@@ -1896,10 +1896,10 @@
 							},
 							"font": "Arial;13;0",
 							"left": 648,
-							"top": 1136,
+							"top": 1088,
 							"width": 200,
-							"height": 72,
-							"text": "state\n - show\n - hide\n - sold"
+							"height": 87,
+							"text": "boardIDX : pet.petID\nstate\n - show\n - hide\n - sold\n"
 						}
 					]
 				},
