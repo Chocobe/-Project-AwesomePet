@@ -459,7 +459,7 @@
 									},
 									"font": "Arial;13;1",
 									"left": 384,
-									"top": 1077,
+									"top": 1053,
 									"width": 256,
 									"height": 13,
 									"text": "petBoard"
@@ -485,7 +485,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1100,
+											"top": 1076,
 											"width": 246,
 											"height": 13
 										},
@@ -500,7 +500,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1115,
+											"top": 1091,
 											"width": 246,
 											"height": 13
 										},
@@ -516,7 +516,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 1634,
+											"top": 1586,
 											"width": 246,
 											"height": 13
 										},
@@ -532,7 +532,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 1634,
+											"top": 1586,
 											"width": 246,
 											"height": 13
 										},
@@ -548,7 +548,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 1634,
+											"top": 1586,
 											"width": 246,
 											"height": 13
 										},
@@ -564,7 +564,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 1634,
+											"top": 1586,
 											"width": 246,
 											"height": 13
 										},
@@ -579,7 +579,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1130,
+											"top": 1106,
 											"width": 246,
 											"height": 13
 										},
@@ -594,7 +594,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1145,
+											"top": 1121,
 											"width": 246,
 											"height": 13
 										},
@@ -609,7 +609,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1160,
+											"top": 1136,
 											"width": 246,
 											"height": 13
 										},
@@ -624,23 +624,23 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1175,
+											"top": 1151,
 											"width": 246,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 384,
-									"top": 1095,
+									"top": 1071,
 									"width": 256,
 									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 384,
-							"top": 1072,
+							"top": 1048,
 							"width": 256,
-							"height": 136,
+							"height": 121,
 							"nameLabel": {
 								"$ref": "AAAAAAFvRrfduh8khRY="
 							},
@@ -930,7 +930,7 @@
 									},
 									"font": "Arial;13;1",
 									"left": 384,
-									"top": 1269,
+									"top": 1213,
 									"width": 257,
 									"height": 13,
 									"text": "petBoardReply"
@@ -956,7 +956,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1292,
+											"top": 1236,
 											"width": 247,
 											"height": 13
 										},
@@ -971,7 +971,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1307,
+											"top": 1251,
 											"width": 247,
 											"height": 13
 										},
@@ -986,7 +986,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1322,
+											"top": 1266,
 											"width": 247,
 											"height": 13
 										},
@@ -1001,7 +1001,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1337,
+											"top": 1281,
 											"width": 247,
 											"height": 13
 										},
@@ -1016,7 +1016,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1352,
+											"top": 1296,
 											"width": 247,
 											"height": 13
 										},
@@ -1031,21 +1031,21 @@
 											},
 											"font": "Arial;13;0",
 											"left": 389,
-											"top": 1367,
+											"top": 1311,
 											"width": 247,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 384,
-									"top": 1287,
+									"top": 1231,
 									"width": 257,
 									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 384,
-							"top": 1264,
+							"top": 1208,
 							"width": 257,
 							"height": 121,
 							"nameLabel": {
@@ -1896,7 +1896,7 @@
 							},
 							"font": "Arial;13;0",
 							"left": 648,
-							"top": 1088,
+							"top": 1064,
 							"width": 200,
 							"height": 87,
 							"text": "boardIDX : pet.petID\nstate\n - show\n - hide\n - sold\n"
@@ -2734,7 +2734,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwD2e23v6peDg="
 							},
-							"name": "subType",
+							"name": "subTypeName",
 							"type": "VARCHAR",
 							"length": "40",
 							"primaryKey": true
@@ -2756,7 +2756,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwD2e23v6peDg="
 							},
-							"name": "typeComment",
+							"name": "subTypeComment",
 							"type": "VARCHAR",
 							"length": "100"
 						}
