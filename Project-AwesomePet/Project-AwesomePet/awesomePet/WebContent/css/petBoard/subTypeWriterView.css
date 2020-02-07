@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/* .subTypeContainer (소분류 설정) */
+	.petContentsWriterWrap .subTypeContainer {
+	    width: 100%;
+	    
+	    padding: 30px;
+	    
+	    border-radius: 20px;
+	    box-shadow: 0 10px 10px 5px #999;
+	    
+	    position: relative;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer {
+	    margin: 50px 0;
+	}    
+	
+
+/* .subTypeContainer .inputForm */
+	.petContentsWriterWrap .subTypeContainer .inputForm {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 50px;
+	    
+	    position: relative;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm p {
+	    font-size: 0.9em;
+	    color: #03a9f4;
+	    
+	    position: absolute;
+	    top: -25px;
+	    left: 0;
+	}
+	
+	
+/* .inputForm .inputContainer */
+	.petContentsWriterWrap .subTypeContainer .inputForm .inputContainer {
+	    width: 450px;
+	    
+	    margin-right: 30px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: space-between;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .inputContainer select {
+	    width: 210px;
+	    height: 38px;
+	    
+	    padding: 5px 0;
+	    margin-right: 30px;
+	    
+	    font-size: 1.2em;
+	}
+	
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .inputContainer input {
+	    width: 206px;
+	    
+	    padding: 5px 0;
+	    
+	    border: none;
+	    border-bottom: 1px solid #000;
+	    outline: none;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .inputContainer textarea {
+	    width: 100%;
+	    height: 60px;
+	    
+	    margin-top: 10px;
+	    
+	    resize: none;
+	}
+	
+	
+/* .inputForm .buttonsContainer */
+	.petContentsWriterWrap .subTypeContainer .inputForm .buttonsContainer {
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .buttonsContainer input {
+	    padding: 5px 20px;
+	    margin-right: 10px;
+	    
+	    border: none;
+	    border-radius: 5px;
+	    outline: none;
+	    
+	    color: #fff;
+	    background: #03a9f4;
+	    
+	    transition: 0.5s;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .buttonsContainer input.deleteButton {
+	    padding: 5px 10px;
+	    margin-top: 10px;
+	    
+	    font-size: 0.8em;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .inputForm .buttonsContainer input:hover {
+	    background: #ff0058;
+	}
+	
+	
+/* .subTypeContainer hr */
+	.petContentsWriterWrap hr {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 40px;
+	    margin-bottom: 60px;
+	    
+	    border: 1px dashed #000;
+	}
+	
+	
+/* .subTypeContainer .selectorContainer */
+	.petContentsWriterWrap .subTypeContainer .selectorContainer {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 20px;
+	    
+	    position: relative;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .selectorContainer p {
+	    position: absolute;
+	    top: -25px;
+	    left: 0;
+	    
+	    color: #03a9f4;
+	    font-size: 0.9em;
+	}
+	
+	.petContentsWriterWrap .subTypeContainer .selectorContainer select {
+	    width: 210px;
+	    
+	    padding: 5px 0;
+	    margin: 0 10px;
+	    
+	    font-size: 1.2em;
+	}
