@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+/* .typeContainer (대분류 설정) */
+	/* .typeContainer */
+	.petContentsWriterWrap .typeContainer {
+	    width: 100%;
+	    
+	    padding: 30px;
+	    margin-top: 40px;
+	    
+	    border-radius: 20px;
+	    box-shadow: 0 10px 10px 5px #999;
+	    
+	    position: relative;
+	}
+	
+
+/* .inputForm */
+    .petContentsWriterWrap .typeContainer .inputForm {                
+        width: 900px;
+        
+        margin: 0 auto;
+        margin-top: 50px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        
+        position: relative;
+    }
+    
+    .petContentsWriterWrap .typeContainer .inputForm * {
+        margin-right: 30px;
+    }
+    
+    .petContentsWriterWrap .typeContainer .inputForm p {
+        color: #03a9f4;
+        
+        position: absolute;
+        top: -20px;
+        left: 0;
+    }
+    
+    .petContentsWriterWrap .typeContainer .inputForm input.typeName {
+        border: none;
+        border-bottom: 1px solid #000;
+        outline: none;
+    }            
+    
+    .petContentsWriterWrap .typeContainer .inputForm input[type="submit"] {
+        padding: 5px 20px;
+        
+        color: #fff;
+        background: #03a9f4;
+        
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        
+        transition: 0.5s;
+    }
+    
+    .petContentsWriterWrap .typeContainer .inputForm input[type="submit"]:hover {
+        background: #ff0058;
+    }
+    
+    
+/* updateContainer */
+    .petContentsWriterWrap .typeContainer .updateContainer {
+        width: 900px;
+        
+        margin: 0 auto;
+        margin-top: 50px;
+        
+        position: relative;
+    }
+    
+    .petContentsWriterWrap .typeContainer .updateContainer p {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        
+        color: #03a9f4;
+    }
+    
+/* .updateContainer .innerContainer */
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer {
+        width: 100%;
+        
+        margin-top: 15px;
+    }
+    
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.typeName {
+        margin-right: 30px;
+        
+        border: none;
+        border-bottom: 1px solid #000;
+        outline: none;
+    }
+    
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.submitButton,
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton {
+        margin-right: 10px;
+        padding: 5px 20px;
+        
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        
+        color: #fff;
+        background: #03a9f4;
+        
+        transition: 0.5s;
+    }
+    
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+    
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.submitButton:hover,
+    .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton:hover {
+        background: #ff0058;
+    }
