@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/* .petContainer (분양등록) */
+	.petContentsWriterWrap {
+	    width: 1024px;
+	    
+	    margin: 0 auto;
+	    margin-top: 20px;
+	}
+	
+	.petContentsWriterWrap * {
+	    font-weight: 100;
+	}
+	
+	.petContentsWriterWrap input {
+	    font-size: 1.2em;
+	}
+	
+	.petContentWriterWrap h1 {
+	    font-size: 2em;
+	}
+	
+    .petContentsWriterWrap .petContainer {
+        width: 100%;
+        
+        padding: 30px;
+        
+        border-radius: 20px;
+        box-shadow: 0 10px 10px 5px #999;
+        
+        position: relative;
+    }
+	
+
+/* .inputContainer */
+	.petContentsWriterWrap .petContainer .inputContainer {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 30px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	}
+	
+	.petContentsWriterWrap .petContainer .inputContainer * {
+	    font-size: 1.2em;
+	}
+	
+	.petContentsWriterWrap .petContainer .inputContainer p {
+	    width: 100px;
+	    
+	    color: #03a9f4;
+	    line-height: 35px;
+	}
+	
+	.petContentsWriterWrap .petContainer .inputContainer select,
+	.petContentsWriterWrap .petContainer .inputContainer input {
+	    width: 210px;
+	    
+	    padding: 5px 0;
+	    
+	    outline: none;
+	}
+	
+	.petContentsWriterWrap .petContainer .inputContainer input {
+	    border: none;
+	    border-bottom: 1px solid #000;
+	}
+	
+	
+/* .imgUploaderContainer */
+	.petContentsWriterWrap .petContainer .imgUploaderContainer {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 30px;
+	}
+	
+	.petContentsWriterWrap .petContainer .imgUploaderContainer .imgUploader {
+	    margin-top: 10px;
+	}
+	
+	.petContentsWriterWrap .petContainer .imgUploaderContainer .imgUploader .uploaderButtonsContainer {
+	    width: 600px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: space-between;
+	}
+	
+	.petContentsWriterWrap .petContainer .imgUploaderContainer img {
+	    width: 600px;
+	    
+	    margin-top: 5px;
+	    
+	    border: 1px solid #333;
+	    border-radius: 5px;
+	}
+	
+	
+/* .buttonsContainer */
+	.petContentsWriterWrap .submitButtonContainer {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 40px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	}
+	
+	.petContentsWriterWrap .submitButtonContainer input {
+	    padding: 10px 40px;
+	    
+	    color: #fff;
+	    font-size: 2em;
+	    
+	    border: none;
+	    border-radius: 15px;
+	    
+	    background: #03a9f4;
+	    
+	    transition: 0.5s;
+	}
+	
+	.petContentsWriterWrap .submitButtonContainer input:hover {
+	    background: #ff0058;
+	}
