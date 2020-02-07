@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+        
+        <style type="text/css">
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                position: relative;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* petContentsWriterWrap */
+            .petContentsWriterWrap {
+                width: 1024px;
+                
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            
+            .petContentsWriterWrap * {
+                font-weight: 100;
+            }
+            
+            .petContentsWriterWrap input {
+                font-size: 1.2em;
+            }
+            
+            /* .typeContainer */
+            /* .subTypeContainer */
+            /* .petContainer */
+            .petContentsWriterWrap .typeContainer,
+            .petContentsWriterWrap .subTypeContainer,
+            .petContentsWriterWrap .petContainer {
+                width: 100%;
+                
+                padding: 30px;
+                
+                border-radius: 20px;
+                box-shadow: 0 10px 10px 5px #999;
+                
+                position: relative;
+            }
+            
+            .petContentsWriterWrap .subTypeContainer {
+                margin: 50px 0;
+            }    
+            
+            
+        /* .typeContainer (대분류 설정) */
+            /* .inputForm */
+            .petContentsWriterWrap .typeContainer .inputForm {                
+                width: 900px;
+                
+                margin: 0 auto;
+                margin-top: 50px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                
+                position: relative;
+            }
+            
+            .petContentsWriterWrap .typeContainer .inputForm * {
+                margin-right: 30px;
+            }
+            
+            .petContentsWriterWrap .typeContainer .inputForm p {
+                color: #03a9f4;
+                
+                position: absolute;
+                top: -20px;
+                left: 0;
+            }
+            
+            .petContentsWriterWrap .typeContainer .inputForm input.typeName {
+                border: none;
+                border-bottom: 1px solid #000;
+                outline: none;
+            }            
+            
+            .petContentsWriterWrap .typeContainer .inputForm input[type="submit"] {
+                padding: 5px 20px;
+                
+                color: #fff;
+                background: #03a9f4;
+                
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                
+                transition: 0.5s;
+            }
+            
+            .petContentsWriterWrap .typeContainer .inputForm input[type="submit"]:hover {
+                background: #ff0058;
+            }
+            
+            
+            /* updateContainer */
+            .petContentsWriterWrap .typeContainer .updateContainer {
+                width: 900px;
+                
+                margin: 0 auto;
+                margin-top: 50px;
+                
+                position: relative;
+            }
+            
+            .petContentsWriterWrap .typeContainer .updateContainer p {
+                position: absolute;
+                top: -25px;
+                left: 0;
+                
+                color: #03a9f4;
+            }
+            
+            /* .updateContainer .innerContainer */
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer {
+                width: 100%;
+                
+                margin-top: 15px;
+            }
+            
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.typeName {
+                margin-right: 30px;
+                
+                border: none;
+                border-bottom: 1px solid #000;
+                outline: none;
+            }
+            
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.submitButton,
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton {
+                margin-right: 10px;
+                padding: 5px 20px;
+                
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                
+                color: #fff;
+                background: #03a9f4;
+                
+                transition: 0.5s;
+            }
+            
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton {
+                padding: 5px 10px;
+                font-size: 0.8em;
+            }
+            
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.submitButton:hover,
+            .petContentsWriterWrap .typeContainer .updateContainer .innerContainer input.deleteButton:hover {
+                background: #ff0058;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <!-- 대분류 설정 -->
+        <div class="petContentsWriterWrap">
+            <div class="typeContainer">
+                <h1>대분류 설정</h1>
+                
+                <!-- 대분류 입력부 -->
+                <form class="inputForm" action="" method="POST">
+                    <p>대분류 추가</p>
+                    <input type="text" class="typeName" name="typeName" autocomplete="off">
+                    <input type="submit" value="추가">
+                </form>
+                
+                <!-- 기존 대분류 데이터 수정부 (반복문 출력) - ajax사용 -->
+                <div class="updateContainer">
+                    <p>대분류 수정</p>
+                    
+                    <form action="" method="POST" class="innerContainer">
+                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
+                        <input type="hidden" name="originTypeName" value="기존값(EL)">
+                        
+                        <input type="submit" class="submitButton" value="수정">
+                        <input type="button" class="deleteButton" value="삭제" onclick="">
+                    </form>
+                    
+                    <!-- 기존 대분류 데이터 수정부 -->
+                    <form action="" method="POST" class="innerContainer">
+                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
+                        <input type="hidden" name="originTypeName" value="기존값(EL)">
+                        
+                        <input type="submit" class="submitButton" value="수정">
+                        <input type="button" class="deleteButton" value="삭제" onclick="">
+                    </form>
+                    
+                    <!-- 기존 대분류 데이터 수정부 -->
+                    <form class="innerContainer">
+                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
+                        <input type="hidden" name="originTypeName" value="기존값(EL)">
+                        
+                        <input type="submit" class="submitButton" value="수정">
+                        <input type="button" class="deleteButton" value="삭제" onclick="">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
