@@ -14,6 +14,16 @@
 	    position: relative;
 	}
 	
+	.petContentsWriterWrap .typeContainer hr {
+	    width: 900px;
+	    
+	    margin: 0 auto;
+	    margin-top: 40px;
+	    margin-bottom: 60px;
+	    
+	    border: 1px dashed #000;
+	}
+	
 
 /* .inputForm */
     .petContentsWriterWrap .typeContainer .inputForm {                
@@ -36,7 +46,7 @@
         color: #03a9f4;
         
         position: absolute;
-        top: -20px;
+        top: -25px;
         left: 0;
     }
     
