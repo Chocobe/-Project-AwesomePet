@@ -14,9 +14,14 @@
 	String typeWriterView_css = application.getRealPath("/css/petBoard/typeWriterView.css");
 	File typeWriterView_css_file = new File(typeWriterView_css);
 	Date typeWriterView_css_ver = new Date(typeWriterView_css_file.lastModified());
+	
+	String typeWriterView_js = application.getRealPath("/js/petBoard/typeWriterView.js");
+	File typeWriterView_js_file = new File(typeWriterView_js);
+	Date typeWriterView_js_ver = new Date(typeWriterView_js_file.lastModified());
 %>
 
 <c:set var="typeWriterView_css_ver" value="<%= typeWriterView_css_ver %>"/>
+<c:set var="typeWriterView_js_ver" value="<%= typeWriterView_js_ver %>"/>
 
 
 <!DOCTYPE html>
@@ -35,43 +40,22 @@
                 <h1>대분류 설정</h1>
                 
                 <!-- 대분류 입력부 -->
-                <form class="inputForm" action="" method="POST">
+                <div class="inputForm">
                     <p>대분류 추가</p>
                     <input type="text" class="typeName" name="typeName" autocomplete="off">
-                    <input type="submit" value="추가">
-                </form>
+                    <input type="button" value="추가" onclick="">
+                </div>
+                
+                <hr/>
                 
                 <!-- 기존 대분류 데이터 수정부 (반복문 출력) - ajax사용 -->
                 <div class="updateContainer">
                     <p>대분류 수정</p>
-                    
-                    <form action="" method="POST" class="innerContainer">
-                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
-                        <input type="hidden" name="originTypeName" value="기존값(EL)">
-                        
-                        <input type="submit" class="submitButton" value="수정">
-                        <input type="button" class="deleteButton" value="삭제" onclick="">
-                    </form>
-                    
-                    <!-- 기존 대분류 데이터 수정부 -->
-                    <form action="" method="POST" class="innerContainer">
-                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
-                        <input type="hidden" name="originTypeName" value="기존값(EL)">
-                        
-                        <input type="submit" class="submitButton" value="수정">
-                        <input type="button" class="deleteButton" value="삭제" onclick="">
-                    </form>
-                    
-                    <!-- 기존 대분류 데이터 수정부 -->
-                    <form class="innerContainer">
-                        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
-                        <input type="hidden" name="originTypeName" value="기존값(EL)">
-                        
-                        <input type="submit" class="submitButton" value="수정">
-                        <input type="button" class="deleteButton" value="삭제" onclick="">
-                    </form>
                 </div>
             </div>
         </div>
+        
+        
+        <script src="${contextPath}/js/petBoard/typeWriterView.js?ver=${typeWriterView_js_ver}" type="text/javascript"></script>
     </body>
 </html>
