@@ -117,7 +117,7 @@
 	
 	
 /* .subTypeContainer hr */
-	.petContentsWriterWrap hr {
+	.petContentsWriterWrap .subTypeContainer hr {
 	    width: 900px;
 	    
 	    margin: 0 auto;
@@ -134,12 +134,9 @@
 	    
 	    margin: 0 auto;
 	    margin-top: 20px;
+	    margin-bottom: 80px;
 	    
 	    position: relative;
-	    
-	    display: flex;
-	    flex-flow: row wrap;
-	    justify-content: center;
 	}
 	
 	.petContentsWriterWrap .subTypeContainer .selectorContainer p {
@@ -155,7 +152,6 @@
 	    width: 210px;
 	    
 	    padding: 5px 0;
-	    margin: 0 10px;
 	    
 	    font-size: 1.2em;
 	}
