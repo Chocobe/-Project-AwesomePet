@@ -14,9 +14,14 @@
 	String subTypeWriterView_css = application.getRealPath("/css/petBoard/subTypeWriterView.css");
 	File subTypeWriterView_css_file = new File(subTypeWriterView_css);
 	Date subTypeWriterView_css_ver = new Date(subTypeWriterView_css_file.lastModified());
+	
+	String subTypeWriterView_js = application.getRealPath("/js/petBoard/subTypeWriterView.js");
+	File subTypeWriterView_js_file = new File(subTypeWriterView_js);
+	Date subTypeWriterView_js_ver = new Date(subTypeWriterView_js_file.lastModified());
 %>
 
 <c:set var="subTypeWriterView_css_ver" value="<%= subTypeWriterView_css_ver %>"/>
+<c:set var="subTypeWriterView_js_ver" value="<%= subTypeWriterView_js_ver %>"/>
 
 
 <!DOCTYPE html>
@@ -39,25 +44,24 @@
                 <h1>소분류 설정</h1>
                 
                 <!-- 소분류 생성부 -->
-                <form class="inputForm">
+                <div class="inputForm">
                     <p>소분류 추가</p>
                     
                     <div class="inputContainer">
-                        <select name="typeName">
-                            <option>강아지</option>
-                            <option>대형견</option>
-                            <option>고양이</option>
-                        </select>
+                    	<!-- 대분류 선택부 -->
+                        <select name="typeName"></select>
                         
+                        <!-- 소분류 입력부 -->
                         <input type="text" name="subTypeName">
                         
+                        <!-- 소분류 설명 입력부 -->
                         <textarea class="typeComment"></textarea>
                     </div>
                     
                     <div class="buttonsContainer">
                         <input type="submit" value="추가">
                     </div>
-                </form>
+                </div>
                 
                 <hr/>
                 
@@ -65,81 +69,16 @@
                 <div class="selectorContainer">
                     <p>소분류 수정</p>
                     
-                    <!-- 값 변경 시, ajax로 subType 조회 -->
-                    <select name="typeSelector">
-                        <option>강아지</option>
-                        <option>대형견</option>
-                        <option>고양이</option>
-                    </select>
-                    
-                    <!-- 값 변경 시, ajax로 해당 튜플 조회 -->
-                    <select name="subTypeSelector">
-                        <option>진도</option>
-                        <option>허스키</option>
-                        <option>푸들</option>
-                    </select>
+                    <!-- 값 변경 시, js에서 다시 출력 -->
+                    <select class="typeName" name="typeName"></select>
                 </div>
                 
                 <!-- 소분류 수정부 (반복문 출력) -->
-                <div class="updateContainer">
-                    <form action="" method="POST" class="inputForm">
-                        <div class="inputContainer">
-                            <select name="typeName">
-                                <option>강아지</option>
-                                <option>대형견</option>
-                                <option>고양이</option>
-                            </select>
-                            
-                            <input type="text" name="subTypeName" value="기존값">
-                            
-                            <textarea class="typeComment">기존값</textarea>
-                        </div>
-                        
-                        <div class="buttonsContainer">
-                            <input type="submit" class="submitButton" value="수정">
-                            <input type="button" class="deleteButton" value="삭제" onclick="">
-                        </div>
-                    </form>
-                    
-                    <form action="" method="POST" class="inputForm">
-                        <div class="inputContainer">
-                            <select name="typeName">
-                                <option>강아지</option>
-                                <option>대형견</option>
-                                <option>고양이</option>
-                            </select>
-                            
-                            <input type="text" name="subTypeName" value="기존값">
-                            
-                            <textarea class="typeComment">기존값</textarea>
-                        </div>
-                        
-                        <div class="buttonsContainer">
-                            <input type="submit" class="submitButton" value="수정">
-                            <input type="button" class="deleteButton" value="삭제" onclick="">
-                        </div>
-                    </form>
-                    
-                    <form action="" method="POST" class="inputForm">
-                        <div class="inputContainer">
-                            <select name="typeName">
-                                <option>강아지</option>
-                                <option>대형견</option>
-                                <option>고양이</option>
-                            </select>
-                            
-                            <input type="text" name="subTypeName" value="기존값">
-                            
-                            <textarea class="typeComment">기존값</textarea>
-                        </div>
-                        
-                        <div class="buttonsContainer">
-                            <input type="submit" class="submitButton" value="수정">
-                            <input type="button" class="deleteButton" value="삭제" onclick="">
-                        </div>
-                    </form>
-                </div>
+                <div class="updateContainer"></div>
             </div>
         </div>
+        
+        
+        <script src="${contextPath}/js/petBoard/subTypeWriterView.js?ver=${subTypeWriterView_js_ver}"></script>
     </body>
 </html>
