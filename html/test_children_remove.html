@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    
+    <body>
+        <div class="myDiv">
+            <p>1번</p>
+            <p>2번</p>
+            <p>3번</p>
+            <p>4번</p>
+            <p>5번</p>
+            <h1>Hello</h1>
+        </div>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            function test() {
+                const myDiv = $(".myDiv");
+                myDiv.children().remove();
+            }
+            
+            test();
+        </script>
+    </body>
+</html>

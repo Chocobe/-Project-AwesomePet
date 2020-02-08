@@ -116,7 +116,7 @@
                 <div class="inputContainer">
                     <p>중성화</p>
                     
-                    <input type="neutralization">
+                    <input type="text" name="neutralization">
                 </div>
                 
                 <!-- 분양글 상태 입력부 -->
@@ -172,5 +172,11 @@
         
         <!-- 푸터 페이지를 포함 시킵니다. -->
         <%@ include file="/views/footer.jsp" %>
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+        	initTypeView(`${contextPath}`, initSubTypeView);
+        </script>
     </body>
 </html>
