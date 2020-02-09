@@ -24,7 +24,7 @@ public class CommunicationContentsWriteController implements SubController {
 		CommunicationContentsVO communicationContentsVO = null;
 		
 		// multipart/form-data 에서 데이터를 읽어 옵니다.
-		communicationContentsVO = readMultipartFormData(request, response);
+		communicationContentsVO = readMultipartFormData(request);
 		
 		int result = communicationBoardService.writeCommunicationContents(communicationContentsVO);
 		
@@ -43,7 +43,7 @@ public class CommunicationContentsWriteController implements SubController {
 	}
 	
 	
-	private CommunicationContentsVO readMultipartFormData(HttpServletRequest request, HttpServletResponse response) 
+	private CommunicationContentsVO readMultipartFormData(HttpServletRequest request) 
 					throws IOException {
 		String folderName = "communicationUploadImages";
 		String folderPath = request.getServletContext().getRealPath(folderName);
