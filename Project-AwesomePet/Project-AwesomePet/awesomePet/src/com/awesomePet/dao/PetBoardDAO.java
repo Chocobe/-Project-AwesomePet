@@ -358,28 +358,34 @@ public class PetBoardDAO {
 		
 		return result;
 	}
+	
+	
+// petSubType 테이블에 데이터를 DELETE 합니다.
+	public int deletePetSubType(PetSubTypeVO petSubTypeVO) {
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM petSubType ";
+			sql += "WHERE typeName=? AND subTypeName=?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, petSubTypeVO.getTypeName());
+			pstmt.setString(2, petSubTypeVO.getSubTypeName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<petBoardDAO - deletePetSubType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
