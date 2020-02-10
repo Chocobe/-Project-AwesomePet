@@ -20,7 +20,7 @@ let initSubTypeCallbackMethod;
 				
 				// 1. type의 출력부를 초기화 합니다.
 				for(let i in parsedJSON) {
-					const typeDataElement = createTypeDataElement(parsedJSON[i].typeName);
+					const typeDataElement = createTypeDataElement(context, parsedJSON[i].typeName);
 					updateContainer.append(typeDataElement);
 				}
 				
@@ -38,7 +38,7 @@ let initSubTypeCallbackMethod;
 	
 	
 	// 대분류에 출력할 데이터를 태그로 만들어 반환합니다.
-	function createTypeDataElement(type) {
+	function createTypeDataElement(context, type) {
 		const innerContainer = $("<div>").attr({
 			"class": "innerContainer" 
 		});
@@ -46,7 +46,6 @@ let initSubTypeCallbackMethod;
 		const typeName = $("<input>").attr({
 			"type": "text",
 			"class": "typeName",
-			"name": "typeName",
 			"value": type,
 			"placeholder": type,
 			"autocomplete": "off"
@@ -54,7 +53,7 @@ let initSubTypeCallbackMethod;
 		
 		const originTypeName = $("<input>").attr({
 			"type": "hidden",
-			"name": "originTypeName",
+			"class": "originTypeName",
 			"value": type
 		});
 		
@@ -62,7 +61,7 @@ let initSubTypeCallbackMethod;
 			"type": "button",
 			"class": "submitButton",
 			"value": "수정",
-			"onclick": ""
+			"onclick": "updatePetTypeName(`" + context + "`, this);"
 		});
 		
 		const deleteButton = $("<input>").attr({
@@ -83,16 +82,16 @@ let initSubTypeCallbackMethod;
 		/* "대분류" 출력 형식
 		<div class="innerContainer">
 	        <input type="text" class="typeName" name="typeName" placeholder="기존값" autocomplete="off">
-	        <input type="hidden" name="originTypeName" value="기존값(EL)">
+	        <input type="hidden" class="originTypeName" name="originTypeName" value="기존값">
 	        
-	        <input type="button" class="submitButton" value="수정" onclick="">
+	        <input type="button" class="submitButton" value="수정" onclick="updatePetTypeName(contextPath);">
 	        <input type="button" class="deleteButton" value="삭제" onclick="">
 		</div>
 		*/
 	}
 	
 	
-// DB에 type값을 저장하기 위한 메서드 입니다.
+// DB에 type값을 "저장"하기 위한 메서드 입니다.
 	function writePetTypeName(context) {
 		const typeContainer = $(".typeContainer");
 		const inputForm = $(typeContainer).children(".inputForm");
@@ -118,3 +117,51 @@ let initSubTypeCallbackMethod;
 			}
 		});
 	}
+	
+	
+// DB에 type값을 "변경"하기 위한 메서드 입니다.
+	function updatePetTypeName(context, target) {
+		const innerContainer = $(target).parent();
+		
+		const typeName = $(innerContainer).children(".typeName").val();
+		const originTypeName = $(innerContainer).children(".originTypeName").val();
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petTypeUpdate.do",
+			dataType: "TEXT",
+			data: {
+				"typeName": typeName,
+				"originTypeName": originTypeName
+			},
+			success: function(result, status) {
+				initTypeView(context, initPetContentsWriterCallbackMethod, initSubTypeCallbackMethod, null);
+				alert("typeName 수정 완료!");
+			},
+			error: function(result, status) {
+				alert("typeName 수정 실패...");
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
