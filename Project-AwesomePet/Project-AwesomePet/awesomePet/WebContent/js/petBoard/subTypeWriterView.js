@@ -126,14 +126,14 @@ let initPetContentsCallbackMethod;
 						"type": "button",
 						"class": "submitButton",
 						"value": "수정",
-						"onclick": "updatePetSubTypeName('" + context +"', this);"
+						"onclick": "updatePetSubTypeName('" + context + "', this);"
 					});
 					
 					const deleteButton = $("<input>").attr({
 						"type": "button",
 						"class": "deleteButton",
 						"value": "삭제",
-						"onclick": ""
+						"onclick": "deletePetSubTypeName('" + context + "', this);"
 					});
 					
 					buttonsContainerDiv.append(submitButton);
@@ -241,6 +241,35 @@ let initPetContentsCallbackMethod;
 			}
 		});
 	}
+
+	
+// DB에 petSubType 데이터를 "삭제"하기 위한 메서드 입니다.
+	function deletePetSubTypeName(context, target) {
+		const inputForm = $(target).parent().parent();
+		const inputContainer = $(inputForm).children(".inputContainer");
+		
+		const originTypeName = $(inputContainer).children(".originTypeName").val();
+		const originSubTypeName = $(inputContainer).children(".originSubTypeName").val();
+		
+		alert("originTypeName : " + originTypeName + "\n" + "originSubTypeName : " + originSubTypeName);
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petSubTypeDelete.do",
+			dataType: "TEXT",
+			data: {
+				"typeName": originTypeName,
+				"subTypeName": originSubTypeName
+			},
+			success: function(result, status) {
+				initTypeCallbackMethod(context, initPetContentsCallbackMethod, initSubTypeView, null);
+			},
+			error: function(result, status) {
+				alert("sutType 삭제 실패...");
+			}
+		});
+	}
 	/* 출력 형식
 	<div class="inputForm">
         <div class="inputContainer">
@@ -259,12 +288,10 @@ let initPetContentsCallbackMethod;
         
         <div class="buttonsContainer">
             <input type="button" class="submitButton" value="수정" onclick="updatePetSubTypeName(context, this);">
-            <input type="button" class="deleteButton" value="삭제" onclick="">
+            <input type="button" class="deleteButton" value="삭제" onclick="deletePetSubTypeName(context, this);">
         </div>
     </div> 
     */
-	
-	
 	
 	
 	
