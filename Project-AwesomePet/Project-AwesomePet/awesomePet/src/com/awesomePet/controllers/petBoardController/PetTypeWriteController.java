@@ -27,5 +27,7 @@ public class PetTypeWriteController implements SubController {
 		} else {
 			out.print("false");
 		}
+		
+		out.close();
 	}
 }
