@@ -1,5 +1,11 @@
+let initPetContentsWriterCallbackMethod;
+let initSubTypeCallbackMethod;
+
 // 대분류 초기화 메서드 입니다.
 	function initTypeView(context, initPetContentsWriterCallback, initSubTypeCallback, boardIDX) {
+		initPetContentsWriterCallbackMethod = initPetContentsWriterCallback;
+		initSubTypeCallbackMethod = initSubTypeCallback;
+		
 		const updateContainer = $(".typeContainer .updateContainer");
 		
 		// 기존의 ".innerContainer"를 삭제 함으로써 출력된 데이터를 초기화 합니다.
@@ -83,4 +89,32 @@
 	        <input type="button" class="deleteButton" value="삭제" onclick="">
 		</div>
 		*/
+	}
+	
+	
+// DB에 type값을 저장하기 위한 메서드 입니다.
+	function writePetTypeName(context) {
+		const typeContainer = $(".typeContainer");
+		const inputForm = $(typeContainer).children(".inputForm");
+		const typeInputValue = $(inputForm).children(".typeName").val();
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petTypeWrite.do",
+			dataType: "TEXT",
+			data: {
+				"typeName" : typeInputValue
+			},
+			success: function(result, status) {
+				initTypeView(context, initPetContentsWriterCallbackMethod, initSubTypeCallbackMethod, null);
+				alert("typeName 저장 완료!");
+			},
+			error: function(result, status) {
+				alert("typeName 저장 실패...");
+			},
+			complete: function(result, status) {
+				$(inputForm).children(".typeName").val("");
+			}
+		});
 	}
