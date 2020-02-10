@@ -34,17 +34,6 @@ CREATE TABLE pet(
 DESC pet;
 
 
--- "petImages" table
-CREATE TABLE petImages(
-	petID		INTEGER NOT NULL,
-	imgLocation				VARCHAR(500),
-	imgOriginLocation		VARCHAR(500),
-	FOREIGN KEY(petID) REFERENCES pet(petID)
-);
-
-DESC petImages;
-
-
 -- "petBoard" table
 CREATE TABLE petBoard(
 	boardIDX				INTEGER,
@@ -52,13 +41,25 @@ CREATE TABLE petBoard(
 	watch					INTEGER DEFAULT 0,
 	writeDateTime		TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
 	writeDate			DATE DEFAULT (DATE(writeDateTime)),
-	state					VARCHAR(10),
+	boardState			VARCHAR(10),
 	PRIMARY KEY(boardIDX),
 	FOREIGN KEY(boardIDX) REFERENCES pet(petID) ON DELETE CASCADE,
 	FOREIGN KEY(writerID) REFERENCES awesomepetmember(memberID) ON DELETE CASCADE
 );
 
-DESC petBoard;
+DESC petboard;
+
+
+-- "petBoardImages"
+CREATE TABLE petBoardImages(
+	boardIDX					INTEGER,
+	orderNumber				INTEGER DEFAULT 0,
+	imgLocation				VARCHAR(500),
+	imgOriginLocation		VARCHAR(500),
+	FOREIGN KEY(boardIDX) REFERENCES petboard(boardIDX) ON DELETE CASCADE
+);
+
+DESC petBoardImages;
 
 
 --
@@ -71,6 +72,8 @@ DESC petBoard;
 -- 3. pet 데이터 작성
 --
 -- 4. petBoard 데이터 작성
+--
+-- 5. petBoardImages 데이터 작성
 
 SELECT * FROM petType;
 
@@ -80,7 +83,15 @@ SELECT * FROM pet;
 
 SELECT * FROM petBoard;
 
-SELECT * FROM petImages;
+SELECT * FROM petBoardImages;
+
+
+
+DELETE FROM pet;
+
+DELETE FROM petboard;
+
+DELETE FROM petboardimages;
 
 
 -- petType 테스트 데이터 입력
@@ -168,8 +179,24 @@ SELECT petBoard.boardIDX,
 		 petBoard.writerID,
 		 petBoard.watch,
 		 petBoard.writeDate,
-		 petBoard.state
+		 petBoard.boardState
 FROM pet, petBoard, petSubType
 WHERE pet.petID = petBoard.boardIDX 
   AND pet.subType = petSubType.subTypeName;
 		 
+		 
+		 
+CREATE TABLE test(
+	val_1		INTEGER,
+	val_2		INTEGER,
+	val_3		VARCHAR(10),
+	val_4		VARCHAR(10)
+);
+
+SELECT * FROM test;
+
+INSERT INTO test(val_1, val_2, val_3, val_4)
+VALUES(1, 11, 'a', 'aa'), (2, 22, 'b', 'bb');
+
+INSERT INTO test(val_1, val_2, val_3, val_4)
+VALUES(1, 11, 'a', 'aa'), (2, 22, 'b', 'bb'), (3, 33, 'c', 'cc'), (4, 44, 'd', 'dd');
