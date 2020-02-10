@@ -42,8 +42,8 @@
                 <!-- 대분류 입력부 -->
                 <div class="inputForm">
                     <p>대분류 추가</p>
-                    <input type="text" class="typeName" name="typeName" autocomplete="off">
-                    <input type="button" value="추가" onclick="">
+                    <input type="text" class="typeName" autocomplete="off">
+                    <input type="button" value="추가" onclick="writePetTypeName(`${contextPath}`);">
                 </div>
                 
                 <hr/>
