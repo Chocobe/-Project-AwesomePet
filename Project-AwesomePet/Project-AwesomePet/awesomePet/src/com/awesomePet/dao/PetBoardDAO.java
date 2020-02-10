@@ -325,6 +325,39 @@ public class PetBoardDAO {
 		
 		return result;
 	}
+	
+	
+// petSubType 테이블에 데이터를 UPDATE 합니다.
+	public int updatePetSubType(PetSubTypeVO petSubTypeVO) {
+		int result = 0;
+		
+		try {
+			String sql = "UPDATE petSubType SET ";
+			sql += "typeName=?, " +
+				   "subTypeName=?, " +
+				   "subTypeComment=? ";
+			sql += "WHERE typeName=? AND subTypeName=?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, petSubTypeVO.getTypeName());
+			pstmt.setString(2, petSubTypeVO.getSubTypeName());
+			pstmt.setString(3, petSubTypeVO.getSubTypeComment());
+			pstmt.setString(4, petSubTypeVO.getOriginTypeName());
+			pstmt.setString(5, petSubTypeVO.getOriginSubTypeName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<petBoardDAO - updatePetSubType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
 
 
