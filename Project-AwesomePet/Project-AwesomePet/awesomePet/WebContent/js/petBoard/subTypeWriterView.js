@@ -179,8 +179,6 @@ let initPetContentsCallbackMethod;
 		const subTypeName = $(inputContainer).children(".subTypeName").val();
 		const subTypeComment = $(inputContainer).children(".subTypeComment").val();
 		
-		alert("subTypeComment 값 : " + subTypeComment);
-		
 		$.ajax({
 			type: "POST",
 			async: true,
@@ -193,7 +191,6 @@ let initPetContentsCallbackMethod;
 			},
 			success: function(result, status) {
 				initTypeCallbackMethod(context, initPetContentsCallbackMethod, initSubTypeView, null);
-				alert("subType 저장 완료!");
 			},
 			error: function(result, status) {
 				alert("subTypeName 저장 실패...");
@@ -251,8 +248,6 @@ let initPetContentsCallbackMethod;
 		const originTypeName = $(inputContainer).children(".originTypeName").val();
 		const originSubTypeName = $(inputContainer).children(".originSubTypeName").val();
 		
-		alert("originTypeName : " + originTypeName + "\n" + "originSubTypeName : " + originSubTypeName);
-		
 		$.ajax({
 			type: "POST",
 			async: true,
@@ -270,28 +265,6 @@ let initPetContentsCallbackMethod;
 			}
 		});
 	}
-	/* 출력 형식
-	<div class="inputForm">
-        <div class="inputContainer">
-            <select class="typeName">
-                <option>강아지</option>
-                <option>대형견</option>
-                <option>고양이</option>
-            </select>
-            <input type="hidden" class="originTypeName" value="기존값">
-            
-            <input type="text" class="subTypeName" value="기존값">
-            <input type="hidden" class="originSubTypeName" value="기존값">
-            
-            <textarea class="subTypeComment">기존값</textarea>
-        </div>
-        
-        <div class="buttonsContainer">
-            <input type="button" class="submitButton" value="수정" onclick="updatePetSubTypeName(context, this);">
-            <input type="button" class="deleteButton" value="삭제" onclick="deletePetSubTypeName(context, this);">
-        </div>
-    </div> 
-    */
 	
 	
 	
