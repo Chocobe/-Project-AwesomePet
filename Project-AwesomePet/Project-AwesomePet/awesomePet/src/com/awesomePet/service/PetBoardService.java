@@ -55,10 +55,19 @@ public class PetBoardService {
 	}
 	
 	
+// petType 테이블에 데이터를 UPDATE 합니다.
+	public int updatePetType(String typeName, String originTypeName) {
+		return petBoardDAO.updatePetType(typeName, originTypeName);
+	}
+	
+	
 // petSubType 테이블에 데이터를 INSERT 합니다.
 	public int writePetSubType(PetSubTypeVO petSubTypeVO) {
 		return petBoardDAO.insertPetSubType(petSubTypeVO);
 	}
+	
+	
+
 	
 	
 	
