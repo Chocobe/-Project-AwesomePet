@@ -36,6 +36,7 @@ import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoResultViewController;
 import com.awesomePet.controllers.petBoardController.PetContentsWriteController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeWriteController;
+import com.awesomePet.controllers.petBoardController.PetTypeUpdateController;
 import com.awesomePet.controllers.petBoardController.PetTypeViewController;
 import com.awesomePet.controllers.petBoardController.PetTypeWriteController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionBoardViewController;
@@ -186,6 +187,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 작성 요청 컨트롤러
 		subControllers.put("/petTypeWrite.do", new PetTypeWriteController());
+		
+		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 수정 요청 컨트로러
+		subControllers.put("/petTypeUpdate.do", new PetTypeUpdateController());
 		
 		// 분양 게시판(가족을 찾아요)의 "petSubType" 데이터 작성 요청 컨트롤러
 		subControllers.put("/petSubTypeWrite.do", new PetSubTypeWriteController());
