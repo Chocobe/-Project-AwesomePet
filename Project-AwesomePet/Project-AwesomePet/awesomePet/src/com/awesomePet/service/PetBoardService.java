@@ -46,4 +46,11 @@ public class PetBoardService {
 	public int writePetBoardImages(List<PetBoardImageVO> petBoardImageList) {
 		return petBoardDAO.insertPetBoardImages(petBoardImageList);
 	}
+	
+	
+// petType 테이블에 데이터를 INSERT 합니다.
+	public int writePetType(String typeName) {
+		return petBoardDAO.insertPetType(typeName);
+	}
+	
 }
