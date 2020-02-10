@@ -67,6 +67,10 @@ public class PetBoardService {
 	}
 	
 	
+// petSubType 테이블에 데이터를 UPDATE 합니다.
+	public int updatePetSubType(PetSubTypeVO petSubTypeVO) {
+		return petBoardDAO.updatePetSubType(petSubTypeVO);
+	}
 
 	
 	
