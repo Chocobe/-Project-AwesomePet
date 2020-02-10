@@ -267,6 +267,36 @@ public class PetBoardDAO {
 		
 		return result;
 	}
+	
+	
+// petSubType 테이블에 데이터를 INSERT 합니다.
+	public int insertPetSubType(PetSubTypeVO petSubTypeVO) {
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO petSubType(typeName, " +
+												"subTypeName, " +
+												"subTypeComment) ";
+			sql += "VALUES(?, ?, ?)";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, petSubTypeVO.getTypeName());
+			pstmt.setString(2, petSubTypeVO.getSubTypeName());
+			pstmt.setString(3, petSubTypeVO.getSubTypeComment());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - insertPetSubType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
 
 
