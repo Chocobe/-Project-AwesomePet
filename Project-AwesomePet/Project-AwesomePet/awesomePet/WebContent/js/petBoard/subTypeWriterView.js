@@ -41,7 +41,7 @@ let initPetContentsCallbackMethod;
 		
 		// 4. "소분류 수정" 의 이벤트 메서드를 추가 합니다.
 		typeNameSelector.change(function() {
-			typeSelectEvent($(typeNameSelector).val());
+			typeSelectEvent(context, $(typeNameSelector).val());
 		});
 		
 		
@@ -56,7 +56,7 @@ let initPetContentsCallbackMethod;
 	
 	
 	// 선택한 조건의 "소분류" 데이터를 출력합니다.
-	function typeSelectEvent(type) {
+	function typeSelectEvent(context, type) {
 		// typeName 조건 검사
 		for(let i in petTypeList) {
 			if(type == petTypeList[i].typeName) {
@@ -76,7 +76,7 @@ let initPetContentsCallbackMethod;
 					});
 					
 					const typeNameSelect = $("<select>").attr({
-						"name": "typeName"
+						"class": "typeName"
 					});
 					
 					for(let k in petTypeList) {
@@ -85,16 +85,22 @@ let initPetContentsCallbackMethod;
 					}
 					typeNameSelect.val(petTypeList[i].typeName);
 					
+					const originTypeName = $("<input>").attr({
+						"type": "hidden",
+						"class": "originTypeName",
+						"value": subTypeList[j].typeName
+					});
+					
 					const subTypeNameInput = $("<input>").attr({
 						"type": "text",
-						"name": "subTypeName",
+						"class": "subTypeName",
 						"value": subTypeList[j].subTypeName,
 						"placeholder": subTypeList[j].subTypeName
 					});
 					
 					const originSubTypeName = $("<input>").attr({
 						"type": "hidden",
-						"name": "originSubTypeName",
+						"class": "originSubTypeName",
 						"value": subTypeList[j].subTypeName
 					});
 					
@@ -104,6 +110,7 @@ let initPetContentsCallbackMethod;
 					
 					
 					inputContainerDiv.append(typeNameSelect);
+					inputContainerDiv.append(originTypeName);
 					inputContainerDiv.append(subTypeNameInput);
 					inputContainerDiv.append(originSubTypeName);
 					inputContainerDiv.append(subTypeCommentTextarea);
@@ -119,7 +126,7 @@ let initPetContentsCallbackMethod;
 						"type": "button",
 						"class": "submitButton",
 						"value": "수정",
-						"onclick": ""
+						"onclick": "updatePetSubTypeName('" + context +"', this);"
 					});
 					
 					const deleteButton = $("<input>").attr({
@@ -142,20 +149,21 @@ let initPetContentsCallbackMethod;
 		/* 출력 형식
 		<div class="inputForm">
 	        <div class="inputContainer">
-	            <select name="typeName">
+	            <select class="typeName">
 	                <option>강아지</option>
 	                <option>대형견</option>
 	                <option>고양이</option>
 	            </select>
+	            <input type="hidden" class="originTypeName" value="기존값">
 	            
-	            <input type="text" name="subTypeName" value="기존값">
-	            <input type="hidden" name="originSubTypeName" value="기존값">
+	            <input type="text" class="subTypeName" value="기존값">
+	            <input type="hidden" class="originSubTypeName" value="기존값">
 	            
 	            <textarea class="subTypeComment">기존값</textarea>
 	        </div>
 	        
 	        <div class="buttonsContainer">
-	            <input type="button" class="submitButton" value="수정" onclick="">
+	            <input type="button" class="submitButton" value="수정" onclick="updatePetSubTypeName(context, this);">
 	            <input type="button" class="deleteButton" value="삭제" onclick="">
 	        </div>
 	    </div> 
@@ -197,3 +205,82 @@ let initPetContentsCallbackMethod;
 			}
 		});
 	}
+	
+	
+// DB에 petSubType 데이터를 "수정"하기 위한 메서드 입니다.
+	function updatePetSubTypeName(context, target) {
+		const inputForm = $(target).parent().parent();
+		const inputContainer = $(inputForm).children(".inputContainer");
+		
+		const typeName = $(inputContainer).children(".typeName").val();
+		const originTypeName = $(inputContainer).children(".originTypeName").val();
+		
+		const subTypeName = $(inputContainer).children(".subTypeName").val();
+		const originSubTypeName = $(inputContainer).children(".originSubTypeName").val();
+		
+		const subTypeComment = $(inputContainer).children(".subTypeComment").val();
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petSubTypeUpdate.do",
+			dataType: "TEXT",
+			data: {
+				"typeName" : typeName,
+				"originTypeName": originTypeName,
+				"subTypeName": subTypeName,
+				"originSubTypeName": originSubTypeName,
+				"subTypeComment": subTypeComment
+			},
+			success: function(result, status) {
+				initTypeCallbackMethod(context, initPetContentsCallbackMethod, initSubTypeView, null);
+				
+			},
+			error: function(result, status) {
+				alert("subType 수정 실패...");
+			}
+		});
+	}
+	/* 출력 형식
+	<div class="inputForm">
+        <div class="inputContainer">
+            <select class="typeName">
+                <option>강아지</option>
+                <option>대형견</option>
+                <option>고양이</option>
+            </select>
+            <input type="hidden" class="originTypeName" value="기존값">
+            
+            <input type="text" class="subTypeName" value="기존값">
+            <input type="hidden" class="originSubTypeName" value="기존값">
+            
+            <textarea class="subTypeComment">기존값</textarea>
+        </div>
+        
+        <div class="buttonsContainer">
+            <input type="button" class="submitButton" value="수정" onclick="updatePetSubTypeName(context, this);">
+            <input type="button" class="deleteButton" value="삭제" onclick="">
+        </div>
+    </div> 
+    */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
