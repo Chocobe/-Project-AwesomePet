@@ -242,6 +242,31 @@ public class PetBoardDAO {
 		
 		return result;
 	}
+	
+	
+// petType 테이블에 데이터를 INSERT 합니다.
+	public int insertPetType(String typeName) {
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO petType(typeName) ";
+			sql += "VALUES(?)";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, typeName);
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<petBoardDAO - insertPetType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
 
 
