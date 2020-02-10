@@ -1,5 +1,5 @@
 // 대분류 초기화 메서드 입니다.
-	function initTypeView(context, initSubTypeCallback) {
+	function initTypeView(context, initPetContentsWriterCallback, initSubTypeCallback, boardIDX) {
 		const updateContainer = $(".typeContainer .updateContainer");
 		
 		// 기존의 ".innerContainer"를 삭제 함으로써 출력된 데이터를 초기화 합니다.
@@ -12,13 +12,17 @@
 			success: function(jsonString, status) {
 				const parsedJSON = JSON.parse(jsonString);
 				
+				// 1. type의 출력부를 초기화 합니다.
 				for(let i in parsedJSON) {
 					const typeDataElement = createTypeDataElement(parsedJSON[i].typeName);
 					updateContainer.append(typeDataElement);
 				}
 				
-				// subType의 출력부를 초기화 합니다. (subType 갱신)
+				// 2. subType의 출력부를 초기화 합니다. (subType 갱신)
 				initSubTypeCallback(context, parsedJSON);
+				
+				// 3. petContents 작성부를 초기화 합니다.
+				initPetContentsWriterCallback(context, parsedJSON, boardIDX);
 			},
 			error: function(jsonString, status) {
 				alert("ajax 에러");
