@@ -297,6 +297,32 @@ public class PetBoardDAO {
 	}
 	
 	
+// petType 테이블에 데이터를 DELETE 합니다.
+	public int deletePetType(String typeName) {
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM petType ";
+			sql += "WHERE typeName=?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, typeName);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<petBoardDAO - deletePetType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
 // petSubType 테이블에 데이터를 INSERT 합니다.
 	public int insertPetSubType(PetSubTypeVO petSubTypeVO) {
 		int result = 0;
