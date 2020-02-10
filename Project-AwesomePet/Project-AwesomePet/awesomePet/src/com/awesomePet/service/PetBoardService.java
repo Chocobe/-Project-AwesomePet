@@ -61,6 +61,12 @@ public class PetBoardService {
 	}
 	
 	
+// petType 테이블에 데이터를 DELETE 합니다.
+	public int deletePetType(String typeName) {
+		return petBoardDAO.deletePetType(typeName);
+	}
+	
+	
 // petSubType 테이블에 데이터를 INSERT 합니다.
 	public int writePetSubType(PetSubTypeVO petSubTypeVO) {
 		return petBoardDAO.insertPetSubType(petSubTypeVO);
