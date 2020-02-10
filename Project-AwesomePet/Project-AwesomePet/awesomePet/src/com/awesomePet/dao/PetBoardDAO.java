@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.awesomePet.mainDBCP.DBConnectorJNDI;
+import com.awesomePet.vo.PetBoardImageVO;
+import com.awesomePet.vo.PetBoardVO;
 import com.awesomePet.vo.PetSubTypeVO;
 import com.awesomePet.vo.PetTypeVO;
+import com.awesomePet.vo.PetVO;
 
 public class PetBoardDAO {
 	private Connection conn;
@@ -81,7 +84,166 @@ public class PetBoardDAO {
 		
 		return resultList;
 	}
+	
+	
+// pet 테이블에 데이터를 INSERT 합니다.
+	public int insertPet(PetVO petVO) {
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO pet(subType, " +
+										 "age, " +
+										 "gender, " +
+										 "price, " +
+										 "vaccination, " +
+										 "neutralization) ";
+			sql += "VALUES(?, ?, ?, ?, ?, ?)";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, petVO.getSubTypeName());
+			pstmt.setInt(2, petVO.getAge());
+			pstmt.setString(3, petVO.getGender());
+			pstmt.setInt(4, petVO.getPrice());
+			pstmt.setString(5, petVO.getVaccination());
+			pstmt.setString(6, petVO.getNeutralization());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - insertPet() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+// pet 테이블에서 petID를 SELECT 합니다.
+	public int selectPetID(PetVO petVO) {
+		int petID = 0;
+		
+		try {
+			String sql = "SELECT petID FROM pet WHERE ";
+			sql += "subType=? AND " +
+				   "age=? AND " +
+				   "gender=? AND " +
+				   "price=? AND " +
+				   "vaccination=? AND " +
+				   "neutralization=? ";
+			sql += "ORDER BY petID DESC ";
+			sql += "LIMIT 1";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, petVO.getSubTypeName());
+			pstmt.setInt(2, petVO.getAge());
+			pstmt.setString(3, petVO.getGender());
+			pstmt.setInt(4, petVO.getPrice());
+			pstmt.setString(5, petVO.getVaccination());
+			pstmt.setString(6, petVO.getNeutralization());
+			
+			resultSet = pstmt.executeQuery();
+			
+			if(resultSet.next()) {
+				petID = resultSet.getInt("petID");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - selectPetID() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return petID;
+	}
+	
+	
+// petBoard 테이블에 데이터를 INSERT 합니다.
+	public int insertPetBoard(PetBoardVO petBoardVO) {
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO petBoard(boardIDX, " +
+											  "writerID, " +
+											  "boardState) ";
+			sql += "VALUES(?, ?, ?)";
+			
+			readyForQuery(sql);
+			
+			pstmt.setInt(1, petBoardVO.getBoardIDX());
+			pstmt.setString(2, petBoardVO.getWriterID());
+			pstmt.setString(3, petBoardVO.getBoardState());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - insertPetBoard() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+// petBoardImage 테이블에 데이터를 INSERT 합니다.
+	public int insertPetBoardImages(List<PetBoardImageVO> petBoardImagesList) {
+		int result = 0;
+		
+		try {
+			if(petBoardImagesList.size() < 1) {
+				return result;
+			}
+			
+			String sql = "INSERT INTO petBoardImage(boardIDX, " +
+												   "orderNumber, " +
+												   "imgLocation, " +
+												   "imgOriginLocation) ";
+			String valuesSQL = "#(?, ?, ?, ?)";
+			
+			for(int i = 0; i < petBoardImagesList.size(); i++) {
+				sql += valuesSQL;
+			}
+			
+			sql = sql.replaceFirst("#", "VALUES");
+			sql = sql.replaceAll("#", ",");
+			
+			System.out.println("TEST SQL : " + sql);
+			
+			readyForQuery(sql);
+			
+			int sqlParamNumber = 0;
+			for(PetBoardImageVO imageVO : petBoardImagesList) {
+				pstmt.setInt(++sqlParamNumber, imageVO.getBoardIDX());
+				pstmt.setInt(++sqlParamNumber, imageVO.getOrderNumber());
+				pstmt.setString(++sqlParamNumber, imageVO.getImgLocation());
+				pstmt.setString(++sqlParamNumber, imageVO.getImgOriginLocation());
+			}
+			
+			System.out.println("--- sql query : " + sql);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - insertPetBoardImages() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
 }
+
 
 
 
