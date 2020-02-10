@@ -56,7 +56,7 @@
         outline: none;
     }            
     
-    .petContentsWriterWrap .typeContainer .inputForm input[type="submit"] {
+    .petContentsWriterWrap .typeContainer .inputForm input[type="button"] {
         padding: 5px 20px;
         
         color: #fff;
@@ -69,7 +69,7 @@
         transition: 0.5s;
     }
     
-    .petContentsWriterWrap .typeContainer .inputForm input[type="submit"]:hover {
+    .petContentsWriterWrap .typeContainer .inputForm input[type="button"]:hover {
         background: #ff0058;
     }
     
