@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.awesomePet.controllers.ControllerUtil;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.PetBoardService;
 import com.awesomePet.vo.PetBoardImageVO;
@@ -73,6 +74,8 @@ public class PetContentsWriteController implements SubController {
 			// 컨트롤러 작성 할 것
 			resultPagePath = "/petContentsWriterView.do";
 		}
+		
+//		ControllerUtil.forward(request, response, resultPagePath);
 	}
 	
 	
