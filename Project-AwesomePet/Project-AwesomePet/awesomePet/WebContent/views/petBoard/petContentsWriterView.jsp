@@ -22,10 +22,15 @@
 	String petContentsWriterView_css = application.getRealPath("/css/petBoard/petContentsWriterView.css");
 	File petContentsWriterView_css_file = new File(petContentsWriterView_css);
 	Date petContentsWriterView_css_ver = new Date(petContentsWriterView_css_file.lastModified());
+	
+	String petContentsWriterView_js = application.getRealPath("/js/petBoard/petContentsWriterView.js");
+	File petContentsWriterView_js_file = new File(petContentsWriterView_js);
+	Date petContentsWriterView_js_ver = new Date(petContentsWriterView_js_file.lastModified());
 %>
 
 <c:set var="initialize_css_ver" value="<%= initialize_css_ver %>"/>
 <c:set var="petContentsWriterView_css_ver" value="<%= petContentsWriterView_css_ver %>"/>
+<c:set var="petContentsWriterView_js_ver" value="<%= petContentsWriterView_js_ver %>"/>
 
 
 <!DOCTYPE html>
@@ -59,29 +64,23 @@
     	
     	<!-- 분양등록 -->
         <div class="petContentsWriterWrap">
-            <form action="" method="POST" class="petContainer" enctype="multipart/form-data">
+            <form action="${contextPath}/petContentsWrite.do" method="POST" class="petContainer" enctype="multipart/form-data">
                 <h1>분양등록</h1>
                 
                 <!-- 대분류 입력부 -->
-                <div class="inputContainer">
+                <div class="inputContainer typeNameDiv">
                     <p>대분류</p>
                     
-                    <select class="typeName">
-                        <option>강아지</option>
-                        <option>대형견</option>
-                        <option>고양이</option>
-                    </select>
+                    <!-- js에 의해 목록을 생성합니다. -->
+                    <select class="typeName"></select>
                 </div>
                 
                 <!-- 소분류 입력부 -->
-                <div class="inputContainer">
+                <div class="inputContainer subTypeNameDiv">
                     <p>소분류</p>
                     
-                    <select class="subTypeName">
-                        <option>진도</option>
-                        <option>허스키</option>
-                        <option>푸들</option>
-                    </select>
+                    <!-- js에 의해 목록을 생성합니다. -->
+                    <select class="subTypeName" name="subTypeName"></select>
                 </div>
                 
                 <!-- 나이 입력부 -->
@@ -122,7 +121,7 @@
                 <!-- 분양글 상태 입력부 -->
                 <div class="inputContainer">
                     <p>분양글 상태</p>
-                    <select name="state">
+                    <select name="boardState">
                         <option>공개</option>
                         <option>비공개</option>
                         <option>분양완료</option>
@@ -135,30 +134,11 @@
                     <div class="imgUploader">
                 		<div class="uploaderButtonsContainer">
                 			<input type="file" name="imgLocation_1">
-                            <input type="button" value="❌">
+                            <input type="button" value="❌" class="cancelButton" onclick="cancelImgUpload(this)">
                 		</div>
                 		
-                		<img src="${contextPath}/appImages/family.jpg">
-                	</div>
-                	
-                	<!-- js 에서 형식 출력 -->
-                	<div class="imgUploader">
-                		<div class="uploaderButtonsContainer">
-                			<input type="file" name="imgLocation_1">
-                            <input type="button" value="❌">
-                		</div>
-                		
-                		<img src="${contextPath}/appImages/family.jpg">
-                	</div>
-                	
-                	<!-- js 에서 형식 출력 -->
-                	<div class="imgUploader">
-                		<div class="uploaderButtonsContainer">
-                			<input type="file" name="imgLocation_1">
-                            <input type="button" value="❌">
-                		</div>
-                		
-                		<img src="${contextPath}/appImages/family.jpg">
+                		<input type="hidden" name="action" class="action" value="">
+                		<!-- js에 의해 "<img>" 태그가 추가 됩니다. (업로드 미리보기) -->
                 	</div>
                 </div>
                 
@@ -175,8 +155,15 @@
         
         
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="${contextPath}/js/petBoard/petContentsWriterView.js?ver=${petContentsWriterView_js_ver}"></script>
+        
         <script type="text/javascript">
-        	initTypeView(`${contextPath}`, initSubTypeView);
+        	// 대분류 설정, 소분류 설정, 분양등록 초기화
+        	// ("대분류 설정 - typeWriterView.js"에서 정의)
+        	initTypeView(`${contextPath}`, 
+        				 initPetContentsWriterView, 
+        				 initSubTypeView,
+        				 `${noValue}`);
         </script>
     </body>
 </html>
