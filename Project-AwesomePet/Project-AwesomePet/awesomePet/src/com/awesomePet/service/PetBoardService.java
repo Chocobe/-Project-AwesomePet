@@ -73,6 +73,11 @@ public class PetBoardService {
 	}
 
 	
+// petSubType 테이블에 데이터를 DELETE 합니다.
+	public int deletePetSubType(PetSubTypeVO petSubTypeVO) {
+		return petBoardDAO.deletePetSubType(petSubTypeVO);
+	}
+	
 	
 	
 }
