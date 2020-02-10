@@ -25,7 +25,7 @@ let initSubTypeCallbackMethod;
 				}
 				
 				// 2. subType의 출력부를 초기화 합니다. (subType 갱신)
-				initSubTypeCallback(context, parsedJSON);
+				initSubTypeCallback(context, parsedJSON, initTypeView, initPetContentsWriterCallbackMethod);
 				
 				// 3. petContents 작성부를 초기화 합니다.
 				initPetContentsWriterCallback(context, parsedJSON, boardIDX);

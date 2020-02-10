@@ -49,17 +49,17 @@
                     
                     <div class="inputContainer">
                     	<!-- 대분류 선택부 -->
-                        <select name="typeName"></select>
+                        <select class="typeName"></select>
                         
                         <!-- 소분류 입력부 -->
-                        <input type="text" name="subTypeName">
+                        <input type="text" class="subTypeName">
                         
                         <!-- 소분류 설명 입력부 -->
-                        <textarea class="typeComment"></textarea>
+                        <textarea class="subTypeComment"></textarea>
                     </div>
                     
                     <div class="buttonsContainer">
-                        <input type="submit" value="추가">
+                        <input type="button" value="추가" onclick="petSubTypeWrite(`${contextPath}`);">
                     </div>
                 </div>
                 

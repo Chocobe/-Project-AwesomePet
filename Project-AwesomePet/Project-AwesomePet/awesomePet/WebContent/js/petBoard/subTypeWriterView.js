@@ -1,18 +1,25 @@
 let petTypeList = null;
-        	
+
 const subTypeContainer = $(".subTypeContainer");
 const inputContainer = subTypeContainer.children(".inputForm").children(".inputContainer");
 const selectorContainer = subTypeContainer.children(".selectorContainer");
 const updateContainer = subTypeContainer.children(".updateContainer");
 	
-	
+let initTypeCallbackMethod;
+let initPetContentsCallbackMethod;
+
+
 // 소분류 초기화 메서드 입니다.
-	function initSubTypeView(context, parsedJSON) {
+	function initSubTypeView(context, parsedJSON, initTypeViewCallback, initPetContentsWriterCallback) {
 		petTypeList = parsedJSON;
+		
+		initTypeCallbackMethod = initTypeViewCallback;
+		initPetContentsCallbackMethod = initPetContentsWriterCallback;
 		
 		// 1. "소분류 추가" 의 "<SELECT>" 출력부를 초기화 합니다.
 		let typeNameSelector = inputContainer.children("select");
 		typeNameSelector.children().remove();
+		updateContainer.children().remove();
 		
 		// 2. "소분류 추가" 의 "<SELECT>" 출력부를 출력 합니다.
 		for(let i in petTypeList) {
@@ -153,4 +160,40 @@ const updateContainer = subTypeContainer.children(".updateContainer");
 	        </div>
 	    </div> 
 	    */
+	}
+	
+	
+// DB에 subType 데이터를 작성하기 위한 메서드 입니다.
+	function petSubTypeWrite(context) {
+		const inputContainer = $(subTypeContainer).children(".inputForm").children(".inputContainer");
+		
+		const typeName = $(inputContainer).children(".typeName").val();
+		const subTypeName = $(inputContainer).children(".subTypeName").val();
+		const subTypeComment = $(inputContainer).children(".subTypeComment").val();
+		
+		alert("subTypeComment 값 : " + subTypeComment);
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petSubTypeWrite.do",
+			dataType: "TEXT",
+			data: {
+				"typeName": typeName,
+				"subTypeName": subTypeName,
+				"subTypeComment": subTypeComment
+			},
+			success: function(result, status) {
+				initTypeCallbackMethod(context, initPetContentsCallbackMethod, initSubTypeView, null);
+				alert("subType 저장 완료!");
+			},
+			error: function(result, status) {
+				alert("subTypeName 저장 실패...");
+			},
+			complete: function(result, status) {
+				$(inputContainer).children(".typeName").val("");
+				$(inputContainer).children(".subTypeName").val("");
+				$(inputContainer).children(".subTypeComment").val("");
+			}
+		});
 	}

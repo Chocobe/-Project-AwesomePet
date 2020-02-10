@@ -74,16 +74,12 @@ function initImgUploader(targetFileInput) {
 			const imgUploader = $(fileInput).parent().parent();
 			const uploaderButtonsContainer = $(imgUploader).children(".uploaderButtonsContainer");
 			
-			alert($(imgUploader).children(".action").val());
-			
 			if(this.files != null && this.files[0] != null) {
 				const fileReader = new FileReader();
 				
 				// 파일 업로드 완료 이벤트를 설정 합니다.
 				fileReader.onload = function(event) {
 					const src = event.target.result;
-					
-					alert($(imgUploader).children(".action").val());
 					
 					if($(imgUploader).children(".action").val() == "fixed") {
 						$(imgUploader).children("img").attr({
@@ -172,8 +168,6 @@ function initImgUploader(targetFileInput) {
 	function cancelImgUpload(target) {
 		const imgUploaderContainer = $(".imgUploaderContainer");
 		const imgUploader = $(target).parent().parent();
-		
-		alert($(imgUploaderContainer).children(".imgUploader").size());
 		
 		if(($(imgUploaderContainer).children(".imgUploader")).size() > 1) {
 			if(imgUploader.children(".action").val() == "fixed") {
