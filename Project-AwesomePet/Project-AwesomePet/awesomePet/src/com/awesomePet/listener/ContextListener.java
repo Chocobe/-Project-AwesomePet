@@ -38,6 +38,7 @@ import com.awesomePet.controllers.petBoardController.PetContentsWriteController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeDeleteController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeUpdateController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeWriteController;
+import com.awesomePet.controllers.petBoardController.PetTypeDeleteController;
 import com.awesomePet.controllers.petBoardController.PetTypeUpdateController;
 import com.awesomePet.controllers.petBoardController.PetTypeViewController;
 import com.awesomePet.controllers.petBoardController.PetTypeWriteController;
@@ -181,17 +182,20 @@ public class ContextListener implements ServletContextListener {
 		
 		
 	// 분양 게시판(가족을 찾아요)를 위한 SubController 입니다.
-		// 분양 게시판(가족을 찾아요)의 petSubType의 전체 데이터 요청 컨트롤러
+		// 분양 게시판(가족을 찾아요)의 petSubType의 "전체 데이터" 요청 컨트롤러
 		subControllers.put("/petTypeView.do", new PetTypeViewController());
 		
-		// 분양 게시판(가족을 찾아요)의 게시물(pet, petBoard, petBoardImage) 데이터 작성 요청 컨트롤러
+		// 분양 게시판(가족을 찾아요)의 게시물(pet, petBoard, petBoardImage) 데이터 "작성" 요청 컨트롤러
 		subControllers.put("/petContentsWrite.do", new PetContentsWriteController());
 		
-		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 작성 요청 컨트롤러
+		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 "작성" 요청 컨트롤러
 		subControllers.put("/petTypeWrite.do", new PetTypeWriteController());
 		
-		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 수정 요청 컨트로러
+		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 "수정" 요청 컨트로러
 		subControllers.put("/petTypeUpdate.do", new PetTypeUpdateController());
+		
+		// 분양 게시판(가족을 찾아요)의 "petType" 데이터 "삭제" 요청 컨트롤러
+		subControllers.put("/petTypeDelete.do", new PetTypeDeleteController());
 		
 		// 분양 게시판(가족을 찾아요)의 "petSubType" 데이터 "작성" 요청 컨트롤러
 		subControllers.put("/petSubTypeWrite.do", new PetSubTypeWriteController());
