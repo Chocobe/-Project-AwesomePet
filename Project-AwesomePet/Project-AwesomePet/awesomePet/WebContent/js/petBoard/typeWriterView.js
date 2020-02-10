@@ -68,7 +68,7 @@ let initSubTypeCallbackMethod;
 			"type": "button",
 			"class": "deleteButton",
 			"value": "삭제",
-			"onclick": ""
+			"onclick": "deletePetType(`" + context + "`, this);"
 		});
 		
 		innerContainer.append(typeName);
@@ -107,7 +107,6 @@ let initSubTypeCallbackMethod;
 			},
 			success: function(result, status) {
 				initTypeView(context, initPetContentsWriterCallbackMethod, initSubTypeCallbackMethod, null);
-				alert("typeName 저장 완료!");
 			},
 			error: function(result, status) {
 				alert("typeName 저장 실패...");
@@ -137,7 +136,6 @@ let initSubTypeCallbackMethod;
 			},
 			success: function(result, status) {
 				initTypeView(context, initPetContentsWriterCallbackMethod, initSubTypeCallbackMethod, null);
-				alert("typeName 수정 완료!");
 			},
 			error: function(result, status) {
 				alert("typeName 수정 실패...");
@@ -146,8 +144,26 @@ let initSubTypeCallbackMethod;
 	}
 	
 	
-	
-	
+// DB에 type값을 "삭제"하기 위한 메서드 입니다.
+	function deletePetType(context, target) {
+		const innerContainer = $(target).parent();
+		const typeName = $(innerContainer).children(".originTypeName").val();
+		
+		alert("typeName : " + typeName);
+		
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: context + "/petTypeDelete.do",
+			dataType: "TEXT",
+			data: {
+				"typeName": typeName
+			},
+			success: function(result, status) {
+				initTypeView(context, initPetContentsWriterCallbackMethod, initSubTypeCallbackMethod, null);
+			}
+		});
+	}
 	
 	
 	
