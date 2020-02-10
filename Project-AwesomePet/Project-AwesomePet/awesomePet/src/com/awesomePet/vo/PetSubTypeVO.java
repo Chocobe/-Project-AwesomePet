@@ -14,6 +14,15 @@ public class PetSubTypeVO {
 	public PetSubTypeVO() { }
 	
 	public PetSubTypeVO(String typeName,
+						String subTypeName) {
+		this(typeName,
+			 null,
+			 subTypeName,
+			 null,
+			 null);
+	}
+	
+	public PetSubTypeVO(String typeName,
 						String subTypeName,
 						String subTypeComment) {
 		this(typeName,
