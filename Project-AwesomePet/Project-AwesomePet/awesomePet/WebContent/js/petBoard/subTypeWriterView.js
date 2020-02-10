@@ -48,7 +48,7 @@ const updateContainer = subTypeContainer.children(".updateContainer");
 	}
 	
 	
-	// 조건에 맞는 "소분류" 데이터를 출력합니다.
+	// 선택한 조건의 "소분류" 데이터를 출력합니다.
 	function typeSelectEvent(type) {
 		// typeName 조건 검사
 		for(let i in petTypeList) {
