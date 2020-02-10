@@ -269,6 +269,34 @@ public class PetBoardDAO {
 	}
 	
 	
+// petType 테이블에 데이터를 UPDATE 합니다.
+	public int updatePetType(String typeName, String originTypeName) {
+		int result = 0;
+		
+		try {
+			String sql = "UPDATE petType SET ";
+			sql += "typeName=? ";
+			sql += "WHERE typeName=?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, typeName);
+			pstmt.setString(2, originTypeName);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			System.out.println("<petBoardDAO - updatePetType() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
 // petSubType 테이블에 데이터를 INSERT 합니다.
 	public int insertPetSubType(PetSubTypeVO petSubTypeVO) {
 		int result = 0;
