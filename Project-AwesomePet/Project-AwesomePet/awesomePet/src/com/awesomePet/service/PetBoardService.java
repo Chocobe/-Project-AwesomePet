@@ -5,6 +5,7 @@ import java.util.List;
 import com.awesomePet.dao.PetBoardDAO;
 import com.awesomePet.vo.PetBoardImageVO;
 import com.awesomePet.vo.PetBoardVO;
+import com.awesomePet.vo.PetSubTypeVO;
 import com.awesomePet.vo.PetTypeVO;
 import com.awesomePet.vo.PetVO;
 
@@ -52,5 +53,13 @@ public class PetBoardService {
 	public int writePetType(String typeName) {
 		return petBoardDAO.insertPetType(typeName);
 	}
+	
+	
+// petSubType 테이블에 데이터를 INSERT 합니다.
+	public int writePetSubType(PetSubTypeVO petSubTypeVO) {
+		return petBoardDAO.insertPetSubType(petSubTypeVO);
+	}
+	
+	
 	
 }
