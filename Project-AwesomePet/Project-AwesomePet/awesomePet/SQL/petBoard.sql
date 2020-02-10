@@ -12,7 +12,7 @@ CREATE TABLE petSubType(
 	subTypeName		VARCHAR(40),
 	subTypeComment	VARCHAR(100),
 	PRIMARY KEY(subTypeName),
-	FOREIGN KEY(typeName) REFERENCES petType(typeName) ON DELETE CASCADE
+	FOREIGN KEY(typeName) REFERENCES petType(typeName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DESC petSubType;
@@ -28,7 +28,7 @@ CREATE TABLE pet(
 	vaccination	VARCHAR(50),
 	neutralization	VARCHAR(10),
 	PRIMARY KEY(petID),
-	FOREIGN KEY(subType) REFERENCES petSubType(subTypeName) ON DELETE CASCADE
+	FOREIGN KEY(subType) REFERENCES petSubType(subTypeName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DESC pet;
@@ -51,7 +51,7 @@ DESC petboard;
 
 
 -- "petBoardImages"
-CREATE TABLE petBoardImages(
+CREATE TABLE petBoardImage(
 	boardIDX					INTEGER,
 	orderNumber				INTEGER DEFAULT 0,
 	imgLocation				VARCHAR(500),
@@ -59,7 +59,7 @@ CREATE TABLE petBoardImages(
 	FOREIGN KEY(boardIDX) REFERENCES petboard(boardIDX) ON DELETE CASCADE
 );
 
-DESC petBoardImages;
+DESC petBoardImage;
 
 
 --
@@ -182,21 +182,41 @@ SELECT petBoard.boardIDX,
 		 petBoard.boardState
 FROM pet, petBoard, petSubType
 WHERE pet.petID = petBoard.boardIDX 
-  AND pet.subType = petSubType.subTypeName;
+  AND pet.subType = petSubType.subTypeName
+ORDER BY boardIDX DESC;
+  
+SELECT * FROM petboardimages
+WHERE boardIDX = 20;
+
+UPDATE pettype 
+SET typeName='불독'
+WHERE typeName='푸들';
 		 
 		 
 		 
-CREATE TABLE test(
+CREATE TABLE test_1(
 	val_1		INTEGER,
-	val_2		INTEGER,
-	val_3		VARCHAR(10),
-	val_4		VARCHAR(10)
+	val_2		VARCHAR(20),
+	PRIMARY KEY(val_2)
+)
+
+CREATE TABLE test_2(
+	value_1	INTEGER,
+	value_2	VARCHAR(20),
+	FOREIGN KEY(value_2) REFERENCES test_1(val_2) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-SELECT * FROM test;
+INSERT INTO test_1(val_1, val_2)
+VALUES(1, 'a'), (2, 'b'), (3, 'c');
 
-INSERT INTO test(val_1, val_2, val_3, val_4)
-VALUES(1, 11, 'a', 'aa'), (2, 22, 'b', 'bb');
+INSERT INTO test_2(value_1, value_2)
+VALUES(11, 'a'), (22, 'b'), (33, 'c');
 
-INSERT INTO test(val_1, val_2, val_3, val_4)
-VALUES(1, 11, 'a', 'aa'), (2, 22, 'b', 'bb'), (3, 33, 'c', 'cc'), (4, 44, 'd', 'dd');
+SELECT * FROM test_1;
+SELECT * FROM test_2;
+
+UPDATE test_1 SET val_2 = 'BB'
+WHERE val_2 = 'b';
+
+DELETE FROM test_1
+WHERE val_2 = 'BB';
