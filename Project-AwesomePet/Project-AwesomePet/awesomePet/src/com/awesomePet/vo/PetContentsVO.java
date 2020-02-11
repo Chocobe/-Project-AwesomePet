@@ -2,7 +2,7 @@ package com.awesomePet.vo;
 
 import java.time.LocalDate;
 
-public class PetBoardVO {
+public class PetContentsVO {
 	private int boardIDX;
 	private String writerID;
 	private int watch;
@@ -11,9 +11,9 @@ public class PetBoardVO {
 	
 	
 // 생성자
-	public PetBoardVO() { }
+	public PetContentsVO() { }
 	
-	public PetBoardVO(int boardIDX,
+	public PetContentsVO(int boardIDX,
 					  String writerID,
 					  String boardState) {
 		this(boardIDX,
@@ -23,7 +23,7 @@ public class PetBoardVO {
 			 boardState);
 	}
 	
-	public PetBoardVO(int boardIDX,
+	public PetContentsVO(int boardIDX,
 					  String writerID,
 					  int watch,
 					  LocalDate writeDate,
