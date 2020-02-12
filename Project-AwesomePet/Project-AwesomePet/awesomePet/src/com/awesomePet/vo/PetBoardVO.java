@@ -2,8 +2,12 @@ package com.awesomePet.vo;
 
 import java.util.List;
 
-public class CommunicationBoardVO {
-	private List<CommunicationContentsVO> communicationContentsList;
+public class PetBoardVO {
+	private List<PetVO> petList;
+	private List<PetContentsVO> petContentsList;
+	
+	private String currentTypeName;
+	private String currentSubTypeName;
 	
 	// 페이지 데이터 SETTER - setPageInfo()를 통해서 수행할 수 있습니다.
 	private int totalPageCnt;	// GETTER 만 있습니다.
@@ -15,22 +19,59 @@ public class CommunicationBoardVO {
 	
 	
 // 생성자
-	public CommunicationBoardVO() { }
+	public PetBoardVO() { }
 	
-	public CommunicationBoardVO(List<CommunicationContentsVO> communicationContentsList,
-						   int totalPageCnt,
-						   int currentPage) {
-		setCommunicationContentsList(communicationContentsList);
+	public PetBoardVO(List<PetVO> petList, 
+					  List<PetContentsVO> petContentsList) {
+		this(petList,
+			 petContentsList,
+			 0,
+			 0);
+	}
+	
+	public PetBoardVO(List<PetVO> petList,
+					  List<PetContentsVO> petContentsList,
+					  int totalPageCnt,
+					  int currentPage) {
+		setPetList(petList);
+		setPetContentsList(petContentsList);
 		setPageInfo(totalPageCnt, currentPage);
 	}
 	
 	
-// questionContentsVO
-	public List<CommunicationContentsVO> getCommunicationContentsList() {
-		return communicationContentsList;
+// questionContentsList
+	public List<PetContentsVO> getPetContentsList() {
+		return petContentsList;
 	}
-	public void setCommunicationContentsList(List<CommunicationContentsVO> communicationContentsList) {
-		this.communicationContentsList = communicationContentsList;
+	public void setPetContentsList(List<PetContentsVO> petContentsList) {
+		this.petContentsList = petContentsList;
+	}
+	
+	
+// petList
+	public List<PetVO> getPetList() {
+		return petList;
+	}
+	public void setPetList(List<PetVO> petList) {
+		this.petList = petList;
+	}
+	
+	
+// currentTypeName
+	public String getCurrentTypeName() {
+		return currentTypeName;
+	}
+	public void setCurrentTypeName(String currentTypeName) {
+		this.currentTypeName = currentTypeName;
+	}
+	
+	
+// currentSubTypeName
+	public String getCurrentSubTypeName() {
+		return currentSubTypeName;
+	}
+	public void setCurrentSubTypeName(String currentSubTypeName) {
+		this.currentSubTypeName = currentSubTypeName;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.awesomePet.vo;
 
+import java.util.List;
+
 public class PetVO {
 	private int petID;
 	private String subTypeName;
@@ -8,7 +10,7 @@ public class PetVO {
 	private int price;
 	private String vaccination;
 	private String neutralization;
-	
+	private List<PetContentsImageVO> imageList;
 	
 // 생성자
 	public PetVO() { }
@@ -25,7 +27,8 @@ public class PetVO {
 			 gender,
 			 price,
 			 vaccination,
-			 neutralization);
+			 neutralization,
+			 null);
 	}
 	
 	public PetVO(int petID,
@@ -34,7 +37,8 @@ public class PetVO {
 				 String gender,
 				 int price,
 				 String vaccination,
-				 String neutralization) {
+				 String neutralization,
+				 List<PetContentsImageVO> imageList) {
 		this.petID = petID;
 		this.subTypeName = subTypeName;
 		this.age = age;
@@ -42,6 +46,7 @@ public class PetVO {
 		this.price = price;
 		this.vaccination = vaccination;
 		this.neutralization = neutralization;
+		this.imageList = imageList;
 	}
 
 	
@@ -105,5 +110,14 @@ public class PetVO {
 	}
 	public void setNeutralization(String neutralization) {
 		this.neutralization = neutralization;
+	}
+	
+	
+// imageList
+	public List<PetContentsImageVO> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<PetContentsImageVO> imageList) {
+		this.imageList = imageList;
 	}
 }

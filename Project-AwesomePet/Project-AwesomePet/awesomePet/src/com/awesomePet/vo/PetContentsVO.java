@@ -1,6 +1,7 @@
 package com.awesomePet.vo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class PetContentsVO {
 	private int boardIDX;
@@ -14,8 +15,8 @@ public class PetContentsVO {
 	public PetContentsVO() { }
 	
 	public PetContentsVO(int boardIDX,
-					  String writerID,
-					  String boardState) {
+					  	 String writerID,
+					  	 String boardState) {
 		this(boardIDX,
 			 writerID,
 			 0,
@@ -24,10 +25,10 @@ public class PetContentsVO {
 	}
 	
 	public PetContentsVO(int boardIDX,
-					  String writerID,
-					  int watch,
-					  LocalDate writeDate,
-					  String boardState) {
+					  	 String writerID,
+					  	 int watch,
+					  	 LocalDate writeDate,
+					  	 String boardState) {
 		this.boardIDX = boardIDX;
 		this.writerID = writerID;
 		this.watch = watch;

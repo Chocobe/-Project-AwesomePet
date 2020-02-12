@@ -1,16 +1,18 @@
 package com.awesomePet.vo;
 
-public class PetBoardImageVO {
+public class PetContentsImageVO {
 	private int boardIDX;
 	private int orderNumber;
 	private String imgLocation;
 	private String imgOriginLocation;
 	
 	
-// 생성자
-	public PetBoardImageVO() { }
 	
-	public PetBoardImageVO(int boardIDX,
+	
+// 생성자
+	public PetContentsImageVO() { }
+	
+	public PetContentsImageVO(int boardIDX,
 							int orderNumber,
 							String imgLocation,
 							String imgOriginLocation) {
