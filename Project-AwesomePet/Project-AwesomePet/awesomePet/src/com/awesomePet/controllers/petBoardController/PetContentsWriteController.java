@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.awesomePet.controllers.ControllerUtil;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.PetBoardService;
-import com.awesomePet.vo.PetBoardImageVO;
-import com.awesomePet.vo.PetBoardVO;
+import com.awesomePet.vo.PetContentsImageVO;
+import com.awesomePet.vo.PetContentsVO;
 import com.awesomePet.vo.PetVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -52,13 +52,13 @@ public class PetContentsWriteController implements SubController {
 		if(result == 1) {
 			int boardIDX = petBoardService.getPetID(petVO);
 			
-			PetBoardVO petBoardVO = readPetBoardInfo(boardIDX, request, multipart);
+			PetContentsVO petBoardVO = readPetBoardInfo(boardIDX, request, multipart);
 			result = petBoardService.writePetBoard(petBoardVO);
 			
 			// petBoard 테이블에 INSERT가 "성공" 했다면,
 			if(result == 1) {
-				List<PetBoardImageVO> petBoardImagesInfoList = readPetBoardImagesInfo(boardIDX, request, multipart);
-				result = petBoardService.writePetBoardImages(petBoardImagesInfoList);
+				List<PetContentsImageVO> imagesInfoList = readImagesInfo(boardIDX, request, multipart);
+				result = petBoardService.writePetContentsImages(imagesInfoList);
 				
 				System.out.println("--- 저장된 이미지 개수 : " + result);
 				
@@ -91,20 +91,20 @@ public class PetContentsWriteController implements SubController {
 	
 
 // DB의 "petBoard" 테이블에 대한 데이터를 JSP에서 읽어 옵니다.
-	private PetBoardVO readPetBoardInfo(int boardIDX, HttpServletRequest request, MultipartRequest multipart) {
+	private PetContentsVO readPetBoardInfo(int boardIDX, HttpServletRequest request, MultipartRequest multipart) {
 		HttpSession session = request.getSession();
 		String memberID = (String)session.getAttribute("memberLoginID");
 		String boardState = multipart.getParameter("boardState");
 		
-		return new PetBoardVO(boardIDX,
+		return new PetContentsVO(boardIDX,
 							  memberID,
 							  boardState);
 	}
 	
 	
 // DB의 "petBoardImages" 테이블에 대한 데이터를 JSP에서 읽어 옵니다.
-	private List<PetBoardImageVO> readPetBoardImagesInfo(int boardIDX, HttpServletRequest request, MultipartRequest multipart) {
-		List<PetBoardImageVO> petBoardImagesInfoList = new ArrayList<PetBoardImageVO>();
+	private List<PetContentsImageVO> readImagesInfo(int boardIDX, HttpServletRequest request, MultipartRequest multipart) {
+		List<PetContentsImageVO> petBoardImagesInfoList = new ArrayList<PetContentsImageVO>();
 		
 		// MultipartRequest객체의 getFileNames() 메서드의 와일드카드가 설정되지 않은 상태라서 "unchecked"를 사용하였습니다.
 		@SuppressWarnings("unchecked")
@@ -127,7 +127,7 @@ public class PetContentsWriteController implements SubController {
 								"/" + FOLDER_NAME +
 								"/" + multipart.getFilesystemName(fileNamesList.get(lastFileIdx - i));
 				
-				PetBoardImageVO petBoardImageVO = new PetBoardImageVO(boardIDX,
+				PetContentsImageVO petBoardImageVO = new PetContentsImageVO(boardIDX,
 																	  ++orderNumber,
 																	  imgLocation,
 																	  imgOriginLocation);
