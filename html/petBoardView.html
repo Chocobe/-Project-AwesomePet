@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>가족을 찾아요</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap?ver=1" rel="stylesheet">
+        
+        <style>
+        /* 초기화 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+                font-family: 'Jua', sans-serif;
+            }
+            
+            body {
+                width: 1024px;
+                margin: 0 auto;
+                
+                position: relative;
+            }
+            
+            a, a:hover, 
+            a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            
+            
+        /* .typeOuterContainer */
+            .typeOuterContainer {
+                width: 100%;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                
+                margin-top: 50px;
+            }
+            
+            /* .typeMenuContainer */
+            .typeOuterContainer .typeMenuContainer {
+                width: 180px;
+                height: 40px;
+                
+                position: relative;
+                
+                border: 1px solid #333;
+                border-top-left-radius: 11px;
+            }
+            
+            .typeOuterContainer .typeMenuContainer .absoluteContainer {
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                min-width: 100%;
+                min-height: 40px;
+            }
+            
+            .typeOuterContainer .typeMenuContainer .absoluteContainer .typeName {
+                line-height: 40px;
+                text-align: center;
+                
+                font-size: 1.2em;
+            }
+            
+            .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList {
+                display: none;
+            }
+            
+            .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList li {
+                line-height: 40px;
+                text-align: center;
+                font-size: 1.2em;
+                
+                list-style: none;
+                
+                background: #ddd;
+                
+                border-top: 3px solid #fff;
+            }
+            
+            .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList li:hover {
+                background: #03a9f4;
+            }
+            
+            
+            /* .subTypeMenuContainer */
+            .typeOuterContainer .subTypeMenuContainer {
+                width: 680px;
+                
+                position: relative;
+            }
+            
+            .typeOuterContainer .subTypeMenuContainer .subTypeContainer {
+                width: 100%;
+                
+                display: none;
+                position: relative;
+            }
+            
+            .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList {
+                display: flex;
+                flex-flow: row wrap;
+            }
+            
+            .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList li {
+                width: 150px;
+                margin: 0 20px 10px 0;
+                
+                line-height: 40px;
+                text-align: center;
+                font-size: 1em;
+                
+                list-style: none;
+                
+                border-bottom: 1px solid #333;
+                
+                transition: 0.3s;
+            }
+            
+            .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList li:hover {
+                color: #03a9f4;
+                border-bottom: 1px solid #03a9f4;;
+            }
+            
+            
+        /* .boardContainer */
+            .boardContainer {
+                width: 100%;
+                margin: 30px 0;
+                padding: 20px;
+                
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                
+                border: 1px solid #333;
+                border-radius: 20px;
+            }
+            
+            .boardContainer .contentsContainer {
+                padding: 10px;
+                margin: 10px;
+                
+                border-radius: 10px;
+                
+                transition: 0.3s;
+            }
+            
+            .boardContainer .contentsContainer:hover {
+                background: #ffbdd2;
+            }
+            
+            .boardContainer .contentsContainer img {
+                max-width: 200px;
+                max-height: 150px;
+                
+                
+                
+                border: 1px solid #aaa;
+                border-radius: 10px;
+            }
+            
+            .boardContainer .contentsContainer p {
+                text-align: center;
+            }
+            
+            
+        /* .pageContainer */
+            .pageContainer {
+                width: 500px;
+                height: 50px;
+                
+                margin: 20px auto;
+                
+                background: rgba(230, 230, 230, 0.9);
+                
+                border-radius: 10px;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .pageContainer .page {
+                transition: 0.3s;
+            }
+            
+            .pageContainer .page:hover {
+                color: #03a9f4;
+                
+                cursor: pointer;
+            }
+            
+            .pageContainer .currentPage {
+                color: #ff0058;
+                
+                cursor: default;
+            }
+            
+            .pageContainer .boundary {
+                margin: 0 10px;
+                cursor: default;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="petBoardTitleContainer">
+		    <h1>🏡 가족을 찾아요</h1>
+		    <p>반려동물 분양 게시판 입니다.</p>
+		</div>
+        
+        <div class="typeOuterContainer">
+            <div class="typeMenuContainer">
+                <div class="absoluteContainer">
+                    <div class="typeName" name="typeName">전체</div>
+                    
+                    <ul class="typeList">
+                        <li>전체</li>
+                        <li>고양이</li>
+                        <li>대형견</li>
+                        <li>소형견</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="subTypeMenuContainer">
+                <!-- typeName과 subTypeName의 인덱스 번호를 맞추기 위한 요소 입니다. -->
+                <div class="subTypeContainer">
+                    <ul class="subTypeList"></ul>
+                </div>
+                
+                <div class="subTypeContainer">
+                    <ul class="subTypeList">
+                        <li>전체</li>
+                        <li>사자</li>
+                        <li>스핑크스</li>
+                        <li>호랑이</li>
+                        <li>테스트_1</li>
+                        <li>테스트_2</li>
+                        <li>테스트_3</li>
+                    </ul>
+                </div>
+                
+                <div class="subTypeContainer">
+                    <ul class="subTypeList">
+                        <li>전체</li>
+                        <li>진도</li>
+                    </ul>
+                </div>
+                
+                <div class="subTypeContainer">
+                    <ul class="subTypeList">
+                        <li>전체</li>
+                        <li>푸들푸들</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="boardContainer">
+            <!-- 이미지 최적 사이즈 : "200:150" -->
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/communication.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/loginBackground.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/loginBackground.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/logoImage1.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/question.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/family.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/question.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/family.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/logoImage1.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/family.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/communication.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+            
+            <!-- 반복문 출력 -->
+            <div class="contentsContainer">
+                <img src="images/family.jpg">
+                <p class="subTypeName">사자</p>
+                <p class="age">2살</p>
+            </div>
+        </div>
+        
+        <div class="pageContainer">
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${1}" class="page">첫페이지</a>
+            
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.prevPage}" class="page">이전</a>
+            
+            
+            
+            <!-- 페이지 번호를 생성합니다. (반복문) -->
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">1</a>
+                
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">2</a>
+               
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">3</a>
+               
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">4</a>
+               
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">5</a>
+            <!-- 페이지 번호를 생성합니다. (반복문) -->
+               
+                
+                
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.nextPage}" class="page">다음</a>
+            
+            <span class="boundary">|</span>
+            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.totalPageCnt}" class="page">끝페이지</a>
+        </div>
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                initTypeMenu();
+            });
+            
+            
+            function initTypeMenu() {
+                const typeMenuContainer = $(".typeMenuContainer");
+                const absoluteContainer = typeMenuContainer.children(".absoluteContainer");
+                const typeList = $(absoluteContainer).children(".typeList");
+                
+                const subTypeMenuContainer = $(".subTypeMenuContainer");
+                
+                // typeName 메뉴를 엽니다.
+                typeMenuContainer.mouseenter(function() {
+                    $(typeList).stop().slideDown(200);
+                });
+                
+                // typeName 메뉴를 닫습니다.
+                $(absoluteContainer).mouseleave(function() {
+                    $(typeList).stop().slideUp(200);
+                });
+                
+                // 타입 선택 동작을 합니다.
+                $(typeList).children("li").click(function() {
+                    // 이전 subTypeName 메뉴를 닫습니다.
+                    
+                    // subTypeName 메뉴를 엽니다.
+                    $(absoluteContainer).children(".typeName").text($(this).text());
+                    $(typeList).stop().slideUp(200);
+                    
+                    const typeNameIDX = $(this).index();
+                    subTypeMenuContainer.children(".subTypeContainer").css({
+                        "display": "none"
+                    })
+                    
+                    subTypeMenuContainer.children(".subTypeContainer").eq(typeNameIDX).slideDown(300);
+                    
+                });
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
