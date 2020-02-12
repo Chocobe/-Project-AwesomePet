@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.awesomePet.mainDBCP.DBConnectorJNDI;
-import com.awesomePet.vo.PetBoardImageVO;
 import com.awesomePet.vo.PetBoardVO;
+import com.awesomePet.vo.PetContentsImageVO;
+import com.awesomePet.vo.PetContentsVO;
 import com.awesomePet.vo.PetSubTypeVO;
 import com.awesomePet.vo.PetTypeVO;
 import com.awesomePet.vo.PetVO;
@@ -23,7 +24,7 @@ public class PetBoardDAO {
 	public static final double QUERY_LIMIT;
 	
 	static {
-		QUERY_LIMIT = 10;
+		QUERY_LIMIT = 8;
 	}
 	
 	
@@ -165,7 +166,7 @@ public class PetBoardDAO {
 	
 	
 // petBoard 테이블에 데이터를 INSERT 합니다.
-	public int insertPetBoard(PetBoardVO petBoardVO) {
+	public int insertPetBoard(PetContentsVO petBoardVO) {
 		int result = 0;
 		
 		try {
@@ -194,22 +195,22 @@ public class PetBoardDAO {
 	}
 	
 	
-// petBoardImage 테이블에 데이터를 INSERT 합니다.
-	public int insertPetBoardImages(List<PetBoardImageVO> petBoardImagesList) {
+// petContentsImage 테이블에 데이터를 INSERT 합니다.
+	public int insertPetContentsImages(List<PetContentsImageVO> petContentsImagesList) {
 		int result = 0;
 		
 		try {
-			if(petBoardImagesList.size() < 1) {
+			if(petContentsImagesList.size() < 1) {
 				return result;
 			}
 			
-			String sql = "INSERT INTO petBoardImage(boardIDX, " +
-												   "orderNumber, " +
-												   "imgLocation, " +
-												   "imgOriginLocation) ";
+			String sql = "INSERT INTO petContentsImage(boardIDX, " +
+													  "orderNumber, " +
+													  "imgLocation, " +
+													  "imgOriginLocation) ";
 			String valuesSQL = "#(?, ?, ?, ?)";
 			
-			for(int i = 0; i < petBoardImagesList.size(); i++) {
+			for(int i = 0; i < petContentsImagesList.size(); i++) {
 				sql += valuesSQL;
 			}
 			
@@ -221,7 +222,7 @@ public class PetBoardDAO {
 			readyForQuery(sql);
 			
 			int sqlParamNumber = 0;
-			for(PetBoardImageVO imageVO : petBoardImagesList) {
+			for(PetContentsImageVO imageVO : petContentsImagesList) {
 				pstmt.setInt(++sqlParamNumber, imageVO.getBoardIDX());
 				pstmt.setInt(++sqlParamNumber, imageVO.getOrderNumber());
 				pstmt.setString(++sqlParamNumber, imageVO.getImgLocation());
@@ -233,7 +234,7 @@ public class PetBoardDAO {
 			result = pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
-			System.out.println("<PetBoardDAO - insertPetBoardImages() 에러> : " + e.getMessage());
+			System.out.println("<PetBoardDAO - insertPetContentsImages() 에러> : " + e.getMessage());
 			e.printStackTrace();
 			
 		} finally {
@@ -410,6 +411,216 @@ public class PetBoardDAO {
 		}
 		
 		return result;
+	}
+	
+	
+// petBoard 게시판의 총 페이지 수를 구합니다.
+	public int selectTotalPublicPageCnt() {
+		return (int)Math.ceil(selectTotalPublicContentsCnt() / QUERY_LIMIT);
+	}
+	
+	// petBoard 게시글 총 개수를 구합니다.
+	public int selectTotalPublicContentsCnt() {
+		int result = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS totalContentsCnt FROM petBoard ";
+			sql += "WHERE boardState=?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, "공개");
+			
+			resultSet = pstmt.executeQuery();
+			if(resultSet.next()) {
+				result = resultSet.getInt("totalContentsCnt");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - selectTotalContentsCnt() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return result;
+	}
+	
+	
+// petBoard 게시판의 총 페이지 수를 구합니다.
+	public int selectTotalPublicPageCnt(String requestTypeName) {
+		return (int)Math.ceil(selectTotalPublicContentsCnt(requestTypeName) / QUERY_LIMIT);
+	}
+	
+	// petBoard 게시글 총 개수를 구합니다.
+	public int selectTotalPublicContentsCnt(String requestTypeName) {
+		int result = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS totalContentsCnt FROM petBoard ";
+			sql += "WHERE boardState=? ";
+			sql += "AND boardIDX IN " +
+						"(SELECT petID FROM pet " +
+						"WHERE subType IN " + 
+								"(SELECT subTypeName FROM petSubType WHERE typeName=?))";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, "공개");
+			pstmt.setString(2, requestTypeName);
+			
+			resultSet = pstmt.executeQuery();
+			if(resultSet.next()) {
+				result = resultSet.getInt("totalContentsCnt");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - selectTotalContentsCnt() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return result;
+	}
+	
+	
+// petBoard 게시판의 총 페이지 수를 구합니다.
+	public int selectTotalPublicPageCnt(String requestTypeName, String requestSubTypeName) {
+		return (int)Math.ceil(selectTotalPublicContentsCnt(requestTypeName, requestSubTypeName) / QUERY_LIMIT);
+	}
+	
+	// petBoard 게시글 총 개수를 구합니다.
+	public int selectTotalPublicContentsCnt(String requestTypeName, String requestSubTypeName) {
+		int result = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS totalContentsCnt FROM petBoard ";
+			sql += "WHERE boardState=? ";
+			sql += "AND boardIDX IN " +
+						"(SELECT petID FROM pet " +
+						"WHERE subType=? " +
+						"AND subType IN " +
+								"(SELECT subTypeName FROM petSubType WHERE typeName=?))";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, "공개");
+			pstmt.setString(2, requestSubTypeName);
+			pstmt.setString(3, requestTypeName);
+			
+			resultSet = pstmt.executeQuery();
+			if(resultSet.next()) {
+				result = resultSet.getInt("totalContentsCnt");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - selectTotalContentsCnt() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return result;
+	}
+	
+	
+// "공개"인 petBoardView를 출력하기 위한 데이터를 조회 합니다. (pet, petContentsImage 테이블 데이터)
+	public PetBoardVO selectPublicPetBoard(int requestPage) {
+		PetBoardVO petBoardVO = new PetBoardVO();
+		List<PetVO> petList = new ArrayList<PetVO>();
+		List<PetContentsVO> petContentsList = new ArrayList<PetContentsVO>();
+		
+		try {
+			String sql = "SELECT pet.petID, " + 
+								"pet.subType, " + 
+								"pet.age, " +
+								"pet.gender, " +
+								"pet.price, " +
+								"pet.vaccination, " +
+								"pet.neutralization, " +
+								
+								"petBoard.boardIDX, " +
+								"petBoard.writerID, " +
+								"petBoard.boardState, " +
+								
+								"firstImage.boardIDX, " +
+								"firstImage.imgLocation, " +
+								"firstImage.imgOriginLocation, " +
+								"firstImage.orderNumber ";
+			
+			sql += "FROM pet, petBoard LEFT JOIN ";
+			
+			sql += "(SELECT petContentsImage.boardIDX, " +
+						   "petContentsImage.imgLocation, " +
+						   "petContentsImage.imgOriginLocation, " +
+						   "petContentsImage.orderNumber " +
+					"FROM petContentsImage, (SELECT boardIDX, MIN(orderNumber) AS orderNumber " +
+											"FROM petContentsImage " +
+											"GROUP BY boardIDX) AS tempTable ";
+			
+			sql += "WHERE petContentsImage.boardIDX = tempTable.boardIDX " +
+				   "AND petContentsImage.orderNumber = tempTable.orderNumber) AS firstImage ";
+			
+			sql += "ON petBoard.boardIDX = firstImage.boardIDX ";
+			sql += "WHERE pet.petID = petBoard.boardIDX " +
+				   "AND petBoard.boardState = ? ";
+			sql += "LIMIT ? OFFSET ?";
+			
+			readyForQuery(sql);
+			
+			pstmt.setString(1, "공개");
+			pstmt.setInt(2, (int)QUERY_LIMIT);
+			pstmt.setInt(3, (int)QUERY_LIMIT * (requestPage - 1));
+			
+			resultSet = pstmt.executeQuery();
+			
+			while(resultSet.next()) {
+				List<PetContentsImageVO> imageList = new ArrayList<PetContentsImageVO>();
+				
+				// 이미지 데이터
+				PetContentsImageVO petContentsImageVO = new PetContentsImageVO(resultSet.getInt("firstImage.boardIDX"),
+																			   resultSet.getInt("firstImage.orderNumber"),
+																			   resultSet.getString("firstImage.imgLocation"),
+																			   resultSet.getString("firstImage.imgOriginLocation"));
+				
+				imageList.add(petContentsImageVO);
+				
+				// 반려동물 데이터
+				PetVO petVO = new PetVO(resultSet.getInt("pet.petID"), 
+										resultSet.getString("pet.subType"),
+										resultSet.getInt("pet.age"),
+										resultSet.getString("pet.gender"),
+										resultSet.getInt("pet.price"),
+										resultSet.getString("pet.vaccination"),
+										resultSet.getString("pet.neutralization"), 
+										imageList);
+				
+				petList.add(petVO);
+				
+				// 반려동물 게시물 데이터
+				PetContentsVO petContentsVO = new PetContentsVO(resultSet.getInt("petBoard.boardIDX"), 
+																resultSet.getString("petBoard.writerID"),
+																resultSet.getString("petBoard.boardState"));
+				
+				petContentsList.add(petContentsVO);
+				
+				petBoardVO = new PetBoardVO(petList, petContentsList);
+			}
+			
+			
+		} catch(SQLException e) {
+			System.out.println("<PetBoardDAO - selectPublicPetBoard() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return petBoardVO;
 	}
 }
 
