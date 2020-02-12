@@ -51,7 +51,7 @@ DESC petboard;
 
 
 -- "petBoardImages"
-CREATE TABLE petBoardImage(
+CREATE TABLE petContentsImage(
 	boardIDX					INTEGER,
 	orderNumber				INTEGER DEFAULT 0,
 	imgLocation				VARCHAR(500),
@@ -59,7 +59,12 @@ CREATE TABLE petBoardImage(
 	FOREIGN KEY(boardIDX) REFERENCES petboard(boardIDX) ON DELETE CASCADE
 );
 
-DESC petBoardImage;
+DESC petContentsImage;
+
+
+DROP TABLE petContentsImage;
+DROP TABLE petboard;
+DROP TABLE pet;
 
 
 --
@@ -83,15 +88,48 @@ SELECT * FROM pet;
 
 SELECT * FROM petBoard;
 
-SELECT * FROM petBoardImages;
+SELECT * FROM petContentsImage;
 
+
+SELECT * FROM petContentsImage
+WHERE boardIDX = 2
+GROUP BY boardIDX
+HAVING orderNumber = MIN(orderNumber);
+
+
+SELECT * 
+FROM pet, petboard
+LEFT JOIN (SELECT * FROM petContentsImage
+			  GROUP BY boardIDX
+			  HAVING orderNumber = MIN(orderNumber)) AS petImage
+ON petboard.boardIDX = petImage.boardIDX);
+
+
+-- 첫번째 이미지만 조회하기
+SELECT *
+FROM petContentsImage, (SELECT boardIDX, MIN(orderNumber) AS orderNumber
+								FROM petContentsImage
+								GROUP BY boardIDX) AS temp
+WHERE petContentsImage.boardIDX = temp.boardIDX
+AND petContentsImage.orderNumber = temp.orderNumber;
+
+
+-- 전체 조회 테스트 (첫번째 이미지 포함)
+SELECT pet.petID, pet.age, pet.gender, image.imgLocation
+FROM pet LEFT JOIN (SELECT petContentsImage.boardIDX, petContentsImage.orderNumber, petContentsImage.imgLocation, petContentsImage.imgOriginLocation
+						  FROM petContentsImage, (SELECT boardIDX, MIN(orderNumber) AS orderNumber
+						  								  FROM petContentsImage
+						  								  GROUP BY boardIDX) AS subImage
+						  WHERE petContentsImage.boardIDX = subImage.boardIDX
+						  AND petContentsImage.orderNumber = subImage.orderNumber) AS image
+ON pet.petID = image.boardIDX;
 
 
 DELETE FROM pet;
 
 DELETE FROM petboard;
 
-DELETE FROM petboardimages;
+DELETE FROM petContentsImage;
 
 
 -- petType 테스트 데이터 입력
@@ -185,7 +223,7 @@ WHERE pet.petID = petBoard.boardIDX
   AND pet.subType = petSubType.subTypeName
 ORDER BY boardIDX DESC;
   
-SELECT * FROM petboardimages
+SELECT * FROM petContentsImage
 WHERE boardIDX = 20;
 
 UPDATE pettype 
@@ -220,3 +258,20 @@ WHERE val_2 = 'b';
 
 DELETE FROM test_1
 WHERE val_2 = 'BB';
+
+
+SELECT * FROM petboard
+WHERE boardState='공개' 
+AND boardIDX IN 
+		(SELECT petID FROM pet
+	 	 WHERE subType IN 
+	 			(SELECT subTypeName FROM petsubtype WHERE typeName='고양이'));
+	 			
+	 			
+SELECT * FROM petboard
+WHERE boardState='공개' 
+AND boardIDX IN
+		(SELECT petID FROM pet
+		 WHERE subType='스핑크스' 
+		 AND subType IN 
+		 		(SELECT subTypeName FROM petsubtype WHERE typeName='고양이'));
