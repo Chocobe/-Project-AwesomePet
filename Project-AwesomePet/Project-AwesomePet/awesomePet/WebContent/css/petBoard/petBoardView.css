@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+/* .petBoardTitleContainer */
+	.petBoardTitleContainer {
+		margin-top: 50px;
+		padding-left: 50px;
+	}
+
+/* .typeOuterContainer */
+    .typeOuterContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        
+        margin: 50px;
+        margin-right: 0;
+    }
+    
+    /* .typeMenuContainer */
+    .typeOuterContainer .typeMenuContainer {
+        width: 180px;
+        height: 40px;
+        
+        position: relative;
+        
+        border: 1px solid #333;
+        border-top-left-radius: 11px;
+    }
+    
+    .typeOuterContainer .typeMenuContainer .menuTitle {
+    	position: absolute;
+    	top: -25px;
+    	left: 0;
+    	
+    	color: #03a9f4;
+    }
+    
+    .typeOuterContainer .typeMenuContainer .absoluteContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        min-width: 100%;
+        min-height: 40px;
+    }
+    
+    .typeOuterContainer .typeMenuContainer .absoluteContainer .typeName {
+        line-height: 40px;
+        text-align: center;
+        
+        font-size: 1.2em;
+        
+        cursor: default;
+    }
+    
+    
+    
+    .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList {
+        display: none;
+    }
+    
+    .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList li {
+        line-height: 40px;
+        text-align: center;
+        font-size: 1.2em;
+        
+        list-style: none;
+        
+        background: #ddd;
+        
+        border-top: 3px solid #fff;
+        
+        cursor: default;
+    }
+    
+    .typeOuterContainer .typeMenuContainer .absoluteContainer .typeList li:hover {
+        background: #03a9f4;
+    }
+    
+    
+    /* .subTypeMenuContainer */
+    .typeOuterContainer .subTypeMenuContainer {
+        width: 680px;
+        
+        position: relative;
+    }
+    
+    .typeOuterContainer .subTypeMenuContainer .subTypeContainer {
+        width: 100%;
+        
+        display: none;
+        position: relative;
+    }
+    
+    .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList li {
+        width: 150px;
+        margin: 0 20px 10px 0;
+        
+        line-height: 40px;
+        text-align: center;
+        font-size: 1em;
+        
+        list-style: none;
+        
+        border-bottom: 1px solid #333;
+        
+        cursor: default;
+        
+        transition: 0.3s;
+    }
+    
+    .typeOuterContainer .subTypeMenuContainer .subTypeContainer .subTypeList li:hover {
+        color: #03a9f4;
+        border-bottom: 1px solid #03a9f4;;
+    }
+    
+    
+/* .boardContainer */
+    .boardContainer {
+        width: 100%;
+        margin: 30px 0;
+        padding: 20px;
+    }
+    
+    .boardContainer .contentsContainer {
+        padding: 10px;
+        margin: 10px;
+        
+        border-radius: 10px;
+        
+        transition: 0.3s;
+        
+        display: inline-block;
+    }
+    
+    .boardContainer .contentsContainer:hover {
+        background: #ffbdd2;
+    }
+    
+    .boardContainer .contentsContainer img {
+        width: 200px;
+        height: 150px;
+        
+        border: 1px solid #aaa;
+        border-radius: 10px;
+    }
+    
+    .boardContainer .contentsContainer p {
+        text-align: center;
+    }
+    
+    .boardContainer .contentsContainer p.subTypeName {
+    	background: linear-gradient(to bottom, #ccc, #fff);
+    	
+    	border-top-left-radius: 5px;
+    	border-top-right-radius: 5px;
+    }
+    
+    .boardContainer .contentsContainer p.age {
+    	background: linear-gradient(to top, #ccc, #fff);
+    	
+    	border-bottom-left-radius: 5px;
+    	border-bottom-right-radius: 5px;
+    }
+    
+    
+/* .pageContainer */
+    .pageContainer {
+        width: 500px;
+        height: 50px;
+        
+        margin: 20px auto;
+        
+        background: rgba(230, 230, 230, 0.9);
+        
+        border-radius: 10px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .pageContainer .page {
+        transition: 0.3s;
+    }
+    
+    .pageContainer .page:hover {
+        color: #03a9f4;
+        
+        cursor: pointer;
+    }
+    
+    .pageContainer .currentPage {
+        color: #ff0058;
+        
+        cursor: default;
+    }
+    
+    .pageContainer .boundary {
+        margin: 0 10px;
+        cursor: default;
+    }
