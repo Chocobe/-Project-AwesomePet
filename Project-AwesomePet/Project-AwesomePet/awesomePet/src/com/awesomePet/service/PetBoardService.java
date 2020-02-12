@@ -3,8 +3,9 @@ package com.awesomePet.service;
 import java.util.List;
 
 import com.awesomePet.dao.PetBoardDAO;
-import com.awesomePet.vo.PetBoardImageVO;
 import com.awesomePet.vo.PetBoardVO;
+import com.awesomePet.vo.PetContentsImageVO;
+import com.awesomePet.vo.PetContentsVO;
 import com.awesomePet.vo.PetSubTypeVO;
 import com.awesomePet.vo.PetTypeVO;
 import com.awesomePet.vo.PetVO;
@@ -38,14 +39,14 @@ public class PetBoardService {
 	
 	
 // petBoard 테이블에 데이터를 INSERT 합니다.
-	public int writePetBoard(PetBoardVO petBoardVO) {
+	public int writePetBoard(PetContentsVO petBoardVO) {
 		return petBoardDAO.insertPetBoard(petBoardVO);
 	}
 	
 	
 // petBoardImage 테이블에 데이터를 INSERT 합니다.
-	public int writePetBoardImages(List<PetBoardImageVO> petBoardImageList) {
-		return petBoardDAO.insertPetBoardImages(petBoardImageList);
+	public int writePetContentsImages(List<PetContentsImageVO> petBoardImageList) {
+		return petBoardDAO.insertPetContentsImages(petBoardImageList);
 	}
 	
 	
@@ -85,5 +86,38 @@ public class PetBoardService {
 	}
 	
 	
+// petBoard의 글 개수를 구합니다.
+	public int getTotalPublicPageCnt() {
+		return petBoardDAO.selectTotalPublicPageCnt();
+	}
 	
+	
+// petBoard의 글 개수를 구합니다.
+	public int getTotalPublicPageCnt(String requestTypeName) {
+		return petBoardDAO.selectTotalPublicPageCnt(requestTypeName);
+	}
+	
+	
+// petBoard의 글 개수를 구합니다.
+	public int getTotalPublicPageCnt(String requestTypeName, String requestSubTypeName) {
+		return petBoardDAO.selectTotalPublicPageCnt(requestTypeName, requestSubTypeName);
+	}
+	
+	
+// "공개"인 petBoardView를 출력하기 위한 데이터를 조회 합니다. (pet, petContentsImage 테이블 데이터)
+	public PetBoardVO getPublicPetBoard(int requestPage) {
+		return petBoardDAO.selectPublicPetBoard(requestPage);
+	}
+	
+	public PetBoardVO getPublicPetBoard(int requestPage, String requestTypeName) {
+//		return petBoardDAO.selectPublicPetBoard(requestPage, requestTypeName);
+		
+		return null;
+	}
+	
+	public PetBoardVO getPublicPetBoard(int requestPage, String requestTypeName, String requestSubTypeName) {
+//		return PetBoardDAO.selectPublicPetBoard(requestPage, requestTypeName, requestSubTypeName);
+		
+		return null;
+	}
 }

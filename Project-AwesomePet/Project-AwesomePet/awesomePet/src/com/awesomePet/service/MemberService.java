@@ -38,4 +38,10 @@ public class MemberService {
 	public boolean updateMyInfo(MemberVO memberVO, String memberPWOrigin) {
 		return memberDAO.updateMember(memberVO, memberPWOrigin);
 	}
+	
+	
+// 현재 회원의 등급을 가져옵니다.
+	public int getGrade(String memberLoginID) {
+		return memberDAO.selectGrade(memberLoginID);
+	}
 }
