@@ -176,4 +176,32 @@ public class MemberDAO {
 		
 		return true;
 	}
+	
+	
+// 현재 사용자의 등급을 조회 합니다.
+	public int selectGrade(String memberLoginID) {
+		int grade = 0;
+		
+		try {
+			String sql = "SELECT memberGrade FROM awesomePetMember ";
+			sql += "WHERE memberID=?";
+			
+			readyForQuery(sql);
+			pstmt.setString(1, memberLoginID);
+			resultSet = pstmt.executeQuery();
+			
+			if(resultSet.next()) {
+				grade = resultSet.getInt("memberGrade");
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("<memberDAO - selectGrade() 에러> : " + e.getMessage());
+			e.printStackTrace();
+			
+		} finally {
+			DBConnectorJNDI.close(conn, pstmt, resultSet);
+		}
+		
+		return grade;
+	}
 }
