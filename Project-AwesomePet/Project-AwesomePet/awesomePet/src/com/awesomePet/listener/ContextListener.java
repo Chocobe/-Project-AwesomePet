@@ -34,6 +34,7 @@ import com.awesomePet.controllers.memberControllers.MyInfoViewController;
 import com.awesomePet.controllers.memberControllers.MyPageViewController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoResultViewController;
+import com.awesomePet.controllers.petBoardController.PetBoardViewController;
 import com.awesomePet.controllers.petBoardController.PetContentsWriteController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeDeleteController;
 import com.awesomePet.controllers.petBoardController.PetSubTypeUpdateController;
@@ -205,6 +206,9 @@ public class ContextListener implements ServletContextListener {
 		
 		// 분양 게시판(가족을 찾아요)의 "petSubType" 데이터 "삭제" 요청 컨트롤러
 		subControllers.put("/petSubTypeDelete.do", new PetSubTypeDeleteController());
+		
+		// 분양 게시판(가족을 찾아요) 게시판 페이지 요청 컨트롤러
+		subControllers.put("/petBoardView.do", new PetBoardViewController());
 		
 		
 		
