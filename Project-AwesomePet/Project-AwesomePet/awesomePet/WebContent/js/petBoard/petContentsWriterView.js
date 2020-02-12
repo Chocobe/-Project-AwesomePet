@@ -2,69 +2,69 @@
 let fileInputTempNumber = 1;
 
 // "분양등록" 초기화 메서드 입니다.
-function initPetContentsWriterView(context, parsedJSON, boardIDX) {
-	const petContainer = $(".petContainer");
-	
-	const typeNameDiv = petContainer.children(".typeNameDiv");
-	const subTypeNameDiv = petContainer.children(".subTypeNameDiv");
-	
-	const typeNameSelector = typeNameDiv.children(".typeName");
-	const subTypeNameSelector = subTypeNameDiv.children(".subTypeName");
-	
-	// 1. "분양등록"의 "대분류"와 "소분류"에 출력한 기존 데이터를 삭제 합니다.
-	typeNameSelector.children().remove();
-	subTypeNameSelector.children().remove();
-	
-	// 2. "분양등록"의 "대분류" 를 초기화 합니다.
-	for(let i in parsedJSON) {
-		const option = $("<option>").text(parsedJSON[i].typeName);
-		typeNameSelector.append(option);
-	}
-	
-	typeNameSelector.val("");
-	subTypeNameSelector.val("");
-	
-	// 3. "분양등록"의 "대분류"에 이벤트를 설정합니다.
-	typeNameSelector.change(function() {
+	function initPetContentsWriterView(context, parsedJSON, boardIDX) {
+		const petContainer = $(".petContainer");
+		
+		const typeNameDiv = petContainer.children(".typeNameDiv");
+		const subTypeNameDiv = petContainer.children(".subTypeNameDiv");
+		
+		const typeNameSelector = typeNameDiv.children(".typeName");
+		const subTypeNameSelector = subTypeNameDiv.children(".subTypeName");
+		
+		// 1. "분양등록"의 "대분류"와 "소분류"에 출력한 기존 데이터를 삭제 합니다.
+		typeNameSelector.children().remove();
 		subTypeNameSelector.children().remove();
 		
+		// 2. "분양등록"의 "대분류" 를 초기화 합니다.
 		for(let i in parsedJSON) {
-			if($(typeNameSelector).val() == parsedJSON[i].typeName) {
-				const subTypeList = parsedJSON[i].subTypeList;
-				
-				for(let j in subTypeList) {
-					const option = $("<option>").text(subTypeList[j].subTypeName);
-					subTypeNameSelector.append(option);
+			const option = $("<option>").text(parsedJSON[i].typeName);
+			typeNameSelector.append(option);
+		}
+		
+		typeNameSelector.val("");
+		subTypeNameSelector.val("");
+		
+		// 3. "분양등록"의 "대분류"에 이벤트를 설정합니다.
+		typeNameSelector.change(function() {
+			subTypeNameSelector.children().remove();
+			
+			for(let i in parsedJSON) {
+				if($(typeNameSelector).val() == parsedJSON[i].typeName) {
+					const subTypeList = parsedJSON[i].subTypeList;
+					
+					for(let j in subTypeList) {
+						const option = $("<option>").text(subTypeList[j].subTypeName);
+						subTypeNameSelector.append(option);
+					}
 				}
 			}
-		}
-	});
-	
-	// 4. "분양등록"의 이미지 업로드를 초기화 합니다.
-	if(boardIDX != null && boardIDX.length > 0) {
-		initImgUpdater(boardIDX);
+		});
 		
-	} else {
-		const fileInput = $(".imgUploaderContainer .imgUploader .uploaderButtonsContainer input[type=file]");
-		initImgUploader();
+		// 4. "분양등록"의 이미지 업로드를 초기화 합니다.
+		if(boardIDX != null && boardIDX.length > 0) {
+			initImgUpdater(boardIDX);
+			
+		} else {
+			const fileInput = $(".imgUploaderContainer .imgUploader .uploaderButtonsContainer input[type=file]");
+			initImgUploader();
+		}
 	}
-}
 	
 	
 // "분양등록"의 글 "작성" 시, 이미지 업로드 초기화 메서드 입니다.
-function initImgUploader(targetFileInput) {
-	if(targetFileInput != null) {
-		initFileInput(targetFileInput);
-		
-	} else {
-		const imgUploaderContainer = $(".imgUploaderContainer");
-		const imgUploader = imgUploaderContainer.children(".imgUploader");
-		const uploaderButtonsContainer = $(imgUploader).children(".uploaderButtonsContainer");
-		const fileInput = $(uploaderButtonsContainer).children("input[type=file]");
-		
-		initFileInput(fileInput);
+	function initImgUploader(targetFileInput) {
+		if(targetFileInput != null) {
+			initFileInput(targetFileInput);
+			
+		} else {
+			const imgUploaderContainer = $(".imgUploaderContainer");
+			const imgUploader = imgUploaderContainer.children(".imgUploader");
+			const uploaderButtonsContainer = $(imgUploader).children(".uploaderButtonsContainer");
+			const fileInput = $(uploaderButtonsContainer).children("input[type=file]");
+			
+			initFileInput(fileInput);
+		}
 	}
-}
 
 
 	// <input type="file">의 초기화 메서드 입니다.
@@ -182,12 +182,15 @@ function initImgUploader(targetFileInput) {
 	
 	
 	
+	
+	
+	
 // "분양등록"의 글 "수정" 시, 이미지 업로드 초기화 메서드 입니다.
-function initImgUpdater(boardIDX) {
-	const imgUploaderContainer = $(".imgUploaderContainer");
-	
-	
-}
+	function initImgUpdater(boardIDX) {
+		const imgUploaderContainer = $(".imgUploaderContainer");
+		
+		
+	}
 	
 
 	
