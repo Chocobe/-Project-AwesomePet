@@ -10,41 +10,6 @@ const subTypeMenuContainer = $(".subTypeMenuContainer");
 	};
 	
 	
-// 분류 메뉴의 동작을 초기화 합니다.
-	function initTypeMenuAction() {
-	    // typeName 메뉴를 엽니다.
-	    typeMenuContainer.mouseenter(function() {
-	        $(typeList).stop().slideDown(200);
-	    });
-	    
-	    // typeName 메뉴를 닫습니다.
-	    $(absoluteContainer).mouseleave(function() {
-	        $(typeList).stop().slideUp(300);
-	    });
-	    
-	    // 타입 선택 동작을 합니다.
-	    $(typeList).children("li").click(function() {
-	        // 이전 subTypeName 메뉴를 닫습니다.
-	        
-	        // subTypeName 메뉴를 엽니다.
-	        $(absoluteContainer).children(".typeName").text($(this).text());
-	        $(".requestTypeName").text($(this).text());
-	        $(typeList).stop().slideUp(300);
-	        
-	        const typeNameIDX = $(this).index();
-	        subTypeMenuContainer.children(".subTypeContainer").css({
-	            "display": "none"
-	        });
-	        
-	        subTypeMenuContainer.children(".subTypeContainer").eq(typeNameIDX).slideDown(300);
-	    });
-	    
-	    subTypeMenuContainer.children(".subTypeContainer").children(".subTypeList").children("li").click(function() {
-	    	alert($(this).text());
-	    });
-	}
-	
-	
 // 분류 메뉴의 데이터를 초기화 합니다.
 	function initTypeMenuData(context, requestTypeName, requestSubTypeName) {
 		$.ajax({
@@ -101,3 +66,45 @@ const subTypeMenuContainer = $(".subTypeMenuContainer");
 			}
 		});
 	}
+	
+	
+// 분류 메뉴의 동작을 초기화 합니다.
+	function initTypeMenuAction() {
+	    // typeName 메뉴를 엽니다.
+	    typeMenuContainer.mouseenter(function() {
+	        $(typeList).stop().slideDown(200);
+	    });
+	    
+	    // typeName 메뉴를 닫습니다.
+	    $(absoluteContainer).mouseleave(function() {
+	        $(typeList).stop().slideUp(300);
+	    });
+	    
+	    // 타입 선택 동작을 합니다.
+	    $(typeList).children("li").click(function() {
+	        // 이전 subTypeName 메뉴를 닫습니다.
+	        
+	        // subTypeName 메뉴를 엽니다.
+	        $(absoluteContainer).children(".typeName").text($(this).text());
+	        $(".requestTypeName").text($(this).text());
+	        $(typeList).stop().slideUp(300);
+	        
+	        const typeNameIDX = $(this).index();
+	        subTypeMenuContainer.children(".subTypeContainer").css({
+	            "display": "none"
+	        });
+	        
+	        subTypeMenuContainer.children(".subTypeContainer").eq(typeNameIDX).slideDown(300);
+	    });
+	    
+	    subTypeMenuContainer.children(".subTypeContainer").children(".subTypeList").children("li").click(function() {
+	    	alert($(this).text());
+	    });
+	}
+	
+	
+// 게시물의 동작 메서드 입니다. (글 보기 동작)
+	function petContentsView(context, target) {
+		alert("contextPath : " + context + ", boardIDX : " + $(target).children(".boardIDX").val());
+	}
+	
