@@ -108,3 +108,10 @@ const subTypeMenuContainer = $(".subTypeMenuContainer");
 		alert("contextPath : " + context + ", boardIDX : " + $(target).children(".boardIDX").val());
 	}
 	
+	
+// 게시물 작성 버튼 메서드 입니다.
+	function petContentsWriterView(context) {
+		const action = $(".buttonContainer").children(".action").val();
+		location.href = context + "/petContentsWriterView.do?action=" + action;
+	}
+	
