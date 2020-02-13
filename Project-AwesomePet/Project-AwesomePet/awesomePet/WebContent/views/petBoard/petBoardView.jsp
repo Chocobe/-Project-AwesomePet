@@ -95,7 +95,6 @@
             		<p class="age">${petVO.age}살</p>
             		
             		<input type="hidden" class="boardIDX" value="${petVO.petID}">
-            		<p>${petVO.petID}</p>
             	</div>
             </c:forEach>
         </div>
@@ -132,7 +131,14 @@
         	<input type="hidden" class="requestTypeName" value="${petBoardVO.currentTypeName}">
         	<input type="hidden" class="requestSubTypeName" value="${petBoardVO.currentSubTypeName}">
         </div>
-
+        
+        <!-- 글 작성 페이지 버튼 입니다. -->
+        <!-- (관리자만 보이게 수정 하기) -->
+        <div class="buttonContainer">
+        	<input type="button" value="글쓰기" onclick="petContentsWriterView(`${contextPath}`);">
+        	<input type="hidden" class="action" value="petContentsWrite.do">
+        </div>
+		
         
         <!-- 푸터 페이지를 첨부 합니다. -->
         <%@ include file="/views/footer.jsp" %>
