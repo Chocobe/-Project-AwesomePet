@@ -205,3 +205,36 @@
         margin: 0 10px;
         cursor: default;
     }
+    
+    
+/* .buttonContainer */
+	.buttonContainer {
+	    margin-top: 40px;
+	    
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: center;
+	}
+	
+	.buttonContainer input {
+	    width: 150px;
+	    
+	    font-size: 1.1em;
+	    
+	    padding: 10px 20px;
+	    
+	    border: none;
+	    border-radius: 10px;
+	    outline: none;
+	    
+	    background: #03a9f4;
+	    
+	    transition: 0.5s;
+	}
+	
+	.buttonContainer input:hover {
+	    background: #ff0058;
+	    color: #fff;
+	    
+	    cursor: pointer;
+	}
