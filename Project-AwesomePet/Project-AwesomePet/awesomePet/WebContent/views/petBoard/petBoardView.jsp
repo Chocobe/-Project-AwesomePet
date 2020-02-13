@@ -53,6 +53,7 @@
 		    <p>반려동물 분양 게시판 입니다.</p>
 		</div>
         
+        <!-- 카테고리 출력부 입니다. -->
         <div class="typeOuterContainer">
             <div class="typeMenuContainer">
             	<p class="menuTitle">카테고리</p>
@@ -77,6 +78,7 @@
             </div>
         </div>
         
+        <!-- 게시물 출력부 입니다. -->
         <div class="boardContainer">
             <!-- 이미지 최적 사이즈 : "200:150" -->
             <c:if test="${empty petBoardVO}">
@@ -84,57 +86,53 @@
             </c:if>
             
             <c:forEach var="petVO" items="${petBoardVO.petList}">
-            	<div class="contentsContainer">
+            	<div class="contentsContainer" onclick="petContentsView(`${contextPath}`, this);">
             		<c:if test="${not empty petVO.imageList[0]}">
             			<img src="${petVO.imageList[0].imgLocation}">
             		</c:if>
             		
             		<p class="subTypeName">${petVO.subTypeName}</p>
             		<p class="age">${petVO.age}살</p>
+            		
+            		<input type="hidden" class="boardIDX" value="${petVO.petID}">
+            		<p>${petVO.petID}</p>
             	</div>
             </c:forEach>
         </div>
         
-        
+        <!-- 페이지 출력부 입니다. -->
         <div class="pageContainer">
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${1}" class="page">첫페이지</a>
-            
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.prevPage}" class="page">이전</a>
-            
-            
-            
-            <!-- 페이지 번호를 생성합니다. (반복문) -->
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">1</a>
-                
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">2</a>
-               
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">3</a>
-               
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">4</a>
-               
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${pageNav}" class="page">5</a>
-            <!-- 페이지 번호를 생성합니다. (반복문) -->
-               
-                
-                
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.nextPage}" class="page">다음</a>
-            
-            <span class="boundary">|</span>
-            <a href="..${contextPath}/communicationBoardView.do?requestPage=${communicationBoardVO.totalPageCnt}" class="page">끝페이지</a>
-        </div>
-        
+       		<a href="${contextPath}/petBoardView.do?requestPage=${1}" class="page">첫페이지</a>
+			<span class="boundary">|</span>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.prevPage}" class="page">이전</a>
+			
+			<!-- 페이지 번호를 생성합니다. -->
+			<c:forEach var="pageNav" begin="${petBoardVO.beginPage}" end="${petBoardVO.endPage}">
+				<span class="boundary">|</span>
+				
+				<c:choose>
+					<c:when test="${petBoardVO.currentPage eq pageNav}">
+						<span class="currentPage">${pageNav}</span>
+					</c:when>
+				
+					<c:otherwise>
+						<a href="${contextPath}/petBoardView.do?requestPage=${pageNav}" class="page">${pageNav}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<span class="boundary">|</span>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.nextPage}" class="page">다음</a>
+			<span class="boundary">|</span>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.totalPageCnt}" class="page">끝페이지</a>
+		</div>
+
+		<!-- 현재 페이지의 카테고리값을 보관 합니다. -->        
         <div class="hiddenValue">
         	<input type="hidden" class="requestTypeName" value="${petBoardVO.currentTypeName}">
         	<input type="hidden" class="requestSubTypeName" value="${petBoardVO.currentSubTypeName}">
         </div>
-        
+
         
         <!-- 푸터 페이지를 첨부 합니다. -->
         <%@ include file="/views/footer.jsp" %>
@@ -148,19 +146,3 @@
         </script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
