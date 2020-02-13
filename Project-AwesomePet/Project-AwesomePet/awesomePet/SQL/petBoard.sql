@@ -59,6 +59,47 @@ CREATE TABLE petContentsImage(
 	FOREIGN KEY(boardIDX) REFERENCES petboard(boardIDX) ON DELETE CASCADE
 );
 
+
+
+
+SELECT pet.petID, 
+		 pet.subType, 
+		 pet.age, 
+		 pet.gender,
+		 pet.price,
+		 pet.vaccination, 
+		 pet.neutralization, 			
+
+		 petBoard.boardIDX, 
+		 petBoard.writerID, 
+		 petBoard.boardState, 								
+	
+		 firstImage.boardIDX, 
+		 firstImage.imgLocation, 
+		 firstImage.imgOriginLocation, 
+		 firstImage.orderNumber
+			
+FROM pet, petBoard LEFT JOIN 
+		(SELECT petContentsImage.boardIDX, 
+		 		  petContentsImage.imgLocation, 
+		 	 	  petContentsImage.imgOriginLocation, 
+		 		  petContentsImage.orderNumber 
+		 FROM petContentsImage, (SELECT boardIDX, MAX(orderNumber) AS orderNumber 
+		 								 FROM petContentsImage 
+		 	 							 GROUP BY boardIDX) AS tempTable
+		 	
+		 WHERE petContentsImage.boardIDX = tempTable.boardIDX 
+		 AND petContentsImage.orderNumber = tempTable.orderNumber) AS firstImage 
+			
+ON petBoard.boardIDX = firstImage.boardIDX 
+WHERE pet.petID = petBoard.boardIDX
+AND petBoard.boardState = '공개'
+LIMIT 4 OFFSET 0;
+
+
+
+
+
 DESC petContentsImage;
 
 
@@ -123,6 +164,20 @@ FROM pet LEFT JOIN (SELECT petContentsImage.boardIDX, petContentsImage.orderNumb
 						  WHERE petContentsImage.boardIDX = subImage.boardIDX
 						  AND petContentsImage.orderNumber = subImage.orderNumber) AS image
 ON pet.petID = image.boardIDX;
+
+
+SELECT pet.petID, pet.age, pet.gender, petboard.boardState, firstImage.imgLocation, firstImage.orderNumber
+FROM pet, petboard LEFT JOIN  (SELECT petContentsImage.boardIDX, petContentsImage.imgLocation, petContentsImage.orderNumber
+										 FROM petContentsImage, (SELECT boardIDX, MIN(orderNumber) AS orderNumber
+										 			 					 FROM petContentsImage
+										 								 GROUP BY boardIDX) AS tempImage
+										 WHERE petContentsImage.boardIDX = tempImage.boardIDX
+										 AND petContentsImage.orderNumber = tempImage.orderNumber) AS firstImage
+ON petboard.boardIDX = firstImage.boardIDX
+WHERE pet.petID = petboard.boardIDX
+AND petboard.boardState = '공개';
+
+
 
 
 DELETE FROM pet;
