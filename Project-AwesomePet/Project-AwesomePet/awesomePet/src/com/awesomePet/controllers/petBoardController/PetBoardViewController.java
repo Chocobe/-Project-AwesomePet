@@ -29,6 +29,7 @@ public class PetBoardViewController implements SubController {
 		if(memberLoginID != null && memberLoginID.length() > 0) {
 			grade = memberService.getGrade(memberLoginID);
 		}
+		request.setAttribute("grade", grade);
 		
 	// 2. 대분류와 소분류 요청값을 가져옵니다.
 		// 2-1. 대분류
@@ -49,8 +50,11 @@ public class PetBoardViewController implements SubController {
 		int requestPage = 0;
 		PetBoardVO petBoardVO = null;
 		
+		System.out.println("--- requestTypeName : " + requestTypeName);
+		System.out.println("--- requestSubTypeName : " + requestSubTypeName);
+		
 		if(grade == 0) {
-			// 일반 사용자일 경우, 
+			// 일반 사용자일 경우, ("비공개", "분양완료" 글은 제외 됩니다)
 			// 선택 옵션에 따라 총 페이지 개수 구하기
 			if(requestTypeName.equals("전체")) {
 				// 조건의 페이지 개수 도출
@@ -85,13 +89,47 @@ public class PetBoardViewController implements SubController {
 			
 		} else {
 			// 관리자 일 경우,
-			
-			
-			
+			// 선택 옵션에 따라 총 페이지 개수 구하기
+			if(requestTypeName.equals("전체")) {
+				// 조건의 페이지 개수 도출
+				totalPageCnt = petBoardService.getTotalPageCnt();
+				
+				// 페이지값 보정
+				requestPage = correctRequestPage(request, totalPageCnt);
+				
+				// DB로 부터 데이터를 조회 합니다.
+				petBoardVO = petBoardService.getPetBoard(requestPage);
+				
+			} else if(requestSubTypeName.equals("전체")) {
+				// 조건의 페이지 개수 도출
+				totalPageCnt = petBoardService.getTotalPageCnt(requestTypeName);
+				
+				// 페이지값 보정
+				requestPage = correctRequestPage(request, totalPageCnt);
+				
+				// DB로 부터 데이터를 조회 합니다.
+				petBoardVO = petBoardService.getPetBoard(requestPage, requestTypeName);
+				
+			} else {
+				// 조건의 페이지 개수 도출
+				totalPageCnt = petBoardService.getTotalPageCnt(requestTypeName, requestSubTypeName);
+				
+				// 페이지값 보정
+				requestPage = correctRequestPage(request, totalPageCnt);
+				
+				// DB로 부터 데이터를 조회 합니다.
+				petBoardVO = petBoardService.getPetBoard(requestPage, requestTypeName, requestSubTypeName);
+			}
 		}
 		
-		petBoardVO.setPageInfo(totalPageCnt, requestPage);
-		request.setAttribute("petBoardVO", petBoardVO);
+		if(petBoardVO != null) {
+			petBoardVO.setPageInfo(totalPageCnt, requestPage);
+			
+			petBoardVO.setCurrentTypeName(requestTypeName);
+			petBoardVO.setCurrentSubTypeName(requestSubTypeName);
+			
+			request.setAttribute("petBoardVO", petBoardVO);
+		}
 		
 		ControllerUtil.forward(request, response, resultPagePath);
 	}
