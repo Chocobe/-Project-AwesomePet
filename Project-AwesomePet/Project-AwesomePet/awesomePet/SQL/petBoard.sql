@@ -94,7 +94,7 @@ FROM pet, petBoard LEFT JOIN
 ON petBoard.boardIDX = firstImage.boardIDX 
 WHERE pet.petID = petBoard.boardIDX
 AND petBoard.boardState = '공개'
-LIMIT 4 OFFSET 0;
+LIMIT 8 OFFSET 0;
 
 
 
