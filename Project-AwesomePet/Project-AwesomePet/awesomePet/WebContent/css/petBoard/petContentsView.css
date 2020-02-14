@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+/* .petTitleContainer */
+	.petTitleContainer {	    
+	    margin: 40px 0 20px;
+	    padding-left: 50px;
+	}
+	
+	.petTitleContainer h1 {
+	    font-size: 2em;
+	}
+	
+	.petTitleContainer p {
+	    font-size: 1.2em;
+	}
+
+
+/* .petContentsWrap */
+    .petContentsWrap {
+        width: 100%;
+        
+        margin-top: 20px;
+        padding: 30px;
+        
+        border-radius: 20px;
+        
+        box-shadow: 0 10px 10px 5px #999;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    .petContentsWrap * {
+        font-weight: 100;
+    }
+    
+    
+/* .titleContainer */
+    .petContentsWrap .titleContainer {
+        width: 100%;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    /* h1 */
+    .petContentsWrap .titleContainer h1 {
+        width: 600px;
+        
+        margin-right: 50px;
+        
+        line-height: 68px;
+        text-align: center;
+        
+        border-bottom: 1px solid #000;
+        
+        font-size: 1.5em;
+    }
+    
+    /* .infoTable */
+    .petContentsWrap .titleContainer {
+        margin-bottom: 30px;
+    }
+    
+    .petContentsWrap .titleContainer table.infoTable tr th {
+        width: 100px;
+        text-align: center;
+        margin: 0 10px;
+        
+        text-align: left;
+    }
+    
+    .petContentsWrap .titleContainer table.infoTable tr td {
+        width: 160px;
+        text-align: center;
+        margin: 0 10px;
+    }
+    
+    .petContentsWrap .titleContainer table.infoTable tr td span {
+    	color: #ff0058;
+    }
+    
+    
+/* .contentsContainer */
+    .petContentsWrap .contentsContainer {
+        width: 900px;
+        
+    }
+    
+    .petContentsWrap .contentsContainer .contents {
+        width: 800px;
+
+		margin: 5px auto;         
+        
+        background: none;
+        
+        border: none;
+        outline: none;
+        
+        resize: none;
+        
+        text-align: center;
+    }
+    
+    .petContentsWrap .contentsContainer img {
+		width: 800px;
+		
+		margin: 5px 50px;
+		
+		border: 1px solid #777;
+		border-radius: 10px;
+	}
+    
+    
+/* .optionButtonsContainer */
+    .petContentsWrap .optionButtonsContainer {
+        width: 900px;
+        
+        margin: 20px 30px 60px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    .petContentsWrap .optionButtonsContainer input {
+        width: 100px;
+        
+        padding: 10px;
+        margin: 0 10px;
+        
+        border: none;
+        border-radius: 10px;
+        
+        background: #03a9f4;
+    }
+    
+    .petContentsWrap .optionButtonsContainer input:nth-child(1) ~input {
+    	transition: 0.5s;
+    }
+    
+    .petContentsWrap .optionButtonsContainer input:nth-child(1) ~ input:hover {
+        background: #ff0058;
+        color: #fff;
+    }
+    
+    
+/* .replyWriteContainer */
+    .petContentsWrap .replyWriteContainer {
+        width: 900px;
+    }
+    
+    /* .replyTextarea */
+    .petContentsWrap .replyWriteContainer textarea.replyTextarea {
+        width: 100%;
+        height: 70px;
+        
+        padding: 0 20px;
+        
+        border-top-left-radius: 15px;
+        
+        resize: none;
+    }
+    
+    .petContentsWrap .replyWriteContainer textarea.replyTextarea::placeholder {
+        text-align: center;
+        line-height: 68px;
+    }
+    
+    /* .replyButtonContainer */
+    .petContentsWrap .replyWriteContainer .replyButtonContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+    
+    .petContentsWrap .replyWriteContainer .replyButtonContainer .replyButton {
+        padding: 5px 20px;
+    }
+    
+    
+/* .replyContainer */
+	/* .reply */
+    .petContentsWrap .replyContainer .reply {
+        width: 900px;
+    }
+    
+    .petContentsWrap .replyContainer .reply hr {
+        margin: 30px 0;
+        border: 1px dashed #aaa;
+    }
+    
+    .petContentsWrap .replyContainer .reply .replyTitleContainer {
+        display: flex;
+        
+        margin-bottom: 20px;
+    }
+    
+    .petContentsWrap .replyContainer .reply .replyTitleContainer p {
+        margin-right: 30px;
+    }
+    
+    .petContentsWrap .replyContainer .reply .replyTitleContainer p:nth-child(2) {
+        color: #aaa;
+        font-size: 0.8em;
+        line-height: 20px;
+    }
+    
+    .petContentsWrap .replyContainer .reply .replyTitleContainer input {
+        margin-right: 5px;
+        font-size: 0.5em;
+    }
+    
+    
+/* .replyPageContainer */
+    .petContentsWrap .replyPageContainer {
+        width: 900px;
+        
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        
+        margin-top: 30px;
+    }
+    
+    .petContentsWrap .replyPageContainer p {
+        margin: 0 5px;
+    }
+    
+    .petContentsWrap .replyPageContainer a {
+    	margin: 0 5px;
+    	cursor: pointer;
+    }
+    
+    
+    /* .deleteConfirmContainer */
+    .deleteConfirmContainer {
+    	width: calc(100% + 40px);
+    	height: 100%;
+    	
+    	position: absolute;
+    	top: 0;
+    	left: -20px;
+    	
+    	border-radius: 20px;
+    	
+    	background: rgba(0, 0, 0, 0.7);
+    	
+    	display: none;
+    }
+    
+    .deleteConfirmContainer .innerContainer {
+    	width: 300px;
+    	
+    	margin: 300px auto;
+    	padding: 30px;
+    	
+    	border-radius: 20px;
+    	
+    	background: #fff;
+    	
+    	display: flex;
+    	flex-flow: row wrap;
+    	justify-content: center;
+    	
+    	z-index: 1;
+    }
+    
+    .deleteConfirmContainer .innerContainer h2,
+    .deleteConfirmContainer .innerContainer p {
+    	width: 100%;
+    	
+    	text-align: center;
+    }
+    
+    .deleteConfirmContainer .innerContainer input {
+    	font-size: 16px;
+    	
+    	padding: 5px 20px;
+    	margin: 20px 5px 0;
+    	
+    	border: none;
+    	border-radius: 10px;
+    	outline: none;
+    	
+    	background: #03a9f4;
+    	
+    	cursor: pointer;
+    	
+    	transition: 0.3s;
+    }
+    
+    .deleteConfirmContainer .innerContainer input:hover {
+    	background: #ff0058;
+    }
