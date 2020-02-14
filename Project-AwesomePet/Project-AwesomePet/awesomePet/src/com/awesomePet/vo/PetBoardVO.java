@@ -8,6 +8,7 @@ public class PetBoardVO {
 	
 	private String currentTypeName;
 	private String currentSubTypeName;
+	private String currentSubTypeComment;
 	
 	// 페이지 데이터 SETTER - setPageInfo()를 통해서 수행할 수 있습니다.
 	private int totalPageCnt;	// GETTER 만 있습니다.
@@ -72,6 +73,15 @@ public class PetBoardVO {
 	}
 	public void setCurrentSubTypeName(String currentSubTypeName) {
 		this.currentSubTypeName = currentSubTypeName;
+	}
+	
+	
+// currentSubTypeComment
+	public String getCurrentSubTypeComment() {
+		return currentSubTypeComment;
+	}
+	public void setCurrentSubTypeComment(String currentSubTypeComment) {
+		this.currentSubTypeComment = currentSubTypeComment;
 	}
 	
 	
