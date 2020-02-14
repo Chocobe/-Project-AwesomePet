@@ -49,7 +49,6 @@ CREATE TABLE petBoard(
 
 DESC petboard;
 
-
 -- "petBoardImages"
 CREATE TABLE petContentsImage(
 	boardIDX					INTEGER,
@@ -97,15 +96,12 @@ AND petBoard.boardState = '공개'
 LIMIT 8 OFFSET 0;
 
 
-
-
-
-DESC petContentsImage;
-
-
 DROP TABLE petContentsImage;
 DROP TABLE petboard;
 DROP TABLE pet;
+DROP TABLE petsubtype;
+DROP TABLE pettype;
+
 
 
 --
@@ -167,7 +163,7 @@ ON pet.petID = image.boardIDX;
 
 
 SELECT pet.petID, pet.age, pet.gender, petboard.boardState, firstImage.imgLocation, firstImage.orderNumber
-FROM pet, petboard LEFT JOIN  (SELECT petContentsImage.boardIDX, petContentsImage.imgLocation, petContentsImage.orderNumber
+FROM pet, petsubtype, petboard LEFT JOIN  (SELECT petContentsImage.boardIDX, petContentsImage.imgLocation, petContentsImage.orderNumber
 										 FROM petContentsImage, (SELECT boardIDX, MIN(orderNumber) AS orderNumber
 										 			 					 FROM petContentsImage
 										 								 GROUP BY boardIDX) AS tempImage
@@ -175,7 +171,9 @@ FROM pet, petboard LEFT JOIN  (SELECT petContentsImage.boardIDX, petContentsImag
 										 AND petContentsImage.orderNumber = tempImage.orderNumber) AS firstImage
 ON petboard.boardIDX = firstImage.boardIDX
 WHERE pet.petID = petboard.boardIDX
-AND petboard.boardState = '공개';
+AND petboard.boardState = '공개'
+AND pet.subType = petsubtype.subTypeName
+AND petsubtype.typeName = '고양이';
 
 
 
@@ -277,15 +275,37 @@ FROM pet, petBoard, petSubType
 WHERE pet.petID = petBoard.boardIDX 
   AND pet.subType = petSubType.subTypeName
 ORDER BY boardIDX DESC;
-  
-SELECT * FROM petContentsImage
-WHERE boardIDX = 20;
+
+
+SELECT petBoard.boardIDX,
+		 petSubType.typeName,
+		 petSubType.subTypeName,
+		 petSubType.subTypeComment,
+		 pet.age,
+		 pet.gender,
+		 pet.price,
+		 pet.vaccination,
+		 pet.neutralization,
+		 petBoard.writerID,
+		 petBoard.watch,
+		 petBoard.writeDate,
+		 petBoard.boardState
+FROM pet, petBoard, petSubType
+WHERE pet.petID = petBoard.boardIDX 
+  AND pet.subType = petSubType.subTypeName
+  AND petsubtype.typeName = '대형견'
+ORDER BY boardIDX DESC;
+
+
+
+
 
 UPDATE pettype 
 SET typeName='불독'
 WHERE typeName='푸들';
-		 
-		 
+
+
+
 		 
 CREATE TABLE test_1(
 	val_1		INTEGER,
@@ -330,3 +350,29 @@ AND boardIDX IN
 		 WHERE subType='스핑크스' 
 		 AND subType IN 
 		 		(SELECT subTypeName FROM petsubtype WHERE typeName='고양이'));
+		 		
+		 		
+		 		
+SELECT pet.petID,
+		 pet.subType,
+		 pet.age,
+		 pet.gender,
+		 pet.price,
+		 pet.vaccination,
+		 pet.neutralization,
+						 
+		 petBoard.boardIDX,
+		 petBoard.writerID,
+		 petboard.watch,
+		 petboard.writeDate,
+		 petBoard.boardState,
+						 
+		 petSubType.typeName,
+		 petsubtype.subTypeName,
+		 petsubtype.subTypeComment
+
+FROM pet, petSubType, petBoard
+			
+WHERE pet.petID = 40
+AND pet.petID = petBoard.boardIDX
+AND pet.subType = petSubType.subTypeName;
