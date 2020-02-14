@@ -60,14 +60,7 @@ public class PetContentsWriteController implements SubController {
 				List<PetContentsImageVO> imagesInfoList = readImagesInfo(boardIDX, request, multipart);
 				result = petBoardService.writePetContentsImages(imagesInfoList);
 				
-				System.out.println("--- 저장된 이미지 개수 : " + result);
-				
-//				if(result != petBoardImagesInfoList.size()) {
-//					
-//				}
-				
-			} else {
-				// pet 에 저장했던 데이터 지우기 (CASCADE)
+				resultPagePath += ("?requestBoardIDX=" + boardIDX);
 			}
 
 		} else {
@@ -75,7 +68,7 @@ public class PetContentsWriteController implements SubController {
 			resultPagePath = "/petContentsWriterView.do";
 		}
 		
-//		ControllerUtil.forward(request, response, resultPagePath);
+		ControllerUtil.forward(request, response, resultPagePath);
 	}
 	
 	
