@@ -1,7 +1,6 @@
 package com.awesomePet.vo;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class PetContentsVO {
 	private int boardIDX;
