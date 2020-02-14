@@ -21,6 +21,7 @@ UPDATE awesomepetmember SET
 		memberPW='aaa',
 		memberEmail='aaa@aaa.com'
 	WHERE memberID='aa' AND memberPW='aa';
+	
 
 DELETE FROM awesomepetmember;
 
@@ -102,3 +103,19 @@ INSERT INTO awesomePetMember(memberID,
 									  '010-9999-0000',
 									  '부산광역시 사하구');
 									  
+
+
+INSERT INTO awesomepetmember(memberID,
+									  memberPW,
+									  memberName,
+									  memberBirthDay,
+									  memberEmail,
+									  memberPhone,
+									  memberAddr)
+							 VALUES('admin',
+							 		  'admin',
+							 		  '김영우',
+							 		  '1987-05-17',
+							 		  'kyw05171@gmail.com',
+							 		  '010-9551-3439',
+							 		  '부산광역시 사하구 감천로 73번길');
