@@ -54,23 +54,26 @@
         <nav>
             <ul class="mainMenu">
                 <li>
-                    <a href="#">
-						저희 매장은요
-                    </a>
-                </li>
-                <li>
                     <a href="#" onclick="familyBoardView('${contextPath}')">
 						가족을 찾아요
                     </a>
                 </li>
+                
                 <li>
                     <a href="#" onclick="communicationBoardView('${contextPath}')">
 						소통해요
                     </a>
                 </li>
+                
                 <li>
                     <a href="#" onclick="questionBoardView('${contextPath}')">
 						궁금해요
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Chocobe/-Project-AwesomePet/tree/master/Project-AwesomePet/Project-AwesomePet/awesomePet" target="_blank">
+						Github(소스코드)
                     </a>
                 </li>
             </ul>
