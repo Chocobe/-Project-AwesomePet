@@ -32,6 +32,23 @@ public class PetVO {
 	}
 	
 	public PetVO(int petID,
+			 	 String subTypeName,
+			 	 int age,
+			 	 String gender,
+			 	 int price,
+			 	 String vaccination,
+			 	 String neutralization) {
+		this(petID,
+			 subTypeName,
+			 age,
+			 gender,
+			 price,
+			 vaccination,
+			 neutralization,
+			 null);
+	}
+	
+	public PetVO(int petID,
 				 String subTypeName,
 				 int age,
 				 String gender,
