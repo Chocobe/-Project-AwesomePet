@@ -59,10 +59,10 @@
             	<p class="menuTitle">카테고리</p>
             
                 <div class="absoluteContainer">
-                    <div class="typeName">전체</div>
+					<div class="typeName">${petBoardVO.currentTypeName}</div>
                     
                     <ul class="typeList">
-                        <li>전체</li>
+                        <li class="total">전체</li>
                     </ul>
                 </div>
             </div>
@@ -101,9 +101,9 @@
         
         <!-- 페이지 출력부 입니다. -->
         <div class="pageContainer">
-       		<a href="${contextPath}/petBoardView.do?requestPage=${1}" class="page">첫페이지</a>
+       		<a href="${contextPath}/petBoardView.do?requestPage=${1}&requestTypeName=${petBoardVO.currentTypeName}&requestSubTypeName=${petBoardVO.currentSubTypeName}" class="page">첫페이지</a>
 			<span class="boundary">|</span>
-			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.prevPage}" class="page">이전</a>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.prevPage}&requestTypeName=${petBoardVO.currentTypeName}&requestSubTypeName=${petBoardVO.currentSubTypeName}" class="page">이전</a>
 			
 			<!-- 페이지 번호를 생성합니다. -->
 			<c:forEach var="pageNav" begin="${petBoardVO.beginPage}" end="${petBoardVO.endPage}">
@@ -115,29 +115,32 @@
 					</c:when>
 				
 					<c:otherwise>
-						<a href="${contextPath}/petBoardView.do?requestPage=${pageNav}" class="page">${pageNav}</a>
+						<a href="${contextPath}/petBoardView.do?requestPage=${pageNav}&requestTypeName=${petBoardVO.currentTypeName}&requestSubTypeName=${petBoardVO.currentSubTypeName}" class="page">${pageNav}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			
 			<span class="boundary">|</span>
-			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.nextPage}" class="page">다음</a>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.nextPage}&requestTypeName=${petBoardVO.currentTypeName}&requestSubTypeName=${petBoardVO.currentSubTypeName}" class="page">다음</a>
 			<span class="boundary">|</span>
-			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.totalPageCnt}" class="page">끝페이지</a>
+			<a href="${contextPath}/petBoardView.do?requestPage=${petBoardVO.totalPageCnt}&requestTypeName=${petBoardVO.currentTypeName}&requestSubTypeName=${petBoardVO.currentSubTypeName}" class="page">끝페이지</a>
 		</div>
 
 		<!-- 현재 페이지의 카테고리값을 보관 합니다. -->        
         <div class="hiddenValue">
         	<input type="hidden" class="requestTypeName" value="${petBoardVO.currentTypeName}">
         	<input type="hidden" class="requestSubTypeName" value="${petBoardVO.currentSubTypeName}">
+        	<input type="hidden" class="requestPage" value="${petBoardVO.currentPage}">
         </div>
         
         <!-- 글 작성 페이지 버튼 입니다. -->
         <!-- (관리자만 보이게 수정 하기) -->
-        <div class="buttonContainer">
-        	<input type="button" value="글쓰기" onclick="petContentsWriterView(`${contextPath}`);">
-        	<input type="hidden" class="action" value="petContentsWrite.do">
-        </div>
+        <c:if test="${grade eq 1}">
+	        <div class="buttonContainer">
+	        	<input type="button" value="글쓰기" onclick="petContentsWriterView(`${contextPath}`);">
+	        	<input type="hidden" class="action" value="petContentsWrite.do">
+	        </div>
+        </c:if>
 		
         
         <!-- 푸터 페이지를 첨부 합니다. -->
