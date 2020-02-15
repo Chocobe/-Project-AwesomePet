@@ -59,8 +59,6 @@ $(function initContent() {
 
 	// 글 삭제 확인 버튼 메서드 입니다.
 	function deleteConfirm(context, boardIDX) {
-		alert("삭제 요청 boardIDX : " + boardIDX);
-		
 		$.ajax({
 			type: "POST",
 			async: true,
