@@ -50,9 +50,6 @@ public class PetBoardViewController implements SubController {
 		int requestPage = 0;
 		PetBoardVO petBoardVO = null;
 		
-		System.out.println("--- requestTypeName : " + requestTypeName);
-		System.out.println("--- requestSubTypeName : " + requestSubTypeName);
-		
 		if(grade == 0) {
 			// 일반 사용자일 경우, ("비공개", "분양완료" 글은 제외 됩니다)
 			// 선택 옵션에 따라 총 페이지 개수 구하기
