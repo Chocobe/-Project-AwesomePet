@@ -35,5 +35,5 @@ function memberLogout(context) {
 
 // "마이 페이지" 버튼 클릭 메서드 입니다.
 function myPageView(context) {
-	location.href = context + "/myPageView.do";
+	location.href = context + "/myInfoCertificateView.do";
 }
