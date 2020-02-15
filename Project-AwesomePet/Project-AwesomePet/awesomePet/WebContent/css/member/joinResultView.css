@@ -9,7 +9,7 @@
         
         border-radius: 20px;
         
-        background: url("/awesomePet/appImages/family.jpg");
+        background: url("/appImages/family.jpg");
         
         display: flex;
         flex-flow: row wrap;

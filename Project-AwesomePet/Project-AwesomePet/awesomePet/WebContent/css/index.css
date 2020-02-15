@@ -83,7 +83,7 @@
 	
 /* 가족을 찾아요 */
 	section .family {
-	    background: url(/awesomePet/appImages/family.jpg);
+	    background: url(/appImages/family.jpg);
 	    background-size: cover;
 	}
 	
@@ -113,7 +113,7 @@
 	
 /* 소통해요 */
 	section .communication {
-	    background: url(/awesomePet/appImages/communication.jpg);
+	    background: url(/appImages/communication.jpg);
 	    background-size: cover;
 	}
 	
@@ -142,7 +142,7 @@
 	
 /* 궁금해요 */
 	section .question {
-	    background: url(/awesomePet/appImages/question.jpg);
+	    background: url(/appImages/question.jpg);
 	    background-size: cover;
 	}
 	

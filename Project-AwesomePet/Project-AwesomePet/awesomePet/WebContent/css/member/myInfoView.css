@@ -4,7 +4,7 @@
     .myInfoViewContainer {
         width: 1024px;
         
-        background: url('/awesomePet/appImages/loginBackground.jpg');
+        background: url('/appImages/loginBackground.jpg');
         background-size: cover;
         background-position: center;
         
