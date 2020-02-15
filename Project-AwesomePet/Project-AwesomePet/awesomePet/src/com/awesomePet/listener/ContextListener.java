@@ -229,7 +229,7 @@ public class ContextListener implements ServletContextListener {
 		subControllers.put("/petReplyView.do", new PetReplyViewController());
 		
 		// 자유 게시판(소통해요)의 "댓글" 작성 요청 컨트롤러
-		
+		subControllers.put("/petReplyWrite.do", new PetReplyWriteController());
 		
 		// 자유 게시판(소통해요)의 "댓글" 수정 요청 컨트롤러
 		
