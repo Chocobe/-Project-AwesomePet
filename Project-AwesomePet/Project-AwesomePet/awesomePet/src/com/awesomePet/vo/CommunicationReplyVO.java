@@ -3,7 +3,7 @@ package com.awesomePet.vo;
 import java.util.List;
 
 public class CommunicationReplyVO {
-private List<CommunicationReplyContentsVO> communicationReplyContentsList;
+	private List<CommunicationReplyContentsVO> communicationReplyContentsList;
 	
 	private int totalPageCnt;
 	private int currentPage;

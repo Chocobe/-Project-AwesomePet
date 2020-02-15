@@ -7,7 +7,7 @@ import com.awesomePet.vo.CommunicationReplyContentsVO;
 
 
 public class CommunicationReplyService {
-	CommunicationReplyDAO communicationReplyDAO;
+	private CommunicationReplyDAO communicationReplyDAO;
 	
 // 생성자
 	public CommunicationReplyService() {
