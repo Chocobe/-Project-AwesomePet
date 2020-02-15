@@ -23,7 +23,7 @@ public class DBConnectorJNDI {
 	
 	static {
 		RESOURCE_DIR = "java:/comp/env";
-		RESOURCE_NAME = "jdbc/mysql/awesomePet";
+		RESOURCE_NAME = "jdbc/awesomePet";
 		dataSource = initDataSource();
 	}
 	

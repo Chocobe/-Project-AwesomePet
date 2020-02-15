@@ -21,7 +21,7 @@
 	
 		<%
 			InitialContext initCtx = new InitialContext();
-			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/mytc5");
+			DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/awesomePet");
 			
 			Connection conn = ds.getConnection();
 			Statement stmt = conn.createStatement();
