@@ -569,6 +569,8 @@ public class PetBoardDAO {
 			sql += "ON petBoard.boardIDX = firstImage.boardIDX ";
 			sql += "WHERE pet.petID = petBoard.boardIDX " +
 				   "AND petBoard.boardState = ? ";
+			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
@@ -668,6 +670,7 @@ public class PetBoardDAO {
 				   "AND pet.subType = petSubType.subTypeName " +
 				   "AND petSubType.typeName = ? ";
 			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
@@ -769,6 +772,7 @@ public class PetBoardDAO {
 				   "AND pet.subType = petSubType.subTypeName " +
 				   "AND petSubType.typeName = ? ";
 			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
@@ -975,6 +979,7 @@ public class PetBoardDAO {
 			sql += "ON petBoard.boardIDX = firstImage.boardIDX ";
 			sql += "WHERE pet.petID = petBoard.boardIDX ";
 			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
@@ -1072,6 +1077,7 @@ public class PetBoardDAO {
 				   "AND pet.subType = petSubType.subTypeName " +
 				   "AND petSubType.typeName = ? ";
 			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
@@ -1171,6 +1177,7 @@ public class PetBoardDAO {
 				   "AND pet.subType = petSubType.subTypeName " +
 				   "AND petSubType.typeName = ? ";
 			
+			sql += "ORDER BY pet.petID DESC ";
 			sql += "LIMIT ? OFFSET ?";
 			
 			readyForQuery(sql);
