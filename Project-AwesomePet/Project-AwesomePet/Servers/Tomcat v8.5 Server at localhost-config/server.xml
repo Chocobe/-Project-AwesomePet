@@ -38,8 +38,24 @@
     -->
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
     
-    <!-- MySQL 연동을 위한 resource 생성 -->
-    <Resource driverClassName="com.mysql.jdbc.Driver"
+    
+	
+
+    		  
+	<!-- MySQL 연동을 위한 resource 생성 -->  
+    <Resource name="jdbc/kyw0517"
+			  auth="Container"
+			  type="javax.sql.DataSource"
+			  driverClassName="com.mysql.jdbc.Driver"
+			  url="jdbc:mysql://localhost/kyw0517"
+			  username="kyw0517"
+			  password="goeotod1!"
+			  maxActive="20"
+			  maxIdle="10"
+			  maxWait="3000"/>	
+			  
+  	<!-- 로컨 DB 사용 당시 Resource 설정
+	<Resource driverClassName="com.mysql.jdbc.Driver"
     		  url="jdbc:mysql://127.0.0.1:3306/awesomePet?serverTimezone=UTC"
     		  username="root"
     		  password="1111"
@@ -47,7 +63,7 @@
     		  type="javax.sql.DataSource"
     		  maxActive="20"
     		  maxIdle="20"
-    		  maxWait="5000"/>
+    		  maxWait="5000"/> -->	  
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
