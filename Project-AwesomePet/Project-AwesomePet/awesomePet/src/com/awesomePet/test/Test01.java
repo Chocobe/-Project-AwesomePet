@@ -2,9 +2,6 @@ package com.awesomePet.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+@SuppressWarnings("serial")
 @WebServlet("/test01")
 public class Test01 extends HttpServlet {
 	@Override

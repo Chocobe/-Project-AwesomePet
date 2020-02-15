@@ -15,6 +15,9 @@ public class FrontController extends HttpServlet {
 	// 기능별 SubController타입 객체들을 가지는 Map객체 입니다.
 	private Map<String, SubController> subControllers;
 	
+	// 직렬화 상수값
+	private static final long serialVersionUID = 1L;
+	
 	
 	// ServletContextListener에서 DI했던 Map<String, SubController> 객체를 가져옵니다. (초기화)
 	@Override

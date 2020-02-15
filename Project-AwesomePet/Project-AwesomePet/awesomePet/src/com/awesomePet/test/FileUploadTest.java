@@ -14,6 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
+@SuppressWarnings("serial")
 @WebServlet("/uploadTest")
 public class FileUploadTest extends HttpServlet {
 	@Override

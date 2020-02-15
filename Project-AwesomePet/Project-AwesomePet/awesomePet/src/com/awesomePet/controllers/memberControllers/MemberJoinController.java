@@ -1,7 +1,6 @@
 package com.awesomePet.controllers.memberControllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -14,6 +13,7 @@ import com.awesomePet.controllers.ControllerUtil;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.MemberService;
 import com.awesomePet.vo.MemberVO;
+
 
 public class MemberJoinController implements SubController {
 	@Override

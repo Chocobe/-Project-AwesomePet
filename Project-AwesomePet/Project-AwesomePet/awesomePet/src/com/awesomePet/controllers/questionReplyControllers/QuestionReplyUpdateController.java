@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.QuestionReplyService;
 import com.awesomePet.vo.QuestionReplyContentsVO;
-import com.google.gson.Gson;
+
 
 public class QuestionReplyUpdateController implements SubController {
 	@Override

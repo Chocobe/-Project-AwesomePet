@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.awesomePet.controllers.ControllerUtil;
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.CommunicationBoardService;
-import com.awesomePet.service.QuestionBoardService;
 import com.awesomePet.vo.CommunicationContentsVO;
 
 public class CommunicationContentsDeleteController implements SubController {
