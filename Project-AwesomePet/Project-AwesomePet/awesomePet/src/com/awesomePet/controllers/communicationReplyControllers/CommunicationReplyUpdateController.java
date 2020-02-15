@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.awesomePet.controllers.SubController;
 import com.awesomePet.service.CommunicationReplyService;
-import com.awesomePet.service.QuestionReplyService;
 import com.awesomePet.vo.CommunicationReplyContentsVO;
-import com.awesomePet.vo.QuestionReplyContentsVO;
-import com.google.gson.Gson;
+
 
 public class CommunicationReplyUpdateController implements SubController {
 	@Override
