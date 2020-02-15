@@ -15,7 +15,7 @@
               pathname="conf/tomcat-users.xml" />
 
     <!-- Mysql JNDI -->
-    <Resource name="jdbc/kyw0517"
+    <Resource name="jdbc/awesomePet"
               auth="Container"
               type="javax.sql.DataSource"
               driverClassName="com.mysql.jdbc.Driver"
