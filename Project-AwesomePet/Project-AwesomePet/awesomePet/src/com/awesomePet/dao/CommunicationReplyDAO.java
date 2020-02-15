@@ -152,7 +152,7 @@ public class CommunicationReplyDAO {
 			result = pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
-			System.out.println("<CommunicationReplyDAO - updatecommunicationReply() 에러> : " + e.getMessage());
+			System.out.println("<CommunicationReplyDAO - updateCommunicationReply() 에러> : " + e.getMessage());
 			e.printStackTrace();
 			
 		} finally {
