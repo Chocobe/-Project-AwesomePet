@@ -16,7 +16,6 @@ import com.awesomePet.controllers.communicationBoardControllers.CommunicationCon
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsViewController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationContentsWriteController;
 import com.awesomePet.controllers.communicationBoardControllers.CommunicationWriterViewController;
-import com.awesomePet.controllers.communicationBoardControllers.PetContentsDeleteController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyDeleteController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyUpdateController;
 import com.awesomePet.controllers.communicationReplyControllers.CommunicationReplyViewController;
@@ -36,6 +35,7 @@ import com.awesomePet.controllers.memberControllers.MyPageViewController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoController;
 import com.awesomePet.controllers.memberControllers.UpdateMyInfoResultViewController;
 import com.awesomePet.controllers.petBoardController.PetBoardViewController;
+import com.awesomePet.controllers.petBoardController.PetContentsDeleteController;
 import com.awesomePet.controllers.petBoardController.PetContentsViewController;
 import com.awesomePet.controllers.petBoardController.PetContentsWriteController;
 import com.awesomePet.controllers.petBoardController.PetContentsWriterViewController;
@@ -46,6 +46,8 @@ import com.awesomePet.controllers.petBoardController.PetTypeDeleteController;
 import com.awesomePet.controllers.petBoardController.PetTypeUpdateController;
 import com.awesomePet.controllers.petBoardController.PetTypeViewController;
 import com.awesomePet.controllers.petBoardController.PetTypeWriteController;
+import com.awesomePet.controllers.petReplyController.PetReplyViewController;
+import com.awesomePet.controllers.petReplyController.PetReplyWriteController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionBoardViewController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionContentsDeleteController;
 import com.awesomePet.controllers.questionBoardControllers.QuestionContentsUpdateController;
@@ -221,6 +223,17 @@ public class ContextListener implements ServletContextListener {
 		
 		// 분양 게시판(가족을 찾아요) 게시판의 "특정 글" 요청 컨트롤러
 		subControllers.put("/petContentsView.do", new PetContentsViewController());
+		
+	// 자유 게시판(소통해요) "댓글"을 위한 SubController 입니다.
+		// 자유 게시판(소통해요)의 "댓글" 페이지 요청 컨트롤러
+		subControllers.put("/petReplyView.do", new PetReplyViewController());
+		
+		// 자유 게시판(소통해요)의 "댓글" 작성 요청 컨트롤러
+		
+		
+		// 자유 게시판(소통해요)의 "댓글" 수정 요청 컨트롤러
+		
+		// 자유 게시판(소통해요)의 "댓글" 삭제 요청 컨트롤러
 		
 		
 		
