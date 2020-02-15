@@ -275,7 +275,7 @@ let originReplyContentsArr = null;
 		const updateButton = $("<input>").attr({
 			"type": "button", 
 			"class": "replyButton", 
-			"value": "수정하기", "onclick": "communicationReplyUpdate(this);"
+			"value": "수정하기", "onclick": "petReplyUpdate(this);"
 		});
 		
 		replyTextarea.val(originValue);
