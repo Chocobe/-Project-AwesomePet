@@ -1,4 +1,4 @@
-package com.awesomePet.controllers.communicationBoardControllers;
+package com.awesomePet.controllers.petBoardController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
