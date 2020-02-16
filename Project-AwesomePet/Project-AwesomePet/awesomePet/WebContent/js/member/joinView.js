@@ -28,7 +28,7 @@ $(function() {
 
 // --------------------------------------------------------------------------------
 // ID 유효검사 메서드 입니다. (ajax를 이용한 비동기 요청)
-function checkOverlapID() {
+function checkOverlapID(context) {
 	const inputID = $(".memberID").val();
 	
 	// 1. ID 공백문자 검사 입니다.
@@ -50,7 +50,7 @@ function checkOverlapID() {
 	// 3. ID 중복여부 검사 입니다.
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:8096/awesomePet/checkOverlapID.do",
+		url: context + "/checkOverlapID.do",
 		async: true,
 		dataType: "TEXT",
 		data: {id : inputID},

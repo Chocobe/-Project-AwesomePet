@@ -64,7 +64,7 @@
                     <input type="text" class="memberID" name="memberID" maxlength="20" autocomplete="off" required>
                     <label class="animation">아이디</label>
                     
-                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkOverlapID();">
+                    <input type="button" class="checkIDButton" value="ID검사" onclick="checkOverlapID(`${contextPath}`);">
                 </div>
                 
                 <div class="animationBox">
