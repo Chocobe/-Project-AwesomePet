@@ -22,5 +22,7 @@ public class QuestionContentsDeleteController implements SubController {
 		
 		PrintWriter out = response.getWriter();
 		out.print(result);
+		
+		out.close();
 	}
 }

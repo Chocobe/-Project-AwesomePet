@@ -149,8 +149,6 @@ let initSubTypeCallbackMethod;
 		const innerContainer = $(target).parent();
 		const typeName = $(innerContainer).children(".originTypeName").val();
 		
-		alert("typeName : " + typeName);
-		
 		$.ajax({
 			type: "POST",
 			async: true,

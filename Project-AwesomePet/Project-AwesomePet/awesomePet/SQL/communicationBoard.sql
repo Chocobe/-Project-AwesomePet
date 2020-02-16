@@ -1,3 +1,4 @@
+-- communicationBoard
 CREATE TABLE communicationBoard(
 	boardIDX INTEGER AUTO_INCREMENT,
 	writerID VARCHAR(20),

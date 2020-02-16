@@ -37,3 +37,12 @@ FROM test_2, (SELECT parentIDX, MAX(test2_val_1) AS test2_val_1
 				  GROUP BY parentIDX) AS temp
 				  
 WHERE test_2.parentIDX = temp.parentIDX AND test_2.test2_val_1 = temp.test2_val_1;
+
+
+CREATE TABLE test_3(
+	val_1		INTEGER,
+	timestamp_1	TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+	date_1	DATE DEFAULT (DATE(timestamp_1))
+);
+
+DESC test_3;

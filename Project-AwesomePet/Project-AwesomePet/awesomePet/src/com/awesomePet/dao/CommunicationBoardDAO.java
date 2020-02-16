@@ -402,7 +402,7 @@ public class CommunicationBoardDAO {
 // CommunicationBoard 글의 댓글수를 갱신 합니다. 
 	public void updateReplyCnt(int boardIDX, int value) {
 		try {
-			String sql = "UPDATE CommunicationBoard ";
+			String sql = "UPDATE communicationBoard ";
 			sql += "SET replyCnt = replyCnt+? ";
 			sql += "WHERE boardIDX=?";
 			
