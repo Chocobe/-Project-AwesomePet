@@ -25,4 +25,7 @@
     <!--
     <Manager pathname="" />
     -->
+    
+    <!-- JDBC resource를 가져오기 위한 JNDI 설정 -->
+    <ResourceLink global="jdbc/mysql/awesomePet" name="jdbc/mysql/awesomePet" type="javax.sql.DataSource"/>
 </Context>

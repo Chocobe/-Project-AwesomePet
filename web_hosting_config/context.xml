@@ -33,4 +33,7 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
+
+    <!-- JDBC resource를 가져오기 위한 JNDI 설정 -->
+    <ResourceLink global="jdbc/awesomePet" name="jdbc/awesomePet" type="javax.sql.DataSource"/>
 </Context>
