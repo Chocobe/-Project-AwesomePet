@@ -21,7 +21,7 @@
 /* .questionWrap */
 	.questionWrap {
 	    width: 100%;
-	    height: 564px;
+	    height: 580px;
 	    
 	    padding: 30px;
 	    
@@ -149,7 +149,11 @@
 
 /* .buttonContainer */
 	.questionWrap .buttonContainer {
+		width: 500px;
 	    margin-top: 30px;
+	    
+	    display: flex;
+	    justify-content: center;
 	}
 	
 	.questionWrap .buttonContainer input {
